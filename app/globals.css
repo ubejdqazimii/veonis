@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-veonis-sans);
+  --font-mono: var(--font-veonis-mono);
+  --font-heading: var(--font-veonis-heading);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,24 +49,27 @@
 }
 
 :root {
+  --font-veonis-sans: Aptos, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-veonis-heading: Aptos, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-veonis-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --primary: #c63d4d;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f1ef;
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --muted: #f7f7f6;
+  --muted-foreground: #939598;
+  --accent: #f1f1ef;
+  --accent-foreground: #111827;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #e6e2dc;
+  --input: #e6e2dc;
+  --ring: #c63d4d;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -123,8 +126,100 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
   html {
     @apply font-sans;
+  }
+  ::selection {
+    background: color-mix(in srgb, #c63d4d 18%, white);
+    color: #111827;
+  }
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    letter-spacing: 0;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-normal text-[#c63d4d];
+  }
+
+  .premium-card {
+    @apply rounded-3xl border border-[#e6e2dc] bg-white shadow-[0_22px_60px_rgba(17,24,39,0.07)];
+  }
+
+  .social-link {
+    @apply inline-flex size-7 items-center justify-center rounded-full border border-[#e6e2dc] text-[11px] font-semibold uppercase text-[#939598] transition hover:border-[#c63d4d] hover:text-[#c63d4d];
+  }
+
+  .form-select {
+    @apply h-12 w-full rounded-lg border border-[#e6e2dc] bg-white px-3 text-base text-[#111827] outline-none transition focus:border-[#c63d4d] focus:ring-4 focus:ring-[#c63d4d]/15 md:text-sm;
+  }
+
+  .cover-visual {
+    position: relative;
+    min-height: 520px;
+    border-radius: 2rem;
+    border: 1px solid #e6e2dc;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 18% 18%, rgb(198 61 77 / 0.16), transparent 24rem),
+      linear-gradient(135deg, #ffffff 0%, #f7f7f6 52%, #ece9e4 100%);
+    box-shadow: 0 28px 90px rgb(17 24 39 / 0.1);
+  }
+
+  .cover-visual__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgb(147 149 152 / 0.14) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(147 149 152 / 0.14) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
+  }
+
+  .cover-visual__panel {
+    position: absolute;
+    border: 1px solid rgb(230 226 220 / 0.92);
+    background: rgb(255 255 255 / 0.82);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 60px rgb(17 24 39 / 0.1);
+  }
+
+  .cover-visual__panel--main {
+    inset: 4.25rem 2rem auto 2rem;
+    border-radius: 1.75rem;
+    padding: 1.5rem;
+  }
+
+  .cover-visual__panel--small {
+    right: 2rem;
+    bottom: 2rem;
+    width: min(18rem, calc(100% - 4rem));
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cover-visual {
+    min-height: 430px;
+    border-radius: 1.5rem;
+  }
+
+  .cover-visual__panel--main {
+    inset: 2rem 1rem auto 1rem;
+    padding: 1rem;
+  }
+
+  .cover-visual__panel--small {
+    right: 1rem;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
   }
 }
