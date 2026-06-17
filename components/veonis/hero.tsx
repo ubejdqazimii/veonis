@@ -33,7 +33,7 @@ export function Hero({
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
         <div className="flex flex-col justify-center">
           <p className="eyebrow">{eyebrow}</p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-normal text-[#111827] sm:text-6xl lg:text-7xl">
+          <h1 className="display-title mt-5 max-w-4xl text-4xl leading-[1.04] tracking-normal text-[#111827] sm:text-6xl lg:text-[3.85rem] xl:text-[4.05rem]">
             {title}
           </h1>
           {subtitle ? (

@@ -1,4 +1,11 @@
-import { CheckCircle, Landmark, LineChart, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import {
+  BadgeCheck,
+  CheckCircle,
+  Landmark,
+  LineChart,
+  ShieldCheck,
+} from "lucide-react";
 
 type CoverVisualProps = {
   label?: string;
@@ -8,6 +15,15 @@ export function CoverVisual({ label = "Veonis 360°" }: CoverVisualProps) {
   return (
     <div className="cover-visual" aria-hidden="true">
       <div className="cover-visual__grid" />
+      <div className="cover-visual__photo">
+        <Image
+          alt=""
+          fill
+          priority
+          sizes="(min-width: 1024px) 45vw, 90vw"
+          src="/brand/photos/veonis-corporate-meeting-optimized.jpg"
+        />
+      </div>
       <div className="cover-visual__panel cover-visual__panel--main">
         <div className="flex items-center justify-between gap-4">
           <span className="text-xs font-semibold uppercase tracking-normal text-[#939598]">
@@ -33,6 +49,10 @@ export function CoverVisual({ label = "Veonis 360°" }: CoverVisualProps) {
         <div className="mt-8 h-2 overflow-hidden rounded-full bg-[#f1f1ef]">
           <div className="h-full w-3/4 rounded-full bg-[#c63d4d]" />
         </div>
+      </div>
+      <div className="cover-visual__badge">
+        <BadgeCheck className="size-4 text-[#c63d4d]" />
+        <span>Persönlich begleitet</span>
       </div>
       <div className="cover-visual__panel cover-visual__panel--small">
         <p className="text-sm font-semibold text-[#111827]">Gesamtbild</p>

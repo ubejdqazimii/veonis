@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { Check, ChevronRight } from "lucide-react";
+import { BadgeCheck, Check, ChevronRight, Handshake, ScanSearch } from "lucide-react";
 
 import { ContactForm } from "@/components/veonis/contact-form";
 import { Container } from "@/components/veonis/container";
@@ -48,6 +49,7 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
         visualLabel="Finanzielle Klarheit"
       />
       <SectionBlock section={page.sections[0]} />
+      <HumanAdvisorySection />
       <AnalysisSection locale={locale} />
       <section className="bg-white py-16 sm:py-20">
         <Container>
@@ -63,6 +65,7 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
           </div>
         </Container>
       </section>
+      <DigitalClaritySection />
       <section className="bg-[#f7f7f6] py-16 sm:py-20">
         <Container>
           <SectionHeader eyebrow="Warum Veonis" title="Warum Veonis?" />
@@ -194,7 +197,7 @@ export function LegalPage({ locale, pageKey }: PageProps) {
         <Container>
           <div className="max-w-3xl">
             <p className="eyebrow">{page.eyebrow}</p>
-            <h1 className="mt-4 text-4xl font-semibold text-[#111827] sm:text-5xl">{page.title}</h1>
+            <h1 className="display-title mt-4 text-4xl text-[#111827] sm:text-5xl">{page.title}</h1>
             <div className="mt-6 space-y-4 text-lg leading-8 text-[#5f6368]">
               {page.description.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -209,7 +212,7 @@ export function LegalPage({ locale, pageKey }: PageProps) {
             <div className="space-y-6">
               {page.sections.map((section) => (
                 <article className="premium-card p-6 sm:p-8" key={section.title}>
-                  <h2 className="text-2xl font-semibold text-[#111827]">{section.title}</h2>
+                  <h2 className="display-title text-2xl text-[#111827]">{section.title}</h2>
                   {section.paragraphs?.map((paragraph) => (
                     <p className="mt-4 leading-7 text-[#5f6368]" key={paragraph}>
                       {paragraph}
@@ -224,6 +227,88 @@ export function LegalPage({ locale, pageKey }: PageProps) {
         </Container>
       </section>
     </>
+  );
+}
+
+function HumanAdvisorySection() {
+  return (
+    <section className="bg-white py-16 sm:py-20">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[#e6e2dc] bg-[#111827] shadow-[0_26px_80px_rgba(17,24,39,0.12)]">
+            <div className="aspect-[1.22] min-h-[360px]">
+              <Image
+                alt="Professionelle Beratungssituation in einem hellen Meetingraum"
+                className="object-cover opacity-88"
+                fill
+                sizes="(min-width: 1024px) 48vw, 90vw"
+                src="/brand/photos/veonis-corporate-meeting-optimized.jpg"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#111827]/55 via-transparent to-[#c63d4d]/10" />
+            <div className="absolute bottom-5 left-5 right-5 rounded-3xl border border-white/18 bg-white/82 p-5 backdrop-blur-xl">
+              <p className="text-sm font-semibold text-[#111827]">Beratung, die Nähe und Struktur verbindet</p>
+              <p className="mt-2 text-sm leading-6 text-[#5f6368]">
+                Menschlich im Gespräch, präzise in der Analyse, klar in den nächsten Schritten.
+              </p>
+            </div>
+          </div>
+          <div>
+            <SectionHeader
+              eyebrow="Persönliche Beratung"
+              intro="Premium bedeutet bei Veonis nicht lauter aufzutreten. Es bedeutet, komplexe Themen ruhig, sauber und verständlich zu ordnen."
+              title="Menschen entscheiden besser, wenn das Gesamtbild sichtbar wird."
+            />
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                { icon: ScanSearch, label: "Analyse", text: "Bestehende Lösungen sauber prüfen." },
+                { icon: Handshake, label: "Begleitung", text: "Ein Ansprechpartner mit Überblick." },
+                { icon: BadgeCheck, label: "Klarheit", text: "Empfehlungen ohne Druck." },
+              ].map((item) => (
+                <div className="rounded-3xl border border-[#e6e2dc] bg-[#f7f7f6] p-5" key={item.label}>
+                  <item.icon className="size-5 text-[#c63d4d]" />
+                  <p className="mt-4 font-semibold text-[#111827]">{item.label}</p>
+                  <p className="mt-2 text-sm leading-6 text-[#5f6368]">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function DigitalClaritySection() {
+  return (
+    <section className="bg-[#f7f7f6] py-16 sm:py-20">
+      <Container>
+        <div className="grid gap-8 rounded-[2rem] border border-[#e6e2dc] bg-white p-6 shadow-[0_24px_70px_rgba(17,24,39,0.07)] sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div>
+            <p className="eyebrow">Modern arbeiten</p>
+            <h2 className="display-title mt-3 text-3xl text-[#111827] sm:text-4xl">
+              Beratung darf persönlich sein und trotzdem digital klar.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-[#5f6368]">
+              Veonis verbindet persönliche Gespräche mit strukturierter Übersicht. So bleiben Dokumente,
+              Ziele und Prioritäten greifbar - vom ersten Finanzcheck bis zur laufenden Betreuung.
+            </p>
+          </div>
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e6e2dc]">
+            <div className="aspect-[1.55]">
+              <Image
+                alt="Digitale Zusammenarbeit mit Smartphones und Notizen auf einem Beratungstisch"
+                className="object-cover"
+                fill
+                sizes="(min-width: 1024px) 55vw, 90vw"
+                src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-l from-[#111827]/34 via-transparent to-white/10" />
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }
 

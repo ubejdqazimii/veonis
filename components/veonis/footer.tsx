@@ -51,6 +51,10 @@ export function Footer({ locale }: FooterProps) {
         </div>
         <div className="mt-10 border-t border-white/10 pt-6 text-sm text-white/50">
           © {new Date().getFullYear()} Veonis. All rights reserved.
+          <span className="mt-2 block text-xs leading-5 text-white/36">
+            Bildquellen: Rawpixel Ltd und Amtec Photos, jeweils via Wikimedia Commons,
+            Lizenz CC BY 2.0.
+          </span>
         </div>
       </Container>
     </footer>

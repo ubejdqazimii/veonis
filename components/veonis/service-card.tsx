@@ -1,4 +1,13 @@
-import { ArrowRight, CheckCircle } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  BriefcaseBusiness,
+  Calculator,
+  ChartSpline,
+  House,
+  Scale,
+  ShieldCheck,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -11,10 +20,12 @@ type ServiceCardProps = {
 };
 
 export function ServiceCard({ title, text, items, cta, className }: ServiceCardProps) {
+  const Icon = getServiceIcon(title);
+
   return (
     <article className={cn("premium-card group flex h-full flex-col p-6", className)}>
-      <div className="mb-5 flex size-11 items-center justify-center rounded-2xl bg-[#c63d4d]/10 text-[#c63d4d]">
-        <CheckCircle className="size-5" />
+      <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-[#c63d4d]/10 text-[#c63d4d] ring-1 ring-[#c63d4d]/10">
+        <Icon className="size-5" />
       </div>
       <h3 className="text-xl font-semibold text-[#111827]">{title}</h3>
       <p className="mt-3 leading-7 text-[#5f6368]">{text}</p>
@@ -36,4 +47,14 @@ export function ServiceCard({ title, text, items, cta, className }: ServiceCardP
       ) : null}
     </article>
   );
+}
+
+function getServiceIcon(title: string) {
+  if (title.includes("Versicher")) return ShieldCheck;
+  if (title.includes("Hypothek") || title.includes("Immobil")) return House;
+  if (title.includes("Steuern")) return Calculator;
+  if (title.includes("Anlagen") || title.includes("Vermög")) return ChartSpline;
+  if (title.includes("Recht") || title.includes("Nachlass")) return Scale;
+  if (title.includes("Firmen") || title.includes("Corporate")) return BriefcaseBusiness;
+  return BadgeCheck;
 }

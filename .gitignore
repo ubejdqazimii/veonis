@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local source photo downloads; optimized derivatives are committed
+public/brand/photos/*-v2.jpg

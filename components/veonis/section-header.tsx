@@ -24,7 +24,7 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-      <h2 className="mt-3 text-3xl font-semibold tracking-normal text-[#111827] sm:text-4xl">
+      <h2 className="display-title mt-3 text-3xl tracking-normal text-[#111827] sm:text-4xl">
         {title}
       </h2>
       {intro ? <p className="mt-5 text-lg leading-8 text-[#5f6368]">{intro}</p> : null}
