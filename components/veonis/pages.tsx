@@ -313,19 +313,21 @@ function HumanAdvisorySection() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="relative min-h-[520px]">
-            <div className="absolute inset-0 overflow-hidden rounded-lg bg-[#24191c] shadow-[0_26px_80px_rgba(72,25,34,0.15)]">
+            <div className="absolute inset-y-0 left-0 right-12 overflow-hidden rounded-lg bg-[#24191c] shadow-[0_26px_80px_rgba(72,25,34,0.15)] sm:right-20">
               <Image
                 alt="Zwei Beraterinnen in einem persönlichen Gespräch"
                 className="object-cover object-center"
                 fill
                 sizes="(min-width: 1024px) 48vw, 90vw"
-                src="/brand/photos/veonis-lounge-consultation-optimized.jpg"
+                src="/brand/photos/veonis-advisor-conversation-optimized.jpg"
               />
-              <div className="absolute inset-x-0 top-0 h-px bg-white/80" />
-              <div className="veonis-glass-light absolute left-5 top-5 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[#551c27]">
-                <BadgeCheck className="size-4 text-[#c63d4d]" />
-                Persönlich. Klar. Auf Augenhöhe.
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#351c22]/42 via-transparent to-transparent" />
+            </div>
+            <div className="veonis-gloss-red absolute bottom-7 right-0 w-[76%] rounded-lg p-6 text-white shadow-[0_20px_60px_rgba(83,25,36,0.22)] sm:w-[64%]">
+              <p className="display-title text-2xl leading-tight">
+                “Gute Beratung beginnt mit den richtigen Fragen, nicht mit einem Produkt.”
+              </p>
+              <p className="mt-4 text-sm font-semibold text-white/72">Veonis Beratungsprinzip</p>
             </div>
           </div>
           <div>
@@ -334,12 +336,6 @@ function HumanAdvisorySection() {
               intro="Premium bedeutet bei Veonis nicht lauter aufzutreten. Es bedeutet, komplexe Themen ruhig, sauber und verständlich zu ordnen."
               title="Menschen entscheiden besser, wenn das Gesamtbild sichtbar wird."
             />
-            <div className="veonis-glass-light mt-7 rounded-lg p-5">
-              <p className="display-title text-xl leading-tight text-[#341b20]">
-                “Gute Beratung beginnt mit den richtigen Fragen, nicht mit einem Produkt.”
-              </p>
-              <p className="mt-3 text-sm font-semibold text-[#a63343]">Veonis Beratungsprinzip</p>
-            </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
                 { icon: ScanSearch, label: "Analyse", text: "Bestehende Lösungen sauber prüfen." },
