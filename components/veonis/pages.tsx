@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowRight,
   BadgeCheck,
   BookOpen,
   Building2,
@@ -95,36 +96,16 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
 
 export function HomePageVersion2({ locale }: Pick<PageProps, "locale">) {
   const page = getPage(locale, "home-v2");
-  const homePage = getPage(locale, "home");
 
   return (
     <>
-      <Hero
-        cta={page.cta}
-        description={page.description}
-        eyebrow={page.eyebrow}
-        locale={locale}
-        secondaryCta={page.secondaryCta}
-        title={page.title}
-        visualLabel="Version 2"
-        variant="home"
-      />
+      <V2HeroSection locale={locale} page={page} />
       <VersionSelectorBand current="v2" locale={locale} />
-      <HomeTrustStrip />
       <V2OverviewSection locale={locale} />
       <V2ServicesSection locale={locale} />
-      <CollaborationSection steps={(homePage.sections[4].steps ?? []).slice(0, 4)} />
-      <LatestBlogPostsSection locale={locale} posts={blogPosts.slice(0, 5)} />
-      <CTASection
-        button={locale === "de" ? "Erstgespräch für meine Situation anfragen" : "Request an initial conversation"}
-        locale={locale}
-        text={
-          locale === "de"
-            ? "Version 2 führt schneller zur Entscheidung: Wenn Sie Ihre Situation prüfen möchten, starten wir mit einem ruhigen Erstgespräch und einer klaren Einordnung."
-            : "Version 2 moves faster toward a decision: if you want to review your situation, we start with a calm initial conversation and a clear assessment."
-        }
-        title={locale === "de" ? "Bereit für die nächste klare Entscheidung?" : "Ready for the next clear decision?"}
-      />
+      <V2CollaborationSection locale={locale} />
+      <V2LatestBlogPostsSection locale={locale} posts={blogPosts.slice(0, 5)} />
+      <V2CTASection locale={locale} />
     </>
   );
 }
@@ -167,6 +148,77 @@ function VersionSelectorBand({ current, locale }: { current: "v1" | "v2"; locale
     <section className="border-b border-[#e6e2dc] bg-[#f7f7f6] py-4">
       <Container>
         <HomepageVersionSelector current={current} locale={locale} />
+      </Container>
+    </section>
+  );
+}
+
+function V2HeroSection({
+  locale,
+  page,
+}: {
+  locale: Locale;
+  page: ReturnType<typeof getPage>;
+}) {
+  const proofPoints =
+    locale === "de"
+      ? ["360° Finanzcheck", "Ein Ansprechpartner", "Kostenloses Erstgespräch"]
+      : ["360° financial check", "One point of contact", "Free initial conversation"];
+
+  return (
+    <section className="relative isolate overflow-hidden bg-[#24191c] text-white">
+      <Image
+        alt={locale === "de" ? "Premium Beratungssituation bei Veonis" : "Premium advisory setting at Veonis"}
+        className="object-cover object-[54%_center] opacity-74"
+        fill
+        preload
+        quality={76}
+        sizes="100vw"
+        src="/brand/photos/veonis-team-workshop-optimized.jpg"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(37,19,24,0.98)_0%,rgba(47,22,28,0.9)_44%,rgba(72,25,34,0.38)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(239,125,139,0.2),transparent_28rem)]" />
+      <Container className="relative grid min-h-[560px] items-center gap-8 py-12 sm:min-h-[600px] lg:grid-cols-[0.92fr_0.58fr]">
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/24 bg-white/12 px-3 py-2 text-xs font-semibold uppercase text-white/84 shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] backdrop-blur-md">
+            <BadgeCheck className="size-4 text-[#ef7d8b]" />
+            {page.eyebrow}
+          </p>
+          <h1 className="display-title mt-6 text-4xl leading-[1.02] text-white sm:text-6xl lg:text-[4.25rem]">
+            {page.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/74 sm:text-lg sm:leading-8">
+            {page.description[0]}
+          </p>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Link
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#c63d4d] px-6 py-3 text-center text-sm font-semibold text-white shadow-[0_18px_46px_rgba(83,25,36,0.28)] transition hover:bg-[#ad3040]"
+              href={getLocalizedPath(locale, "contact")}
+            >
+              {page.cta}
+              <ArrowRight className="ml-2 size-4" />
+            </Link>
+            <Link
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/28 bg-white/10 px-6 py-3 text-center text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/18"
+              href={getLocalizedPath(locale, "veonis-360-analysis")}
+            >
+              {page.secondaryCta}
+            </Link>
+          </div>
+        </div>
+        <div className="rounded-lg border border-white/14 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_26px_70px_rgba(0,0,0,0.16)] backdrop-blur-md sm:p-5">
+          <p className="text-xs font-semibold uppercase text-[#ef7d8b]">
+            {locale === "de" ? "Kompakte Version" : "Compact version"}
+          </p>
+          <div className="mt-4 grid gap-2">
+            {proofPoints.map((point) => (
+              <div className="flex items-center gap-3 rounded-lg bg-white/9 p-3 text-sm font-semibold text-white/82" key={point}>
+                <ShieldCheck className="size-4 shrink-0 text-[#ef7d8b]" />
+                {point}
+              </div>
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   );
@@ -487,30 +539,43 @@ function DigitalClaritySection() {
 function V2OverviewSection({ locale }: { locale: Locale }) {
   const section = getPage(locale, "home").sections[0];
   const analysis = getPage(locale, "home").sections[1];
+  const metrics =
+    locale === "de"
+      ? [
+          ["01", "Gesamtbild statt Einzelentscheid"],
+          ["02", "Prioritäten vor Produkten"],
+          ["03", "Beratung mit Umsetzungsplan"],
+        ]
+      : [
+          ["01", "Overall picture before isolated decisions"],
+          ["02", "Priorities before products"],
+          ["03", "Advice with an action plan"],
+        ];
 
   return (
-    <section className="bg-white py-20 sm:py-24">
+    <section className="bg-white py-14 sm:py-20">
       <Container>
-        <div className="grid gap-6 lg:grid-cols-12">
-          <article className="veonis-gloss-dark rounded-lg p-7 text-white lg:col-span-5 sm:p-8">
+        <div className="grid gap-5 lg:grid-cols-12">
+          <article className="veonis-gloss-dark rounded-lg p-6 text-white lg:col-span-6 sm:p-8">
             <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{section.eyebrow}</p>
-            <h2 className="display-title mt-4 text-4xl leading-tight text-white sm:text-5xl">{section.title}</h2>
-            <p className="mt-6 text-lg leading-8 text-white/66">{section.paragraphs?.[0]}</p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {["Versicherungen", "Vorsorge", "Hypotheken", "Steuern"].map((item) => (
-                <div className="rounded-lg border border-white/12 bg-white/8 p-4 text-sm font-semibold text-white/80" key={item}>
-                  {item}
+            <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">{section.title}</h2>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">{section.paragraphs?.[0]}</p>
+            <div className="mt-6 grid gap-2">
+              {metrics.map(([number, label]) => (
+                <div className="flex items-center gap-3 rounded-lg border border-white/12 bg-white/8 p-3 text-sm font-semibold text-white/80" key={label}>
+                  <span className="text-[#ef7d8b]">{number}</span>
+                  {label}
                 </div>
               ))}
             </div>
           </article>
 
-          <article className="relative min-h-[460px] overflow-hidden rounded-lg bg-[#24191c] lg:col-span-4">
+          <article className="relative min-h-[360px] overflow-hidden rounded-lg bg-[#24191c] lg:col-span-6">
             <Image
               alt="Digitale Finanzübersicht in einer Beratung"
               className="object-cover object-[45%_center]"
               fill
-              sizes="(min-width: 1024px) 34vw, 100vw"
+              sizes="(min-width: 1024px) 48vw, 100vw"
               src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,25,28,0.05),rgba(36,25,28,0.78))]" />
@@ -519,18 +584,6 @@ function V2OverviewSection({ locale }: { locale: Locale }) {
               <p className="mt-2 text-sm leading-6 text-white/76">{analysis.intro}</p>
             </div>
           </article>
-
-          <article className="veonis-soft-service rounded-lg p-7 lg:col-span-3 sm:p-8">
-            <ScanSearch className="size-6 text-[#c63d4d]" />
-            <h3 className="display-title mt-8 text-3xl leading-tight text-[#111827]">
-              {locale === "de" ? "Weniger Scrollen, mehr Orientierung." : "Less scrolling, more orientation."}
-            </h3>
-            <p className="mt-5 leading-7 text-[#5f6368]">
-              {locale === "de"
-                ? "Version 2 bündelt wiederholte Vertrauenssignale und stellt Entscheidungspunkte früher sichtbar dar."
-                : "Version 2 groups repeated trust signals and makes decision points visible earlier."}
-            </p>
-          </article>
         </div>
       </Container>
     </section>
@@ -538,32 +591,86 @@ function V2OverviewSection({ locale }: { locale: Locale }) {
 }
 
 function V2ServicesSection({ locale }: { locale: Locale }) {
-  const highlights = services.slice(0, 4);
+  const highlights = services.slice(0, 3);
 
   return (
-    <section className="bg-[#f6f2ef] py-20 sm:py-24">
+    <section className="bg-[#f6f2ef] py-14 sm:py-20">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
           <SectionHeader
             eyebrow="Services"
             intro={
               locale === "de"
-                ? "Die kompakte Version zeigt die wichtigsten Beratungsthemen als Entscheidungsfelder statt als lange Leistungsstrecke."
-                : "The compact version presents key advisory topics as decision areas instead of a long service sequence."
+                ? "Version 2 führt schneller: die wichtigsten Beratungsthemen werden als Entscheidungsfelder gezeigt."
+                : "Version 2 moves faster: the most important advisory topics are shown as decision areas."
             }
-            title={locale === "de" ? "Vier Felder, ein Gesamtbild." : "Four areas, one overall picture."}
+            title={locale === "de" ? "Drei Einstiege. Ein Gesamtbild." : "Three entry points. One overall picture."}
           />
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-3">
             {highlights.map((service, index) => (
-              <article className="rounded-lg border border-white/70 bg-white/78 p-6 shadow-[0_18px_50px_rgba(68,24,32,0.08)] backdrop-blur" key={service.title}>
+              <article className="rounded-lg border border-white/70 bg-white/78 p-5 shadow-[0_18px_50px_rgba(68,24,32,0.08)] backdrop-blur" key={service.title}>
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-xs font-semibold text-[#c63d4d]">{String(index + 1).padStart(2, "0")}</span>
                   <BadgeCheck className="size-5 text-[#c63d4d]" />
                 </div>
-                <h3 className="mt-8 text-xl font-semibold text-[#111827]">{service.title}</h3>
+                <h3 className="mt-6 text-lg font-semibold text-[#111827]">{service.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[#5f6368]">{service.text}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V2CollaborationSection({ locale }: { locale: Locale }) {
+  const steps =
+    locale === "de"
+      ? [
+          ["Kennenlernen", "Ihre Fragen, Unterlagen und Ziele werden sauber eingeordnet."],
+          ["360° Check", "Wir prüfen Zusammenhänge, Prioritäten und mögliche Lücken."],
+          ["Plan", "Sie erhalten klare nächste Schritte mit persönlicher Begleitung."],
+        ]
+      : [
+          ["First conversation", "Your questions, documents and goals are put into context."],
+          ["360° check", "We review connections, priorities and potential gaps."],
+          ["Plan", "You receive clear next steps with personal guidance."],
+        ];
+
+  return (
+    <section className="bg-white py-14 sm:py-20">
+      <Container>
+        <div className="veonis-gloss-red grid overflow-hidden rounded-lg text-white lg:grid-cols-[0.76fr_1.24fr]">
+          <div className="p-6 sm:p-8 lg:p-10">
+            <p className="text-xs font-semibold uppercase text-white/70">Zusammenarbeit</p>
+            <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
+              {locale === "de" ? "Premium im Gefühl. Kurz im Ablauf." : "Premium in feel. Short in flow."}
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-7 text-white/72">
+              {locale === "de"
+                ? "Die stärkere v2 nutzt den roten Glas-Look aus Version 1, reduziert den Prozess aber auf drei klare Entscheidungsmomente."
+                : "The stronger v2 uses the red glass feel from Version 1, but reduces the process to three clear decision moments."}
+            </p>
+          </div>
+          <div className="grid border-t border-white/14 lg:grid-cols-3 lg:border-l lg:border-t-0">
+            {steps.map(([title, text], index) => {
+              const icons = [Handshake, ScanSearch, ClipboardCheck];
+              const Icon = icons[index] ?? BadgeCheck;
+
+              return (
+                <article className="min-h-44 border-b border-white/14 p-5 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 sm:p-6" key={title}>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="flex size-11 items-center justify-center rounded-lg border border-white/18 bg-white/12 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
+                      <Icon className="size-5" />
+                    </span>
+                    <span className="display-title text-4xl text-white/24">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h3 className="mt-6 text-lg font-semibold text-white">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-white/70">{text}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </Container>
@@ -827,6 +934,112 @@ function LatestBlogPostsSection({ locale, posts }: { locale: Locale; posts: Blog
         </div>
         <div className="mt-10">
           <BlogPostsGrid compact locale={locale} posts={posts} />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V2LatestBlogPostsSection({ locale, posts }: { locale: Locale; posts: BlogPost[] }) {
+  const [featured, ...smallPosts] = posts;
+
+  if (!featured) {
+    return null;
+  }
+
+  return (
+    <section className="bg-[#f7f7f6] py-14 sm:py-20">
+      <Container>
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader
+            eyebrow={locale === "de" ? "Aktuelle Impulse" : "Latest insights"}
+            intro={
+              locale === "de"
+                ? "Ein starker Beitrag plus vier schnelle Einstiege. Mehr Orientierung, weniger Scrollstrecke."
+                : "One strong feature plus four quick entries. More orientation, less scrolling."
+            }
+            title={locale === "de" ? "Finanzwissen als Entscheidungshelfer." : "Financial insight for better decisions."}
+          />
+          <Link
+            className="inline-flex items-center text-sm font-semibold text-[#c63d4d]"
+            href={getLocalizedPath(locale, "blog")}
+          >
+            {locale === "de" ? "Alle Beiträge" : "All posts"}
+            <ChevronRight className="ml-1 size-4" />
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+          <article className="group overflow-hidden rounded-lg border border-[#e6e2dc] bg-white shadow-[0_20px_60px_rgba(17,24,39,0.07)]">
+            <div className="relative aspect-[1.55] overflow-hidden">
+              <Image
+                alt={featured.alt[locale]}
+                className="object-cover transition duration-500 group-hover:scale-[1.035]"
+                fill
+                sizes="(min-width: 1024px) 44vw, 100vw"
+                src={featured.image}
+              />
+              <div className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/86 px-3 py-1 text-xs font-semibold text-[#8f2535] shadow-[inset_0_1px_0_white] backdrop-blur">
+                {featured.category[locale]} · {featured.readTime[locale]}
+              </div>
+            </div>
+            <div className="p-5 sm:p-6">
+              <h3 className="text-2xl font-semibold leading-tight text-[#111827]">{featured.title[locale]}</h3>
+              <p className="mt-3 leading-7 text-[#5f6368]">{featured.excerpt[locale]}</p>
+              <Link
+                className="mt-5 inline-flex items-center text-sm font-semibold text-[#c63d4d]"
+                href={getLocalizedPath(locale, "blog")}
+              >
+                <BookOpen className="mr-2 size-4" />
+                {locale === "de" ? "Im Blog ansehen" : "View in blog"}
+              </Link>
+            </div>
+          </article>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {smallPosts.slice(0, 4).map((post) => (
+              <article className="rounded-lg border border-[#e6e2dc] bg-white p-5 shadow-[0_16px_44px_rgba(17,24,39,0.05)]" key={post.slug}>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#939598]">
+                  <span className="text-[#c63d4d]">{post.category[locale]}</span>
+                  <span>·</span>
+                  <span>{post.readTime[locale]}</span>
+                </div>
+                <h3 className="mt-4 text-lg font-semibold leading-tight text-[#111827]">{post.title[locale]}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#5f6368]">{post.excerpt[locale]}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V2CTASection({ locale }: { locale: Locale }) {
+  return (
+    <section className="relative isolate overflow-hidden bg-white py-14 sm:py-20">
+      <Container>
+        <div className="veonis-gloss-dark grid gap-6 rounded-lg p-5 text-white sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{brand.claim}</p>
+            <h2 className="display-title mt-3 max-w-3xl text-3xl leading-tight text-white sm:text-5xl">
+              {locale === "de" ? "Bereit für eine klare Einordnung?" : "Ready for a clear assessment?"}
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-white/66">
+              {locale === "de"
+                ? "Wenn Sie wissen möchten, welche Finanzthemen zuerst relevant sind, starten wir mit einem ruhigen Erstgespräch."
+                : "If you want to know which financial topics matter first, we start with a calm initial conversation."}
+            </p>
+          </div>
+          <Link
+            className="inline-flex min-h-12 w-full min-w-0 items-center justify-center rounded-full bg-white px-5 py-3 text-center text-sm font-semibold leading-5 text-[#8f2535] shadow-[0_18px_46px_rgba(0,0,0,0.18)] transition hover:bg-[#fff4f5] sm:w-auto"
+            href={getLocalizedPath(locale, "contact")}
+          >
+            <span className="min-w-0 break-words">
+              {locale === "de" ? "Erstgespräch anfragen" : "Request a conversation"}
+            </span>
+            <ArrowRight className="ml-2 size-4 shrink-0" />
+          </Link>
         </div>
       </Container>
     </section>

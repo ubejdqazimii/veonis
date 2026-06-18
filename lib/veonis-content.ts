@@ -484,12 +484,12 @@ const homeV2: PageContent = {
   ...home,
   seoTitle: "Veonis Homepage Version 2 | Finanzberatung Schweiz",
   metaDescription:
-    "Kompaktere Homepage-Version von Veonis mit fokussierter Struktur, Blog-Einstieg und klarerem Beratungsfluss.",
+    "Kompakte, conversion-fokussierte Homepage-Version von Veonis mit Premium-Auftritt, 360° Finanzcheck, Beratungsablauf und Blog-Einstieg.",
   eyebrow: "Homepage Version 2",
-  title: "Finanzberatung, die schneller zum Wesentlichen führt.",
+  title: "Finanzberatung, die schneller zur richtigen Entscheidung führt.",
   description: [
-    "Version 2 verdichtet die wichtigsten Inhalte: Gesamtbild, 360° Analyse, Services, Zusammenarbeit und aktuelle Finanzimpulse.",
-    "Sie bleibt visuell premium, führt aber mit weniger Wiederholung schneller zur Kontaktaufnahme.",
+    "Version 2 verbindet die stärksten Premium-Elemente aus der ersten Homepage mit einer kürzeren, klareren Entscheidungsstrecke.",
+    "Der Fokus liegt auf schnellem Verständnis, 360° Einordnung und einem einfachen nächsten Schritt: dem persönlichen Erstgespräch.",
   ],
 };
 
@@ -883,12 +883,12 @@ const englishBase: Record<PageKey, PageContent> = {
     ...homeV2,
     seoTitle: "Veonis Homepage Version 2 | Financial advice Switzerland",
     metaDescription:
-      "A more compact Veonis homepage version with focused structure, blog entry points and a clearer advisory flow.",
+      "A compact, conversion-focused Veonis homepage version with premium visuals, 360° financial check, advisory flow and blog entry points.",
     eyebrow: "Homepage Version 2",
-    title: "Financial advice that gets to what matters faster.",
+    title: "Financial advice that gets you to the right decision faster.",
     description: [
-      "Version 2 condenses the core story: overall picture, 360° analysis, services, collaboration and current financial insights.",
-      "It keeps the premium visual direction while reducing repetition and moving faster toward contact.",
+      "Version 2 combines the strongest premium elements from the first homepage with a shorter, clearer decision path.",
+      "The focus is fast understanding, 360° context and one simple next step: a personal initial conversation.",
     ],
   },
   blog: {
