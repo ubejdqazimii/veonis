@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Container } from "@/components/veonis/container";
+import { HomeVersionNav } from "@/components/veonis/home-version-nav";
 import { MobileMenu } from "@/components/veonis/mobile-menu";
 import { PreHeader } from "@/components/veonis/pre-header";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ export function Header({ locale }: HeaderProps) {
           <img className="h-12 w-auto" src="/brand/veonis-header.svg" alt="Veonis" />
         </Link>
         <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex">
+          <HomeVersionNav locale={locale} />
           {primaryNavItems.map((item) => (
             <Link
               className="rounded-full px-3 py-2 text-sm font-medium text-[#4b5563] transition hover:bg-[#f7f7f6] hover:text-[#111827]"

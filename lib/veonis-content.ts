@@ -3,6 +3,7 @@ export type Locale = "de" | "en";
 export type PageKey =
   | "home"
   | "home-v2"
+  | "home-v3"
   | "blog"
   | "private-clients"
   | "corporate-clients"
@@ -102,14 +103,16 @@ export const primaryNavItems = navItems.filter(
   (item) => !["Home", "Career", "Contact"].includes(item.label),
 );
 
-export const homepageVersions: Record<Locale, { label: string; value: "v1" | "v2"; href: string; note: string }[]> = {
+export const homepageVersions: Record<Locale, { label: string; value: "v1" | "v2" | "v3"; href: string; note: string }[]> = {
   de: [
     { label: "Homepage Version 1", value: "v1", href: "/de", note: "Ausführliche Premium-Homepage" },
     { label: "Homepage Version 2", value: "v2", href: "/de/home-v2", note: "Kompaktere Editorial-Version" },
+    { label: "Homepage Version 3", value: "v3", href: "/de/home-v3", note: "Luxury Compact mit Tabs und Snap Cards" },
   ],
   en: [
     { label: "Homepage Version 1", value: "v1", href: "/en", note: "Detailed premium homepage" },
     { label: "Homepage Version 2", value: "v2", href: "/en/home-v2", note: "More compact editorial version" },
+    { label: "Homepage Version 3", value: "v3", href: "/en/home-v3", note: "Luxury compact with tabs and snap cards" },
   ],
 };
 
@@ -493,9 +496,23 @@ const homeV2: PageContent = {
   ],
 };
 
+const homeV3: PageContent = {
+  ...home,
+  seoTitle: "Veonis Homepage Version 3 | Luxury Swiss Finance",
+  metaDescription:
+    "Luxury compact homepage version for Veonis with graphite-red premium styling, segmented advisory content, compact insights and Swiss finance positioning.",
+  eyebrow: "Homepage Version 3",
+  title: "Swiss Finance Advisory mit Ruhe, Präzision und Premium-Übersicht.",
+  description: [
+    "Version 3 komprimiert die visuelle Tiefe der ersten Homepage in eine luxuriöse, mobile-freundliche Entscheidungsstrecke.",
+    "Graphit, Veonis-Rot, Glasflächen und interaktive Tabs bündeln Services, Zielgruppen und Zusammenarbeit ohne lange Scrollstrecken.",
+  ],
+};
+
 const dePages: Record<PageKey, PageContent> = {
   home,
   "home-v2": homeV2,
+  "home-v3": homeV3,
   blog: {
     seoTitle: "Blog | Veonis Finanzimpulse",
     metaDescription:
@@ -889,6 +906,18 @@ const englishBase: Record<PageKey, PageContent> = {
     description: [
       "Version 2 combines the strongest premium elements from the first homepage with a shorter, clearer decision path.",
       "The focus is fast understanding, 360° context and one simple next step: a personal initial conversation.",
+    ],
+  },
+  "home-v3": {
+    ...homeV3,
+    seoTitle: "Veonis Homepage Version 3 | Luxury Swiss Finance",
+    metaDescription:
+      "Luxury compact homepage version for Veonis with graphite-red premium styling, segmented advisory content, compact insights and Swiss finance positioning.",
+    eyebrow: "Homepage Version 3",
+    title: "Swiss finance advisory with calm, precision and premium overview.",
+    description: [
+      "Version 3 compresses the visual richness of the first homepage into a luxurious, mobile-friendly decision path.",
+      "Graphite, Veonis red, glass panels and interactive tabs group services, audiences and collaboration without long scroll depth.",
     ],
   },
   blog: {

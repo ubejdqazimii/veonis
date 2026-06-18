@@ -6,6 +6,8 @@ import {
   BadgeCheck,
   BookOpen,
   Building2,
+  Calculator,
+  ChartNoAxesCombined,
   Check,
   ChevronRight,
   CircleUserRound,
@@ -13,6 +15,8 @@ import {
   ClipboardCheck,
   FileSearch,
   Handshake,
+  House,
+  Landmark,
   Layers3,
   ScanSearch,
   ShieldCheck,
@@ -32,6 +36,7 @@ import {
   WhyVeonisSection,
 } from "@/components/veonis/home-editorial-sections";
 import { HomeFocusTabsSection } from "@/components/veonis/home-focus-tabs-section";
+import { HomeV3SegmentedPanel } from "@/components/veonis/home-v3-segmented-panel";
 import { HomepageVersionSelector } from "@/components/veonis/homepage-version-selector";
 import { Hero } from "@/components/veonis/hero";
 import { LegalNoticeBlock } from "@/components/veonis/legal-notice-block";
@@ -105,6 +110,21 @@ export function HomePageVersion2({ locale }: Pick<PageProps, "locale">) {
       <V2ServicesSection locale={locale} />
       <V2CollaborationSection locale={locale} />
       <V2LatestBlogPostsSection locale={locale} posts={blogPosts.slice(0, 5)} />
+      <V2CTASection locale={locale} />
+    </>
+  );
+}
+
+export function HomePageVersion3({ locale }: Pick<PageProps, "locale">) {
+  const page = getPage(locale, "home-v3");
+
+  return (
+    <>
+      <V3HeroSection locale={locale} page={page} />
+      <V3LuxuryCommandSection locale={locale} />
+      <V3SegmentedSection locale={locale} />
+      <V3SnapCardsSection locale={locale} />
+      <V3InsightsSection locale={locale} posts={blogPosts.slice(0, 5)} />
       <V2CTASection locale={locale} />
     </>
   );
@@ -215,6 +235,74 @@ function V2HeroSection({
               <div className="flex items-center gap-3 rounded-lg bg-white/9 p-3 text-sm font-semibold text-white/82" key={point}>
                 <ShieldCheck className="size-4 shrink-0 text-[#ef7d8b]" />
                 {point}
+              </div>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3HeroSection({
+  locale,
+  page,
+}: {
+  locale: Locale;
+  page: ReturnType<typeof getPage>;
+}) {
+  const proof =
+    locale === "de"
+      ? ["Broker-Blick", "360° Analyse", "Swiss Advisory"]
+      : ["Broker perspective", "360° analysis", "Swiss advisory"];
+
+  return (
+    <section className="relative isolate overflow-hidden bg-[#21191c] text-white">
+      <Image
+        alt={locale === "de" ? "Luxuriöse Beratungssituation bei Veonis" : "Luxury advisory setting at Veonis"}
+        className="object-cover object-[56%_center] opacity-78"
+        fill
+        preload
+        quality={78}
+        sizes="100vw"
+        src="/brand/photos/veonis-lounge-consultation-optimized.jpg"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(31,23,26,0.98)_0%,rgba(43,24,29,0.9)_48%,rgba(92,28,39,0.38)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_84%_20%,rgba(239,125,139,0.22),transparent_24rem)]" />
+      <Container className="relative grid min-h-[610px] items-center gap-8 py-14 lg:grid-cols-[0.9fr_0.62fr]">
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-3 py-2 text-xs font-semibold uppercase text-white/84 shadow-[inset_0_1px_0_rgba(255,255,255,0.24)] backdrop-blur-md">
+            <Landmark className="size-4 text-[#ef7d8b]" />
+            {page.eyebrow}
+          </p>
+          <h1 className="display-title mt-6 text-4xl leading-[1.02] text-white sm:text-6xl lg:text-[4.4rem]">
+            {page.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/74 sm:text-lg sm:leading-8">
+            {page.description[0]}
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#c63d4d] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_46px_rgba(83,25,36,0.3)] transition hover:bg-[#ad3040]"
+              href={getLocalizedPath(locale, "contact")}
+            >
+              {page.cta}
+              <ArrowRight className="ml-2 size-4" />
+            </Link>
+            <Link
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/28 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/18"
+              href={getLocalizedPath(locale, "veonis-360-analysis")}
+            >
+              {page.secondaryCta}
+            </Link>
+          </div>
+        </div>
+        <div className="rounded-lg border border-white/14 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_28px_80px_rgba(0,0,0,0.2)] backdrop-blur-md sm:p-5">
+          <div className="grid gap-3">
+            {proof.map((item, index) => (
+              <div className="rounded-lg border border-white/10 bg-white/8 p-4" key={item}>
+                <p className="text-xs font-semibold text-[#ef7d8b]">{String(index + 1).padStart(2, "0")}</p>
+                <p className="mt-2 text-lg font-semibold text-white">{item}</p>
               </div>
             ))}
           </div>
@@ -529,6 +617,174 @@ function DigitalClaritySection() {
               src="/brand/photos/veonis-digital-meeting-optimized.jpg"
             />
             <div className="absolute inset-x-0 top-0 h-px bg-white/80" />
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3LuxuryCommandSection({ locale }: { locale: Locale }) {
+  const items =
+    locale === "de"
+      ? [
+          { icon: ShieldCheck, label: "Absicherung", text: "Risiken, Kosten und Schutz sauber abgleichen." },
+          { icon: House, label: "Immobilien", text: "Hypothek, Liquidität und Steuern verbunden denken." },
+          { icon: Calculator, label: "Steuern", text: "Vorsorge- und Planungseffekte früh sichtbar machen." },
+          { icon: ChartNoAxesCombined, label: "Vermögen", text: "Anlagen nach Ziel, Zeit und Risiko strukturieren." },
+        ]
+      : [
+          { icon: ShieldCheck, label: "Protection", text: "Align risks, costs and coverage clearly." },
+          { icon: House, label: "Real estate", text: "Connect mortgage, liquidity and taxes." },
+          { icon: Calculator, label: "Taxes", text: "Make pension and planning effects visible early." },
+          { icon: ChartNoAxesCombined, label: "Wealth", text: "Structure investments by goal, time and risk." },
+        ];
+
+  return (
+    <section className="bg-[#f6f2ef] py-14 sm:py-20">
+      <Container>
+        <div className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr]">
+          <article className="veonis-gloss-dark rounded-lg p-6 text-white sm:p-8">
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">Luxury Compact</p>
+            <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
+              {locale === "de"
+                ? "Die Tiefe von Version 1, verdichtet auf die Entscheidungen mit Wirkung."
+                : "The depth of Version 1, condensed to decisions that matter."}
+            </h2>
+            <p className="mt-5 max-w-2xl leading-7 text-white/66">
+              {locale === "de"
+                ? "Version 3 nutzt Premium-Kontrast, Glasflächen und kurze Informationscluster, damit mobile Nutzer schneller verstehen, warum Veonis anders berät."
+                : "Version 3 uses premium contrast, glass panels and short information clusters so mobile users understand faster why Veonis advises differently."}
+            </p>
+          </article>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {items.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <article className="rounded-lg border border-white/70 bg-white/78 p-5 shadow-[0_18px_50px_rgba(68,24,32,0.08)] backdrop-blur" key={item.label}>
+                  <Icon className="size-5 text-[#c63d4d]" />
+                  <h3 className="mt-5 text-lg font-semibold text-[#111827]">{item.label}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#5f6368]">{item.text}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3SegmentedSection({ locale }: { locale: Locale }) {
+  return (
+    <section className="bg-[linear-gradient(135deg,#21191c_0%,#351b21_48%,#661f2d_100%)] py-14 text-white sm:py-20">
+      <Container>
+        <div className="mb-8 max-w-3xl">
+          <p className="text-xs font-semibold uppercase text-[#ef7d8b]">
+            {locale === "de" ? "Segmentierte Beratung" : "Segmented advisory"}
+          </p>
+          <h2 className="display-title mt-3 text-3xl leading-tight text-white sm:text-5xl">
+            {locale === "de"
+              ? "Tabs sparen Länge, ohne Beratungstiefe zu verlieren."
+              : "Tabs save length without losing advisory depth."}
+          </h2>
+        </div>
+        <HomeV3SegmentedPanel locale={locale} />
+      </Container>
+    </section>
+  );
+}
+
+function V3SnapCardsSection({ locale }: { locale: Locale }) {
+  const cards =
+    locale === "de"
+      ? [
+          ["01", "Analyse", "Bestehende Verträge, Ziele und finanzielle Wechselwirkungen werden sichtbar."],
+          ["02", "Priorität", "Nicht alles ist gleich wichtig. Veonis ordnet nach Wirkung und Timing."],
+          ["03", "Umsetzung", "Vergleiche, Offerten und Anpassungen werden ruhig begleitet."],
+          ["04", "Betreuung", "Bei Lebens- und Unternehmensveränderungen bleibt der Überblick aktuell."],
+        ]
+      : [
+          ["01", "Analysis", "Existing contracts, goals and financial interactions become visible."],
+          ["02", "Priority", "Not everything matters equally. Veonis orders by impact and timing."],
+          ["03", "Execution", "Comparisons, offers and adjustments are guided calmly."],
+          ["04", "Care", "As life and business change, the overview stays current."],
+        ];
+
+  return (
+    <section className="bg-white py-14 sm:py-20">
+      <Container>
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader
+            eyebrow={locale === "de" ? "Horizontal Snap" : "Horizontal snap"}
+            intro={
+              locale === "de"
+                ? "Lange Prozessinhalte werden zu kompakten Karten, die auf Mobile horizontal gleiten."
+                : "Long process content becomes compact cards that slide horizontally on mobile."
+            }
+            title={locale === "de" ? "Ein Ablauf, der nicht nach langer Seite aussieht." : "A flow that does not feel like a long page."}
+          />
+        </div>
+        <div className="mt-8 flex snap-x gap-4 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0">
+          {cards.map(([number, title, text]) => (
+            <article className="min-w-[78%] snap-start rounded-lg border border-[#e6e2dc] bg-[#f7f7f6] p-5 shadow-[0_18px_50px_rgba(17,24,39,0.06)] sm:min-w-[44%] lg:min-w-0" key={title}>
+              <p className="display-title text-5xl text-[#c63d4d]/22">{number}</p>
+              <h3 className="mt-8 text-xl font-semibold text-[#111827]">{title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#5f6368]">{text}</p>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3InsightsSection({ locale, posts }: { locale: Locale; posts: BlogPost[] }) {
+  const [featured, ...rest] = posts;
+
+  if (!featured) {
+    return null;
+  }
+
+  return (
+    <section className="bg-[#f6f2ef] py-14 sm:py-20">
+      <Container>
+        <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+          <article className="group overflow-hidden rounded-lg border border-[#e6e2dc] bg-white shadow-[0_20px_60px_rgba(17,24,39,0.07)]">
+            <div className="relative aspect-[1.5] overflow-hidden">
+              <Image
+                alt={featured.alt[locale]}
+                className="object-cover transition duration-500 group-hover:scale-[1.035]"
+                fill
+                sizes="(min-width: 1024px) 44vw, 100vw"
+                src={featured.image}
+              />
+              <div className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/86 px-3 py-1 text-xs font-semibold text-[#8f2535] shadow-[inset_0_1px_0_white] backdrop-blur">
+                {featured.category[locale]} · {featured.readTime[locale]}
+              </div>
+            </div>
+            <div className="p-5 sm:p-6">
+              <p className="eyebrow">{locale === "de" ? "Featured Insight" : "Featured insight"}</p>
+              <h2 className="mt-3 text-2xl font-semibold leading-tight text-[#111827]">{featured.title[locale]}</h2>
+              <p className="mt-3 leading-7 text-[#5f6368]">{featured.excerpt[locale]}</p>
+            </div>
+          </article>
+
+          <div className="rounded-lg border border-[#e6e2dc] bg-white p-5 shadow-[0_20px_60px_rgba(17,24,39,0.06)] sm:p-6">
+            <p className="eyebrow">{locale === "de" ? "Weitere Impulse" : "More insights"}</p>
+            <div className="mt-4 grid gap-3">
+              {rest.slice(0, 4).map((post) => (
+                <article className="rounded-lg bg-[#f7f7f6] p-4" key={post.slug}>
+                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-[#939598]">
+                    <span className="text-[#c63d4d]">{post.category[locale]}</span>
+                    <span>{post.readTime[locale]}</span>
+                  </div>
+                  <h3 className="mt-2 text-base font-semibold leading-tight text-[#111827]">{post.title[locale]}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#5f6368]">{post.excerpt[locale]}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </Container>
