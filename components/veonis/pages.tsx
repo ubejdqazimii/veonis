@@ -47,7 +47,7 @@ import { TabsSection } from "@/components/veonis/tabs-section";
 import { ValueCard } from "@/components/veonis/value-card";
 import { cn } from "@/lib/utils";
 import type { BlogPost, CardContent, Locale, PageKey } from "@/lib/veonis-content";
-import { blogPosts, brand, getLocalizedPath, getPage, services } from "@/lib/veonis-content";
+import { blogPosts, brand, getLocalizedPath, getPage, services, valueCards } from "@/lib/veonis-content";
 
 export function createPageMetadata(locale: Locale, key: PageKey): Metadata {
   const page = getPage(locale, key);
@@ -121,8 +121,11 @@ export function HomePageVersion3({ locale }: Pick<PageProps, "locale">) {
   return (
     <>
       <V3HeroSection locale={locale} page={page} />
-      <V3LuxuryCommandSection locale={locale} />
-      <V3SegmentedSection locale={locale} />
+      <V3FinanceMapSection locale={locale} />
+      <V3SituationSection locale={locale} />
+      <V3WhyVeonisStrip />
+      <V3HumanMomentsSection locale={locale} />
+      <V3ServicesMatrixSection locale={locale} />
       <V3SnapCardsSection locale={locale} />
       <V3InsightsSection locale={locale} posts={blogPosts.slice(0, 5)} />
       <V2CTASection locale={locale} />
@@ -617,6 +620,265 @@ function DigitalClaritySection() {
               src="/brand/photos/veonis-digital-meeting-optimized.jpg"
             />
             <div className="absolute inset-x-0 top-0 h-px bg-white/80" />
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3FinanceMapSection({ locale }: { locale: Locale }) {
+  const topics =
+    locale === "de"
+      ? [
+          { icon: ShieldCheck, label: "Versicherungen", text: "Schutz, Kosten und Risiken" },
+          { icon: Landmark, label: "Vorsorge", text: "Säule 3a, Pensionskasse, Pensionierung" },
+          { icon: House, label: "Hypotheken", text: "Tragbarkeit, Zinsmodell, Liquidität" },
+          { icon: Calculator, label: "Steuern", text: "Abzüge, Planung, Wohneigentum" },
+          { icon: ChartNoAxesCombined, label: "Anlagen", text: "Ziele, Risiko und Vermögensaufbau" },
+        ]
+      : [
+          { icon: ShieldCheck, label: "Insurance", text: "Protection, costs and risks" },
+          { icon: Landmark, label: "Pension planning", text: "Pillar 3a, pension fund, retirement" },
+          { icon: House, label: "Mortgages", text: "Affordability, rate model, liquidity" },
+          { icon: Calculator, label: "Taxes", text: "Deductions, planning, home ownership" },
+          { icon: ChartNoAxesCombined, label: "Investments", text: "Goals, risk and wealth building" },
+        ];
+  const effects =
+    locale === "de"
+      ? ["Vorsorge beeinflusst Steuern", "Hypothek verändert Liquidität", "Versicherung prägt monatliche Kosten"]
+      : ["Pension planning affects taxes", "Mortgage choices change liquidity", "Insurance shapes monthly costs"];
+
+  return (
+    <section className="bg-[#f6f2ef] py-14 sm:py-20">
+      <Container>
+        <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <article className="veonis-gloss-dark rounded-lg p-6 text-white sm:p-8">
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">360° Finanzbild</p>
+            <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
+              {locale === "de"
+                ? "Eine Entscheidung wirkt selten nur in einem Bereich."
+                : "One decision rarely affects only one area."}
+            </h2>
+            <p className="mt-5 leading-7 text-white/66">
+              {locale === "de"
+                ? "Die Veonis 360° Analyse macht sichtbar, wie Versicherungen, Vorsorge, Hypotheken, Steuern und Anlagen zusammenhängen."
+                : "The Veonis 360° analysis shows how insurance, pension planning, mortgages, taxes and investments are connected."}
+            </p>
+            <div className="mt-6 grid gap-2">
+              {effects.map((effect) => (
+                <div className="rounded-lg border border-white/12 bg-white/8 p-3 text-sm font-semibold text-white/78" key={effect}>
+                  {effect}
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <div className="rounded-lg border border-white/70 bg-white/78 p-4 shadow-[0_24px_70px_rgba(68,24,32,0.1)] backdrop-blur">
+            <div className="grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-center">
+              <div className="grid gap-3">
+                {topics.slice(0, 3).map((topic) => {
+                  const Icon = topic.icon;
+
+                  return (
+                    <article className="rounded-lg border border-[#e6e2dc] bg-white p-4" key={topic.label}>
+                      <Icon className="size-5 text-[#c63d4d]" />
+                      <h3 className="mt-3 font-semibold text-[#111827]">{topic.label}</h3>
+                      <p className="mt-1 text-sm leading-6 text-[#5f6368]">{topic.text}</p>
+                    </article>
+                  );
+                })}
+              </div>
+              <div className="flex min-h-36 items-center justify-center rounded-lg bg-[linear-gradient(135deg,#21191c,#661f2d)] p-5 text-center text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] md:min-h-72 md:w-44">
+                <div>
+                  <ScanSearch className="mx-auto size-7 text-[#ef7d8b]" />
+                  <p className="display-title mt-3 text-4xl text-white">360°</p>
+                  <p className="mt-2 text-xs font-semibold uppercase text-white/62">Veonis Analyse</p>
+                </div>
+              </div>
+              <div className="grid gap-3">
+                {topics.slice(3).map((topic) => {
+                  const Icon = topic.icon;
+
+                  return (
+                    <article className="rounded-lg border border-[#e6e2dc] bg-white p-4" key={topic.label}>
+                      <Icon className="size-5 text-[#c63d4d]" />
+                      <h3 className="mt-3 font-semibold text-[#111827]">{topic.label}</h3>
+                      <p className="mt-1 text-sm leading-6 text-[#5f6368]">{topic.text}</p>
+                    </article>
+                  );
+                })}
+                <article className="rounded-lg border border-[#ead9dc] bg-[#fff7f8] p-4">
+                  <Layers3 className="size-5 text-[#c63d4d]" />
+                  <h3 className="mt-3 font-semibold text-[#111827]">
+                    {locale === "de" ? "Gesamtstruktur" : "Overall structure"}
+                  </h3>
+                  <p className="mt-1 text-sm leading-6 text-[#5f6368]">
+                    {locale === "de" ? "Prioritäten und nächste Schritte." : "Priorities and next steps."}
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3SituationSection({ locale }: { locale: Locale }) {
+  return (
+    <section className="bg-[linear-gradient(135deg,#21191c_0%,#351b21_48%,#661f2d_100%)] py-14 text-white sm:py-20">
+      <Container>
+        <div className="mb-8 max-w-3xl">
+          <p className="text-xs font-semibold uppercase text-[#ef7d8b]">
+            {locale === "de" ? "Zielgruppen" : "Client situations"}
+          </p>
+          <h2 className="display-title mt-3 text-3xl leading-tight text-white sm:text-5xl">
+            {locale === "de"
+              ? "Die Beratung passt zu Ihrer Ausgangslage."
+              : "Advice matched to your starting point."}
+          </h2>
+        </div>
+        <HomeV3SegmentedPanel locale={locale} />
+      </Container>
+    </section>
+  );
+}
+
+function V3WhyVeonisStrip() {
+  const icons = [Layers3, CircleUserRound, BadgeCheck, ShieldCheck, ClipboardCheck, Handshake];
+
+  return (
+    <section className="bg-white py-12 sm:py-16">
+      <Container>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+          {valueCards.map((card, index) => {
+            const Icon = icons[index] ?? BadgeCheck;
+
+            return (
+              <article className="rounded-lg border border-[#e6e2dc] bg-[#f7f7f6] p-4" key={card.title}>
+                <Icon className="size-5 text-[#c63d4d]" />
+                <h3 className="mt-4 font-semibold text-[#111827]">{card.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#5f6368]">{card.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3HumanMomentsSection({ locale }: { locale: Locale }) {
+  const moments =
+    locale === "de"
+      ? [
+          {
+            title: "Persönliches Erstgespräch",
+            text: "Ziele, Fragen und Unterlagen werden gemeinsam eingeordnet.",
+            image: "/brand/photos/veonis-client-discussion-optimized.jpg",
+            alt: "Persönliches Beratungsgespräch bei Veonis",
+          },
+          {
+            title: "Digitale Übersicht",
+            text: "Dokumente, Prioritäten und nächste Schritte bleiben greifbar.",
+            image: "/brand/photos/veonis-digital-meeting-optimized.jpg",
+            alt: "Digitale Übersicht in einer Beratungssituation",
+          },
+          {
+            title: "Unternehmerische Verantwortung",
+            text: "Private und geschäftliche Finanzthemen werden sauber verbunden.",
+            image: "/brand/photos/veonis-corporate-workshop-optimized.jpg",
+            alt: "Firmenkundenberatung in einem Workshop",
+          },
+        ]
+      : [
+          {
+            title: "Personal first conversation",
+            text: "Goals, questions and documents are put into context together.",
+            image: "/brand/photos/veonis-client-discussion-optimized.jpg",
+            alt: "Personal advisory conversation at Veonis",
+          },
+          {
+            title: "Digital overview",
+            text: "Documents, priorities and next steps remain easy to access.",
+            image: "/brand/photos/veonis-digital-meeting-optimized.jpg",
+            alt: "Digital overview in an advisory setting",
+          },
+          {
+            title: "Entrepreneurial responsibility",
+            text: "Private and business financial topics are connected clearly.",
+            image: "/brand/photos/veonis-corporate-workshop-optimized.jpg",
+            alt: "Corporate advisory workshop",
+          },
+        ];
+
+  return (
+    <section className="bg-[#f6f2ef] py-14 sm:py-20">
+      <Container>
+        <SectionHeader
+          eyebrow={locale === "de" ? "Persönliche Beratung" : "Personal advice"}
+          intro={
+            locale === "de"
+              ? "Finanzielle Entscheidungen brauchen Struktur, aber auch ein Gespräch, das die Situation wirklich versteht."
+              : "Financial decisions need structure, but also a conversation that truly understands the situation."
+          }
+          title={locale === "de" ? "Beratung bleibt menschlich." : "Advice remains human."}
+        />
+        <div className="mt-8 flex snap-x gap-4 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0">
+          {moments.map((moment) => (
+            <article className="min-w-[82%] snap-start overflow-hidden rounded-lg border border-[#e6e2dc] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.07)] sm:min-w-[46%] lg:min-w-0" key={moment.title}>
+              <div className="relative aspect-[1.25] overflow-hidden">
+                <Image
+                  alt={moment.alt}
+                  className="object-cover transition duration-500 hover:scale-[1.025]"
+                  fill
+                  sizes="(min-width: 1024px) 31vw, 88vw"
+                  src={moment.image}
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-[#111827]">{moment.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#5f6368]">{moment.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V3ServicesMatrixSection({ locale }: { locale: Locale }) {
+  return (
+    <section className="bg-white py-14 sm:py-20">
+      <Container>
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+          <SectionHeader
+            eyebrow="Services"
+            intro={
+              locale === "de"
+                ? "Die wichtigsten Services bleiben kompakt sichtbar und führen jeweils zurück zum Gesamtbild."
+                : "The most important services stay visible in a compact form and always lead back to the overall picture."
+            }
+            title={locale === "de" ? "Services im Zusammenhang." : "Services in context."}
+          />
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => (
+              <article className="rounded-lg border border-[#e6e2dc] bg-[#f7f7f6] p-4" key={service.title}>
+                <p className="text-xs font-semibold text-[#c63d4d]">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 text-base font-semibold leading-tight text-[#111827]">{service.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#5f6368]">{service.text}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {service.items.slice(0, 2).map((item) => (
+                    <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#5f6368]" key={item}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </Container>
