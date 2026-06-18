@@ -6,9 +6,16 @@ import {
   Building2,
   Check,
   ChevronRight,
+  CircleUserRound,
+  ClipboardCheck,
+  FileSearch,
   Handshake,
+  Layers3,
   ScanSearch,
+  ShieldCheck,
   Smartphone,
+  Sparkles,
+  Users,
 } from "lucide-react";
 
 import { ContactForm } from "@/components/veonis/contact-form";
@@ -74,15 +81,8 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
       <DigitalClaritySection />
       <AdvisoryMomentsSection />
       <WhyVeonisSection cards={page.sections[3].cards ?? []} />
-      <section className="bg-white py-16 sm:py-20">
-        <Container>
-          <SectionHeader eyebrow="Zusammenarbeit" title="So funktioniert die Zusammenarbeit" />
-          <div className="mt-10">
-            <ProcessTimeline steps={page.sections[4].steps ?? []} />
-          </div>
-        </Container>
-      </section>
-      <CardsSection cards={page.sections[5].cards ?? []} eyebrow="Zielgruppen" title="Für wen ist Veonis da?" />
+      <CollaborationSection steps={page.sections[4].steps ?? []} />
+      <AudienceSection cards={page.sections[5].cards ?? []} />
       <CTASection locale={locale} />
     </>
   );
@@ -299,7 +299,7 @@ export function LegalPage({ locale, pageKey }: PageProps) {
                 </article>
               ))}
             </div>
-            <LegalNoticeBlock />
+            <LegalNoticeBlock locale={locale} />
           </div>
         </Container>
       </section>
@@ -400,6 +400,77 @@ function DigitalClaritySection() {
   );
 }
 
+function CollaborationSection({ steps }: { steps: { title: string; text: string }[] }) {
+  const icons = [Handshake, FileSearch, ClipboardCheck, ShieldCheck, Sparkles];
+
+  return (
+    <section className="relative isolate overflow-hidden bg-[#f6f2ef] py-20 sm:py-24">
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgba(255,255,255,0.76),transparent_34%),radial-gradient(circle_at_82%_12%,rgba(198,61,77,0.16),transparent_22rem)]" />
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+          <div>
+            <p className="eyebrow">Zusammenarbeit</p>
+            <h2 className="display-title mt-3 max-w-md text-4xl leading-tight text-[#111827] sm:text-5xl">
+              Ein klarer Ablauf, der sich persönlich anfühlt.
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-8 text-[#5f6368]">
+              Von der ersten Frage bis zur laufenden Betreuung bleibt sichtbar, was geprüft wird,
+              warum es relevant ist und welcher Schritt als Nächstes sinnvoll ist.
+            </p>
+          </div>
+          <div className="relative min-h-[440px] overflow-hidden rounded-lg bg-[#24191c] shadow-[0_30px_90px_rgba(68,24,32,0.18)]">
+            <Image
+              alt="Beratungsteam in einer fokussierten Zusammenarbeit"
+              className="object-cover object-[48%_center] opacity-82"
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              src="/brand/photos/veonis-team-workshop-optimized.jpg"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(36,25,28,0.84),rgba(36,25,28,0.22)_58%,rgba(36,25,28,0.08))]" />
+            <div className="absolute bottom-5 left-5 right-5 grid gap-3 sm:grid-cols-3">
+              {[
+                ["01", "Analyse"],
+                ["02", "Prioritäten"],
+                ["03", "Begleitung"],
+              ].map(([number, label]) => (
+                <div className="rounded-lg border border-white/18 bg-white/12 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-md" key={label}>
+                  <p className="text-xs font-semibold text-[#ef7d8b]">{number}</p>
+                  <p className="mt-2 text-sm font-semibold">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 lg:grid-cols-5">
+          {steps.map((step, index) => {
+            const Icon = icons[index] ?? BadgeCheck;
+
+            return (
+              <article
+                className="group relative min-h-72 overflow-hidden rounded-lg border border-white/70 bg-white/74 p-6 shadow-[0_20px_60px_rgba(68,24,32,0.08)] backdrop-blur transition hover:-translate-y-1 hover:bg-white"
+                key={step.title}
+              >
+                <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#c63d4d,#ef7d8b,#ffffff)] opacity-80" />
+                <div className="flex items-center justify-between">
+                  <span className="flex size-12 items-center justify-center rounded-lg border border-[#ead9dc] bg-[#fff7f8] text-[#c63d4d] shadow-[inset_0_1px_0_white]">
+                    <Icon className="size-5" />
+                  </span>
+                  <span className="display-title text-5xl text-[#ead9dc] transition group-hover:text-[#e5c5ca]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-8 text-xl font-semibold text-[#111827]">{step.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#5f6368]">{step.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 function SectionBlock({
   section,
   tone = "grey",
@@ -494,6 +565,67 @@ function CardsSection({
           {cards.map((card) => (
             <ServiceCard key={card.title} {...card} />
           ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function AudienceSection({ cards }: { cards: CardContent[] }) {
+  const icons = [CircleUserRound, Building2, Sparkles, Users, Layers3];
+
+  return (
+    <section className="bg-white py-20 sm:py-24">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="relative min-h-[540px] overflow-hidden rounded-lg bg-[#24191c] shadow-[0_28px_90px_rgba(17,24,39,0.14)]">
+            <Image
+              alt="Premium Lounge Beratungssituation bei Veonis"
+              className="object-cover object-[48%_center]"
+              fill
+              sizes="(min-width: 1024px) 44vw, 100vw"
+              src="/brand/photos/veonis-lounge-consultation-optimized.jpg"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,25,28,0.08),rgba(36,25,28,0.82))]" />
+            <div className="absolute bottom-6 left-6 right-6 rounded-lg border border-white/18 bg-white/14 p-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_18px_50px_rgba(17,24,39,0.18)] backdrop-blur-md">
+              <p className="text-xs font-semibold uppercase text-[#ef7d8b]">Für Privat & Unternehmen</p>
+              <p className="display-title mt-3 text-3xl leading-tight text-white">
+                Ein System, das mit Lebensphasen und Unternehmensphasen mitwächst.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p className="eyebrow">Zielgruppen</p>
+            <h2 className="display-title mt-3 max-w-xl text-4xl leading-tight text-[#111827] sm:text-5xl">
+              Für Menschen, die Finanzfragen nicht einzeln lösen wollen.
+            </h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {cards.map((card, index) => {
+                const Icon = icons[index] ?? BadgeCheck;
+
+                return (
+                  <article
+                    className={cn(
+                      "veonis-soft-service group rounded-lg p-5 transition hover:-translate-y-1 hover:bg-white",
+                      index === 0 ? "sm:col-span-2" : "",
+                    )}
+                    key={card.title}
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-[#ead9dc] bg-[#fff7f8] text-[#c63d4d]">
+                        <Icon className="size-5" />
+                      </span>
+                      <div>
+                        <h3 className="text-lg font-semibold text-[#111827]">{card.title}</h3>
+                        <p className="mt-2 text-sm leading-6 text-[#5f6368]">{card.text}</p>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </Container>
     </section>

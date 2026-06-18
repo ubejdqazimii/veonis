@@ -60,6 +60,11 @@ export const brand = {
     "Die Informationen auf dieser Website dienen ausschliesslich allgemeinen Informationszwecken und stellen keine individuelle Finanz-, Rechts-, Steuer- oder Versicherungsberatung dar.",
 };
 
+export const legalDisclaimer: Record<Locale, string> = {
+  de: brand.disclaimer,
+  en: "The information on this website is provided for general information purposes only and does not constitute individual financial, legal, tax or insurance advice.",
+};
+
 export const localizedHomeHref: Record<Locale, string> = {
   de: "/de",
   en: "/en",
@@ -650,7 +655,7 @@ const dePages: Record<PageKey, PageContent> = {
     metaDescription: "Impressum und Anbieterkennzeichnung von Veonis.",
     eyebrow: "Legal",
     title: "Impressum",
-    description: ["Professionelle Platzhalterseite für die rechtlichen Angaben von Veonis."],
+    description: ["Anbieterkennzeichnung und rechtliche Angaben von Veonis."],
     sections: [
       {
         title: "Angaben zum Unternehmen",
@@ -667,7 +672,7 @@ const dePages: Record<PageKey, PageContent> = {
     metaDescription: "Datenschutzerklärung von Veonis.",
     eyebrow: "Legal",
     title: "Datenschutz",
-    description: ["Diese Seite enthält eine professionelle Platzhalterstruktur für die Datenschutzerklärung."],
+    description: ["Datenschutzinformationen zur Bearbeitung personenbezogener Daten durch Veonis."],
     sections: [
       {
         title: "Datenschutzinformationen",
@@ -693,7 +698,7 @@ const dePages: Record<PageKey, PageContent> = {
     description: ["Veonis legt relevante Informationen zu Vermittlerstatus, Registrierung, Partnern und Entschädigungsmodell transparent offen."],
     sections: [
       {
-        title: "Platzhalter für Offenlegung",
+        title: "Offenlegungsinformationen",
         items: [
           "Name und Adresse des Brokers / Unternehmens: [einfügen]",
           "Registrierungsstatus: [einfügen]",
@@ -828,16 +833,46 @@ const englishBase: Record<PageKey, PageContent> = {
     metaDescription: "Imprint and provider information for Veonis.",
     eyebrow: "Legal",
     title: "Imprint",
-    description: ["Professional placeholder page for Veonis legal company information."],
-    sections: dePages["legal/impressum"].sections,
+    description: ["Provider information and legal details for Veonis."],
+    sections: [
+      {
+        title: "Company information",
+        items: [
+          "Company: [to be inserted]",
+          "Registered office: [to be inserted]",
+          "UID: [to be inserted]",
+          "Email: [to be inserted]",
+          "Telephone: [to be inserted]",
+        ],
+      },
+      {
+        title: "Notice",
+        paragraphs: [legalDisclaimer.en],
+      },
+    ],
   },
   "legal/privacy": {
     seoTitle: "Privacy | Veonis",
     metaDescription: "Privacy information for Veonis.",
     eyebrow: "Legal",
     title: "Privacy",
-    description: ["Professional placeholder structure for the Veonis privacy information."],
-    sections: dePages["legal/datenschutz"].sections,
+    description: ["Privacy information for the processing of personal data by Veonis."],
+    sections: [
+      {
+        title: "Privacy information",
+        items: [
+          "Controller: [to be inserted]",
+          "Purposes of data processing: contact handling, preparation of advice, legal obligations",
+          "Legal bases and retention periods: [to be inserted]",
+          "Recipients and service providers: [to be inserted]",
+          "Data subject rights and contact: [to be inserted]",
+        ],
+      },
+      {
+        title: "Notice",
+        paragraphs: [legalDisclaimer.en],
+      },
+    ],
   },
   "legal/information-according-to-art-45-isa": {
     seoTitle: "Information according to Art. 45 ISA | Veonis",
@@ -845,7 +880,26 @@ const englishBase: Record<PageKey, PageContent> = {
     eyebrow: "Legal",
     title: "Information according to Art. 45 ISA",
     description: ["Veonis transparently discloses relevant information about intermediary status, registration, partners and compensation model."],
-    sections: dePages["legal/informationen-gemaess-art-45-vag"].sections,
+    sections: [
+      {
+        title: "Disclosure information",
+        items: [
+          "Name and address of the broker / company: [to be inserted]",
+          "Registration status: [to be inserted]",
+          "FINMA registration number / intermediary register: [to be inserted]",
+          "Tied or untied intermediary status: [to be inserted]",
+          "Partner insurance companies: [to be inserted]",
+          "Compensation model: [to be inserted]",
+          "Privacy information: [to be inserted]",
+          "Complaints / ombuds office, where applicable: [to be inserted]",
+          "Responsible contact person: [to be inserted]",
+        ],
+      },
+      {
+        title: "General notice",
+        paragraphs: [legalDisclaimer.en],
+      },
+    ],
   },
   "legal/impressum": dePages["legal/impressum"],
   "legal/datenschutz": dePages["legal/datenschutz"],
