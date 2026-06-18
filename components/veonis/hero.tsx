@@ -33,7 +33,7 @@ export function Hero({
 }: HeroProps) {
   if (variant === "home") {
     return (
-      <section className="relative min-h-[680px] overflow-hidden bg-[#111827] text-white lg:min-h-[720px]">
+      <section className="relative min-h-[640px] overflow-hidden bg-[#111827] text-white lg:min-h-[650px]">
         <Image
           alt="Persönliche Finanzberatung in einem professionellen Meeting"
           className="object-cover object-[58%_center] sm:object-[62%_center]"
@@ -47,22 +47,22 @@ export function Hero({
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,24,39,0.08)_0%,rgba(17,24,39,0.04)_56%,rgba(17,24,39,0.78)_100%)]" />
         <div className="absolute inset-y-0 left-[47%] hidden w-px bg-white/16 lg:block" />
 
-        <Container className="relative flex min-h-[680px] items-center py-16 lg:min-h-[720px]">
-          <div className="max-w-3xl pb-20 pt-6 sm:pb-16 lg:max-w-[43rem]">
+        <Container className="relative flex min-h-[640px] items-center py-12 lg:min-h-[650px]">
+          <div className="max-w-3xl pb-20 pt-4 sm:pb-16 lg:max-w-[42rem]">
             <p className="inline-flex items-center gap-2 border border-white/22 bg-white/10 px-3 py-2 text-xs font-semibold uppercase text-white/82 backdrop-blur-md">
               <BadgeCheck className="size-4 text-[#f18a96]" />
               {eyebrow}
             </p>
-            <h1 className="display-title mt-7 text-5xl leading-[0.98] text-white sm:text-6xl lg:text-[4.75rem]">
+            <h1 className="display-title mt-6 text-4xl leading-[0.99] text-white sm:text-5xl lg:text-[4.1rem]">
               {title}
             </h1>
             {subtitle ? <p className="mt-5 text-xl font-medium text-[#f18a96]">{subtitle}</p> : null}
-            <div className="mt-7 max-w-2xl space-y-4 text-lg leading-8 text-white/76">
-              {description.map((paragraph) => (
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-7 text-white/76 sm:text-lg sm:leading-8">
+              {description.slice(0, 1).map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               {cta ? (
                 <Button asChild className="h-12 rounded-full bg-[#c63d4d] px-6 text-white hover:bg-[#ad3040]">
                   <Link href={getLocalizedPath(locale, "contact")}>
