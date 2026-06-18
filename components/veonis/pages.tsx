@@ -93,26 +93,26 @@ function AdvisoryMomentsSection() {
     {
       title: "Erstgespräch",
       text: "Ziele, Fragen und Unterlagen werden persönlich eingeordnet.",
-      image: "/brand/photos/veonis-advisor-conversation-optimized.jpg",
-      alt: "Zwei Beraterinnen im persönlichen Gespräch",
+      image: "/brand/photos/veonis-client-discussion-optimized.jpg",
+      alt: "Beratungsteam bei einer gemeinsamen Besprechung",
       icon: Handshake,
-      position: "object-center",
+      position: "object-[52%_center]",
     },
     {
       title: "Digitale Übersicht",
       text: "Wichtige Informationen bleiben greifbar und sauber strukturiert.",
-      image: "/brand/photos/veonis-digital-collaboration-optimized.jpg",
-      alt: "Smartphones und Notizen auf einem Beratungstisch",
+      image: "/brand/photos/veonis-planning-session-optimized.jpg",
+      alt: "Digitales Arbeiten mit Weitblick in einem modernen Büro",
       icon: Smartphone,
-      position: "object-center",
+      position: "object-[44%_center]",
     },
     {
       title: "Firmenkunden",
       text: "Risiken, Vorsorge und Verantwortung werden zusammen betrachtet.",
-      image: "/brand/photos/veonis-corporate-meeting-optimized.jpg",
-      alt: "Professionelle Teamsituation in einer Unternehmensberatung",
+      image: "/brand/photos/veonis-corporate-workshop-optimized.jpg",
+      alt: "Firmenteam bei der strukturierten Planung",
       icon: Building2,
-      position: "object-[72%_50%]",
+      position: "object-center",
     },
   ];
 
@@ -147,8 +147,7 @@ function AdvisoryMomentsSection() {
                       sizes="(min-width: 1024px) 24vw, (min-width: 768px) 30vw, 90vw"
                       src={moment.image}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/68 via-transparent to-transparent" />
-                    <div className="absolute left-4 top-4 flex size-11 items-center justify-center rounded-lg bg-white/90 text-[#c63d4d] shadow-sm backdrop-blur">
+                    <div className="absolute left-4 top-4 flex size-11 items-center justify-center rounded-lg border border-white/70 bg-white/84 text-[#c63d4d] shadow-[inset_0_1px_0_white,0_12px_32px_rgba(83,25,36,0.12)] backdrop-blur">
                       <Icon className="size-5" />
                     </div>
                   </div>
@@ -314,21 +313,19 @@ function HumanAdvisorySection() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="relative min-h-[520px]">
-            <div className="absolute inset-y-0 left-0 right-12 overflow-hidden rounded-lg bg-[#111827] shadow-[0_26px_80px_rgba(17,24,39,0.12)] sm:right-20">
+            <div className="absolute inset-0 overflow-hidden rounded-lg bg-[#24191c] shadow-[0_26px_80px_rgba(72,25,34,0.15)]">
               <Image
                 alt="Zwei Beraterinnen in einem persönlichen Gespräch"
                 className="object-cover object-center"
                 fill
                 sizes="(min-width: 1024px) 48vw, 90vw"
-                src="/brand/photos/veonis-advisor-conversation-optimized.jpg"
+                src="/brand/photos/veonis-lounge-consultation-optimized.jpg"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#111827]/42 via-transparent to-transparent" />
-            </div>
-            <div className="absolute bottom-7 right-0 w-[76%] rounded-lg bg-[#c63d4d] p-6 text-white shadow-[0_20px_60px_rgba(17,24,39,0.18)] sm:w-[64%]">
-              <p className="display-title text-2xl leading-tight">
-                “Gute Beratung beginnt mit den richtigen Fragen, nicht mit einem Produkt.”
-              </p>
-              <p className="mt-4 text-sm font-semibold text-white/72">Veonis Beratungsprinzip</p>
+              <div className="absolute inset-x-0 top-0 h-px bg-white/80" />
+              <div className="veonis-glass-light absolute left-5 top-5 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[#551c27]">
+                <BadgeCheck className="size-4 text-[#c63d4d]" />
+                Persönlich. Klar. Auf Augenhöhe.
+              </div>
             </div>
           </div>
           <div>
@@ -337,6 +334,12 @@ function HumanAdvisorySection() {
               intro="Premium bedeutet bei Veonis nicht lauter aufzutreten. Es bedeutet, komplexe Themen ruhig, sauber und verständlich zu ordnen."
               title="Menschen entscheiden besser, wenn das Gesamtbild sichtbar wird."
             />
+            <div className="veonis-glass-light mt-7 rounded-lg p-5">
+              <p className="display-title text-xl leading-tight text-[#341b20]">
+                “Gute Beratung beginnt mit den richtigen Fragen, nicht mit einem Produkt.”
+              </p>
+              <p className="mt-3 text-sm font-semibold text-[#a63343]">Veonis Beratungsprinzip</p>
+            </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
                 { icon: ScanSearch, label: "Analyse", text: "Bestehende Lösungen sauber prüfen." },
@@ -391,9 +394,9 @@ function DigitalClaritySection() {
               className="object-cover"
               fill
               sizes="(min-width: 1024px) 55vw, 100vw"
-              src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
+              src="/brand/photos/veonis-digital-meeting-optimized.jpg"
             />
-            <div className="absolute inset-0 bg-gradient-to-l from-[#111827]/34 via-transparent to-white/10" />
+            <div className="absolute inset-x-0 top-0 h-px bg-white/80" />
           </div>
         </div>
       </Container>
@@ -449,7 +452,7 @@ function AnalysisSection({ locale }: { locale: Locale }) {
   const section = getPage(locale, "home").sections[1];
 
   return (
-    <section className="bg-[#171c24] py-20 text-white sm:py-24">
+    <section className="bg-[linear-gradient(135deg,#24191c_0%,#351b21_55%,#551c27_100%)] py-20 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:py-24">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <div>

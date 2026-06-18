@@ -33,23 +33,23 @@ export function Hero({
 }: HeroProps) {
   if (variant === "home") {
     return (
-      <section className="relative min-h-[640px] overflow-hidden bg-[#111827] text-white lg:min-h-[650px]">
+      <section className="relative min-h-[640px] overflow-hidden bg-[#24191c] text-white lg:min-h-[650px]">
         <Image
           alt="Persönliche Finanzberatung in einem professionellen Meeting"
-          className="object-cover object-[58%_center] sm:object-[62%_center]"
+          className="object-cover object-[52%_center] sm:object-[58%_center]"
           fill
           preload
           quality={75}
           sizes="100vw"
-          src="/brand/photos/veonis-corporate-meeting-v2.jpg"
+          src="/brand/photos/veonis-team-workshop-optimized.jpg"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,18,27,0.96)_0%,rgba(13,18,27,0.86)_38%,rgba(13,18,27,0.4)_67%,rgba(13,18,27,0.18)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,24,39,0.08)_0%,rgba(17,24,39,0.04)_56%,rgba(17,24,39,0.78)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(37,19,24,0.98)_0%,rgba(47,22,28,0.9)_38%,rgba(72,25,34,0.42)_68%,rgba(50,21,27,0.14)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(80,28,39,0.03)_0%,rgba(75,25,35,0.04)_54%,rgba(40,20,24,0.82)_100%)]" />
         <div className="absolute inset-y-0 left-[47%] hidden w-px bg-white/16 lg:block" />
 
         <Container className="relative flex min-h-[640px] items-center py-12 lg:min-h-[650px]">
           <div className="max-w-3xl pb-20 pt-4 sm:pb-16 lg:max-w-[42rem]">
-            <p className="inline-flex items-center gap-2 border border-white/22 bg-white/10 px-3 py-2 text-xs font-semibold uppercase text-white/82 backdrop-blur-md">
+            <p className="inline-flex items-center gap-2 border border-white/28 bg-white/12 px-3 py-2 text-xs font-semibold uppercase text-white/84 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)] backdrop-blur-md">
               <BadgeCheck className="size-4 text-[#f18a96]" />
               {eyebrow}
             </p>
@@ -84,7 +84,7 @@ export function Hero({
           </div>
         </Container>
 
-        <div className="absolute inset-x-0 bottom-0 border-t border-white/14 bg-[#111827]/72 backdrop-blur-xl">
+        <div className="absolute inset-x-0 bottom-0 border-t border-white/18 bg-[#351c22]/82 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
           <Container className="grid grid-cols-3">
             {[
               { icon: ScanSearch, label: "Gesamtbild", text: "Alle Finanzthemen verbunden" },

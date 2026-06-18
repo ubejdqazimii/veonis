@@ -10,7 +10,7 @@ type FooterProps = {
 
 export function Footer({ locale }: FooterProps) {
   return (
-    <footer className="bg-[#111827] py-14 text-white">
+    <footer className="bg-[linear-gradient(135deg,#24191c_0%,#351b21_55%,#551c27_100%)] py-14 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.8fr]">
           <div>
@@ -53,7 +53,7 @@ export function Footer({ locale }: FooterProps) {
           © {new Date().getFullYear()} Veonis. All rights reserved.
           <span className="mt-2 block text-xs leading-5 text-white/36">
             Bildquellen: Rawpixel Ltd und Amtec Photos, jeweils via Wikimedia Commons,
-            Lizenz CC BY 2.0; Amy Hirschi und krakenimages via Unsplash.
+            Lizenz CC BY 2.0; weitere Bildquellen via Unsplash.
           </span>
         </div>
       </Container>

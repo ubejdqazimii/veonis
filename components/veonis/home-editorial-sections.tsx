@@ -79,7 +79,7 @@ export function ConnectedFinanceSection({
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-lg bg-[#171c24] text-white shadow-[0_28px_80px_rgba(17,24,39,0.16)]">
+          <div className="veonis-gloss-dark rounded-lg text-white">
             <div className="grid border-b border-white/12 sm:grid-cols-[0.7fr_1.3fr]">
               <div className="flex min-h-48 flex-col justify-between border-b border-white/12 p-6 sm:border-b-0 sm:border-r sm:p-8">
                 <Layers3 className="size-7 text-[#ef7d8b]" />
@@ -126,32 +126,36 @@ export function ServicesEditorialSection({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mt-12 grid gap-4 lg:grid-cols-12">
-          <article className="group relative min-h-[430px] overflow-hidden rounded-lg bg-[#111827] lg:col-span-7">
-            <Image
-              alt="Persönliche Beratung zwischen zwei Geschäftsfrauen"
-              className="object-cover object-center transition duration-700 group-hover:scale-[1.025]"
-              fill
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              src="/brand/photos/veonis-advisor-conversation-optimized.jpg"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/38 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
-              <div className="flex size-11 items-center justify-center border border-white/20 bg-white/12 backdrop-blur">
-                <ShieldCheck className="size-5 text-[#f18a96]" />
+          <article className="group overflow-hidden rounded-lg border border-[#e1d9d8] bg-white shadow-[0_22px_64px_rgba(73,27,35,0.1)] lg:col-span-7">
+            <div className="relative min-h-[290px] overflow-hidden">
+              <Image
+                alt="Persönliche Beratung zwischen zwei Geschäftsfrauen"
+                className="object-cover object-center transition duration-700 group-hover:scale-[1.025]"
+                fill
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                src="/brand/photos/veonis-advisor-conversation-optimized.jpg"
+              />
+              <div className="absolute inset-x-0 top-0 h-px bg-white/80" />
+            </div>
+            <div className="grid gap-6 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
+              <div className="flex size-11 items-center justify-center border border-[#ead9dc] bg-[#f8ecee] text-[#c63d4d] shadow-[inset_0_1px_0_white]">
+                <ShieldCheck className="size-5" />
               </div>
-              <h3 className="mt-5 max-w-xl text-2xl font-semibold sm:text-3xl">{services[0].title}</h3>
-              <p className="mt-3 max-w-xl leading-7 text-white/72">{services[0].text}</p>
-              <Link
-                className="mt-6 inline-flex items-center text-sm font-semibold text-white"
-                href={getLocalizedPath(locale, "services")}
-              >
-                {services[0].cta}
-                <ArrowUpRight className="ml-2 size-4" />
-              </Link>
+              <div>
+                <h3 className="max-w-xl text-2xl font-semibold text-[#24191c] sm:text-3xl">{services[0].title}</h3>
+                <p className="mt-3 max-w-xl leading-7 text-[#5f6368]">{services[0].text}</p>
+                <Link
+                  className="mt-5 inline-flex items-center text-sm font-semibold text-[#c63d4d]"
+                  href={getLocalizedPath(locale, "services")}
+                >
+                  {services[0].cta}
+                  <ArrowUpRight className="ml-2 size-4" />
+                </Link>
+              </div>
             </div>
           </article>
 
-          <article className="flex min-h-[430px] flex-col justify-between rounded-lg bg-[#c63d4d] p-7 text-white lg:col-span-5 sm:p-8">
+          <article className="veonis-gloss-red flex min-h-[430px] flex-col justify-between rounded-lg p-7 text-white lg:col-span-5 sm:p-8">
             <div className="flex items-start justify-between">
               <House className="size-7" />
               <span className="display-title text-6xl text-white/22">02</span>
@@ -200,7 +204,7 @@ export function WhyVeonisSection({ cards }: { cards: CardContent[] }) {
   const icons = [ScanSearch, Users, Sparkles, Compass, BadgeCheck, Layers3];
 
   return (
-    <section className="bg-[#171c24] py-20 text-white sm:py-24">
+    <section className="bg-[linear-gradient(135deg,#24191c_0%,#351b21_54%,#551c27_100%)] py-20 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:py-24">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
           <div>

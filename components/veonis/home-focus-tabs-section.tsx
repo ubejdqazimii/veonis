@@ -110,7 +110,7 @@ export function HomeFocusTabsSection() {
           </div>
 
           <div className="rounded-[2rem] border border-white/18 bg-white/14 p-3 shadow-[0_28px_90px_rgba(17,24,39,0.2)]">
-            <div className="relative min-h-[460px] overflow-hidden rounded-[1.65rem] bg-[#111827]">
+            <div className="relative min-h-[460px] overflow-hidden rounded-[1.65rem] bg-[#2b1b1e]">
               <Image
                 alt={current.alt}
                 className="object-cover opacity-88"
@@ -120,7 +120,7 @@ export function HomeFocusTabsSection() {
                 sizes="(min-width: 1024px) 58vw, 90vw"
                 src={current.image}
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-[#111827]/72 via-[#111827]/24 to-[#c63d4d]/28" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#341b20]/66 via-[#3c1b22]/18 to-[#c63d4d]/24" />
               <div
                 aria-labelledby={`${baseId}-tab-${activeIndex}`}
                 className="absolute inset-x-4 bottom-4 rounded-3xl border border-white/18 bg-white/88 p-5 text-[#111827] shadow-[0_20px_60px_rgba(17,24,39,0.2)] backdrop-blur-xl sm:inset-x-6 sm:bottom-6 sm:p-6"
