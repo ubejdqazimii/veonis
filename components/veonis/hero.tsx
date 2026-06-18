@@ -43,8 +43,9 @@ export function Hero({
           sizes="100vw"
           src="/brand/photos/veonis-team-workshop-optimized.jpg"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(37,19,24,0.98)_0%,rgba(47,22,28,0.9)_38%,rgba(72,25,34,0.42)_68%,rgba(50,21,27,0.14)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(80,28,39,0.03)_0%,rgba(75,25,35,0.04)_54%,rgba(40,20,24,0.82)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(37,19,24,0.98)_0%,rgba(47,22,28,0.92)_38%,rgba(72,25,34,0.58)_68%,rgba(50,21,27,0.36)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(80,28,39,0.03)_0%,rgba(75,25,35,0.08)_54%,rgba(40,20,24,0.82)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,rgba(80,28,39,0.28),transparent_34%)]" />
 
         <Container className="relative flex min-h-[640px] items-center py-12 lg:min-h-[650px]">
           <div className="max-w-3xl pb-20 pt-4 sm:pb-16 lg:max-w-[42rem]">
