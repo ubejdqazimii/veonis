@@ -2,6 +2,8 @@ export type Locale = "de" | "en";
 
 export type PageKey =
   | "home"
+  | "home-v2"
+  | "blog"
   | "private-clients"
   | "corporate-clients"
   | "services"
@@ -51,6 +53,16 @@ export type PageContent = {
   sections: ContentSection[];
 };
 
+export type BlogPost = {
+  slug: string;
+  title: Record<Locale, string>;
+  excerpt: Record<Locale, string>;
+  category: Record<Locale, string>;
+  readTime: Record<Locale, string>;
+  image: string;
+  alt: Record<Locale, string>;
+};
+
 export const brand = {
   name: "Veonis",
   claim: "Ein Ansprechpartner für Ihre Finanzen.",
@@ -72,6 +84,7 @@ export const localizedHomeHref: Record<Locale, string> = {
 
 export const navItems = [
   { label: "Home", de: "/de", en: "/en" },
+  { label: "Blog", de: "/de/blog", en: "/en/blog" },
   { label: "Private Clients", de: "/de/private-clients", en: "/en/private-clients" },
   { label: "Corporate Clients", de: "/de/corporate-clients", en: "/en/corporate-clients" },
   { label: "Services", de: "/de/services", en: "/en/services" },
@@ -88,6 +101,17 @@ export const navItems = [
 export const primaryNavItems = navItems.filter(
   (item) => !["Home", "Career", "Contact"].includes(item.label),
 );
+
+export const homepageVersions: Record<Locale, { label: string; value: "v1" | "v2"; href: string; note: string }[]> = {
+  de: [
+    { label: "Homepage Version 1", value: "v1", href: "/de", note: "Ausführliche Premium-Homepage" },
+    { label: "Homepage Version 2", value: "v2", href: "/de/home-v2", note: "Kompaktere Editorial-Version" },
+  ],
+  en: [
+    { label: "Homepage Version 1", value: "v1", href: "/en", note: "Detailed premium homepage" },
+    { label: "Homepage Version 2", value: "v2", href: "/en/home-v2", note: "More compact editorial version" },
+  ],
+};
 
 export const legalLinks: Record<Locale, { label: string; href: string }[]> = {
   de: [
@@ -276,6 +300,99 @@ export const faqItems: CardContent[] = [
   },
 ];
 
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "vorsorge-steuern-schweiz",
+    title: {
+      de: "Wie Vorsorge und Steuern in der Schweiz zusammenhängen",
+      en: "How pension planning and taxes connect in Switzerland",
+    },
+    excerpt: {
+      de: "Säule 3a, Pensionskasseneinkäufe und Wohneigentum wirken selten isoliert. Ein kurzer Überblick, wo Planung spürbar mehr Klarheit schafft.",
+      en: "Pillar 3a, pension fund purchases and home ownership rarely work in isolation. A concise view of where planning creates real clarity.",
+    },
+    category: { de: "Vorsorge", en: "Pension planning" },
+    readTime: { de: "5 Min.", en: "5 min" },
+    image: "/brand/photos/veonis-planning-session-optimized.jpg",
+    alt: {
+      de: "Planungssituation mit Dokumenten und digitaler Übersicht",
+      en: "Planning session with documents and a digital overview",
+    },
+  },
+  {
+    slug: "hypothek-liquiditaet-tragbarkeit",
+    title: {
+      de: "Hypothek prüfen: Tragbarkeit ist nur der Anfang",
+      en: "Reviewing a mortgage: affordability is only the beginning",
+    },
+    excerpt: {
+      de: "Eine Hypothek beeinflusst Liquidität, Steuern, Vorsorge und Risikoabsicherung. Gute Beratung betrachtet deshalb mehr als nur den Zinssatz.",
+      en: "A mortgage influences liquidity, taxes, pension planning and risk protection. Good advice looks beyond the interest rate.",
+    },
+    category: { de: "Hypotheken", en: "Mortgages" },
+    readTime: { de: "6 Min.", en: "6 min" },
+    image: "/brand/photos/veonis-corporate-meeting-optimized.jpg",
+    alt: {
+      de: "Beratungsgespräch zu Immobilien- und Finanzplanung",
+      en: "Advisory conversation about real estate and financial planning",
+    },
+  },
+  {
+    slug: "versicherungen-doppelspurigkeiten",
+    title: {
+      de: "Versicherungen: Wo Doppelspurigkeiten häufig entstehen",
+      en: "Insurance: where overlaps often appear",
+    },
+    excerpt: {
+      de: "Viele Policen sind historisch gewachsen. Wer Haushalt, Rechtsschutz, Erwerbsunfähigkeit und Firmenrisiken gemeinsam prüft, erkennt schneller Lücken und Überschneidungen.",
+      en: "Many policies grow over time. Reviewing household, legal protection, disability and business risks together reveals gaps and overlaps faster.",
+    },
+    category: { de: "Versicherungen", en: "Insurance" },
+    readTime: { de: "4 Min.", en: "4 min" },
+    image: "/brand/photos/veonis-advisor-conversation-optimized.jpg",
+    alt: {
+      de: "Persönliche Versicherungsberatung im Gespräch",
+      en: "Personal insurance advice in conversation",
+    },
+  },
+  {
+    slug: "selbststaendige-private-firmenfinanzen",
+    title: {
+      de: "Selbstständig: private und geschäftliche Finanzen sauber trennen",
+      en: "Self-employed: separating private and business finances clearly",
+    },
+    excerpt: {
+      de: "Für Selbstständige greifen Vorsorge, Absicherung, Steuern und Liquidität direkt ineinander. Struktur reduziert spätere Überraschungen.",
+      en: "For self-employed people, pensions, protection, taxes and liquidity are tightly connected. Structure reduces later surprises.",
+    },
+    category: { de: "Unternehmen", en: "Business" },
+    readTime: { de: "7 Min.", en: "7 min" },
+    image: "/brand/photos/veonis-corporate-workshop-optimized.jpg",
+    alt: {
+      de: "Firmenteam bei strukturierter Finanzplanung",
+      en: "Business team working on structured financial planning",
+    },
+  },
+  {
+    slug: "finanzcheck-lebensphasen",
+    title: {
+      de: "Wann ein Finanzcheck besonders sinnvoll ist",
+      en: "When a financial check is especially useful",
+    },
+    excerpt: {
+      de: "Berufseinstieg, Familie, Eigenheim, Selbstständigkeit oder Pensionierung verändern Prioritäten. Ein 360° Blick hilft, Entscheidungen rechtzeitig neu zu ordnen.",
+      en: "Career start, family, home ownership, self-employment or retirement change priorities. A 360° view helps reorder decisions in time.",
+    },
+    category: { de: "360° Analyse", en: "360° analysis" },
+    readTime: { de: "5 Min.", en: "5 min" },
+    image: "/brand/photos/veonis-client-discussion-optimized.jpg",
+    alt: {
+      de: "Beratungsgespräch zu Lebensphasen und Finanzfragen",
+      en: "Advisory conversation about life phases and financial questions",
+    },
+  },
+];
+
 const home: PageContent = {
   seoTitle: "Veonis - Finanzberatung, Versicherungen & Vorsorge in der Schweiz",
   metaDescription:
@@ -363,8 +480,34 @@ const home: PageContent = {
   ],
 };
 
+const homeV2: PageContent = {
+  ...home,
+  seoTitle: "Veonis Homepage Version 2 | Finanzberatung Schweiz",
+  metaDescription:
+    "Kompaktere Homepage-Version von Veonis mit fokussierter Struktur, Blog-Einstieg und klarerem Beratungsfluss.",
+  eyebrow: "Homepage Version 2",
+  title: "Finanzberatung, die schneller zum Wesentlichen führt.",
+  description: [
+    "Version 2 verdichtet die wichtigsten Inhalte: Gesamtbild, 360° Analyse, Services, Zusammenarbeit und aktuelle Finanzimpulse.",
+    "Sie bleibt visuell premium, führt aber mit weniger Wiederholung schneller zur Kontaktaufnahme.",
+  ],
+};
+
 const dePages: Record<PageKey, PageContent> = {
   home,
+  "home-v2": homeV2,
+  blog: {
+    seoTitle: "Blog | Veonis Finanzimpulse",
+    metaDescription:
+      "Thoughtful finance and Swiss advisory insights from Veonis about insurance, pension planning, mortgages, taxes and holistic financial decisions.",
+    eyebrow: "Blog",
+    title: "Finanzimpulse für bessere Entscheidungen.",
+    description: [
+      "Kurze, verständliche Beiträge zu Schweizer Finanzfragen: Vorsorge, Versicherungen, Hypotheken, Steuern, Selbstständigkeit und Lebensphasen.",
+      "Die Inhalte ersetzen keine individuelle Beratung, helfen aber, die richtigen Fragen früher zu stellen.",
+    ],
+    sections: [],
+  },
   "private-clients": {
     seoTitle: "Finanzberatung für Privatkunden in der Schweiz | Veonis",
     metaDescription:
@@ -735,6 +878,30 @@ const englishBase: Record<PageKey, PageContent> = {
       "Insurance, pension planning, taxes, mortgages and investments are connected. One decision can affect your entire financial picture.",
       "Veonis helps you keep the overview with clear analysis, understandable recommendations and personal guidance.",
     ],
+  },
+  "home-v2": {
+    ...homeV2,
+    seoTitle: "Veonis Homepage Version 2 | Financial advice Switzerland",
+    metaDescription:
+      "A more compact Veonis homepage version with focused structure, blog entry points and a clearer advisory flow.",
+    eyebrow: "Homepage Version 2",
+    title: "Financial advice that gets to what matters faster.",
+    description: [
+      "Version 2 condenses the core story: overall picture, 360° analysis, services, collaboration and current financial insights.",
+      "It keeps the premium visual direction while reducing repetition and moving faster toward contact.",
+    ],
+  },
+  blog: {
+    seoTitle: "Blog | Veonis financial insights",
+    metaDescription:
+      "Thoughtful Swiss finance and advisory insights from Veonis about insurance, pension planning, mortgages, taxes and holistic financial decisions.",
+    eyebrow: "Blog",
+    title: "Financial insights for better decisions.",
+    description: [
+      "Short, understandable articles about Swiss financial questions: pension planning, insurance, mortgages, taxes, self-employment and life phases.",
+      "The content does not replace individual advice, but helps you ask the right questions earlier.",
+    ],
+    sections: [],
   },
   "private-clients": {
     ...dePages["private-clients"],

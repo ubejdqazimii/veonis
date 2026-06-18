@@ -3,10 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   BadgeCheck,
+  BookOpen,
   Building2,
   Check,
   ChevronRight,
   CircleUserRound,
+  Clock,
   ClipboardCheck,
   FileSearch,
   Handshake,
@@ -29,6 +31,7 @@ import {
   WhyVeonisSection,
 } from "@/components/veonis/home-editorial-sections";
 import { HomeFocusTabsSection } from "@/components/veonis/home-focus-tabs-section";
+import { HomepageVersionSelector } from "@/components/veonis/homepage-version-selector";
 import { Hero } from "@/components/veonis/hero";
 import { LegalNoticeBlock } from "@/components/veonis/legal-notice-block";
 import { ProcessTimeline } from "@/components/veonis/process-timeline";
@@ -37,8 +40,8 @@ import { ServiceCard } from "@/components/veonis/service-card";
 import { TabsSection } from "@/components/veonis/tabs-section";
 import { ValueCard } from "@/components/veonis/value-card";
 import { cn } from "@/lib/utils";
-import type { CardContent, Locale, PageKey } from "@/lib/veonis-content";
-import { brand, getLocalizedPath, getPage } from "@/lib/veonis-content";
+import type { BlogPost, CardContent, Locale, PageKey } from "@/lib/veonis-content";
+import { blogPosts, brand, getLocalizedPath, getPage, services } from "@/lib/veonis-content";
 
 export function createPageMetadata(locale: Locale, key: PageKey): Metadata {
   const page = getPage(locale, key);
@@ -72,6 +75,7 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
         visualLabel="Finanzielle Klarheit"
         variant="home"
       />
+      <VersionSelectorBand current="v1" locale={locale} />
       <HomeTrustStrip />
       <ConnectedFinanceSection section={page.sections[0]} />
       <HumanAdvisorySection />
@@ -83,8 +87,88 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
       <WhyVeonisSection cards={page.sections[3].cards ?? []} />
       <CollaborationSection steps={page.sections[4].steps ?? []} />
       <AudienceSection cards={page.sections[5].cards ?? []} />
+      <LatestBlogPostsSection locale={locale} posts={blogPosts.slice(0, 5)} />
       <CTASection locale={locale} />
     </>
+  );
+}
+
+export function HomePageVersion2({ locale }: Pick<PageProps, "locale">) {
+  const page = getPage(locale, "home-v2");
+  const homePage = getPage(locale, "home");
+
+  return (
+    <>
+      <Hero
+        cta={page.cta}
+        description={page.description}
+        eyebrow={page.eyebrow}
+        locale={locale}
+        secondaryCta={page.secondaryCta}
+        title={page.title}
+        visualLabel="Version 2"
+        variant="home"
+      />
+      <VersionSelectorBand current="v2" locale={locale} />
+      <HomeTrustStrip />
+      <V2OverviewSection locale={locale} />
+      <V2ServicesSection locale={locale} />
+      <CollaborationSection steps={(homePage.sections[4].steps ?? []).slice(0, 4)} />
+      <LatestBlogPostsSection locale={locale} posts={blogPosts.slice(0, 5)} />
+      <CTASection
+        button={locale === "de" ? "Erstgespräch für meine Situation anfragen" : "Request an initial conversation"}
+        locale={locale}
+        text={
+          locale === "de"
+            ? "Version 2 führt schneller zur Entscheidung: Wenn Sie Ihre Situation prüfen möchten, starten wir mit einem ruhigen Erstgespräch und einer klaren Einordnung."
+            : "Version 2 moves faster toward a decision: if you want to review your situation, we start with a calm initial conversation and a clear assessment."
+        }
+        title={locale === "de" ? "Bereit für die nächste klare Entscheidung?" : "Ready for the next clear decision?"}
+      />
+    </>
+  );
+}
+
+export function BlogPage({ locale }: Pick<PageProps, "locale">) {
+  const page = getPage(locale, "blog");
+
+  return (
+    <>
+      <section className="relative isolate overflow-hidden bg-[#f6f2ef] py-16 sm:py-20">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_12%_10%,rgba(198,61,77,0.14),transparent_22rem)]" />
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <p className="eyebrow">{page.eyebrow}</p>
+              <h1 className="display-title mt-4 text-4xl leading-tight text-[#111827] sm:text-6xl">
+                {page.title}
+              </h1>
+            </div>
+            <div className="max-w-2xl space-y-4 text-lg leading-8 text-[#5f6368] lg:justify-self-end">
+              {page.description.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+      <BlogPostsGrid locale={locale} posts={blogPosts} />
+      <CTASection
+        button={locale === "de" ? "Eigene Finanzfragen besprechen" : "Discuss your financial questions"}
+        locale={locale}
+        title={locale === "de" ? "Lesen ist gut. Einordnung ist besser." : "Reading helps. Context helps more."}
+      />
+    </>
+  );
+}
+
+function VersionSelectorBand({ current, locale }: { current: "v1" | "v2"; locale: Locale }) {
+  return (
+    <section className="border-b border-[#e6e2dc] bg-[#f7f7f6] py-4">
+      <Container>
+        <HomepageVersionSelector current={current} locale={locale} />
+      </Container>
+    </section>
   );
 }
 
@@ -400,6 +484,93 @@ function DigitalClaritySection() {
   );
 }
 
+function V2OverviewSection({ locale }: { locale: Locale }) {
+  const section = getPage(locale, "home").sections[0];
+  const analysis = getPage(locale, "home").sections[1];
+
+  return (
+    <section className="bg-white py-20 sm:py-24">
+      <Container>
+        <div className="grid gap-6 lg:grid-cols-12">
+          <article className="veonis-gloss-dark rounded-lg p-7 text-white lg:col-span-5 sm:p-8">
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{section.eyebrow}</p>
+            <h2 className="display-title mt-4 text-4xl leading-tight text-white sm:text-5xl">{section.title}</h2>
+            <p className="mt-6 text-lg leading-8 text-white/66">{section.paragraphs?.[0]}</p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {["Versicherungen", "Vorsorge", "Hypotheken", "Steuern"].map((item) => (
+                <div className="rounded-lg border border-white/12 bg-white/8 p-4 text-sm font-semibold text-white/80" key={item}>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article className="relative min-h-[460px] overflow-hidden rounded-lg bg-[#24191c] lg:col-span-4">
+            <Image
+              alt="Digitale Finanzübersicht in einer Beratung"
+              className="object-cover object-[45%_center]"
+              fill
+              sizes="(min-width: 1024px) 34vw, 100vw"
+              src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,25,28,0.05),rgba(36,25,28,0.78))]" />
+            <div className="absolute bottom-5 left-5 right-5 rounded-lg border border-white/18 bg-white/14 p-5 text-white backdrop-blur-md">
+              <p className="text-xs font-semibold uppercase text-[#ef7d8b]">360° Analyse</p>
+              <p className="mt-2 text-sm leading-6 text-white/76">{analysis.intro}</p>
+            </div>
+          </article>
+
+          <article className="veonis-soft-service rounded-lg p-7 lg:col-span-3 sm:p-8">
+            <ScanSearch className="size-6 text-[#c63d4d]" />
+            <h3 className="display-title mt-8 text-3xl leading-tight text-[#111827]">
+              {locale === "de" ? "Weniger Scrollen, mehr Orientierung." : "Less scrolling, more orientation."}
+            </h3>
+            <p className="mt-5 leading-7 text-[#5f6368]">
+              {locale === "de"
+                ? "Version 2 bündelt wiederholte Vertrauenssignale und stellt Entscheidungspunkte früher sichtbar dar."
+                : "Version 2 groups repeated trust signals and makes decision points visible earlier."}
+            </p>
+          </article>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function V2ServicesSection({ locale }: { locale: Locale }) {
+  const highlights = services.slice(0, 4);
+
+  return (
+    <section className="bg-[#f6f2ef] py-20 sm:py-24">
+      <Container>
+        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+          <SectionHeader
+            eyebrow="Services"
+            intro={
+              locale === "de"
+                ? "Die kompakte Version zeigt die wichtigsten Beratungsthemen als Entscheidungsfelder statt als lange Leistungsstrecke."
+                : "The compact version presents key advisory topics as decision areas instead of a long service sequence."
+            }
+            title={locale === "de" ? "Vier Felder, ein Gesamtbild." : "Four areas, one overall picture."}
+          />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {highlights.map((service, index) => (
+              <article className="rounded-lg border border-white/70 bg-white/78 p-6 shadow-[0_18px_50px_rgba(68,24,32,0.08)] backdrop-blur" key={service.title}>
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-xs font-semibold text-[#c63d4d]">{String(index + 1).padStart(2, "0")}</span>
+                  <BadgeCheck className="size-5 text-[#c63d4d]" />
+                </div>
+                <h3 className="mt-8 text-xl font-semibold text-[#111827]">{service.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#5f6368]">{service.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 function CollaborationSection({ steps }: { steps: { title: string; text: string }[] }) {
   const icons = [Handshake, FileSearch, ClipboardCheck, ShieldCheck, Sparkles];
 
@@ -626,6 +797,96 @@ function AudienceSection({ cards }: { cards: CardContent[] }) {
               })}
             </div>
           </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function LatestBlogPostsSection({ locale, posts }: { locale: Locale; posts: BlogPost[] }) {
+  return (
+    <section className="bg-[#f7f7f6] py-20 sm:py-24">
+      <Container>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader
+            eyebrow={locale === "de" ? "Aktuelle Impulse" : "Latest insights"}
+            intro={
+              locale === "de"
+                ? "Fünf kurze Einstiege in Finanzfragen, die in der Schweizer Beratung häufig zusammenhängen."
+                : "Five concise entry points into financial questions that are often connected in Swiss advisory work."
+            }
+            title={locale === "de" ? "Neu im Veonis Blog." : "New on the Veonis blog."}
+          />
+          <Link
+            className="inline-flex items-center text-sm font-semibold text-[#c63d4d]"
+            href={getLocalizedPath(locale, "blog")}
+          >
+            {locale === "de" ? "Alle Beiträge ansehen" : "View all posts"}
+            <ChevronRight className="ml-1 size-4" />
+          </Link>
+        </div>
+        <div className="mt-10">
+          <BlogPostsGrid compact locale={locale} posts={posts} />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function BlogPostsGrid({
+  compact = false,
+  locale,
+  posts,
+}: {
+  compact?: boolean;
+  locale: Locale;
+  posts: BlogPost[];
+}) {
+  return (
+    <section className={compact ? "" : "bg-white py-16 sm:py-20"}>
+      <Container className={compact ? "px-0 sm:px-0 lg:px-0" : undefined}>
+        <div className={cn("grid gap-5", compact ? "lg:grid-cols-5" : "md:grid-cols-2 lg:grid-cols-3")}>
+          {posts.map((post, index) => (
+            <article
+              className={cn(
+                "group overflow-hidden rounded-lg border border-[#e6e2dc] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(68,24,32,0.12)]",
+                !compact && index === 0 ? "lg:col-span-2" : "",
+              )}
+              key={post.slug}
+            >
+              <div className={cn("relative overflow-hidden", compact ? "aspect-[1.05]" : "aspect-[1.45]")}>
+                <Image
+                  alt={post.alt[locale]}
+                  className="object-cover transition duration-500 group-hover:scale-[1.035]"
+                  fill
+                  sizes={compact ? "(min-width: 1024px) 18vw, 90vw" : "(min-width: 1024px) 31vw, 90vw"}
+                  src={post.image}
+                />
+                <div className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/86 px-3 py-1 text-xs font-semibold text-[#8f2535] shadow-[inset_0_1px_0_white] backdrop-blur">
+                  {post.category[locale]}
+                </div>
+              </div>
+              <div className={cn("p-5", compact ? "" : "sm:p-6")}>
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#939598]">
+                  <Clock className="size-3.5" />
+                  {post.readTime[locale]}
+                </div>
+                <h3 className={cn("mt-4 font-semibold leading-tight text-[#111827]", compact ? "text-base" : "text-2xl")}>
+                  {post.title[locale]}
+                </h3>
+                <p className={cn("mt-3 leading-6 text-[#5f6368]", compact ? "text-sm" : "")}>{post.excerpt[locale]}</p>
+                {!compact ? (
+                  <Link
+                    className="mt-5 inline-flex items-center text-sm font-semibold text-[#c63d4d]"
+                    href={getLocalizedPath(locale, "blog")}
+                  >
+                    <BookOpen className="mr-2 size-4" />
+                    {locale === "de" ? "Im Blog einordnen" : "Read in the blog"}
+                  </Link>
+                ) : null}
+              </div>
+            </article>
+          ))}
         </div>
       </Container>
     </section>
