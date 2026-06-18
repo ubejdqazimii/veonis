@@ -3,7 +3,7 @@ import { Mail, Phone } from "lucide-react";
 
 import { Container } from "@/components/veonis/container";
 import type { Locale } from "@/lib/veonis-content";
-import { brand, getLocalizedPath } from "@/lib/veonis-content";
+import { brand, getLocalizedPath, localizedHomeHref } from "@/lib/veonis-content";
 
 type PreHeaderProps = {
   locale: Locale;
@@ -24,6 +24,9 @@ export function PreHeader({ locale }: PreHeaderProps) {
           </a>
         </div>
         <div className="flex items-center gap-4">
+          <Link className="hover:text-[#c63d4d]" href={localizedHomeHref[locale]}>
+            Home
+          </Link>
           <Link className="hover:text-[#c63d4d]" href={getLocalizedPath(locale, "contact")}>
             Contact
           </Link>

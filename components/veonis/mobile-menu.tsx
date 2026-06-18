@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { Locale } from "@/lib/veonis-content";
-import { getLocalizedPath, navItems } from "@/lib/veonis-content";
+import { getLocalizedPath, primaryNavItems } from "@/lib/veonis-content";
 
 type MobileMenuProps = {
   locale: Locale;
@@ -31,7 +31,7 @@ export function MobileMenu({ locale }: MobileMenuProps) {
       {open ? (
         <div className="absolute inset-x-4 top-[calc(100%+0.75rem)] z-50 rounded-3xl border border-[#e6e2dc] bg-white p-4 shadow-[0_24px_70px_rgba(17,24,39,0.16)]">
           <nav className="grid gap-1">
-            {navItems.map((item) => (
+            {primaryNavItems.map((item) => (
               <Link
                 className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#111827] hover:bg-[#f7f7f6]"
                 href={item[locale]}

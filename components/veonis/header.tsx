@@ -5,7 +5,7 @@ import { MobileMenu } from "@/components/veonis/mobile-menu";
 import { PreHeader } from "@/components/veonis/pre-header";
 import { Button } from "@/components/ui/button";
 import type { Locale } from "@/lib/veonis-content";
-import { getLocalizedPath, localizedHomeHref, navItems } from "@/lib/veonis-content";
+import { getLocalizedPath, localizedHomeHref, primaryNavItems } from "@/lib/veonis-content";
 
 type HeaderProps = {
   locale: Locale;
@@ -22,7 +22,7 @@ export function Header({ locale }: HeaderProps) {
           <img className="h-12 w-auto" src="/brand/veonis-header.svg" alt="Veonis" />
         </Link>
         <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex">
-          {navItems.map((item) => (
+          {primaryNavItems.map((item) => (
             <Link
               className="rounded-full px-3 py-2 text-sm font-medium text-[#4b5563] transition hover:bg-[#f7f7f6] hover:text-[#111827]"
               href={item[locale]}

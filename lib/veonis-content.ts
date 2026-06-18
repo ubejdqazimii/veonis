@@ -80,6 +80,10 @@ export const navItems = [
   { label: "Contact", de: "/de/contact", en: "/en/contact" },
 ];
 
+export const primaryNavItems = navItems.filter(
+  (item) => !["Home", "Career", "Contact"].includes(item.label),
+);
+
 export const legalLinks: Record<Locale, { label: string; href: string }[]> = {
   de: [
     { label: "Impressum", href: "/de/legal/impressum" },

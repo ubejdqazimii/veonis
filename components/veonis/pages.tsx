@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BadgeCheck, Check, ChevronRight, Handshake, ScanSearch } from "lucide-react";
+import {
+  BadgeCheck,
+  Building2,
+  Check,
+  ChevronRight,
+  Handshake,
+  ScanSearch,
+  Smartphone,
+} from "lucide-react";
 
 import { ContactForm } from "@/components/veonis/contact-form";
 import { Container } from "@/components/veonis/container";
 import { CTASection } from "@/components/veonis/cta-section";
 import { FAQAccordion } from "@/components/veonis/faq-accordion";
+import { HomeFocusTabsSection } from "@/components/veonis/home-focus-tabs-section";
 import { Hero } from "@/components/veonis/hero";
 import { LegalNoticeBlock } from "@/components/veonis/legal-notice-block";
 import { ProcessTimeline } from "@/components/veonis/process-timeline";
@@ -14,6 +23,7 @@ import { SectionHeader } from "@/components/veonis/section-header";
 import { ServiceCard } from "@/components/veonis/service-card";
 import { TabsSection } from "@/components/veonis/tabs-section";
 import { ValueCard } from "@/components/veonis/value-card";
+import { cn } from "@/lib/utils";
 import type { CardContent, Locale, PageKey } from "@/lib/veonis-content";
 import { brand, getLocalizedPath, getPage, services } from "@/lib/veonis-content";
 
@@ -51,6 +61,7 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
       <SectionBlock section={page.sections[0]} />
       <HumanAdvisorySection />
       <AnalysisSection locale={locale} />
+      <HomeFocusTabsSection />
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeader
@@ -66,6 +77,7 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
         </Container>
       </section>
       <DigitalClaritySection />
+      <AdvisoryMomentsSection />
       <section className="bg-[#f7f7f6] py-16 sm:py-20">
         <Container>
           <SectionHeader eyebrow="Warum Veonis" title="Warum Veonis?" />
@@ -85,6 +97,84 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
       <CardsSection cards={page.sections[5].cards ?? []} eyebrow="Zielgruppen" title="Für wen ist Veonis da?" />
       <CTASection locale={locale} />
     </>
+  );
+}
+
+function AdvisoryMomentsSection() {
+  const moments = [
+    {
+      title: "Erstgespräch",
+      text: "Ziele, Fragen und Unterlagen werden persönlich eingeordnet.",
+      image: "/brand/photos/veonis-corporate-meeting-optimized.jpg",
+      alt: "Beratungsgespräch mit mehreren Personen in einem hellen Meetingraum",
+      icon: Handshake,
+      position: "object-[58%_50%]",
+    },
+    {
+      title: "Digitale Übersicht",
+      text: "Wichtige Informationen bleiben greifbar und sauber strukturiert.",
+      image: "/brand/photos/veonis-digital-collaboration-optimized.jpg",
+      alt: "Smartphones und Notizen auf einem Beratungstisch",
+      icon: Smartphone,
+      position: "object-center",
+    },
+    {
+      title: "Firmenkunden",
+      text: "Risiken, Vorsorge und Verantwortung werden zusammen betrachtet.",
+      image: "/brand/photos/veonis-corporate-meeting-optimized.jpg",
+      alt: "Professionelle Teamsituation in einer Unternehmensberatung",
+      icon: Building2,
+      position: "object-[72%_50%]",
+    },
+  ];
+
+  return (
+    <section className="bg-white py-16 sm:py-20">
+      <Container>
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+          <div>
+            <p className="eyebrow">Mehr Nähe im Ablauf</p>
+            <h2 className="display-title mt-3 text-3xl text-[#111827] sm:text-4xl">
+              Beratung wird besser, wenn man die Situation sieht.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-[#5f6368]">
+              Deshalb zeigt die Homepage mehr konkrete Beratungsmomente: Gespräch, digitale Ordnung
+              und geschäftliche Verantwortung.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {moments.map((moment) => {
+              const Icon = moment.icon;
+
+              return (
+                <article
+                  className="group overflow-hidden rounded-[1.5rem] border border-[#e6e2dc] bg-[#f7f7f6] shadow-[0_20px_60px_rgba(17,24,39,0.07)]"
+                  key={moment.title}
+                >
+                  <div className="relative aspect-[0.92] min-h-[260px] overflow-hidden">
+                    <Image
+                      alt={moment.alt}
+                      className={cn("object-cover transition duration-500 group-hover:scale-[1.035]", moment.position)}
+                      fill
+                      sizes="(min-width: 1024px) 24vw, (min-width: 768px) 30vw, 90vw"
+                      src={moment.image}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/68 via-transparent to-transparent" />
+                    <div className="absolute left-4 top-4 flex size-11 items-center justify-center rounded-2xl bg-white/90 text-[#c63d4d] shadow-sm backdrop-blur">
+                      <Icon className="size-5" />
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold text-[#111827]">{moment.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-[#5f6368]">{moment.text}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }
 
