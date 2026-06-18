@@ -139,7 +139,7 @@ function V3RedCoverSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-white py-10 sm:py-14">
       <Container>
-        <div className="veonis-gloss-red overflow-visible rounded-lg p-3 text-white shadow-[0_28px_90px_rgba(112,31,44,0.22)] sm:p-5">
+        <div className="veonis-gloss-red max-w-full overflow-hidden rounded-lg p-3 text-white shadow-[0_28px_90px_rgba(112,31,44,0.22)] sm:p-5">
           <div className="relative min-h-[390px] overflow-hidden rounded-lg sm:min-h-[460px] lg:min-h-[520px]">
             <Image
               alt={
@@ -158,7 +158,7 @@ function V3RedCoverSection({ locale }: { locale: Locale }) {
               Veonis
             </div>
           </div>
-          <div className="relative z-10 -mt-20 ml-auto w-[calc(100%-1.5rem)] rounded-lg border border-white/18 bg-[#9f2f42]/78 p-5 text-white shadow-[0_22px_70px_rgba(61,16,25,0.28)] backdrop-blur-xl sm:-mt-24 sm:w-[68%] sm:p-7 lg:mr-10 lg:w-[48%]">
+          <div className="relative z-10 -mt-20 ml-auto max-w-full rounded-lg border border-white/18 bg-[#9f2f42]/78 p-5 text-white shadow-[0_22px_70px_rgba(61,16,25,0.28)] backdrop-blur-xl sm:-mt-24 sm:w-[68%] sm:p-7 lg:mr-10 lg:w-[48%]">
             <p className="display-title text-2xl leading-tight text-white sm:text-3xl">
               {locale === "de"
                 ? "“Gute Beratung beginnt mit den richtigen Fragen, nicht mit einem Produkt.”"
@@ -303,7 +303,7 @@ function V3HeroSection({
   return (
     <section className="relative isolate overflow-hidden bg-[#21191c] text-white">
       <Image
-        alt={locale === "de" ? "Luxuriöse Beratungssituation bei Veonis" : "Luxury advisory setting at Veonis"}
+        alt={locale === "de" ? "Beratungssituation bei Veonis" : "Advisory setting at Veonis"}
         className="object-cover object-[56%_center] opacity-78"
         fill
         preload
@@ -677,7 +677,7 @@ function V3FinanceMapSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-[#f6f2ef] py-12 sm:py-16">
       <Container>
-        <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
           <article className="rounded-lg bg-[#24191c] p-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:p-8">
             <p className="text-xs font-semibold uppercase text-[#ef7d8b]">360° Finanzbild</p>
             <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
@@ -815,7 +815,7 @@ function V3HumanMomentsSection({ locale }: { locale: Locale }) {
           />
           <div className="hidden h-px bg-[#ead9dc] lg:block" />
         </div>
-        <div className="mt-8 flex snap-x gap-4 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0">
+        <div className="mt-8 flex max-w-full min-w-0 snap-x gap-4 overflow-x-auto overflow-y-hidden pb-4 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0">
           {moments.map((moment) => (
             <article className="group relative min-h-[430px] min-w-[84%] snap-start overflow-hidden rounded-lg bg-[#24191c] shadow-[0_22px_70px_rgba(17,24,39,0.14)] sm:min-w-[52%] lg:min-w-0" key={moment.title}>
               <div className="absolute inset-0">
@@ -847,7 +847,7 @@ function V3ServicesMatrixSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-[#f6f2ef] py-12 sm:py-16">
       <Container>
-        <div className="grid gap-6 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
           <SectionHeader
             eyebrow="Services"
             intro={
@@ -864,7 +864,7 @@ function V3ServicesMatrixSection({ locale }: { locale: Locale }) {
   );
 }
 
-function V3LuxuryCommandSection({ locale }: { locale: Locale }) {
+function V3CommandSection({ locale }: { locale: Locale }) {
   const items =
     locale === "de"
       ? [
@@ -956,9 +956,9 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-white py-12 sm:py-16">
       <Container>
-        <div className="veonis-gloss-red rounded-lg p-5 text-white shadow-[0_26px_80px_rgba(112,31,44,0.2)] sm:p-8">
-          <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <div>
+        <div className="veonis-gloss-red max-w-full overflow-hidden rounded-lg p-5 text-white shadow-[0_26px_80px_rgba(112,31,44,0.2)] sm:p-8">
+          <div className="grid min-w-0 gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div className="min-w-0">
               <p className="text-xs font-semibold uppercase text-white/68">
                 {locale === "de" ? "Zusammenarbeit" : "Collaboration"}
               </p>
@@ -971,7 +971,7 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
                   : "From the first conversation to ongoing support, the process remains understandable, personal and structured."}
               </p>
             </div>
-            <div className="flex gap-2 overflow-x-auto rounded-lg border border-white/14 bg-white/10 p-1 [-webkit-overflow-scrolling:touch]">
+            <div className="flex max-w-full min-w-0 gap-2 overflow-x-auto rounded-lg border border-white/14 bg-white/10 p-1 [-webkit-overflow-scrolling:touch]">
               {segments.map((segment, index) => (
                 <span
                   className={cn(
@@ -985,7 +985,7 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
               ))}
             </div>
           </div>
-          <div className="mt-7 flex snap-x gap-4 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-4 lg:overflow-visible">
+          <div className="mt-7 flex max-w-full min-w-0 snap-x gap-4 overflow-x-auto overflow-y-hidden pb-1 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-4 lg:overflow-visible">
             {cards.map(([number, title, text]) => (
               <article className="min-w-[78%] snap-start rounded-lg border border-white/14 bg-white/10 p-5 backdrop-blur sm:min-w-[44%] lg:min-w-0" key={title}>
                 <p className="display-title text-5xl text-white/24">{number}</p>

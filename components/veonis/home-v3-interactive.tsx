@@ -181,8 +181,8 @@ export function HomeV3FinanceCockpit({ locale }: { locale: Locale }) {
       : ["Insurance", "Pensions", "Mortgages", "Taxes", "Investments"];
 
   return (
-    <div className="rounded-lg border border-[#ead9dc] bg-white/86 p-3 shadow-[0_24px_70px_rgba(68,24,32,0.12)] backdrop-blur">
-      <div className="flex gap-2 overflow-x-auto rounded-lg bg-[#24191c] p-1 [-webkit-overflow-scrolling:touch]" role="tablist">
+    <div className="max-w-full min-w-0 overflow-hidden rounded-lg border border-[#ead9dc] bg-white/86 p-3 shadow-[0_24px_70px_rgba(68,24,32,0.12)] backdrop-blur">
+      <div className="flex max-w-full min-w-0 gap-2 overflow-x-auto rounded-lg bg-[#24191c] p-1 [-webkit-overflow-scrolling:touch]" role="tablist">
         {tabs.map((tab, index) => (
           <button
             aria-selected={active === index}
@@ -200,8 +200,8 @@ export function HomeV3FinanceCockpit({ locale }: { locale: Locale }) {
         ))}
       </div>
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-[0.88fr_1.12fr]">
-        <article className="rounded-lg bg-[linear-gradient(135deg,#24191c_0%,#4b2028_52%,#9f2f42_100%)] p-5 text-white sm:p-6">
+      <div className="mt-3 grid min-w-0 gap-3 lg:grid-cols-[0.88fr_1.12fr]">
+        <article className="min-w-0 rounded-lg bg-[linear-gradient(135deg,#24191c_0%,#4b2028_52%,#9f2f42_100%)] p-5 text-white sm:p-6">
           <div className="flex items-start justify-between gap-4">
             <span className="flex size-11 items-center justify-center rounded-lg border border-white/14 bg-white/10 text-[#ffb1ba]">
               <ScanSearch className="size-5" />
@@ -222,8 +222,8 @@ export function HomeV3FinanceCockpit({ locale }: { locale: Locale }) {
           </div>
         </article>
 
-        <div className="grid gap-3">
-          <div className="grid gap-2 sm:grid-cols-5">
+        <div className="grid min-w-0 gap-3">
+          <div className="grid min-w-0 gap-2 sm:grid-cols-5">
             {topics.map((topic, index) => {
               const Icon = topicIcons[index] ?? Layers3;
 
@@ -235,14 +235,14 @@ export function HomeV3FinanceCockpit({ locale }: { locale: Locale }) {
               );
             })}
           </div>
-          <div className="rounded-lg border border-[#ead9dc] bg-white p-4">
+          <div className="min-w-0 rounded-lg border border-[#ead9dc] bg-white p-4">
             <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#24191c]">
               <ClipboardCheck className="size-4 text-[#c63d4d]" />
               {locale === "de" ? "Nächste Einordnung" : "Next context"}
             </div>
             <div className="grid gap-2">
               {current.notes.map((note) => (
-                <div className="flex items-center gap-3 rounded-lg bg-[#f7f2ef] px-3 py-2 text-sm font-semibold text-[#5f6368]" key={note}>
+                <div className="flex min-w-0 items-center gap-3 rounded-lg bg-[#f7f2ef] px-3 py-2 text-sm font-semibold text-[#5f6368]" key={note}>
                   <Check className="size-4 shrink-0 text-[#c63d4d]" />
                   {note}
                 </div>
@@ -261,8 +261,8 @@ export function HomeV3ServicesTabs({ locale }: { locale: Locale }) {
   const current = tabs[active];
 
   return (
-    <div className="rounded-lg border border-[#e6e2dc] bg-[#f7f7f6] p-3 shadow-[0_20px_60px_rgba(17,24,39,0.06)]">
-      <div className="flex gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]" role="tablist">
+    <div className="max-w-full min-w-0 overflow-hidden rounded-lg border border-[#e6e2dc] bg-[#f7f7f6] p-3 shadow-[0_20px_60px_rgba(17,24,39,0.06)]">
+      <div className="flex max-w-full min-w-0 gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]" role="tablist">
         {tabs.map((tab, index) => (
           <button
             aria-selected={active === index}
@@ -282,7 +282,7 @@ export function HomeV3ServicesTabs({ locale }: { locale: Locale }) {
         ))}
       </div>
 
-      <article className="mt-3 grid overflow-hidden rounded-lg bg-white lg:grid-cols-[0.95fr_1.05fr]">
+      <article className="mt-3 grid min-w-0 overflow-hidden rounded-lg bg-white lg:grid-cols-[0.95fr_1.05fr]">
         <div className="relative min-h-[250px] sm:min-h-[320px]">
           <Image
             alt={current.alt}
@@ -296,14 +296,14 @@ export function HomeV3ServicesTabs({ locale }: { locale: Locale }) {
             {current.label}
           </div>
         </div>
-        <div className="flex flex-col justify-center p-5 sm:p-7">
+        <div className="min-w-0 p-5 sm:p-7">
           <div className="flex size-11 items-center justify-center rounded-lg bg-[#fff0f2] text-[#c63d4d]">
             <FileSearch className="size-5" />
           </div>
           <h3 className="mt-5 text-2xl font-semibold leading-tight text-[#111827]">{current.title}</h3>
           <div className="mt-5 grid gap-2">
             {current.points.map((point) => (
-              <div className="flex items-center gap-3 rounded-lg border border-[#ead9dc] bg-[#fbf7f5] px-3 py-3 text-sm font-semibold text-[#5f6368]" key={point}>
+              <div className="flex min-w-0 items-center gap-3 rounded-lg border border-[#ead9dc] bg-[#fbf7f5] px-3 py-3 text-sm font-semibold text-[#5f6368]" key={point}>
                 <BadgeCheck className="size-4 shrink-0 text-[#c63d4d]" />
                 {point}
               </div>
