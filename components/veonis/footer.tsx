@@ -53,7 +53,7 @@ export function Footer({ locale }: FooterProps) {
           © {new Date().getFullYear()} Veonis. All rights reserved.
           <span className="mt-2 block text-xs leading-5 text-white/36">
             Bildquellen: Rawpixel Ltd und Amtec Photos, jeweils via Wikimedia Commons,
-            Lizenz CC BY 2.0.
+            Lizenz CC BY 2.0; Amy Hirschi und krakenimages via Unsplash.
           </span>
         </div>
       </Container>

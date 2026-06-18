@@ -15,6 +15,12 @@ import { ContactForm } from "@/components/veonis/contact-form";
 import { Container } from "@/components/veonis/container";
 import { CTASection } from "@/components/veonis/cta-section";
 import { FAQAccordion } from "@/components/veonis/faq-accordion";
+import {
+  ConnectedFinanceSection,
+  HomeTrustStrip,
+  ServicesEditorialSection,
+  WhyVeonisSection,
+} from "@/components/veonis/home-editorial-sections";
 import { HomeFocusTabsSection } from "@/components/veonis/home-focus-tabs-section";
 import { Hero } from "@/components/veonis/hero";
 import { LegalNoticeBlock } from "@/components/veonis/legal-notice-block";
@@ -25,7 +31,7 @@ import { TabsSection } from "@/components/veonis/tabs-section";
 import { ValueCard } from "@/components/veonis/value-card";
 import { cn } from "@/lib/utils";
 import type { CardContent, Locale, PageKey } from "@/lib/veonis-content";
-import { brand, getLocalizedPath, getPage, services } from "@/lib/veonis-content";
+import { brand, getLocalizedPath, getPage } from "@/lib/veonis-content";
 
 export function createPageMetadata(locale: Locale, key: PageKey): Metadata {
   const page = getPage(locale, key);
@@ -57,35 +63,17 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
         secondaryCta={page.secondaryCta}
         title={page.title}
         visualLabel="Finanzielle Klarheit"
+        variant="home"
       />
-      <SectionBlock section={page.sections[0]} />
+      <HomeTrustStrip />
+      <ConnectedFinanceSection section={page.sections[0]} />
       <HumanAdvisorySection />
       <AnalysisSection locale={locale} />
       <HomeFocusTabsSection />
-      <section className="bg-white py-16 sm:py-20">
-        <Container>
-          <SectionHeader
-            eyebrow={page.sections[2].eyebrow}
-            intro={page.sections[2].intro}
-            title={page.sections[2].title}
-          />
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.slice(0, 5).map((service) => (
-              <ServiceCard key={service.title} {...service} />
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ServicesEditorialSection locale={locale} />
       <DigitalClaritySection />
       <AdvisoryMomentsSection />
-      <section className="bg-[#f7f7f6] py-16 sm:py-20">
-        <Container>
-          <SectionHeader eyebrow="Warum Veonis" title="Warum Veonis?" />
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {page.sections[3].cards?.map((card) => <ValueCard key={card.title} {...card} />)}
-          </div>
-        </Container>
-      </section>
+      <WhyVeonisSection cards={page.sections[3].cards ?? []} />
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeader eyebrow="Zusammenarbeit" title="So funktioniert die Zusammenarbeit" />
@@ -105,10 +93,10 @@ function AdvisoryMomentsSection() {
     {
       title: "Erstgespräch",
       text: "Ziele, Fragen und Unterlagen werden persönlich eingeordnet.",
-      image: "/brand/photos/veonis-corporate-meeting-optimized.jpg",
-      alt: "Beratungsgespräch mit mehreren Personen in einem hellen Meetingraum",
+      image: "/brand/photos/veonis-advisor-conversation-optimized.jpg",
+      alt: "Zwei Beraterinnen im persönlichen Gespräch",
       icon: Handshake,
-      position: "object-[58%_50%]",
+      position: "object-center",
     },
     {
       title: "Digitale Übersicht",
@@ -129,9 +117,9 @@ function AdvisoryMomentsSection() {
   ];
 
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-20 sm:py-24">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
           <div>
             <p className="eyebrow">Mehr Nähe im Ablauf</p>
             <h2 className="display-title mt-3 text-3xl text-[#111827] sm:text-4xl">
@@ -148,10 +136,10 @@ function AdvisoryMomentsSection() {
 
               return (
                 <article
-                  className="group overflow-hidden rounded-[1.5rem] border border-[#e6e2dc] bg-[#f7f7f6] shadow-[0_20px_60px_rgba(17,24,39,0.07)]"
+                  className="group overflow-hidden rounded-lg border border-[#e6e2dc] bg-[#f7f7f6]"
                   key={moment.title}
                 >
-                  <div className="relative aspect-[0.92] min-h-[260px] overflow-hidden">
+                  <div className="relative aspect-[0.92] min-h-[280px] overflow-hidden">
                     <Image
                       alt={moment.alt}
                       className={cn("object-cover transition duration-500 group-hover:scale-[1.035]", moment.position)}
@@ -160,7 +148,7 @@ function AdvisoryMomentsSection() {
                       src={moment.image}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/68 via-transparent to-transparent" />
-                    <div className="absolute left-4 top-4 flex size-11 items-center justify-center rounded-2xl bg-white/90 text-[#c63d4d] shadow-sm backdrop-blur">
+                    <div className="absolute left-4 top-4 flex size-11 items-center justify-center rounded-lg bg-white/90 text-[#c63d4d] shadow-sm backdrop-blur">
                       <Icon className="size-5" />
                     </div>
                   </div>
@@ -322,25 +310,25 @@ export function LegalPage({ locale, pageKey }: PageProps) {
 
 function HumanAdvisorySection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-20 sm:py-24">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[1fr_0.92fr] lg:items-center">
-          <div className="relative overflow-hidden rounded-[2rem] border border-[#e6e2dc] bg-[#111827] shadow-[0_26px_80px_rgba(17,24,39,0.12)]">
-            <div className="aspect-[1.22] min-h-[360px]">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="relative min-h-[520px]">
+            <div className="absolute inset-y-0 left-0 right-12 overflow-hidden rounded-lg bg-[#111827] shadow-[0_26px_80px_rgba(17,24,39,0.12)] sm:right-20">
               <Image
-                alt="Professionelle Beratungssituation in einem hellen Meetingraum"
-                className="object-cover opacity-88"
+                alt="Zwei Beraterinnen in einem persönlichen Gespräch"
+                className="object-cover object-center"
                 fill
                 sizes="(min-width: 1024px) 48vw, 90vw"
-                src="/brand/photos/veonis-corporate-meeting-optimized.jpg"
+                src="/brand/photos/veonis-advisor-conversation-optimized.jpg"
               />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#111827]/42 via-transparent to-transparent" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#111827]/55 via-transparent to-[#c63d4d]/10" />
-            <div className="absolute bottom-5 left-5 right-5 rounded-3xl border border-white/18 bg-white/82 p-5 backdrop-blur-xl">
-              <p className="text-sm font-semibold text-[#111827]">Beratung, die Nähe und Struktur verbindet</p>
-              <p className="mt-2 text-sm leading-6 text-[#5f6368]">
-                Menschlich im Gespräch, präzise in der Analyse, klar in den nächsten Schritten.
+            <div className="absolute bottom-7 right-0 w-[76%] rounded-lg bg-[#c63d4d] p-6 text-white shadow-[0_20px_60px_rgba(17,24,39,0.18)] sm:w-[64%]">
+              <p className="display-title text-2xl leading-tight">
+                “Gute Beratung beginnt mit den richtigen Fragen, nicht mit einem Produkt.”
               </p>
+              <p className="mt-4 text-sm font-semibold text-white/72">Veonis Beratungsprinzip</p>
             </div>
           </div>
           <div>
@@ -355,7 +343,7 @@ function HumanAdvisorySection() {
                 { icon: Handshake, label: "Begleitung", text: "Ein Ansprechpartner mit Überblick." },
                 { icon: BadgeCheck, label: "Klarheit", text: "Empfehlungen ohne Druck." },
               ].map((item) => (
-                <div className="rounded-3xl border border-[#e6e2dc] bg-[#f7f7f6] p-5" key={item.label}>
+                <div className="rounded-lg border border-[#e6e2dc] bg-[#f7f7f6] p-5" key={item.label}>
                   <item.icon className="size-5 text-[#c63d4d]" />
                   <p className="mt-4 font-semibold text-[#111827]">{item.label}</p>
                   <p className="mt-2 text-sm leading-6 text-[#5f6368]">{item.text}</p>
@@ -371,10 +359,10 @@ function HumanAdvisorySection() {
 
 function DigitalClaritySection() {
   return (
-    <section className="bg-[#f7f7f6] py-16 sm:py-20">
+    <section className="bg-[#f4f3f1] py-20 sm:py-24">
       <Container>
-        <div className="grid gap-8 rounded-[2rem] border border-[#e6e2dc] bg-white p-6 shadow-[0_24px_70px_rgba(17,24,39,0.07)] sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div>
+        <div className="grid overflow-hidden rounded-lg bg-white shadow-[0_24px_70px_rgba(17,24,39,0.07)] lg:grid-cols-[0.78fr_1.22fr]">
+          <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
             <p className="eyebrow">Modern arbeiten</p>
             <h2 className="display-title mt-3 text-3xl text-[#111827] sm:text-4xl">
               Beratung darf persönlich sein und trotzdem digital klar.
@@ -383,17 +371,28 @@ function DigitalClaritySection() {
               Veonis verbindet persönliche Gespräche mit strukturierter Übersicht. So bleiben Dokumente,
               Ziele und Prioritäten greifbar - vom ersten Finanzcheck bis zur laufenden Betreuung.
             </p>
-          </div>
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e6e2dc]">
-            <div className="aspect-[1.55]">
-              <Image
-                alt="Digitale Zusammenarbeit mit Smartphones und Notizen auf einem Beratungstisch"
-                className="object-cover"
-                fill
-                sizes="(min-width: 1024px) 55vw, 90vw"
-                src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
-              />
+            <div className="mt-8 grid grid-cols-2 gap-px bg-[#e6e2dc]">
+              {[
+                ["Dokumente", "geordnet"],
+                ["Prioritäten", "sichtbar"],
+                ["Fortschritt", "nachvollziehbar"],
+                ["Betreuung", "laufend"],
+              ].map(([label, value]) => (
+                <div className="bg-white p-4" key={label}>
+                  <p className="text-xs uppercase text-[#939598]">{label}</p>
+                  <p className="mt-2 font-semibold text-[#111827]">{value}</p>
+                </div>
+              ))}
             </div>
+          </div>
+          <div className="relative min-h-[430px]">
+            <Image
+              alt="Digitale Zusammenarbeit mit Smartphones und Notizen auf einem Beratungstisch"
+              className="object-cover"
+              fill
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
+            />
             <div className="absolute inset-0 bg-gradient-to-l from-[#111827]/34 via-transparent to-white/10" />
           </div>
         </div>
@@ -450,12 +449,13 @@ function AnalysisSection({ locale }: { locale: Locale }) {
   const section = getPage(locale, "home").sections[1];
 
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-[#171c24] py-20 text-white sm:py-24">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <SectionHeader eyebrow={section.eyebrow} intro={section.intro} title={section.title} />
-          <div className="premium-card p-6 sm:p-8">
-            <Checklist items={section.items ?? []} />
+        <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+          <div>
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{section.eyebrow}</p>
+            <h2 className="display-title mt-4 text-4xl text-white sm:text-5xl">{section.title}</h2>
+            <p className="mt-6 text-lg leading-8 text-white/62">{section.intro}</p>
             <Link
               className="mt-8 inline-flex items-center rounded-full bg-[#c63d4d] px-5 py-3 text-sm font-semibold text-white hover:bg-[#b23443]"
               href={getLocalizedPath(locale, "veonis-360-analysis")}
@@ -463,6 +463,14 @@ function AnalysisSection({ locale }: { locale: Locale }) {
               {section.cta}
               <ChevronRight className="ml-2 size-4" />
             </Link>
+          </div>
+          <div className="grid border-l border-t border-white/12 sm:grid-cols-2">
+            {(section.items ?? []).map((item, index) => (
+              <div className="flex min-h-28 items-start gap-4 border-b border-r border-white/12 p-5 sm:p-6" key={item}>
+                <span className="text-xs font-semibold text-[#ef7d8b]">{String(index + 1).padStart(2, "0")}</span>
+                <p className="font-medium leading-6 text-white/82">{item}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Container>
