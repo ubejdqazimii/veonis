@@ -169,16 +169,26 @@ const serviceContent = {
   ],
 };
 
-const topicIcons = [ShieldCheck, Landmark, House, Calculator, ChartNoAxesCombined];
-
 export function HomeV3FinanceCockpit({ locale }: { locale: Locale }) {
   const [active, setActive] = useState(0);
   const tabs = cockpitContent[locale];
   const current = tabs[active];
   const topics =
     locale === "de"
-      ? ["Versicherungen", "Vorsorge", "Hypotheken", "Steuern", "Anlagen"]
-      : ["Insurance", "Pensions", "Mortgages", "Taxes", "Investments"];
+      ? [
+          { icon: ShieldCheck, label: "Versicherungen", text: "Schutz, Kosten und Risiken prüfen." },
+          { icon: Landmark, label: "Vorsorge", text: "Säule 3a, Pensionskasse und Pensionierung einordnen." },
+          { icon: House, label: "Hypotheken", text: "Tragbarkeit, Zinsmodell und Liquidität verbinden." },
+          { icon: Calculator, label: "Steuern", text: "Abzüge, Planung und Wohneigentum berücksichtigen." },
+          { icon: ChartNoAxesCombined, label: "Anlagen", text: "Ziele, Risiko und Vermögensaufbau strukturieren." },
+        ]
+      : [
+          { icon: ShieldCheck, label: "Insurance", text: "Review protection, costs and risks." },
+          { icon: Landmark, label: "Pensions", text: "Put pillar 3a, pension fund and retirement into context." },
+          { icon: House, label: "Mortgages", text: "Connect affordability, rate model and liquidity." },
+          { icon: Calculator, label: "Taxes", text: "Consider deductions, planning and home ownership." },
+          { icon: ChartNoAxesCombined, label: "Investments", text: "Structure goals, risk and wealth building." },
+        ];
 
   return (
     <div className="max-w-full min-w-0 overflow-hidden rounded-lg border border-[#ead9dc] bg-white/86 p-3 shadow-[0_24px_70px_rgba(68,24,32,0.12)] backdrop-blur">
@@ -223,14 +233,27 @@ export function HomeV3FinanceCockpit({ locale }: { locale: Locale }) {
         </article>
 
         <div className="grid min-w-0 gap-3">
-          <div className="grid min-w-0 gap-2 sm:grid-cols-5">
+          <div className="grid min-w-0 gap-2 sm:grid-cols-2">
             {topics.map((topic, index) => {
-              const Icon = topicIcons[index] ?? Layers3;
+              const Icon = topic.icon ?? Layers3;
 
               return (
-                <div className="rounded-lg border border-[#ead9dc] bg-[#fbf7f5] p-3" key={topic}>
-                  <Icon className="size-4 text-[#c63d4d]" />
-                  <p className="mt-3 text-xs font-semibold leading-tight text-[#24191c]">{topic}</p>
+                <div
+                  className={cn(
+                    "min-w-0 rounded-lg border border-[#ead9dc] bg-[#fbf7f5] p-4",
+                    index === topics.length - 1 && "sm:col-span-2",
+                  )}
+                  key={topic.label}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#fff0f2] text-[#c63d4d]">
+                      <Icon className="size-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold leading-5 text-[#24191c]">{topic.label}</p>
+                      <p className="mt-1 text-xs leading-5 text-[#6f6467]">{topic.text}</p>
+                    </div>
+                  </div>
                 </div>
               );
             })}

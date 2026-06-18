@@ -137,28 +137,37 @@ export function HomePageVersion3({ locale }: Pick<PageProps, "locale">) {
 
 function V3RedCoverSection({ locale }: { locale: Locale }) {
   return (
-    <section className="bg-white py-10 sm:py-14">
+    <section className="bg-white py-12 sm:py-16">
       <Container>
-        <div className="veonis-gloss-red max-w-full overflow-hidden rounded-lg p-3 text-white shadow-[0_28px_90px_rgba(112,31,44,0.22)] sm:p-5">
-          <div className="relative min-h-[390px] overflow-hidden rounded-lg sm:min-h-[460px] lg:min-h-[520px]">
+        <div className="relative max-w-full rounded-lg bg-[linear-gradient(135deg,#24191c_0%,#6f2431_48%,#c63d4d_100%)] p-2 text-white shadow-[0_30px_90px_rgba(83,25,36,0.24)] sm:p-3">
+          <div className="relative min-h-[430px] overflow-hidden rounded-lg bg-[#24191c] sm:min-h-[520px] lg:min-h-[580px]">
             <Image
               alt={
                 locale === "de"
-                  ? "Veonis Beratungsgespräch in einer modernen Lounge"
-                  : "Veonis advisory conversation in a modern lounge"
+                  ? "Strategische Beratungssituation bei Veonis"
+                  : "Strategic advisory setting at Veonis"
               }
-              className="object-cover"
+              className="object-cover object-[54%_center]"
               fill
               priority={false}
               sizes="(min-width: 1024px) 1120px, 100vw"
-              src="/brand/photos/veonis-lounge-consultation-optimized.jpg"
+              src="/brand/photos/veonis-creative-advisory-v2.jpg"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#24191c]/72 via-[#8f2535]/28 to-transparent" />
-            <div className="absolute left-4 top-4 rounded-full border border-white/24 bg-white/12 px-4 py-2 text-xs font-semibold uppercase text-white/82 backdrop-blur">
-              Veonis
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(36,25,28,0.86)_0%,rgba(76,28,36,0.42)_42%,rgba(36,25,28,0.08)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#24191c]/78 via-[#24191c]/16 to-transparent" />
+            <div className="absolute left-4 top-4 rounded-full border border-white/24 bg-white/12 px-4 py-2 text-xs font-semibold uppercase text-white/82 shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] backdrop-blur sm:left-6 sm:top-6">
+              {locale === "de" ? "Beratungsprinzip" : "Advisory principle"}
+            </div>
+            <div className="absolute bottom-6 left-5 max-w-[17rem] sm:bottom-8 sm:left-8 sm:max-w-sm">
+              <p className="text-xs font-semibold uppercase text-[#ffb1ba]">Veonis</p>
+              <p className="mt-2 text-sm leading-6 text-white/74">
+                {locale === "de"
+                  ? "Struktur, Ruhe und klare Prioritäten für finanzielle Entscheidungen."
+                  : "Structure, calm and clear priorities for financial decisions."}
+              </p>
             </div>
           </div>
-          <div className="relative z-10 -mt-20 ml-auto max-w-full rounded-lg border border-white/18 bg-[#9f2f42]/78 p-5 text-white shadow-[0_22px_70px_rgba(61,16,25,0.28)] backdrop-blur-xl sm:-mt-24 sm:w-[68%] sm:p-7 lg:mr-10 lg:w-[48%]">
+          <div className="relative z-10 -mt-24 ml-auto mr-3 max-w-full rounded-lg border border-white/22 bg-[#9f2f42]/82 p-5 text-white shadow-[0_24px_80px_rgba(61,16,25,0.32)] backdrop-blur-xl sm:-mt-28 sm:mr-8 sm:w-[70%] sm:p-7 lg:mr-12 lg:w-[48%]">
             <p className="display-title text-2xl leading-tight text-white sm:text-3xl">
               {locale === "de"
                 ? "“Gute Beratung beginnt mit den richtigen Fragen, nicht mit einem Produkt.”"
@@ -940,18 +949,17 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
   const cards =
     locale === "de"
       ? [
-          ["01", "Analyse", "Bestehende Verträge, Ziele und finanzielle Wechselwirkungen werden sichtbar."],
-          ["02", "Priorität", "Nicht alles ist gleich wichtig. Veonis ordnet nach Wirkung und Timing."],
-          ["03", "Umsetzung", "Vergleiche, Offerten und Anpassungen werden ruhig begleitet."],
-          ["04", "Betreuung", "Bei Lebens- und Unternehmensveränderungen bleibt der Überblick aktuell."],
+          { number: "01", title: "Analyse", text: "Bestehende Verträge, Ziele und finanzielle Wechselwirkungen werden sichtbar.", icon: ScanSearch },
+          { number: "02", title: "Priorität", text: "Nicht alles ist gleich wichtig. Veonis ordnet nach Wirkung und Timing.", icon: Layers3 },
+          { number: "03", title: "Umsetzung", text: "Vergleiche, Offerten und Anpassungen werden ruhig begleitet.", icon: ClipboardCheck },
+          { number: "04", title: "Betreuung", text: "Bei Lebens- und Unternehmensveränderungen bleibt der Überblick aktuell.", icon: Handshake },
         ]
       : [
-          ["01", "Analysis", "Existing contracts, goals and financial interactions become visible."],
-          ["02", "Priority", "Not everything matters equally. Veonis orders by impact and timing."],
-          ["03", "Execution", "Comparisons, offers and adjustments are guided calmly."],
-          ["04", "Care", "As life and business change, the overview stays current."],
+          { number: "01", title: "Analysis", text: "Existing contracts, goals and financial interactions become visible.", icon: ScanSearch },
+          { number: "02", title: "Priority", text: "Not everything matters equally. Veonis orders by impact and timing.", icon: Layers3 },
+          { number: "03", title: "Execution", text: "Comparisons, offers and adjustments are guided calmly.", icon: ClipboardCheck },
+          { number: "04", title: "Care", text: "As life and business change, the overview stays current.", icon: Handshake },
         ];
-  const segments = cards.map(([, title]) => title);
 
   return (
     <section className="bg-white py-12 sm:py-16">
@@ -971,28 +979,32 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
                   : "From the first conversation to ongoing support, the process remains understandable, personal and structured."}
               </p>
             </div>
-            <div className="flex max-w-full min-w-0 gap-2 overflow-x-auto rounded-lg border border-white/14 bg-white/10 p-1 [-webkit-overflow-scrolling:touch]">
-              {segments.map((segment, index) => (
-                <span
-                  className={cn(
-                    "min-w-fit rounded-lg px-3 py-2 text-xs font-semibold",
-                    index === 0 ? "bg-white text-[#8f2535]" : "text-white/70",
-                  )}
-                  key={segment}
-                >
-                  {segment}
-                </span>
-              ))}
+            <div className="min-w-0 rounded-lg border border-white/14 bg-white/10 p-4 backdrop-blur">
+              <div className="grid grid-cols-2 gap-3 text-sm font-semibold text-white/78">
+                <div className="rounded-lg bg-white/10 px-3 py-3">{locale === "de" ? "Persönlich" : "Personal"}</div>
+                <div className="rounded-lg bg-white/10 px-3 py-3">{locale === "de" ? "Strukturiert" : "Structured"}</div>
+                <div className="rounded-lg bg-white/10 px-3 py-3">{locale === "de" ? "Verständlich" : "Clear"}</div>
+                <div className="rounded-lg bg-white/10 px-3 py-3">{locale === "de" ? "Laufend" : "Ongoing"}</div>
+              </div>
             </div>
           </div>
           <div className="mt-7 flex max-w-full min-w-0 snap-x gap-4 overflow-x-auto overflow-y-hidden pb-1 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-4 lg:overflow-visible">
-            {cards.map(([number, title, text]) => (
-              <article className="min-w-[78%] snap-start rounded-lg border border-white/14 bg-white/10 p-5 backdrop-blur sm:min-w-[44%] lg:min-w-0" key={title}>
-                <p className="display-title text-5xl text-white/24">{number}</p>
-                <h3 className="mt-7 text-xl font-semibold text-white">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/68">{text}</p>
-              </article>
-            ))}
+            {cards.map((card) => {
+              const Icon = card.icon;
+
+              return (
+                <article className="min-w-[78%] snap-start rounded-lg border border-white/14 bg-white/10 p-5 backdrop-blur sm:min-w-[44%] lg:min-w-0" key={card.title}>
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="flex size-11 items-center justify-center rounded-lg border border-white/14 bg-white/10 text-[#ffb1ba]">
+                      <Icon className="size-5" />
+                    </span>
+                    <span className="display-title text-4xl text-white/24">{card.number}</span>
+                  </div>
+                  <h3 className="mt-7 text-xl font-semibold text-white">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/68">{card.text}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </Container>
