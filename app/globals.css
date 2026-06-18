@@ -216,6 +216,44 @@
     backdrop-filter: blur(18px);
   }
 
+  .veonis-focus-glass {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 0.58);
+    background:
+      linear-gradient(145deg, rgb(255 255 255 / 0.88), rgb(255 246 247 / 0.72)),
+      radial-gradient(circle at 12% 0%, rgb(255 255 255 / 0.88), transparent 18rem);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.92),
+      0 24px 70px rgb(62 20 28 / 0.22);
+    backdrop-filter: blur(22px) saturate(1.18);
+  }
+
+  .veonis-focus-glass::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      116deg,
+      transparent 0%,
+      transparent 42%,
+      rgb(255 255 255 / 0.18) 54%,
+      transparent 66%
+    );
+    content: "";
+    pointer-events: none;
+  }
+
+  .veonis-soft-service {
+    border: 1px solid rgb(230 226 220 / 0.78);
+    background: linear-gradient(145deg, rgb(255 255 255 / 0.92), rgb(247 247 246 / 0.78));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.9),
+      0 18px 46px rgb(92 28 39 / 0.08);
+    backdrop-filter: blur(14px);
+  }
+
   .display-title {
     font-family: var(--font-veonis-heading);
     font-weight: 500;

@@ -20,6 +20,7 @@ import {
 
 import { Container } from "@/components/veonis/container";
 import { SectionHeader } from "@/components/veonis/section-header";
+import { cn } from "@/lib/utils";
 import type { CardContent, Locale } from "@/lib/veonis-content";
 import { getLocalizedPath, services } from "@/lib/veonis-content";
 
@@ -30,6 +31,24 @@ const connectedTopics = [
   { icon: Calculator, label: "Steuern" },
   { icon: ChartNoAxesCombined, label: "Anlagen" },
   { icon: BriefcaseBusiness, label: "Unternehmen" },
+];
+
+const serviceCardAccents = [
+  {
+    strip: "bg-[#b85a61]",
+    iconWrap: "border-[#efd0d4] bg-[#fff4f5] text-[#b85a61]",
+    number: "text-[#b85a61]",
+  },
+  {
+    strip: "bg-[#7a2f4d]",
+    iconWrap: "border-[#ead4dd] bg-[#fbf3f7] text-[#7a2f4d]",
+    number: "text-[#7a2f4d]",
+  },
+  {
+    strip: "bg-[#8f2535]",
+    iconWrap: "border-[#ead1d5] bg-[#fff7f8] text-[#8f2535]",
+    number: "text-[#8f2535]",
+  },
 ];
 
 export function HomeTrustStrip() {
@@ -138,7 +157,7 @@ export function ServicesEditorialSection({ locale }: { locale: Locale }) {
               <div className="absolute inset-x-0 top-0 h-px bg-white/80" />
             </div>
             <div className="grid gap-6 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
-              <div className="flex size-11 items-center justify-center border border-[#ead9dc] bg-[#f8ecee] text-[#c63d4d] shadow-[inset_0_1px_0_white]">
+              <div className="veonis-soft-service flex size-11 items-center justify-center border-[#ead9dc] text-[#c63d4d]">
                 <ShieldCheck className="size-5" />
               </div>
               <div>
@@ -177,15 +196,19 @@ export function ServicesEditorialSection({ locale }: { locale: Locale }) {
           {services.slice(2, 5).map((service, index) => {
             const icons = [Calculator, ChartNoAxesCombined, Sparkles];
             const Icon = icons[index];
+            const accent = serviceCardAccents[index] ?? serviceCardAccents[0];
 
             return (
               <article
-                className="group flex min-h-72 flex-col justify-between rounded-lg border border-[#dedbd6] bg-[#f7f7f6] p-6 transition hover:-translate-y-1 hover:bg-white hover:shadow-[0_18px_50px_rgba(17,24,39,0.08)] lg:col-span-4"
+                className="veonis-soft-service group relative flex min-h-72 flex-col justify-between overflow-hidden rounded-lg p-6 transition hover:-translate-y-1 hover:bg-white hover:shadow-[0_18px_50px_rgba(92,28,39,0.1)] lg:col-span-4"
                 key={service.title}
               >
+                <span className={cn("absolute inset-x-0 top-0 h-1", accent.strip)} />
                 <div className="flex items-start justify-between">
-                  <Icon className="size-6 text-[#c63d4d]" />
-                  <span className="text-xs font-semibold text-[#a5a7aa]">0{index + 3}</span>
+                  <span className={cn("flex size-10 items-center justify-center rounded-xl border", accent.iconWrap)}>
+                    <Icon className="size-5" />
+                  </span>
+                  <span className={cn("text-xs font-semibold", accent.number)}>0{index + 3}</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-[#111827]">{service.title}</h3>

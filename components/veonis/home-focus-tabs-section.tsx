@@ -23,6 +23,11 @@ const focusTabs = [
     alt: "Persönliche Beratung mit Kunden in einem Meetingraum",
     icon: CircleUserRound,
     points: ["Vorsorge und Absicherung", "Hypothek und Wohneigentum", "Steuern und Anlagen"],
+    accent: {
+      text: "text-[#c63d4d]",
+      soft: "bg-[#c63d4d]/10",
+      ring: "ring-[#c63d4d]/18",
+    },
   },
   {
     label: "Unternehmen",
@@ -33,6 +38,11 @@ const focusTabs = [
     alt: "Digitale Zusammenarbeit mit Smartphones und Unterlagen auf einem Beratungstisch",
     icon: Building2,
     points: ["Betriebliche Vorsorge", "Firmenversicherungen", "Inhaberabsicherung"],
+    accent: {
+      text: "text-[#8f2535]",
+      soft: "bg-[#8f2535]/10",
+      ring: "ring-[#8f2535]/18",
+    },
   },
   {
     label: "Selbstständige",
@@ -43,6 +53,26 @@ const focusTabs = [
     alt: "Geschäftliche Beratungssituation mit mehreren Personen",
     icon: BriefcaseBusiness,
     points: ["Liquidität und Risiko", "Pensionskasse und Säule 3a", "Nachfolge und Familie"],
+    accent: {
+      text: "text-[#7a2f4d]",
+      soft: "bg-[#7a2f4d]/10",
+      ring: "ring-[#7a2f4d]/18",
+    },
+  },
+];
+
+const pointAccents = [
+  {
+    icon: "text-[#c63d4d]",
+    chip: "border-[#f0cbd0] bg-white/72 text-[#3f2b30]",
+  },
+  {
+    icon: "text-[#8f2535]",
+    chip: "border-[#ead1d5] bg-[#fff8f8]/72 text-[#3f2b30]",
+  },
+  {
+    icon: "text-[#7a2f4d]",
+    chip: "border-[#ead4dd] bg-[#fbf6f8]/72 text-[#3f2b30]",
   },
 ];
 
@@ -77,7 +107,7 @@ export function HomeFocusTabsSection() {
                     className={cn(
                       "group flex w-full items-center justify-between rounded-2xl border px-4 py-4 text-left transition",
                       selected
-                        ? "border-white bg-white text-[#c63d4d] shadow-[0_20px_60px_rgba(17,24,39,0.18)]"
+                        ? "border-white bg-white text-[#2b1b1e] shadow-[0_20px_60px_rgba(17,24,39,0.18)]"
                         : "border-white/22 bg-white/9 text-white hover:bg-white/14"
                     )}
                     id={`${baseId}-tab-${index}`}
@@ -89,28 +119,32 @@ export function HomeFocusTabsSection() {
                     <span className="flex items-center gap-3">
                       <span
                         className={cn(
-                          "flex size-10 shrink-0 items-center justify-center rounded-xl",
-                          selected ? "bg-[#c63d4d]/10" : "bg-white/12"
+                          "flex size-10 shrink-0 items-center justify-center rounded-xl ring-1",
+                          selected
+                            ? `${tab.accent.soft} ${tab.accent.text} ${tab.accent.ring}`
+                            : "bg-white/12 text-white ring-white/12"
                         )}
                       >
                         <Icon className="size-5" />
                       </span>
                       <span>
-                        <span className="block text-base font-semibold">{tab.label}</span>
+                        <span className={cn("block text-base font-semibold", selected ? tab.accent.text : "")}>
+                          {tab.label}
+                        </span>
                         <span className={cn("mt-1 block text-sm", selected ? "text-[#7d2430]" : "text-white/68")}>
                           {tab.eyebrow}
                         </span>
                       </span>
                     </span>
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className={cn("size-4 transition-transform group-hover:translate-x-1", selected ? tab.accent.text : "")} />
                   </button>
                 );
               })}
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/18 bg-white/14 p-3 shadow-[0_28px_90px_rgba(17,24,39,0.2)]">
-            <div className="relative min-h-[460px] overflow-hidden rounded-[1.65rem] bg-[#2b1b1e]">
+          <div className="flex rounded-[2rem] border border-white/18 bg-white/14 p-3 shadow-[0_28px_90px_rgba(17,24,39,0.2)]">
+            <div className="relative min-h-[460px] flex-1 overflow-hidden rounded-[1.65rem] bg-[#2b1b1e]">
               <Image
                 alt={current.alt}
                 className="object-cover opacity-88"
@@ -123,20 +157,32 @@ export function HomeFocusTabsSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#341b20]/66 via-[#3c1b22]/18 to-[#c63d4d]/24" />
               <div
                 aria-labelledby={`${baseId}-tab-${activeIndex}`}
-                className="absolute inset-x-4 bottom-4 rounded-3xl border border-white/18 bg-white/88 p-5 text-[#111827] shadow-[0_20px_60px_rgba(17,24,39,0.2)] backdrop-blur-xl sm:inset-x-6 sm:bottom-6 sm:p-6"
+                className="veonis-focus-glass absolute inset-x-4 bottom-4 rounded-3xl p-5 text-[#111827] sm:inset-x-6 sm:bottom-6 sm:p-6"
                 id={`${baseId}-panel`}
                 role="tabpanel"
               >
-                <p className="text-xs font-semibold uppercase tracking-normal text-[#c63d4d]">{current.eyebrow}</p>
+                <p className={cn("text-xs font-semibold uppercase tracking-normal", current.accent.text)}>
+                  {current.eyebrow}
+                </p>
                 <h3 className="display-title mt-2 text-2xl text-[#111827] sm:text-3xl">{current.title}</h3>
                 <p className="mt-4 max-w-2xl leading-7 text-[#5f6368]">{current.text}</p>
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  {current.points.map((point) => (
-                    <div className="flex items-start gap-2 rounded-2xl bg-[#f7f7f6] p-3 text-sm text-[#4b5563]" key={point}>
-                      <BadgeCheck className="mt-0.5 size-4 shrink-0 text-[#c63d4d]" />
-                      <span>{point}</span>
-                    </div>
-                  ))}
+                  {current.points.map((point, index) => {
+                    const pointAccent = pointAccents[index] ?? pointAccents[0];
+
+                    return (
+                      <div
+                        className={cn(
+                          "flex items-start gap-2 rounded-2xl border p-3 text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md",
+                          pointAccent.chip
+                        )}
+                        key={point}
+                      >
+                        <BadgeCheck className={cn("mt-0.5 size-4 shrink-0", pointAccent.icon)} />
+                        <span>{point}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
