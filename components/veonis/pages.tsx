@@ -645,16 +645,16 @@ function V3LuxuryCommandSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr]">
           <article className="veonis-gloss-dark rounded-lg p-6 text-white sm:p-8">
-            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">Luxury Compact</p>
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">Gesamtbild</p>
             <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
               {locale === "de"
-                ? "Die Tiefe von Version 1, verdichtet auf die Entscheidungen mit Wirkung."
-                : "The depth of Version 1, condensed to decisions that matter."}
+                ? "Finanzielle Klarheit beginnt mit dem Gesamtbild."
+                : "Financial clarity starts with the overall picture."}
             </h2>
             <p className="mt-5 max-w-2xl leading-7 text-white/66">
               {locale === "de"
-                ? "Version 3 nutzt Premium-Kontrast, Glasflächen und kurze Informationscluster, damit mobile Nutzer schneller verstehen, warum Veonis anders berät."
-                : "Version 3 uses premium contrast, glass panels and short information clusters so mobile users understand faster why Veonis advises differently."}
+                ? "Veonis ordnet Versicherungen, Vorsorge, Hypotheken, Steuern und Anlagen gemeinsam, damit Prioritäten und nächste Schritte klar werden."
+                : "Veonis brings insurance, pension planning, mortgages, taxes and investments together so priorities and next steps become clear."}
             </p>
           </article>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -682,12 +682,12 @@ function V3SegmentedSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="mb-8 max-w-3xl">
           <p className="text-xs font-semibold uppercase text-[#ef7d8b]">
-            {locale === "de" ? "Segmentierte Beratung" : "Segmented advisory"}
+            {locale === "de" ? "Beratung im Überblick" : "Advisory overview"}
           </p>
           <h2 className="display-title mt-3 text-3xl leading-tight text-white sm:text-5xl">
             {locale === "de"
-              ? "Tabs sparen Länge, ohne Beratungstiefe zu verlieren."
-              : "Tabs save length without losing advisory depth."}
+              ? "Ihre wichtigsten Finanzthemen klar geordnet."
+              : "Your most important financial topics clearly organized."}
           </h2>
         </div>
         <HomeV3SegmentedPanel locale={locale} />
@@ -717,13 +717,13 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader
-            eyebrow={locale === "de" ? "Horizontal Snap" : "Horizontal snap"}
+            eyebrow={locale === "de" ? "Zusammenarbeit" : "Collaboration"}
             intro={
               locale === "de"
-                ? "Lange Prozessinhalte werden zu kompakten Karten, die auf Mobile horizontal gleiten."
-                : "Long process content becomes compact cards that slide horizontally on mobile."
+                ? "Vom ersten Gespräch bis zur laufenden Betreuung bleibt der Ablauf verständlich, persönlich und strukturiert."
+                : "From the first conversation to ongoing support, the process remains understandable, personal and structured."
             }
-            title={locale === "de" ? "Ein Ablauf, der nicht nach langer Seite aussieht." : "A flow that does not feel like a long page."}
+            title={locale === "de" ? "So entsteht eine klare Empfehlung." : "How a clear recommendation takes shape."}
           />
         </div>
         <div className="mt-8 flex snap-x gap-4 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0">

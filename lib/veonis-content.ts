@@ -107,12 +107,12 @@ export const homepageVersions: Record<Locale, { label: string; value: "v1" | "v2
   de: [
     { label: "Homepage Version 1", value: "v1", href: "/de", note: "Ausführliche Premium-Homepage" },
     { label: "Homepage Version 2", value: "v2", href: "/de/home-v2", note: "Kompaktere Editorial-Version" },
-    { label: "Homepage Version 3", value: "v3", href: "/de/home-v3", note: "Luxury Compact mit Tabs und Snap Cards" },
+    { label: "Homepage Version 3", value: "v3", href: "/de/home-v3", note: "Kompakte Beratungsübersicht mit klaren Entscheidungswegen." },
   ],
   en: [
     { label: "Homepage Version 1", value: "v1", href: "/en", note: "Detailed premium homepage" },
     { label: "Homepage Version 2", value: "v2", href: "/en/home-v2", note: "More compact editorial version" },
-    { label: "Homepage Version 3", value: "v3", href: "/en/home-v3", note: "Luxury compact with tabs and snap cards" },
+    { label: "Homepage Version 3", value: "v3", href: "/en/home-v3", note: "Compact advisory overview with clear decision paths." },
   ],
 };
 
@@ -498,14 +498,14 @@ const homeV2: PageContent = {
 
 const homeV3: PageContent = {
   ...home,
-  seoTitle: "Veonis Homepage Version 3 | Luxury Swiss Finance",
+  seoTitle: "Veonis Homepage Version 3 | Finanzberatung Schweiz",
   metaDescription:
-    "Luxury compact homepage version for Veonis with graphite-red premium styling, segmented advisory content, compact insights and Swiss finance positioning.",
-  eyebrow: "Homepage Version 3",
-  title: "Swiss Finance Advisory mit Ruhe, Präzision und Premium-Übersicht.",
+    "Kompakte Beratungsübersicht von Veonis für Versicherungen, Vorsorge, Hypotheken, Steuern, Anlagen und finanzielle Planung in der Schweiz.",
+  eyebrow: "Veonis Schweiz",
+  title: "Ein Ansprechpartner für Versicherungen, Vorsorge und Finanzen.",
   description: [
-    "Version 3 komprimiert die visuelle Tiefe der ersten Homepage in eine luxuriöse, mobile-freundliche Entscheidungsstrecke.",
-    "Graphit, Veonis-Rot, Glasflächen und interaktive Tabs bündeln Services, Zielgruppen und Zusammenarbeit ohne lange Scrollstrecken.",
+    "Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen hängen stärker zusammen, als viele denken. Eine Entscheidung in einem Bereich kann Auswirkungen auf Ihre gesamte finanzielle Situation haben.",
+    "Veonis hilft Ihnen, den Überblick zu behalten. Wir prüfen Ihre aktuelle Situation, zeigen Ihnen verständlich Ihre Möglichkeiten und begleiten Sie bei Entscheidungen, die langfristig zu Ihnen passen.",
   ],
 };
 
@@ -910,14 +910,14 @@ const englishBase: Record<PageKey, PageContent> = {
   },
   "home-v3": {
     ...homeV3,
-    seoTitle: "Veonis Homepage Version 3 | Luxury Swiss Finance",
+    seoTitle: "Veonis Homepage Version 3 | Financial advice Switzerland",
     metaDescription:
-      "Luxury compact homepage version for Veonis with graphite-red premium styling, segmented advisory content, compact insights and Swiss finance positioning.",
-    eyebrow: "Homepage Version 3",
-    title: "Swiss finance advisory with calm, precision and premium overview.",
+      "Compact Veonis advisory overview for insurance, pension planning, mortgages, taxes, investments and financial planning in Switzerland.",
+    eyebrow: "Veonis Switzerland",
+    title: "One contact for insurance, pension planning and finances.",
     description: [
-      "Version 3 compresses the visual richness of the first homepage into a luxurious, mobile-friendly decision path.",
-      "Graphite, Veonis red, glass panels and interactive tabs group services, audiences and collaboration without long scroll depth.",
+      "Insurance, pension planning, taxes, mortgages and investments are more connected than many people realize. One decision in one area can affect your entire financial situation.",
+      "Veonis helps you keep the overview. We review your current situation, explain your options clearly and support decisions that fit you long term.",
     ],
   },
   blog: {

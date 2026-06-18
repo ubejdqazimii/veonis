@@ -10,22 +10,22 @@ const panelContent = {
   de: [
     {
       label: "Services",
-      title: "Beratungsthemen als kompaktes Entscheidungsboard.",
-      text: "Versicherungen, Vorsorge, Hypotheken, Steuern und Anlagen werden nicht nacheinander verkauft, sondern in einer priorisierten Gesamtlogik eingeordnet.",
+      title: "Services, die Ihre Finanzthemen verbinden.",
+      text: "Versicherungen, Vorsorge, Hypotheken, Steuern und Anlagen werden gemeinsam betrachtet, damit Empfehlungen zur gesamten Situation passen.",
       icon: Layers3,
       points: ["Versicherungen & Vorsorge", "Hypotheken & Steuern", "Anlagen & Vermögensaufbau"],
     },
     {
       label: "Ablauf",
       title: "Drei Schritte bis zur klaren Empfehlung.",
-      text: "Kennenlernen, 360° Check und persönlicher Umsetzungsplan. So bleibt die Beratung hochwertig, aber die Seite kurz und handlungsorientiert.",
+      text: "Kennenlernen, Veonis 360° Analyse und persönlicher Umsetzungsplan. So bleibt der Weg nachvollziehbar und gut begleitet.",
       icon: Handshake,
       points: ["Situation verstehen", "Wechselwirkungen prüfen", "Nächste Schritte begleiten"],
     },
     {
       label: "Zielgruppen",
-      title: "Privat, Firma und Selbstständigkeit in einem System.",
-      text: "Version 3 spart Länge durch einen einzigen Segmentbereich für die wichtigsten Kundensituationen.",
+      title: "Privatkunden, Unternehmen und Selbstständige im Blick.",
+      text: "Veonis unterstützt Menschen und Firmen, die Finanzthemen nicht isoliert, sondern als verbundenes Gesamtbild verstehen möchten.",
       icon: Building2,
       points: ["Privatkunden", "Unternehmen", "Selbstständige"],
     },
@@ -33,22 +33,22 @@ const panelContent = {
   en: [
     {
       label: "Services",
-      title: "Advisory topics as a compact decision board.",
-      text: "Insurance, pensions, mortgages, taxes and investments are not sold in sequence, but ordered inside one prioritized financial logic.",
+      title: "Services that connect your financial topics.",
+      text: "Insurance, pension planning, mortgages, taxes and investments are reviewed together so recommendations fit the full situation.",
       icon: Layers3,
       points: ["Insurance & pensions", "Mortgages & taxes", "Investments & wealth building"],
     },
     {
       label: "Flow",
       title: "Three steps to a clear recommendation.",
-      text: "First conversation, 360° check and personal action plan. The advisory experience stays premium while the page remains compact.",
+      text: "First conversation, Veonis 360° analysis and a personal action plan. The path remains clear, understandable and well supported.",
       icon: Handshake,
       points: ["Understand the situation", "Review connections", "Guide next steps"],
     },
     {
       label: "Audiences",
-      title: "Private, business and self-employment in one system.",
-      text: "Version 3 saves vertical space by grouping the core client situations into one segmented area.",
+      title: "Private clients, companies and self-employed people in view.",
+      text: "Veonis supports people and businesses who want to understand financial topics as a connected overall picture.",
       icon: Building2,
       points: ["Private clients", "Companies", "Self-employed"],
     },
@@ -64,7 +64,7 @@ export function HomeV3SegmentedPanel({ locale }: { locale: Locale }) {
   return (
     <div className="grid gap-5 lg:grid-cols-[0.7fr_1.3fr]">
       <div className="rounded-lg border border-white/12 bg-white/8 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur">
-        <div aria-label="Homepage Version 3 segments" className="grid gap-2" role="tablist">
+        <div aria-label={locale === "de" ? "Beratungsthemen im Überblick" : "Advisory topics overview"} className="grid gap-2" role="tablist">
           {tabs.map((tab, index) => {
             const TabIcon = tab.icon;
             const selected = active === index;
