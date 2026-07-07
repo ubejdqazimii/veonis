@@ -235,8 +235,8 @@ function V2HeroSection({
 }) {
   const proofPoints =
     locale === "de"
-      ? ["360° Finanzcheck", "Ein Ansprechpartner", "Kostenloses Erstgespräch"]
-      : ["360° financial check", "One point of contact", "Free initial conversation"];
+      ? ["Ganzheitliche Analyse", "Unabhängiger Blick", "Persönliche Begleitung", "Klare Empfehlungen"]
+      : ["Holistic analysis", "Independent perspective", "Personal guidance", "Clear recommendations"];
 
   return (
     <section className="relative isolate overflow-hidden bg-[#24191c] text-white">
@@ -281,7 +281,7 @@ function V2HeroSection({
         </div>
         <div className="rounded-lg border border-white/14 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_26px_70px_rgba(0,0,0,0.16)] backdrop-blur-md sm:p-5">
           <p className="text-xs font-semibold uppercase text-[#ef7d8b]">
-            {locale === "de" ? "Kompakte Version" : "Compact version"}
+            {locale === "de" ? "Veonis Prinzip" : "Veonis principle"}
           </p>
           <div className="mt-4 grid gap-2">
             {proofPoints.map((point) => (
@@ -1108,51 +1108,78 @@ function V3InsightsSection({ locale, posts }: { locale: Locale; posts: BlogPost[
 }
 
 function V2OverviewSection({ locale }: { locale: Locale }) {
-  const section = getPage(locale, "home").sections[0];
-  const analysis = getPage(locale, "home").sections[1];
-  const metrics =
+  const overview =
+    locale === "de"
+      ? {
+          eyebrow: "Gesamtbild",
+          title: "Finanzielle Klarheit beginnt nicht bei einem Produkt, sondern beim Gesamtbild.",
+          paragraphs: [
+            "Viele Menschen haben einzelne Lösungen an unterschiedlichen Orten: eine Versicherung hier, eine Vorsorge dort, eine Hypothek bei einer Bank, Anlagen an anderer Stelle.",
+            "Doch finanzielle Entscheidungen wirken selten isoliert. Vorsorge beeinflusst Steuern. Eine Hypothek beeinflusst Liquidität. Versicherungen beeinflussen Sicherheit und Planungsspielraum.",
+          ],
+          analysis:
+            "Die Veonis 360° Analyse zeigt, was passt, was fehlt und was zuerst angegangen werden sollte.",
+        }
+      : {
+          eyebrow: "Overall picture",
+          title: "Financial clarity does not start with a product, but with the full picture.",
+          paragraphs: [
+            "Many people have individual solutions in different places: one insurance policy here, pension planning there, a mortgage at one bank and investments somewhere else.",
+            "Financial decisions rarely work in isolation. Pension planning affects taxes. A mortgage affects liquidity. Insurance affects security and planning room.",
+          ],
+          analysis:
+            "The Veonis 360° analysis shows what fits, what is missing and what should be addressed first.",
+        };
+  const cards =
     locale === "de"
       ? [
-          ["01", "Gesamtbild statt Einzelentscheid"],
-          ["02", "Prioritäten vor Produkten"],
-          ["03", "Beratung mit Umsetzungsplan"],
+          ["01", "Gesamtbild statt Einzelentscheid", "Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen werden gemeinsam betrachtet."],
+          ["02", "Prioritäten vor Produkten", "Zuerst klären wir, was wirklich wichtig ist - danach geht es um mögliche Lösungen."],
+          ["03", "Beratung mit Umsetzungsplan", "Sie erhalten verständliche Empfehlungen und konkrete nächste Schritte."],
         ]
       : [
-          ["01", "Overall picture before isolated decisions"],
-          ["02", "Priorities before products"],
-          ["03", "Advice with an action plan"],
+          ["01", "Overall picture before isolated decisions", "Insurance, pension planning, taxes, mortgages and investments are reviewed together."],
+          ["02", "Priorities before products", "First we clarify what truly matters - then we look at possible solutions."],
+          ["03", "Advice with an action plan", "You receive understandable recommendations and clear next steps."],
         ];
 
   return (
     <section className="bg-white py-14 sm:py-20">
       <Container>
         <div className="grid gap-5 lg:grid-cols-12">
-          <article className="veonis-gloss-dark rounded-lg p-6 text-white lg:col-span-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{section.eyebrow}</p>
-            <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">{section.title}</h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">{section.paragraphs?.[0]}</p>
-            <div className="mt-6 grid gap-2">
-              {metrics.map(([number, label]) => (
-                <div className="flex items-center gap-3 rounded-lg border border-white/12 bg-white/8 p-3 text-sm font-semibold text-white/80" key={label}>
-                  <span className="text-[#ef7d8b]">{number}</span>
-                  {label}
-                </div>
+          <article className="veonis-gloss-dark rounded-lg p-6 text-white sm:p-8 lg:col-span-5">
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{overview.eyebrow}</p>
+            <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">{overview.title}</h2>
+            <div className="mt-5 grid gap-3 text-base leading-7 text-white/68">
+              {overview.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </article>
 
-          <article className="relative min-h-[360px] overflow-hidden rounded-lg bg-[#24191c] lg:col-span-6">
+          <article className="relative min-h-[640px] overflow-hidden sm:min-h-[560px] lg:min-h-[420px] rounded-lg bg-[#24191c] lg:col-span-7">
             <Image
-              alt="Digitale Finanzübersicht in einer Beratung"
+              alt={locale === "de" ? "Digitale Finanzübersicht in einer Beratung" : "Digital financial overview in an advisory meeting"}
               className="object-cover object-[45%_center]"
               fill
-              sizes="(min-width: 1024px) 48vw, 100vw"
+              sizes="(min-width: 1024px) 58vw, 100vw"
               src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,25,28,0.05),rgba(36,25,28,0.78))]" />
-            <div className="absolute bottom-5 left-5 right-5 rounded-lg border border-white/18 bg-white/14 p-5 text-white backdrop-blur-md">
-              <p className="text-xs font-semibold uppercase text-[#ef7d8b]">360° Analyse</p>
-              <p className="mt-2 text-sm leading-6 text-white/76">{analysis.intro}</p>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,25,28,0.05),rgba(36,25,28,0.82))]" />
+            <div className="absolute bottom-5 left-5 right-5 grid gap-3 rounded-lg border border-white/18 bg-white/14 p-4 text-white backdrop-blur-md sm:p-5 lg:grid-cols-3">
+              {cards.map(([number, title, text]) => (
+                <div className="rounded-lg border border-white/12 bg-white/10 p-4" key={title}>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#ef7d8b]">
+                    <Check className="size-4" />
+                    {number}
+                  </div>
+                  <h3 className="mt-3 text-sm font-semibold leading-5 text-white">{title}</h3>
+                  <p className="mt-2 text-xs leading-5 text-white/70">{text}</p>
+                </div>
+              ))}
+              <p className="rounded-lg border border-white/12 bg-[#c63d4d]/76 p-4 text-sm font-semibold leading-6 text-white lg:col-span-3">
+                {overview.analysis}
+              </p>
             </div>
           </article>
         </div>
@@ -1162,32 +1189,82 @@ function V2OverviewSection({ locale }: { locale: Locale }) {
 }
 
 function V2ServicesSection({ locale }: { locale: Locale }) {
-  const highlights = services.slice(0, 3);
+  const highlights =
+    locale === "de"
+      ? [
+          {
+            title: "Versicherungen & Vorsorge",
+            text: "Veonis prüft, ob Absicherung, Vorsorge und Lebensphase zusammenpassen - verständlich, unabhängig und mit Blick auf Ihre Prioritäten.",
+            questions: ["Bin ich richtig abgesichert?", "Wie wirkt sich Vorsorge auf Steuern aus?"],
+          },
+          {
+            title: "Hypotheken & Immobilien",
+            text: "Wir ordnen Finanzierung, Tragbarkeit, Zinsrisiken und Liquidität ein, damit Wohneigentum zur gesamten Planung passt.",
+            questions: ["Welche Hypothek passt?", "Was bleibt langfristig finanziell tragbar?"],
+          },
+          {
+            title: "Steuern, Anlagen & Finanzplanung",
+            text: "Steuerfragen, Anlagen und Liquidität werden nicht isoliert betrachtet, sondern als Teil einer klaren Finanzstruktur.",
+            questions: ["Wo lassen sich Steuern optimieren?", "Wie soll freies Kapital eingesetzt werden?"],
+          },
+        ]
+      : [
+          {
+            title: "Insurance & pension planning",
+            text: "Veonis reviews whether protection, pension planning and life stage fit together - clearly, independently and with your priorities in view.",
+            questions: ["Am I properly protected?", "How does pension planning affect taxes?"],
+          },
+          {
+            title: "Mortgages & real estate",
+            text: "We put financing, affordability, interest-rate risk and liquidity into context so home ownership fits the full plan.",
+            questions: ["Which mortgage fits?", "What remains sustainable long term?"],
+          },
+          {
+            title: "Taxes, investments & planning",
+            text: "Tax questions, investments and liquidity are not reviewed in isolation, but as part of a clear financial structure.",
+            questions: ["Where can taxes be optimized?", "How should free capital be used?"],
+          },
+        ];
+  const icons = [ShieldCheck, House, ChartNoAxesCombined];
 
   return (
     <section className="bg-[#f6f2ef] py-14 sm:py-20">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.66fr_1.34fr] lg:items-start">
           <SectionHeader
             eyebrow="Services"
             intro={
               locale === "de"
-                ? "Version 2 führt schneller: die wichtigsten Beratungsthemen werden als Entscheidungsfelder gezeigt."
-                : "Version 2 moves faster: the most important advisory topics are shown as decision areas."
+                ? "Je nach Situation starten wir dort, wo der grösste Handlungsbedarf besteht. Entscheidend bleibt immer der Zusammenhang zwischen allen Finanzthemen."
+                : "Depending on your situation, we start where the greatest need for action exists. The connection between all financial topics remains decisive."
             }
             title={locale === "de" ? "Drei Einstiege. Ein Gesamtbild." : "Three entry points. One overall picture."}
           />
           <div className="grid gap-4 lg:grid-cols-3">
-            {highlights.map((service, index) => (
-              <article className="rounded-lg border border-white/70 bg-white/78 p-5 shadow-[0_18px_50px_rgba(68,24,32,0.08)] backdrop-blur" key={service.title}>
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-xs font-semibold text-[#c63d4d]">{String(index + 1).padStart(2, "0")}</span>
-                  <BadgeCheck className="size-5 text-[#c63d4d]" />
-                </div>
-                <h3 className="mt-6 text-lg font-semibold text-[#111827]">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#5f6368]">{service.text}</p>
-              </article>
-            ))}
+            {highlights.map((service, index) => {
+              const Icon = icons[index] ?? BadgeCheck;
+
+              return (
+                <article className="rounded-lg border border-white/70 bg-white/82 p-5 shadow-[0_18px_50px_rgba(68,24,32,0.08)] backdrop-blur" key={service.title}>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="flex size-11 items-center justify-center rounded-lg bg-[#c63d4d]/10 text-[#c63d4d]">
+                      <Icon className="size-5" />
+                    </span>
+                    <span className="text-xs font-semibold text-[#c63d4d]">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h3 className="mt-6 text-lg font-semibold leading-tight text-[#111827]">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#5f6368]">{service.text}</p>
+                  <div className="mt-4 grid gap-2">
+                    {service.questions.map((question) => (
+                      <div className="flex items-start gap-2 rounded-lg bg-[#f6f2ef] px-3 py-2 text-xs font-semibold leading-5 text-[#5f6368]" key={question}>
+                        <Check className="mt-0.5 size-3.5 shrink-0 text-[#c63d4d]" />
+                        {question}
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </Container>
@@ -1199,14 +1276,14 @@ function V2CollaborationSection({ locale }: { locale: Locale }) {
   const steps =
     locale === "de"
       ? [
-          ["Kennenlernen", "Ihre Fragen, Unterlagen und Ziele werden sauber eingeordnet."],
-          ["360° Check", "Wir prüfen Zusammenhänge, Prioritäten und mögliche Lücken."],
-          ["Plan", "Sie erhalten klare nächste Schritte mit persönlicher Begleitung."],
+          ["Kennenlernen", "Wir sprechen über Ihre Situation, Ihre Fragen und die Unterlagen, die für den Überblick wichtig sind."],
+          ["360° Check", "Wir prüfen Zusammenhänge, Prioritäten, mögliche Lücken und bestehende Verträge."],
+          ["Empfehlung & Begleitung", "Sie erhalten klare Empfehlungen und werden bei den sinnvollen nächsten Schritten begleitet."],
         ]
       : [
-          ["First conversation", "Your questions, documents and goals are put into context."],
-          ["360° check", "We review connections, priorities and potential gaps."],
-          ["Plan", "You receive clear next steps with personal guidance."],
+          ["First conversation", "We talk about your situation, your questions and the documents needed for a clear overview."],
+          ["360° check", "We review connections, priorities, potential gaps and existing contracts."],
+          ["Recommendation & guidance", "You receive clear recommendations and guidance through the next sensible steps."],
         ];
 
   return (
@@ -1214,14 +1291,14 @@ function V2CollaborationSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="veonis-gloss-red grid overflow-hidden rounded-lg text-white lg:grid-cols-[0.76fr_1.24fr]">
           <div className="p-6 sm:p-8 lg:p-10">
-            <p className="text-xs font-semibold uppercase text-white/70">Zusammenarbeit</p>
+            <p className="text-xs font-semibold uppercase text-white/70">{locale === "de" ? "Zusammenarbeit" : "Collaboration"}</p>
             <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
-              {locale === "de" ? "Premium im Gefühl. Kurz im Ablauf." : "Premium in feel. Short in flow."}
+              {locale === "de" ? "Klarer Ablauf. Persönliche Begleitung." : "Clear process. Personal guidance."}
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-white/72">
               {locale === "de"
-                ? "Die stärkere v2 nutzt den roten Glas-Look aus Version 1, reduziert den Prozess aber auf drei klare Entscheidungsmomente."
-                : "The stronger v2 uses the red glass feel from Version 1, but reduces the process to three clear decision moments."}
+                ? "Bei Veonis wissen Sie von Anfang an, was geprüft wird, warum es relevant ist und welche Entscheidung als Nächstes sinnvoll ist."
+                : "With Veonis, you know from the beginning what is being reviewed, why it matters and which decision makes sense next."}
             </p>
           </div>
           <div className="grid border-t border-white/14 lg:grid-cols-3 lg:border-l lg:border-t-0">
@@ -1230,7 +1307,7 @@ function V2CollaborationSection({ locale }: { locale: Locale }) {
               const Icon = icons[index] ?? BadgeCheck;
 
               return (
-                <article className="min-h-44 border-b border-white/14 p-5 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 sm:p-6" key={title}>
+                <article className="min-h-44 border-b border-white/14 p-5 last:border-b-0 sm:p-6 lg:border-b-0 lg:border-r lg:last:border-r-0" key={title}>
                   <div className="flex items-center justify-between gap-4">
                     <span className="flex size-11 items-center justify-center rounded-lg border border-white/18 bg-white/12 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
                       <Icon className="size-5" />
@@ -1526,10 +1603,10 @@ function V2LatestBlogPostsSection({ locale, posts }: { locale: Locale; posts: Bl
             eyebrow={locale === "de" ? "Aktuelle Impulse" : "Latest insights"}
             intro={
               locale === "de"
-                ? "Ein starker Beitrag plus vier schnelle Einstiege. Mehr Orientierung, weniger Scrollstrecke."
-                : "One strong feature plus four quick entries. More orientation, less scrolling."
+                ? "Im Veonis Blog erklären wir Finanzthemen so, dass Sie Entscheidungen besser einordnen und im Gespräch die richtigen Fragen stellen können."
+                : "In the Veonis blog, we explain financial topics so you can better assess decisions and ask the right questions in conversation."
             }
-            title={locale === "de" ? "Finanzwissen als Entscheidungshelfer." : "Financial insight for better decisions."}
+            title={locale === "de" ? "Finanzwissen, das Entscheidungen einfacher macht." : "Financial knowledge that makes decisions easier."}
           />
           <Link
             className="inline-flex items-center text-sm font-semibold text-[#c63d4d]"

@@ -485,14 +485,13 @@ const home: PageContent = {
 
 const homeV2: PageContent = {
   ...home,
-  seoTitle: "Veonis Homepage Version 2 | Finanzberatung Schweiz",
+  seoTitle: "Veonis | Versicherungen, Vorsorge und Finanzen",
   metaDescription:
-    "Kompakte, conversion-fokussierte Homepage-Version von Veonis mit Premium-Auftritt, 360° Finanzcheck, Beratungsablauf und Blog-Einstieg.",
-  eyebrow: "Homepage Version 2",
-  title: "Finanzberatung, die schneller zur richtigen Entscheidung führt.",
+    "Veonis bringt Ordnung in Versicherungen, Vorsorge, Hypotheken, Steuern, Anlagen und finanzielle Planung in der Schweiz.",
+  eyebrow: "Veonis Schweiz",
+  title: "Ein Ansprechpartner für Versicherungen, Vorsorge und Finanzen.",
   description: [
-    "Version 2 verbindet die stärksten Premium-Elemente aus der ersten Homepage mit einer kürzeren, klareren Entscheidungsstrecke.",
-    "Der Fokus liegt auf schnellem Verständnis, 360° Einordnung und einem einfachen nächsten Schritt: dem persönlichen Erstgespräch.",
+    "Veonis bringt Ordnung in Ihre finanzielle Situation. Wir prüfen Versicherungen, Vorsorge, Hypotheken, Steuern und Anlagen im Zusammenhang - damit Sie klar erkennen, was passt, wo Lücken bestehen und welche nächsten Schritte sinnvoll sind.",
   ],
 };
 
@@ -897,14 +896,13 @@ const englishBase: Record<PageKey, PageContent> = {
   },
   "home-v2": {
     ...homeV2,
-    seoTitle: "Veonis Homepage Version 2 | Financial advice Switzerland",
+    seoTitle: "Veonis | Insurance, pension planning and finances",
     metaDescription:
-      "A compact, conversion-focused Veonis homepage version with premium visuals, 360° financial check, advisory flow and blog entry points.",
-    eyebrow: "Homepage Version 2",
-    title: "Financial advice that gets you to the right decision faster.",
+      "Veonis brings structure to insurance, pension planning, mortgages, taxes, investments and financial planning in Switzerland.",
+    eyebrow: "Veonis Switzerland",
+    title: "One contact for insurance, pension planning and finances.",
     description: [
-      "Version 2 combines the strongest premium elements from the first homepage with a shorter, clearer decision path.",
-      "The focus is fast understanding, 360° context and one simple next step: a personal initial conversation.",
+      "Veonis brings structure to your financial situation. We review insurance, pension planning, mortgages, taxes and investments in context - so you clearly see what fits, where gaps exist and which next steps make sense.",
     ],
   },
   "home-v3": {
