@@ -1,6 +1,11 @@
+import Link from "next/link";
 import {
+  ArrowRight,
   BadgeCheck,
+  BriefcaseBusiness,
+  Building2,
   CircleCheck,
+  CircleUserRound,
   Handshake,
   ScanSearch,
   Sparkles,
@@ -9,7 +14,7 @@ import {
 
 import type { CardContent } from "@/lib/veonis-content";
 
-export function ValueCard({ title, text }: CardContent) {
+export function ValueCard({ title, text, ctaLabel, href }: CardContent) {
   const Icon = getValueIcon(title);
 
   return (
@@ -19,6 +24,15 @@ export function ValueCard({ title, text }: CardContent) {
       </div>
       <h3 className="mt-5 text-lg font-semibold text-[#111827]">{title}</h3>
       <p className="mt-3 leading-7 text-[#5f6368]">{text}</p>
+      {ctaLabel && href ? (
+        <Link
+          className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#ead3d7] bg-[#fff7f8] px-4 py-2 text-sm font-semibold text-[#a92f3e] transition hover:border-[#c63d4d] hover:bg-[#c63d4d] hover:text-white"
+          href={href}
+        >
+          {ctaLabel}
+          <ArrowRight className="size-4" />
+        </Link>
+      ) : null}
     </article>
   );
 }
@@ -29,5 +43,9 @@ function getValueIcon(title: string) {
   if (title.includes("Verständ")) return Sparkles;
   if (title.includes("Unabh")) return Handshake;
   if (title.includes("Struktur")) return BadgeCheck;
+  if (title.includes("Privat") || title.includes("Private")) return CircleUserRound;
+  if (title.includes("Firmen") || title.includes("Corporate")) return Building2;
+  if (title.includes("360")) return ScanSearch;
+  if (title.includes("Dienst") || title.includes("Services")) return BriefcaseBusiness;
   return CircleCheck;
 }

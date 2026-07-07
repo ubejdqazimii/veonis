@@ -23,6 +23,8 @@ export type PageKey =
 export type CardContent = {
   title: string;
   text: string;
+  ctaLabel?: string;
+  href?: string;
 };
 
 export type ProcessStep = {
@@ -96,7 +98,7 @@ export const navItems: NavItem[] = [
   { label: "Blog", de: "/de/blog", en: "/en/blog" },
   { label: "Private Clients", labelDe: "Privatkunden", labelEn: "Private Clients", de: "/de/privatkunden", en: "/en/private-clients" },
   { label: "Corporate Clients", labelDe: "Firmenkunden", labelEn: "Corporate Clients", de: "/de/corporate-clients", en: "/en/corporate-clients" },
-  { label: "Services", de: "/de/services", en: "/en/services" },
+  { label: "Services", labelDe: "Dienstleistungen", labelEn: "Services", de: "/de/dienstleistungen", en: "/en/services" },
   {
     label: "Veonis 360° Analysis",
     labelDe: "360°-Check",
@@ -712,24 +714,90 @@ const dePages: Record<PageKey, PageContent> = {
     ],
   },
   services: {
-    seoTitle: "Services | Finanzberatung, Versicherungen & Vorsorge | Veonis",
+    seoTitle: "Dienstleistungen | Vorsorge, Versicherungen, Anlagen, Hypotheken & Steuern | Veonis",
     metaDescription:
-      "Die Services von Veonis umfassen Versicherungen, Vorsorge, Hypotheken, Immobilien, Steuern, Finanzplanung, Anlagen und Firmenberatung.",
-    eyebrow: "Services",
-    title: "Unsere Services",
+      "Veonis unterstützt Privatkunden, Selbstständige und Unternehmen in den Bereichen Vorsorge & Versicherungen, Finanzen & Anlagen, Hypotheken & Immobilien sowie Steuern & Recht.",
+    eyebrow: "Dienstleistungen",
+    title: "Vier Bereiche. Ein klarer Blick auf Ihre finanzielle Situation.",
     description: [
-      "Finanzielle Entscheidungen sollten nicht isoliert getroffen werden. Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen beeinflussen sich gegenseitig.",
-      "Deshalb betrachtet Veonis Ihre Situation ganzheitlich. Wir zeigen Ihnen, wie die einzelnen Themen zusammenhängen und welche Lösungen sinnvoll sein können.",
+      "Finanzielle Entscheidungen entstehen selten isoliert. Vorsorge beeinflusst Steuern. Immobilien verändern Liquidität. Anlagen brauchen klare Ziele. Versicherungen sollen Risiken schützen - nicht unnötige Kosten verursachen.",
+      "Veonis ordnet diese Themen verständlich ein und zeigt, wo Handlungsbedarf besteht.",
     ],
-    cta: "Beratung starten",
+    cta: "Kostenloses Erstgespräch vereinbaren",
     sections: [
       {
-        title: "Services im Überblick",
-        intro: "Versicherungen, Vorsorge und Finanzen aus einer Hand.",
-        cards: services.map(({ title, text }) => ({ title, text })),
+        eyebrow: "Was Sie erwarten können",
+        title: "Klare Analyse, unabhängiger Blick und persönliche Begleitung.",
+        cards: [
+          { title: "Klare Analyse", text: "Wir prüfen Ihre Ausgangslage strukturiert und verständlich." },
+          { title: "Unabhängiger Blick", text: "Bestehende Lösungen und mögliche Alternativen werden fair eingeordnet." },
+          { title: "Verständliche Empfehlungen", text: "Sie erhalten klare Prioritäten statt komplizierte Fachsprache." },
+          { title: "Persönliche Begleitung", text: "Veonis bleibt Ansprechpartner bei Vergleichen, Offerten und Anpassungen." },
+        ],
+      },
+      {
+        eyebrow: "Unsere Dienstleistungen",
+        title: "Kurz erklärt. Klar eingeordnet.",
+        cards: [
+          {
+            title: "Vorsorge & Versicherungen",
+            text: "Absicherung soll zu Ihrer Lebenssituation passen - nicht zu einem Standardformular. Wir prüfen bestehende Versicherungen, erkennen Lücken, Doppelspurigkeiten und unnötige Kosten. Gleichzeitig betrachten wir Säule 3a, Pensionskasse, Risikoabsicherung, Familie, Einkommen und Pensionierung. Relevant bei Familie, Eigenheim, Selbstständigkeit, höherem Einkommen, Pensionierungsplanung oder bestehenden Altverträgen.",
+          },
+          {
+            title: "Finanzen & Anlagen",
+            text: "Gute Finanzplanung beginnt nicht mit einem Produkt, sondern mit einem Ziel. Wir klären, was Sie erreichen möchten, wie viel Risiko zu Ihnen passt und wie flexibel Sie bleiben wollen. Darauf aufbauend ordnen wir Sparziele, Liquidität, Anlagehorizont und Vermögensaufbau verständlich ein. Relevant bei freiem Kapital, langfristigem Sparen, Vermögensaufbau, Vorsorgezielen oder finanzieller Neuordnung.",
+          },
+          {
+            title: "Hypotheken & Immobilien",
+            text: "Bei Immobilien zählt nicht nur der Zinssatz. Entscheidend ist, ob Finanzierung, Tragbarkeit, Amortisation, Steuern, Vorsorge und Absicherung zusammenpassen. Veonis hilft Ihnen, Immobilienentscheidungen nicht isoliert zu treffen, sondern langfristig sauber einzuordnen. Relevant bei Kauf, Verlängerung, Umschuldung, Eigenmittelplanung, Amortisation oder Prüfung der Tragbarkeit.",
+          },
+          {
+            title: "Steuern & Recht",
+            text: "Viele finanzielle Entscheidungen haben steuerliche und rechtliche Auswirkungen. Wer Vorsorge, Immobilien, Anlagen, Selbstständigkeit oder Nachlassfragen plant, sollte diese Schnittstellen frühzeitig berücksichtigen. Veonis hilft Ihnen, relevante Themen zu erkennen, Fragen richtig einzuordnen und bei Bedarf die passenden Fachstellen einzubeziehen. Relevant bei Säule 3a, Pensionskasseneinkauf, Wohneigentum, Selbstständigkeit, Nachlassplanung, Vertragsfragen oder steuerlicher Optimierung.",
+          },
+        ],
+      },
+      {
+        eyebrow: "Der richtige Einstieg",
+        title: "Wobei können wir Sie unterstützen?",
+        cards: [
+          {
+            title: "Privatkunden",
+            text: "Für Menschen, die Absicherung, Vorsorge, Eigenheim, Vermögensaufbau oder Pensionierung klarer planen möchten.",
+            ctaLabel: "Zu Privatkunden",
+            href: "/de/privatkunden",
+          },
+          {
+            title: "Firmenkunden",
+            text: "Für Selbstständige und KMU, die Risiken, Mitarbeitende, Pensionskasse, Krankentaggeld, Unfallversicherung und Unternehmensversicherungen professionell strukturieren möchten.",
+            ctaLabel: "Zu Firmenkunden",
+            href: "/de/corporate-clients",
+          },
+          {
+            title: "360°-Check",
+            text: "Für alle, die zuerst einen Gesamtüberblick wünschen, bevor einzelne Themen entschieden werden.",
+            ctaLabel: "360°-Check ansehen",
+            href: "/de/360-check",
+          },
+        ],
+      },
+      {
+        eyebrow: "Was Sie von Veonis erwarten können",
+        title: "Keine Produktliste. Eine klare Entscheidungsgrundlage.",
+        paragraphs: [
+          "Am Ende soll nicht mehr Verwirrung entstehen, sondern Klarheit. Sie sollen wissen, was wichtig ist, was warten kann und welche Schritte sinnvoll sind.",
+        ],
+        items: [
+          "Eine klare Übersicht über Ihre Ausgangslage",
+          "Eine Einschätzung zu Lücken, Risiken und Doppelspurigkeiten",
+          "Prioritäten statt isolierte Einzelvorschläge",
+          "Verständliche Empfehlungen mit nächsten Schritten",
+          "Begleitung bei Vergleichen, Offerten und Anpassungen",
+        ],
       },
     ],
   },
+
   "veonis-360-analysis": {
     seoTitle: "360°-Check | Finanzcheck, Vertragsanalyse & Verhandlung | Veonis",
     metaDescription:
@@ -1204,16 +1272,90 @@ const englishBase: Record<PageKey, PageContent> = {
   },
   services: {
     ...dePages.services,
-    seoTitle: "Services | Financial advice, insurance and pension planning | Veonis",
+    seoTitle: "Services | Pension planning, insurance, investments, mortgages and taxes | Veonis",
     metaDescription:
-      "Veonis services include insurance, pension planning, mortgages, real estate, taxes, financial planning, investments and corporate advice.",
+      "Veonis supports private clients, self-employed people and companies in pension planning and insurance, finances and investments, mortgages and real estate, and taxes and legal coordination.",
     eyebrow: "Services",
-    title: "Our services",
+    title: "Four areas. One clear view of your financial situation.",
     description: [
-      "Financial decisions should not be made in isolation. Insurance, pensions, taxes, mortgages and investments influence each other.",
-      "Veonis looks at your situation holistically and shows how the individual topics fit together.",
+      "Financial decisions rarely happen in isolation. Pension planning affects taxes. Real estate changes liquidity. Investments need clear goals. Insurance should protect risks - not create unnecessary costs.",
+      "Veonis puts these topics into understandable context and shows where action is needed.",
+    ],
+    cta: "Book a free initial conversation",
+    sections: [
+      {
+        eyebrow: "What you can expect",
+        title: "Clear analysis, independent perspective and personal guidance.",
+        cards: [
+          { title: "Clear analysis", text: "We review your starting point in a structured and understandable way." },
+          { title: "Independent perspective", text: "Existing solutions and possible alternatives are assessed fairly." },
+          { title: "Understandable recommendations", text: "You receive clear priorities instead of complicated technical language." },
+          { title: "Personal guidance", text: "Veonis remains your point of contact for comparisons, offers and adjustments." },
+        ],
+      },
+      {
+        eyebrow: "Our services",
+        title: "Briefly explained. Clearly classified.",
+        cards: [
+          {
+            title: "Pension planning & insurance",
+            text: "Protection should fit your life situation, not a standard form. We review existing insurance, identify gaps, overlaps and unnecessary costs. At the same time, we look at pillar 3a, pension fund, risk protection, family, income and retirement. Relevant for family, home ownership, self-employment, higher income, retirement planning or older contracts.",
+          },
+          {
+            title: "Finances & investments",
+            text: "Good financial planning does not start with a product, but with a goal. We clarify what you want to achieve, how much risk fits you and how flexible you want to remain. Based on that, we classify savings goals, liquidity, investment horizon and wealth building clearly. Relevant for free capital, long-term saving, wealth building, pension goals or financial reorganization.",
+          },
+          {
+            title: "Mortgages & real estate",
+            text: "With real estate, the interest rate is not the only factor. What matters is whether financing, affordability, amortization, taxes, pension planning and protection fit together. Veonis helps you assess real estate decisions in context and over the long term. Relevant for purchase, renewal, refinancing, equity planning, amortization or affordability checks.",
+          },
+          {
+            title: "Taxes & legal coordination",
+            text: "Many financial decisions have tax and legal effects. Pension planning, real estate, investments, self-employment and estate questions should be considered early. Veonis helps you identify relevant topics, classify questions correctly and involve the right specialists where needed. Relevant for pillar 3a, pension fund purchases, home ownership, self-employment, estate planning, contract questions or tax optimization.",
+          },
+        ],
+      },
+      {
+        eyebrow: "The right entry point",
+        title: "How can we support you?",
+        cards: [
+          {
+            title: "Private clients",
+            text: "For people who want to plan protection, pension planning, home ownership, wealth building or retirement more clearly.",
+            ctaLabel: "Go to private clients",
+            href: "/en/private-clients",
+          },
+          {
+            title: "Corporate clients",
+            text: "For self-employed people and SMEs that want to structure risks, employees, pension funds, daily sickness benefits, accident insurance and business insurance professionally.",
+            ctaLabel: "Go to corporate clients",
+            href: "/en/corporate-clients",
+          },
+          {
+            title: "360° Check",
+            text: "For everyone who first wants a complete overview before individual topics are decided.",
+            ctaLabel: "View 360° Check",
+            href: "/en/veonis-360-analysis",
+          },
+        ],
+      },
+      {
+        eyebrow: "What you can expect from Veonis",
+        title: "No product list. A clear basis for decision-making.",
+        paragraphs: [
+          "The result should not be more confusion, but clarity. You should know what matters, what can wait and which steps make sense.",
+        ],
+        items: [
+          "A clear overview of your starting point",
+          "An assessment of gaps, risks and overlaps",
+          "Priorities instead of isolated individual proposals",
+          "Understandable recommendations with next steps",
+          "Guidance with comparisons, offers and adjustments",
+        ],
+      },
     ],
   },
+
   "veonis-360-analysis": {
     ...dePages["veonis-360-analysis"],
     seoTitle: "360° Check | Financial check, contract analysis and negotiation | Veonis",
@@ -1463,6 +1605,10 @@ export function getLocalizedPath(locale: Locale, key: PageKey) {
 
     if (key === "veonis-360-analysis") {
       return "/de/360-check";
+    }
+
+    if (key === "services") {
+      return "/de/dienstleistungen";
     }
 
     return `/de/${key}`;

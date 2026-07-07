@@ -44,7 +44,6 @@ import { LegalNoticeBlock } from "@/components/veonis/legal-notice-block";
 import { ProcessTimeline } from "@/components/veonis/process-timeline";
 import { SectionHeader } from "@/components/veonis/section-header";
 import { ServiceCard } from "@/components/veonis/service-card";
-import { TabsSection } from "@/components/veonis/tabs-section";
 import { ValueCard } from "@/components/veonis/value-card";
 import { cn } from "@/lib/utils";
 import type { BlogPost, CardContent, Locale, PageKey } from "@/lib/veonis-content";
@@ -455,7 +454,11 @@ export function StandardPage({ locale, pageKey }: PageProps) {
       ? locale === "de"
         ? "Bereit für den 360°-Check?"
         : "Ready for the 360° Check?"
-      : undefined;
+      : isServices
+        ? locale === "de"
+          ? "Bereit für mehr Klarheit?"
+          : "Ready for more clarity?"
+        : undefined;
   const ctaText = isPrivateClients
     ? locale === "de"
       ? "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir hören zu, ordnen ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Klar."
@@ -464,7 +467,11 @@ export function StandardPage({ locale, pageKey }: PageProps) {
       ? locale === "de"
         ? "Ein erstes Gespräch reicht oft aus, um zu erkennen, ob ein 360°-Check für Sie sinnvoll ist. Unverbindlich. Persönlich. Mit klarem Blick auf Ihre Interessen."
         : "An initial conversation is often enough to see whether a 360° Check makes sense for you. Non-binding. Personal. With a clear view of your interests."
-      : undefined;
+      : isServices
+        ? locale === "de"
+          ? "Ein erstes Gespräch reicht oft aus, um zu erkennen, welches Thema bei Ihnen Priorität hat. Unverbindlich. Persönlich. Klar."
+          : "An initial conversation is often enough to identify which topic has priority for you. Non-binding. Personal. Clear."
+        : undefined;
 
   return (
     <>
@@ -477,20 +484,6 @@ export function StandardPage({ locale, pageKey }: PageProps) {
         title={page.title}
         visualLabel={isAnalysis ? (locale === "de" ? "360°-Check" : "360° Check") : page.eyebrow}
       />
-      {isServices ? (
-        <section className="bg-white py-16 sm:py-20">
-          <Container>
-            <SectionHeader
-              eyebrow="Services"
-              intro="Wählen Sie ein Thema und sehen Sie, wie Veonis die wichtigsten Finanzbereiche zusammenführt."
-              title="Beratung mit System"
-            />
-            <div className="mt-10">
-              <TabsSection />
-            </div>
-          </Container>
-        </section>
-      ) : null}
       {page.sections.map((section, index) => (
         <SectionBlock key={`${section.title}-${index}`} section={section} tone={index % 2 === 0 ? "white" : "grey"} />
       ))}
