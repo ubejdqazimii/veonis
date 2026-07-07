@@ -447,6 +447,24 @@ export function StandardPage({ locale, pageKey }: PageProps) {
   const isServices = pageKey === "services";
   const isAnalysis = pageKey === "veonis-360-analysis";
   const isPrivateClients = pageKey === "private-clients";
+  const ctaTitle = isPrivateClients
+    ? locale === "de"
+      ? "Bereit für mehr Klarheit?"
+      : "Ready for more clarity?"
+    : isAnalysis
+      ? locale === "de"
+        ? "Bereit für den 360°-Check?"
+        : "Ready for the 360° Check?"
+      : undefined;
+  const ctaText = isPrivateClients
+    ? locale === "de"
+      ? "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir hören zu, ordnen ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Klar."
+      : "An initial conversation is often enough to make the most important topics visible. We listen, put things into context and show which next steps make sense. Non-binding. Personal. Clear."
+    : isAnalysis
+      ? locale === "de"
+        ? "Ein erstes Gespräch reicht oft aus, um zu erkennen, ob ein 360°-Check für Sie sinnvoll ist. Unverbindlich. Persönlich. Mit klarem Blick auf Ihre Interessen."
+        : "An initial conversation is often enough to see whether a 360° Check makes sense for you. Non-binding. Personal. With a clear view of your interests."
+      : undefined;
 
   return (
     <>
@@ -457,7 +475,7 @@ export function StandardPage({ locale, pageKey }: PageProps) {
         locale={locale}
         subtitle={page.subtitle}
         title={page.title}
-        visualLabel={isAnalysis ? "Veonis 360°" : page.eyebrow}
+        visualLabel={isAnalysis ? (locale === "de" ? "360°-Check" : "360° Check") : page.eyebrow}
       />
       {isServices ? (
         <section className="bg-white py-16 sm:py-20">
@@ -479,14 +497,8 @@ export function StandardPage({ locale, pageKey }: PageProps) {
       <CTASection
         locale={locale}
         button={page.cta ?? "Jetzt Kontakt aufnehmen"}
-        title={isPrivateClients ? (locale === "de" ? "Bereit für mehr Klarheit?" : "Ready for more clarity?") : undefined}
-        text={
-          isPrivateClients
-            ? locale === "de"
-              ? "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir hören zu, ordnen ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Klar."
-              : "An initial conversation is often enough to make the most important topics visible. We listen, put things into context and show which next steps make sense. Non-binding. Personal. Clear."
-            : undefined
-        }
+        title={ctaTitle}
+        text={ctaText}
       />
     </>
   );
@@ -1130,7 +1142,7 @@ function V2OverviewSection({ locale }: { locale: Locale }) {
             "Doch finanzielle Entscheidungen wirken selten isoliert. Vorsorge beeinflusst Steuern. Eine Hypothek beeinflusst Liquidität. Versicherungen beeinflussen Sicherheit und Planungsspielraum.",
           ],
           analysis:
-            "Die Veonis 360° Analyse zeigt, was passt, was fehlt und was zuerst angegangen werden sollte.",
+            "Der Veonis 360°-Check zeigt, was passt, was fehlt und was zuerst angegangen werden sollte.",
         }
       : {
           eyebrow: "Overall picture",

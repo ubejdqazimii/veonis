@@ -99,9 +99,9 @@ export const navItems: NavItem[] = [
   { label: "Services", de: "/de/services", en: "/en/services" },
   {
     label: "Veonis 360° Analysis",
-    labelDe: "Veonis 360° Analyse",
-    labelEn: "Veonis 360° Analysis",
-    de: "/de/veonis-360-analysis",
+    labelDe: "360°-Check",
+    labelEn: "360° Check",
+    de: "/de/360-check",
     en: "/en/veonis-360-analysis",
   },
   { label: "About Veonis", labelDe: "Über Veonis", labelEn: "About Veonis", de: "/de/about-veonis", en: "/en/about-veonis" },
@@ -288,8 +288,8 @@ export const faqItems: CardContent[] = [
     text: "Ja. Im Erstgespräch klären wir Ihre Situation, Ihre Fragen und ob eine Zusammenarbeit sinnvoll ist.",
   },
   {
-    title: "Was ist die Veonis 360° Analyse?",
-    text: "Die Veonis 360° Analyse ist ein ganzheitlicher Finanzcheck. Wir prüfen Versicherungen, Vorsorge, Hypotheken, Steuern, Anlagen und weitere relevante Themen im Zusammenhang.",
+    title: "Was ist der Veonis 360°-Check?",
+    text: "Der Veonis 360°-Check ist ein ganzheitlicher Finanzcheck. Wir prüfen Versicherungen, Vorsorge, Hypotheken, Steuern, Anlagen und weitere relevante Themen im Zusammenhang.",
   },
   {
     title: "Muss ich bereits Kunde sein?",
@@ -400,7 +400,7 @@ export const blogPosts: BlogPost[] = [
       de: "Berufseinstieg, Familie, Eigenheim, Selbstständigkeit oder Pensionierung verändern Prioritäten. Ein 360° Blick hilft, Entscheidungen rechtzeitig neu zu ordnen.",
       en: "Career start, family, home ownership, self-employment or retirement change priorities. A 360° view helps reorder decisions in time.",
     },
-    category: { de: "360° Analyse", en: "360° analysis" },
+    category: { de: "360°-Check", en: "360° analysis" },
     readTime: { de: "5 Min.", en: "5 min" },
     image: "/brand/photos/veonis-client-discussion-optimized.jpg",
     alt: {
@@ -421,7 +421,7 @@ const home: PageContent = {
     "Veonis hilft Ihnen, den Überblick zu behalten. Wir prüfen Ihre aktuelle Situation, zeigen Ihnen verständlich Ihre Möglichkeiten und begleiten Sie bei Entscheidungen, die langfristig zu Ihnen passen.",
   ],
   cta: "Kostenloses Erstgespräch vereinbaren",
-  secondaryCta: "360° Analyse anfragen",
+  secondaryCta: "360°-Check anfragen",
   sections: [
     {
       eyebrow: "Gesamtbild",
@@ -435,9 +435,9 @@ const home: PageContent = {
     },
     {
       eyebrow: "Analyse",
-      title: "Die Veonis 360° Analyse",
+      title: "Der Veonis 360°-Check",
       intro:
-        "Die Veonis 360° Analyse ist der Ausgangspunkt unserer Beratung. Sie zeigt, wo Sie heute stehen, welche Themen bereits gut geregelt sind und wo Optimierungspotenzial besteht.",
+        "Der Veonis 360°-Check ist der Ausgangspunkt unserer Beratung. Er zeigt, wo Sie heute stehen, welche Themen bereits gut geregelt sind und wo Optimierungspotenzial besteht.",
       items: [
         "Versicherungen",
         "Vorsorge und Säule 3a",
@@ -448,7 +448,7 @@ const home: PageContent = {
         "Liquidität und monatliche Belastung",
         "Private und geschäftliche Finanzstruktur",
       ],
-      cta: "360° Analyse anfragen",
+      cta: "360°-Check anfragen",
     },
     {
       eyebrow: "Services",
@@ -731,53 +731,111 @@ const dePages: Record<PageKey, PageContent> = {
     ],
   },
   "veonis-360-analysis": {
-    seoTitle: "Veonis 360° Analyse | Finanzcheck Schweiz",
+    seoTitle: "360°-Check | Finanzcheck, Vertragsanalyse & Verhandlung | Veonis",
     metaDescription:
-      "Mit der Veonis 360° Analyse erhalten Sie einen klaren Überblick über Versicherungen, Vorsorge, Hypotheken, Steuern, Anlagen und Ihre finanzielle Gesamtsituation.",
-    eyebrow: "Veonis 360° Analyse",
-    title: "Die Veonis 360° Analyse",
-    subtitle: "Ein Finanzcheck, der alles miteinander verbindet.",
+      "Der Veonis 360°-Check prüft bestehende Verträge, erkennt Lücken und Doppelspurigkeiten, vergleicht Alternativen und unterstützt bei Verhandlungen mit Anbietern.",
+    eyebrow: "360°-Check",
+    title: "Klar sehen. Besser entscheiden. Stärker verhandeln.",
     description: [
-      "Viele finanzielle Entscheidungen entstehen einzeln. Doch im Alltag greifen sie ineinander.",
-      "Eine Vorsorgelösung kann Ihre Steuern beeinflussen. Eine Hypothek kann Ihre monatliche Belastung verändern. Eine Versicherung kann vor Risiken schützen, aber auch unnötige Kosten verursachen.",
-      "Die Veonis 360° Analyse bringt diese Themen zusammen.",
+      "Der Veonis 360°-Check zeigt, wo Sie finanziell stehen, welche Verträge wirklich passen und wo bessere Lösungen möglich sind.",
+      "Wir prüfen nicht nur Unterlagen. Wir ordnen ein, vergleichen Alternativen und führen auf Wunsch die Gespräche mit Anbietern für Sie.",
+      "Sie behalten die Entscheidung. Wir schaffen die Grundlage dafür.",
     ],
-    cta: "360° Analyse anfragen",
+    cta: "Kostenloses Erstgespräch vereinbaren",
     sections: [
       {
-        title: "Was wir analysieren",
-        items: [
-          "Versicherungen",
-          "Vorsorge und Säule 3a",
-          "Hypotheken und Immobilien",
-          "Steuern und Sparmöglichkeiten",
-          "Anlagen und Vermögensaufbau",
-          "Absicherung bei Krankheit, Unfall und Erwerbsunfähigkeit",
-          "Liquidität und monatliche Belastung",
-          "Private und geschäftliche Finanzstruktur",
-          "Persönliche Ziele und Prioritäten",
+        eyebrow: "Was Sie erwarten können",
+        title: "Analyse, Marktvergleich, Verhandlung und Umsetzung aus einer Hand.",
+        cards: [
+          { title: "Analyse", text: "Wir prüfen Ihre Ausgangslage, Verträge, Unterlagen und offenen Fragen strukturiert." },
+          { title: "Marktvergleich", text: "Wenn sinnvoll, vergleichen wir Alternativen nach Preis, Leistung, Bedingungen und langfristiger Wirkung." },
+          { title: "Verhandlung", text: "Auf Wunsch führen wir Gespräche mit Versicherungen, Banken, Vorsorgeeinrichtungen oder weiteren Partnern." },
+          { title: "Umsetzung", text: "Sie entscheiden. Wir begleiten Anpassungen, Wechsel, Kündigungen und die weitere Betreuung." },
         ],
       },
       {
-        title: "Was Sie erhalten",
-        items: [
-          "Eine verständliche Übersicht Ihrer aktuellen Situation",
-          "Eine Einschätzung zu bestehenden Lösungen",
-          "Hinweise auf mögliche Lücken oder Doppelspurigkeiten",
-          "Konkrete Empfehlungen für nächste Schritte",
-          "Vergleich möglicher Lösungen",
-          "Persönliche Begleitung bei der Umsetzung",
-        ],
-      },
-      {
-        title: "Für wen",
+        eyebrow: "Worum es geht",
+        title: "Nicht mehr Unterlagen sammeln. Klarheit gewinnen.",
         paragraphs: [
-          "Für Privatpersonen, Familien, Selbstständige und Unternehmer, die ihre Finanzen nicht nur punktuell, sondern als Ganzes verstehen möchten.",
-          "Die Analyse eignet sich besonders, wenn Sie mehrere Verträge haben, eine Immobilie planen, Ihre Vorsorge prüfen möchten, selbstständig sind oder einfach mehr Klarheit wünschen.",
+          "Viele Menschen und Unternehmen haben über Jahre Verträge abgeschlossen, angepasst oder erweitert. Oft fehlt irgendwann der Überblick.",
+          "Der 360°-Check macht genau diese Punkte sichtbar. Kurz gesagt: Sie erfahren, was bleiben kann, was verbessert werden sollte und welche Schritte Priorität haben.",
+        ],
+        items: [
+          "Was ist noch sinnvoll?",
+          "Was ist doppelt?",
+          "Was ist zu teuer?",
+          "Was fehlt?",
+          "Wo lohnt sich eine Neuverhandlung?",
+        ],
+      },
+      {
+        eyebrow: "Was wir übernehmen",
+        title: "Wir vertreten Ihre Interessen gegenüber Anbietern.",
+        paragraphs: [
+          "Veonis prüft bestehende Lösungen, holt bei Bedarf Alternativen ein und vergleicht nicht nur Preise, sondern auch Leistungen, Bedingungen und langfristige Wirkung.",
+          "Auf Wunsch übernehmen wir auch die Verhandlungen mit Versicherungen, Vorsorgeeinrichtungen, Banken oder weiteren Partnern.",
+          "Dabei geht es nicht darum, irgendein Angebot zu präsentieren. Es geht darum, für Ihre Situation die bessere Lösung zu finden.",
+        ],
+        items: [
+          "Leistung statt nur Prämie",
+          "Deckung statt nur Rabatt",
+          "Flexibilität statt kurzfristiger Vorteil",
+          "Verständlichkeit statt Fachsprache",
+          "Langfristige Passung statt schneller Abschluss",
+        ],
+      },
+      {
+        eyebrow: "Ablauf",
+        title: "Fünf Schritte. Ein klares Ergebnis.",
+        steps: [
+          { title: "01 Ausgangslage", text: "Wir klären Ihre Situation, Ihre Ziele und die wichtigsten offenen Fragen. Danach wissen wir, welche Themen wirklich geprüft werden müssen." },
+          { title: "02 Unterlagen-Check", text: "Wir prüfen bestehende Verträge, Policen, Vorsorgeausweise, Hypotheken, Anlage- oder Finanzunterlagen - je nachdem, was für Sie relevant ist." },
+          { title: "03 Bewertung", text: "Wir zeigen, wo Lücken, Doppelspurigkeiten, unnötige Kosten oder ungünstige Bedingungen bestehen." },
+          { title: "04 Vergleich & Verhandlung", text: "Wenn Optimierungspotenzial besteht, holen wir Alternativen ein, vergleichen Angebote und führen auf Wunsch die Gespräche mit den Anbietern." },
+          { title: "05 Empfehlung & Umsetzung", text: "Sie erhalten eine klare Empfehlung mit Prioritäten. Wenn Sie möchten, begleiten wir Kündigungen, Anpassungen, Wechsel und die weitere Betreuung." },
+        ],
+      },
+      {
+        eyebrow: "Ergebnis",
+        title: "Keine Produktmappe. Eine Entscheidungsgrundlage.",
+        paragraphs: [
+          "Nach dem 360°-Check wissen Sie, welche Themen geregelt sind und wo Handlungsbedarf besteht.",
+        ],
+        items: [
+          "Eine klare Übersicht Ihrer bestehenden Lösungen",
+          "Eine Einschätzung zu Lücken, Risiken und Doppelspurigkeiten",
+          "Hinweise auf unnötige Kosten oder ungünstige Bedingungen",
+          "Vergleichbare Alternativen, falls sinnvoll",
+          "Eine Empfehlung mit Prioritäten",
+          "Unterstützung bei Verhandlungen und Umsetzung",
+          "Einen Ansprechpartner für die weitere Betreuung",
+        ],
+      },
+      {
+        eyebrow: "Für wen",
+        title: "Für alle, die nicht nur ein Angebot wollen, sondern eine klare Einordnung.",
+        intro: "Der 360°-Check eignet sich besonders, wenn:",
+        items: [
+          "Sie mehrere Verträge haben und den Überblick verloren haben.",
+          "Sie wissen möchten, ob Ihre heutigen Lösungen noch passen.",
+          "Sie vor einer grösseren Entscheidung stehen.",
+          "Sie bessere Konditionen oder Leistungen prüfen möchten.",
+          "Sie als Unternehmer private und geschäftliche Themen trennen müssen.",
+          "Sie nicht selbst mit mehreren Anbietern verhandeln möchten.",
+        ],
+      },
+      {
+        eyebrow: "Unser Anspruch",
+        title: "Wir machen Empfehlungen nachvollziehbar.",
+        paragraphs: [
+          "Eine gute Entscheidung braucht keine komplizierte Erklärung. Sie braucht eine saubere Analyse, faire Vergleiche und transparente Empfehlungen.",
+          "Deshalb zeigen wir Ihnen nicht nur, was wir empfehlen, sondern auch warum.",
+          "Sie sollen am Ende nicht einfach unterschreiben. Sie sollen verstehen.",
         ],
       },
     ],
   },
+
   "about-veonis": {
     seoTitle: "Über Veonis | Finanzberatung mit persönlicher Betreuung",
     metaDescription:
@@ -1158,17 +1216,111 @@ const englishBase: Record<PageKey, PageContent> = {
   },
   "veonis-360-analysis": {
     ...dePages["veonis-360-analysis"],
-    seoTitle: "Veonis 360° Analysis | Swiss financial check",
+    seoTitle: "360° Check | Financial check, contract analysis and negotiation | Veonis",
     metaDescription:
-      "The Veonis 360° Analysis gives you a clear view of insurance, pension planning, mortgages, taxes, investments and your overall financial situation.",
-    eyebrow: "Veonis 360° Analysis",
-    title: "The Veonis 360° Analysis",
-    subtitle: "A financial check that connects everything.",
+      "The Veonis 360° Check reviews existing contracts, identifies gaps and overlaps, compares alternatives and supports negotiations with providers.",
+    eyebrow: "360° Check",
+    title: "See clearly. Decide better. Negotiate stronger.",
     description: [
-      "Many financial decisions are made separately. In everyday life, they are connected.",
-      "The Veonis 360° Analysis brings insurance, pensions, mortgages, taxes, investments and liquidity into one understandable overview.",
+      "The Veonis 360° Check shows where you stand financially, which contracts truly fit and where better solutions may be possible.",
+      "We do not only review documents. We put them into context, compare alternatives and, if desired, hold conversations with providers for you.",
+      "You keep the decision. We create the basis for it.",
+    ],
+    cta: "Book a free initial conversation",
+    sections: [
+      {
+        eyebrow: "What you can expect",
+        title: "Analysis, market comparison, negotiation and implementation from one source.",
+        cards: [
+          { title: "Analysis", text: "We review your situation, contracts, documents and open questions in a structured way." },
+          { title: "Market comparison", text: "Where useful, we compare alternatives by price, benefits, conditions and long-term effect." },
+          { title: "Negotiation", text: "If desired, we speak with insurers, banks, pension institutions or other partners for you." },
+          { title: "Implementation", text: "You decide. We support adjustments, switches, cancellations and ongoing guidance." },
+        ],
+      },
+      {
+        eyebrow: "What it is about",
+        title: "Not collecting more documents. Gaining clarity.",
+        paragraphs: [
+          "Many people and companies have signed, adjusted or expanded contracts over years. At some point, the overview is often missing.",
+          "The 360° Check makes exactly these points visible. In short: you learn what can stay, what should be improved and which steps have priority.",
+        ],
+        items: [
+          "What still makes sense?",
+          "What is duplicated?",
+          "What is too expensive?",
+          "What is missing?",
+          "Where is renegotiation worthwhile?",
+        ],
+      },
+      {
+        eyebrow: "What we take on",
+        title: "We represent your interests with providers.",
+        paragraphs: [
+          "Veonis reviews existing solutions, obtains alternatives where needed and compares not only prices, but also benefits, conditions and long-term effects.",
+          "If desired, we also take on negotiations with insurers, pension institutions, banks or other partners.",
+          "This is not about presenting just any offer. It is about finding the better solution for your situation.",
+        ],
+        items: [
+          "Benefits instead of only premiums",
+          "Coverage instead of only discounts",
+          "Flexibility instead of short-term advantage",
+          "Understandability instead of technical language",
+          "Long-term fit instead of a quick conclusion",
+        ],
+      },
+      {
+        eyebrow: "Process",
+        title: "Five steps. One clear result.",
+        steps: [
+          { title: "01 Starting point", text: "We clarify your situation, your goals and the most important open questions. After that, we know which topics truly need to be reviewed." },
+          { title: "02 Document check", text: "We review existing contracts, policies, pension statements, mortgages, investment or financial documents - depending on what is relevant for you." },
+          { title: "03 Assessment", text: "We show where gaps, overlaps, unnecessary costs or unfavorable conditions exist." },
+          { title: "04 Comparison & negotiation", text: "If there is optimization potential, we obtain alternatives, compare offers and, if desired, conduct the conversations with providers." },
+          { title: "05 Recommendation & implementation", text: "You receive a clear recommendation with priorities. If you wish, we support cancellations, adjustments, switches and further guidance." },
+        ],
+      },
+      {
+        eyebrow: "Outcome",
+        title: "No product folder. A basis for decision-making.",
+        paragraphs: [
+          "After the 360° Check, you know which topics are settled and where action is needed.",
+        ],
+        items: [
+          "A clear overview of your existing solutions",
+          "An assessment of gaps, risks and overlaps",
+          "Notes on unnecessary costs or unfavorable conditions",
+          "Comparable alternatives where useful",
+          "A recommendation with priorities",
+          "Support with negotiations and implementation",
+          "One point of contact for ongoing guidance",
+        ],
+      },
+      {
+        eyebrow: "Who it is for",
+        title: "For everyone who wants more than an offer: a clear assessment.",
+        intro: "The 360° Check is especially useful if:",
+        items: [
+          "You have several contracts and have lost the overview.",
+          "You want to know whether your current solutions still fit.",
+          "You are facing a larger decision.",
+          "You want to review better conditions or benefits.",
+          "As an entrepreneur, you need to separate private and business topics.",
+          "You do not want to negotiate with several providers yourself.",
+        ],
+      },
+      {
+        eyebrow: "Our standard",
+        title: "We make recommendations understandable.",
+        paragraphs: [
+          "A good decision does not need a complicated explanation. It needs clean analysis, fair comparisons and transparent recommendations.",
+          "That is why we show you not only what we recommend, but also why.",
+          "In the end, you should not simply sign. You should understand.",
+        ],
+      },
     ],
   },
+
   "about-veonis": {
     ...dePages["about-veonis"],
     seoTitle: "About Veonis | Financial advice with personal support",
@@ -1307,6 +1459,10 @@ export function getLocalizedPath(locale: Locale, key: PageKey) {
   if (locale === "de") {
     if (key === "private-clients") {
       return "/de/privatkunden";
+    }
+
+    if (key === "veonis-360-analysis") {
+      return "/de/360-check";
     }
 
     return `/de/${key}`;

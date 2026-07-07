@@ -26,7 +26,7 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 const interests = [
-  "Veonis 360° Analyse",
+  "360°-Check",
   "Versicherungen & Vorsorge",
   "Hypotheken & Immobilien",
   "Steuern & Finanzplanung",

@@ -23,8 +23,8 @@ const cockpitContent = {
   de: [
     {
       label: "Gesamtbild",
-      title: "Die Veonis 360° Analyse",
-      text: "Die Veonis 360° Analyse ist der Einstieg in unsere Beratung. Sie zeigt, wo Sie heute stehen, welche Themen bereits gut geregelt sind und wo Optimierungspotenzial besteht.",
+      title: "Der Veonis 360°-Check",
+      text: "Der Veonis 360°-Check ist der Einstieg in unsere Beratung. Er zeigt, wo Sie heute stehen, welche Themen bereits gut geregelt sind und wo Optimierungspotenzial besteht.",
       metrics: [
         ["5", "Themenfelder"],
         ["1", "Struktur"],
@@ -33,7 +33,7 @@ const cockpitContent = {
       notes: ["Bestehende Verträge prüfen", "Vorsorge und Absicherung einordnen", "Prioritäten und nächste Schritte klären"],
     },
     {
-      label: "360° Analyse",
+      label: "360°-Check",
       title: "Was passt, was fehlt, was zuerst kommt.",
       text: "Wir prüfen bestehende Verträge, Vorsorgelösungen, Absicherung, Hypothekarsituation, Steuerpotenzial, Anlagen und Ihre finanzielle Struktur.",
       metrics: [
