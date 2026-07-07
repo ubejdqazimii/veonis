@@ -106,7 +106,7 @@ export const navItems: NavItem[] = [
     de: "/de/360-check",
     en: "/en/veonis-360-analysis",
   },
-  { label: "About Veonis", labelDe: "Über Veonis", labelEn: "About Veonis", de: "/de/about-veonis", en: "/en/about-veonis" },
+  { label: "About Veonis", labelDe: "Über Veonis", labelEn: "About Veonis", de: "/de/ueber-veonis", en: "/en/about-veonis" },
   { label: "Career", labelDe: "Karriere", labelEn: "Career", de: "/de/career", en: "/en/career" },
   { label: "Contact", labelDe: "Kontakt", labelEn: "Contact", de: "/de/contact", en: "/en/contact" },
 ];
@@ -905,40 +905,87 @@ const dePages: Record<PageKey, PageContent> = {
   },
 
   "about-veonis": {
-    seoTitle: "Über Veonis | Finanzberatung mit persönlicher Betreuung",
+    seoTitle: "Über Veonis | Persönliche Finanz- und Versicherungsberatung",
     metaDescription:
-      "Veonis steht für persönliche, verständliche und ganzheitliche Finanzberatung in der Schweiz.",
+      "Veonis steht für persönliche, verständliche und langfristige Finanzberatung. Wir schaffen Klarheit, vergleichen Lösungen und begleiten Privat- und Firmenkunden bei wichtigen Entscheidungen.",
     eyebrow: "Über Veonis",
-    title: "Über Veonis",
+    title: "Beratung beginnt mit Vertrauen.",
     description: [
-      "Veonis steht für klare Finanzberatung, persönliche Betreuung und Lösungen, die zum Leben unserer Kunden passen.",
-      "Wir begleiten Privatpersonen, Familien, Selbstständige und Unternehmen bei wichtigen Finanzentscheidungen.",
+      "Finanzielle Entscheidungen sind persönlich. Es geht um Sicherheit, Familie, Verantwortung, Zukunft und manchmal auch um Unsicherheit.",
+      "Veonis existiert, um Finanzberatung verständlicher, persönlicher und verbindlicher zu machen. Wir möchten, dass Kunden nicht einfach eine Lösung erhalten, sondern verstehen, warum sie zu ihrer Situation passt.",
     ],
     cta: "Veonis kennenlernen",
     sections: [
       {
-        title: "Unsere Idee",
-        paragraphs: [
-          "Finanzberatung sollte verständlich, ehrlich und ganzheitlich sein.",
-          "Viele Menschen haben für jedes Thema einen anderen Ansprechpartner. Dadurch fehlt oft der Blick auf das Ganze.",
-          "Veonis wurde gegründet, um genau das zu ändern: ein zentraler Ansprechpartner, der Zusammenhänge erkennt und langfristig begleitet.",
-        ],
-      },
-      {
-        title: "Unsere Werte",
+        eyebrow: "Was Veonis ausmacht",
+        title: "Persönlich, verständlich, verbindlich und langfristig.",
         cards: [
-          { title: "Klarheit", text: "Wir erklären komplexe Finanzthemen einfach und nachvollziehbar." },
-          { title: "Ganzheitliche Sicht", text: "Wir denken vernetzt. Versicherungen, Vorsorge, Steuern, Immobilien und Anlagen gehören zusammen." },
-          { title: "Verantwortung", text: "Wir prüfen sorgfältig, denken langfristig und empfehlen nur Lösungen, die zur Situation passen." },
-          { title: "Transparenz", text: "Wir zeigen offen, welche Möglichkeiten bestehen und wie eine Empfehlung zustande kommt." },
-          { title: "Persönlichkeit", text: "Wir beraten persönlich und bleiben auch nach der Umsetzung erreichbar." },
+          { title: "Persönlich", text: "Sie sprechen mit Menschen, die Ihre Situation verstehen und erreichbar bleiben." },
+          { title: "Verständlich", text: "Wir erklären Finanz- und Versicherungsthemen klar, ohne unnötige Fachsprache." },
+          { title: "Verbindlich", text: "Empfehlungen werden nachvollziehbar begründet und sauber dokumentiert." },
+          { title: "Langfristig", text: "Wir denken über den Abschluss hinaus und begleiten Veränderungen mit." },
         ],
       },
       {
-        title: "Unsere Mission",
+        eyebrow: "Warum es Veonis gibt",
+        title: "Weil viele Menschen Lösungen haben, aber keinen Überblick.",
         paragraphs: [
-          "Wir möchten Menschen und Unternehmen helfen, ihre Finanzen besser zu verstehen, sinnvoll zu strukturieren und langfristig sicherer zu entscheiden.",
-          "Eine gute Beratung endet nicht mit einer Unterschrift. Sie beginnt mit Vertrauen und wächst durch langfristige Begleitung.",
+          "Viele Versicherungen, Vorsorgelösungen, Finanzentscheidungen und Verträge entstehen über Jahre hinweg. Oft bei verschiedenen Anbietern, zu verschiedenen Zeitpunkten und aus unterschiedlichen Gründen.",
+          "Was dabei häufig fehlt, ist jemand, der die Situation als Ganzes einordnet, ehrlich priorisiert und verständlich erklärt, was wirklich wichtig ist.",
+          "Genau dafür gibt es Veonis.",
+          "Wir hören zu, schaffen Struktur und begleiten Entscheidungen mit klarem Blick auf das Interesse unserer Kunden.",
+        ],
+      },
+      {
+        eyebrow: "Unsere Haltung",
+        title: "Wir beraten nicht für den schnellen Abschluss, sondern für die bessere Entscheidung.",
+        paragraphs: [
+          "Gute Beratung bedeutet für uns nicht, möglichst schnell ein Produkt zu platzieren. Gute Beratung bedeutet, die Ausgangslage zu verstehen, Optionen sauber zu vergleichen und Empfehlungen nachvollziehbar zu machen.",
+          "Wir möchten, dass unsere Kunden am Ende sagen können:",
+        ],
+        items: [
+          "Ich weiss, wo ich stehe.",
+          "Ich verstehe meine Möglichkeiten.",
+          "Ich kenne die nächsten sinnvollen Schritte.",
+          "Ich habe einen Ansprechpartner, der meine Situation kennt.",
+        ],
+      },
+      {
+        eyebrow: "Wie wir arbeiten",
+        title: "Klar, strukturiert und im Interesse unserer Kunden.",
+        steps: [
+          { title: "01 Zuhören", text: "Bevor wir etwas empfehlen, wollen wir verstehen, worum es wirklich geht: Ziele, Verpflichtungen, bestehende Lösungen, offene Fragen und persönliche Prioritäten." },
+          { title: "02 Einordnen", text: "Wir übersetzen komplexe Themen in eine verständliche Übersicht. Nicht mit unnötiger Fachsprache, sondern so, dass Entscheidungen nachvollziehbar werden." },
+          { title: "03 Vergleichen", text: "Wenn Alternativen sinnvoll sind, prüfen wir nicht nur den Preis. Wir achten auf Leistungen, Bedingungen, Flexibilität, Risiken und langfristige Wirkung." },
+          { title: "04 Verhandeln", text: "Auf Wunsch führen wir Gespräche mit Versicherungen, Banken, Vorsorgeeinrichtungen oder weiteren Partnern. Unser Ziel ist, bessere Grundlagen für Ihre Entscheidung zu schaffen." },
+          { title: "05 Begleiten", text: "Finanzielle Themen ändern sich mit dem Leben. Deshalb endet unsere Arbeit nicht mit einer Unterschrift. Wir bleiben Ansprechpartner, wenn sich Ihre Situation verändert." },
+        ],
+      },
+      {
+        eyebrow: "Was uns wichtig ist",
+        title: "Beratung muss verständlich, transparent und menschlich bleiben.",
+        cards: [
+          { title: "Klarheit", text: "Wir reduzieren Komplexität, ohne wichtige Details zu übergehen." },
+          { title: "Verantwortung", text: "Wir empfehlen nur, was zur Situation, zum Ziel und zum Bedarf passt." },
+          { title: "Transparenz", text: "Wir erklären, wie eine Empfehlung zustande kommt und welche Alternativen bestehen." },
+          { title: "Nähe", text: "Unsere Kunden sollen wissen, wer sie begleitet und an wen sie sich wenden können." },
+          { title: "Langfristigkeit", text: "Wir denken nicht nur an den Abschluss, sondern an die Entwicklung danach." },
+        ],
+      },
+      {
+        eyebrow: "Die Menschen hinter Veonis",
+        title: "Persönliche Beratung braucht persönliche Ansprechpartner.",
+        paragraphs: [
+          "Veonis wird von Menschen geführt, die Finanz- und Versicherungsthemen nicht abstrakt betrachten, sondern aus der Beratungspraxis kennen.",
+          "Unser Anspruch ist, Kunden auf Augenhöhe zu begleiten: direkt, erreichbar und verständlich. Wir möchten nicht nur Verträge vermitteln, sondern Beziehungen aufbauen, die langfristig tragen.",
+        ],
+      },
+      {
+        eyebrow: "Unser Anspruch",
+        title: "Sie sollen nicht einfach unterschreiben. Sie sollen verstehen.",
+        paragraphs: [
+          "Vertrauen entsteht nicht durch grosse Worte, sondern durch saubere Arbeit: zuhören, prüfen, erklären, vergleichen und begleiten.",
+          "Wenn Sie mit Veonis arbeiten, sollen Sie wissen, welche Entscheidung Sie treffen, warum sie sinnvoll ist und welche Auswirkungen sie langfristig haben kann.",
         ],
       },
     ],
@@ -1465,13 +1512,89 @@ const englishBase: Record<PageKey, PageContent> = {
 
   "about-veonis": {
     ...dePages["about-veonis"],
-    seoTitle: "About Veonis | Financial advice with personal support",
-    metaDescription: "Veonis stands for personal, understandable and holistic financial advice in Switzerland.",
+    seoTitle: "About Veonis | Personal financial and insurance advice",
+    metaDescription:
+      "Veonis stands for personal, understandable and long-term financial advice. We create clarity, compare solutions and support private and corporate clients through important decisions.",
     eyebrow: "About Veonis",
-    title: "About Veonis",
+    title: "Advice begins with trust.",
     description: [
-      "Veonis stands for clear financial advice, personal support and solutions that fit customers' lives.",
-      "We support private individuals, families, self-employed people and companies through important financial decisions.",
+      "Financial decisions are personal. They are about security, family, responsibility, the future and sometimes uncertainty too.",
+      "Veonis exists to make financial advice more understandable, personal and reliable. We want clients not only to receive a solution, but to understand why it fits their situation.",
+    ],
+    cta: "Get to know Veonis",
+    sections: [
+      {
+        eyebrow: "What defines Veonis",
+        title: "Personal, understandable, reliable and long-term.",
+        cards: [
+          { title: "Personal", text: "You speak with people who understand your situation and remain reachable." },
+          { title: "Understandable", text: "We explain finance and insurance topics clearly, without unnecessary technical language." },
+          { title: "Reliable", text: "Recommendations are explained transparently and documented cleanly." },
+          { title: "Long-term", text: "We think beyond the conclusion and support future changes." },
+        ],
+      },
+      {
+        eyebrow: "Why Veonis exists",
+        title: "Because many people have solutions, but no overview.",
+        paragraphs: [
+          "Many insurance policies, pension solutions, financial decisions and contracts are created over years. Often with different providers, at different times and for different reasons.",
+          "What is often missing is someone who views the situation as a whole, prioritizes honestly and explains clearly what really matters.",
+          "That is why Veonis exists.",
+          "We listen, create structure and support decisions with a clear view of our clients' interests.",
+        ],
+      },
+      {
+        eyebrow: "Our approach",
+        title: "We do not advise for the quick conclusion, but for the better decision.",
+        paragraphs: [
+          "Good advice does not mean placing a product as quickly as possible. Good advice means understanding the starting point, comparing options carefully and making recommendations understandable.",
+          "We want our clients to be able to say:",
+        ],
+        items: [
+          "I know where I stand.",
+          "I understand my options.",
+          "I know the next sensible steps.",
+          "I have a point of contact who knows my situation.",
+        ],
+      },
+      {
+        eyebrow: "How we work",
+        title: "Clear, structured and in our clients' interests.",
+        steps: [
+          { title: "01 Listen", text: "Before recommending anything, we want to understand what truly matters: goals, obligations, existing solutions, open questions and personal priorities." },
+          { title: "02 Classify", text: "We translate complex topics into an understandable overview. Not with unnecessary jargon, but in a way that makes decisions traceable." },
+          { title: "03 Compare", text: "Where alternatives make sense, we do not only review price. We look at benefits, conditions, flexibility, risks and long-term impact." },
+          { title: "04 Negotiate", text: "If desired, we hold conversations with insurers, banks, pension institutions or other partners. Our goal is to create better foundations for your decision." },
+          { title: "05 Support", text: "Financial topics change with life. That is why our work does not end with a signature. We remain your point of contact when your situation changes." },
+        ],
+      },
+      {
+        eyebrow: "What matters to us",
+        title: "Advice must remain understandable, transparent and human.",
+        cards: [
+          { title: "Clarity", text: "We reduce complexity without skipping important details." },
+          { title: "Responsibility", text: "We recommend only what fits the situation, goal and need." },
+          { title: "Transparency", text: "We explain how a recommendation is created and which alternatives exist." },
+          { title: "Closeness", text: "Clients should know who supports them and whom they can contact." },
+          { title: "Long-term thinking", text: "We think not only about the conclusion, but also about what comes afterwards." },
+        ],
+      },
+      {
+        eyebrow: "The people behind Veonis",
+        title: "Personal advice needs personal points of contact.",
+        paragraphs: [
+          "Veonis is led by people who do not view finance and insurance topics abstractly, but know them from advisory practice.",
+          "Our aim is to support clients at eye level: direct, reachable and understandable. We do not only want to arrange contracts, but to build relationships that last.",
+        ],
+      },
+      {
+        eyebrow: "Our standard",
+        title: "You should not simply sign. You should understand.",
+        paragraphs: [
+          "Trust does not come from big words, but from careful work: listening, reviewing, explaining, comparing and supporting.",
+          "When you work with Veonis, you should know which decision you are making, why it makes sense and what long-term effects it may have.",
+        ],
+      },
     ],
   },
   career: {
@@ -1609,6 +1732,10 @@ export function getLocalizedPath(locale: Locale, key: PageKey) {
 
     if (key === "services") {
       return "/de/dienstleistungen";
+    }
+
+    if (key === "about-veonis") {
+      return "/de/ueber-veonis";
     }
 
     return `/de/${key}`;

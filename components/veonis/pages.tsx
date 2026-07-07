@@ -446,6 +446,7 @@ export function StandardPage({ locale, pageKey }: PageProps) {
   const isServices = pageKey === "services";
   const isAnalysis = pageKey === "veonis-360-analysis";
   const isPrivateClients = pageKey === "private-clients";
+  const isAboutVeonis = pageKey === "about-veonis";
   const ctaTitle = isPrivateClients
     ? locale === "de"
       ? "Bereit für mehr Klarheit?"
@@ -458,7 +459,11 @@ export function StandardPage({ locale, pageKey }: PageProps) {
         ? locale === "de"
           ? "Bereit für mehr Klarheit?"
           : "Ready for more clarity?"
-        : undefined;
+        : isAboutVeonis
+          ? locale === "de"
+            ? "Lernen Sie Veonis kennen"
+            : "Get to know Veonis"
+          : undefined;
   const ctaText = isPrivateClients
     ? locale === "de"
       ? "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir hören zu, ordnen ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Klar."
@@ -471,7 +476,11 @@ export function StandardPage({ locale, pageKey }: PageProps) {
         ? locale === "de"
           ? "Ein erstes Gespräch reicht oft aus, um zu erkennen, welches Thema bei Ihnen Priorität hat. Unverbindlich. Persönlich. Klar."
           : "An initial conversation is often enough to identify which topic has priority for you. Non-binding. Personal. Clear."
-        : undefined;
+        : isAboutVeonis
+          ? locale === "de"
+            ? "Ein erstes Gespräch reicht oft aus, um zu spüren, ob die Zusammenarbeit passt. Wir nehmen uns Zeit, hören zu und zeigen Ihnen, wie wir Ihre Situation einordnen würden. Persönlich. Verständlich. Verbindlich."
+            : "An initial conversation is often enough to sense whether working together fits. We take time, listen and show how we would classify your situation. Personal. Understandable. Reliable."
+          : undefined;
 
   return (
     <>
