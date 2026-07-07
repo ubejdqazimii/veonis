@@ -3,7 +3,7 @@ import { ArrowUpRight, BadgeCheck, Mail, MapPin, Phone, ShieldCheck } from "luci
 
 import { Container } from "@/components/veonis/container";
 import type { Locale } from "@/lib/veonis-content";
-import { brand, legalDisclaimer, legalLinks, localizedHomeHref, navItems } from "@/lib/veonis-content";
+import { brand, getNavItemLabel, legalDisclaimer, legalLinks, localizedHomeHref, navItems } from "@/lib/veonis-content";
 
 type FooterProps = {
   locale: Locale;
@@ -61,7 +61,7 @@ export function Footer({ locale }: FooterProps) {
                     href={item[locale]}
                     key={item.label}
                   >
-                    {item.label}
+                    {getNavItemLabel(item, locale)}
                     <ArrowUpRight className="size-3.5 opacity-0 transition group-hover:opacity-100" />
                   </Link>
                 ))}

@@ -83,21 +83,35 @@ export const localizedHomeHref: Record<Locale, string> = {
   en: "/en",
 };
 
-export const navItems = [
+export type NavItem = {
+  label: string;
+  labelDe?: string;
+  labelEn?: string;
+  de: string;
+  en: string;
+};
+
+export const navItems: NavItem[] = [
   { label: "Home", de: "/de", en: "/en" },
   { label: "Blog", de: "/de/blog", en: "/en/blog" },
-  { label: "Private Clients", de: "/de/private-clients", en: "/en/private-clients" },
-  { label: "Corporate Clients", de: "/de/corporate-clients", en: "/en/corporate-clients" },
+  { label: "Private Clients", labelDe: "Privatkunden", labelEn: "Private Clients", de: "/de/privatkunden", en: "/en/private-clients" },
+  { label: "Corporate Clients", labelDe: "Firmenkunden", labelEn: "Corporate Clients", de: "/de/corporate-clients", en: "/en/corporate-clients" },
   { label: "Services", de: "/de/services", en: "/en/services" },
   {
     label: "Veonis 360° Analysis",
+    labelDe: "Veonis 360° Analyse",
+    labelEn: "Veonis 360° Analysis",
     de: "/de/veonis-360-analysis",
     en: "/en/veonis-360-analysis",
   },
-  { label: "About Veonis", de: "/de/about-veonis", en: "/en/about-veonis" },
-  { label: "Career", de: "/de/career", en: "/en/career" },
-  { label: "Contact", de: "/de/contact", en: "/en/contact" },
+  { label: "About Veonis", labelDe: "Über Veonis", labelEn: "About Veonis", de: "/de/about-veonis", en: "/en/about-veonis" },
+  { label: "Career", labelDe: "Karriere", labelEn: "Career", de: "/de/career", en: "/en/career" },
+  { label: "Contact", labelDe: "Kontakt", labelEn: "Contact", de: "/de/contact", en: "/en/contact" },
 ];
+
+export function getNavItemLabel(item: NavItem, locale: Locale) {
+  return locale === "de" ? item.labelDe ?? item.label : item.labelEn ?? item.label;
+}
 
 export const primaryNavItems = navItems.filter(
   (item) => !["Home", "Career", "Contact"].includes(item.label),
@@ -526,60 +540,126 @@ const dePages: Record<PageKey, PageContent> = {
   "private-clients": {
     seoTitle: "Finanzberatung für Privatkunden in der Schweiz | Veonis",
     metaDescription:
-      "Veonis unterstützt Privatkunden bei Versicherungen, Vorsorge, Steuern, Hypotheken, Anlagen und finanzieller Planung.",
+      "Veonis begleitet Privatkunden bei Absicherung, Vorsorge, Eigenheim, Steuern, Vermögensaufbau und Pensionierung. Persönlich, verständlich und mit klarem Blick auf Ihre Lebenssituation.",
     eyebrow: "Privatkunden",
-    title: "Finanzberatung für Privatkunden",
+    title: "Finanzberatung für die Momente, in denen gute Entscheidungen zählen.",
     description: [
-      "Ihre finanzielle Situation verändert sich mit Ihrem Leben. Ausbildung, Berufseinstieg, Familie, Eigenheim, Selbstständigkeit oder Pensionierung bringen neue Fragen mit sich.",
-      "Veonis hilft Ihnen, Ihre Finanzen verständlich zu ordnen und Entscheidungen zu treffen, die zu Ihrer aktuellen Lebensphase und zu Ihren langfristigen Zielen passen.",
+      "Finanzen verändern sich mit dem Leben. Ein neuer Job, eine Familie, ein Eigenheim, der Schritt in die Selbstständigkeit oder die Vorbereitung auf die Pensionierung bringen Fragen mit sich, die man nicht isoliert beantworten sollte.",
+      "Veonis hilft Ihnen, Ihre Situation klar einzuordnen, Risiken zu erkennen und Entscheidungen bewusst zu treffen. Persönlich, verständlich und mit Blick auf das, was langfristig zu Ihnen passt.",
     ],
-    cta: "Privatberatung anfragen",
+    cta: "Kostenloses Erstgespräch vereinbaren",
     sections: [
       {
-        title: "Ihre Situation steht im Mittelpunkt",
-        paragraphs: [
-          "Wir starten nicht mit einem Produkt, sondern mit Ihrer persönlichen Situation.",
-          "Erst wenn das Gesamtbild klar ist, sprechen wir über passende Lösungen.",
-        ],
-        items: [
-          "Welche Versicherungen haben Sie bereits?",
-          "Wie sieht Ihre Vorsorge aus?",
-          "Welche Ziele verfolgen Sie?",
-          "Welche Risiken sollten abgesichert sein?",
-          "Welche steuerlichen Möglichkeiten bestehen?",
-          "Wie passt alles zusammen?",
-        ],
-      },
-      {
-        title: "Typische Fragen",
-        items: [
-          "Bin ich richtig versichert?",
-          "Zahle ich für Versicherungen, die ich nicht brauche?",
-          "Ist meine Familie ausreichend abgesichert?",
-          "Welche Vorsorgelösung passt zu mir?",
-          "Kann ich mir Wohneigentum leisten?",
-          "Wie kann ich langfristig Vermögen aufbauen?",
-        ],
-      },
-      {
-        title: "Beratungsthemen",
+        eyebrow: "Was Sie erwarten können",
+        title: "Persönliche Beratung mit klarem Blick auf Ihre Lebenssituation.",
         cards: [
-          { title: "Versicherungsanalyse", text: "Wir prüfen, ob Ihre aktuelle Absicherung noch zu Ihrer Lebenssituation passt." },
-          { title: "Vorsorgeplanung", text: "Wir unterstützen Sie bei Säule 3a, Risikoabsicherung, Pensionierung und langfristiger Finanzplanung." },
-          { title: "Hypothekenberatung", text: "Wir begleiten Sie bei der Finanzierung Ihres Eigenheims und erklären Modelle verständlich." },
-          { title: "Steuerliche Planung", text: "Wir zeigen, welche Aspekte bei Vorsorge, Wohneigentum, Anlagen oder Selbstständigkeit relevant sein können." },
-          { title: "Anlagen & Vermögensaufbau", text: "Wir helfen, Ziele, Anlagehorizont und Risikobereitschaft einzuordnen." },
+          { title: "Persönliche Beratung", text: "Ihre Fragen, Ziele und Lebensphase stehen im Mittelpunkt." },
+          { title: "Unabhängiger Blick", text: "Bestehende Lösungen werden ruhig und nachvollziehbar eingeordnet." },
+          { title: "Klare Prioritäten", text: "Sie sehen, welche Themen zuerst wichtig sind und warum." },
+          { title: "Langfristige Begleitung", text: "Veonis bleibt Ansprechpartner, wenn sich Ihre Situation verändert." },
         ],
       },
       {
-        title: "Ihr Vorteil",
+        eyebrow: "Wann lohnt sich ein Gespräch?",
+        title: "Wenn sich Ihr Leben verändert, sollte Ihre Finanzstruktur mitziehen.",
         paragraphs: [
-          "Sie erhalten eine Beratung, die Ihre Finanzthemen miteinander verbindet. Nicht jede Versicherung, jede Vorsorgelösung und jede Hypothek wird einzeln betrachtet, sondern als Teil Ihrer gesamten finanziellen Situation.",
-          "So entsteht Klarheit. Und Klarheit führt zu besseren Entscheidungen.",
+          "Viele Verträge und Lösungen entstehen Schritt für Schritt. Was vor einigen Jahren sinnvoll war, passt heute vielleicht nicht mehr zu Ihrer Lebenssituation.",
+          "Ein Finanzcheck lohnt sich besonders, wenn Sie vor einer wichtigen Entscheidung stehen oder das Gefühl haben, dass Ihre Unterlagen, Policen und Vorsorgethemen nicht mehr wirklich übersichtlich sind.",
+        ],
+        items: [
+          "Sie starten ins Berufsleben und möchten Ihre Vorsorge richtig aufbauen.",
+          "Sie verdienen mehr und möchten Steuern und Vorsorge sinnvoll nutzen.",
+          "Sie gründen eine Familie und möchten Verantwortung sauber absichern.",
+          "Sie planen Wohneigentum oder möchten Ihre Hypothek prüfen.",
+          "Sie sind selbstständig oder wollen private und geschäftliche Themen besser trennen.",
+          "Sie nähern sich der Pensionierung und möchten rechtzeitig planen.",
+          "Sie haben viele bestehende Verträge und wünschen sich endlich Überblick.",
+        ],
+      },
+      {
+        eyebrow: "Ihre Fragen",
+        title: "Wir beginnen dort, wo bei Ihnen Unsicherheit besteht.",
+        paragraphs: [
+          "Bei Privatkunden geht es selten nur um eine einzelne Police oder ein einzelnes Finanzprodukt. Meist steht dahinter eine grössere Frage.",
+          "Veonis ordnet diese Fragen gemeinsam mit Ihnen ein. Nicht kompliziert, nicht verkäuferisch, sondern verständlich und strukturiert.",
+        ],
+        items: [
+          "Bin ich und meine Familie wirklich richtig abgesichert?",
+          "Zahle ich für Leistungen, die ich gar nicht brauche?",
+          "Was passiert finanziell bei Krankheit, Unfall oder Erwerbsunfähigkeit?",
+          "Nutze ich meine Vorsorgemöglichkeiten sinnvoll?",
+          "Wie wirkt sich ein Eigenheim auf meine langfristige Planung aus?",
+          "Kann ich Vermögen aufbauen, ohne meine Liquidität zu gefährden?",
+          "Was sollte ich heute klären, damit später keine Lücken entstehen?",
+        ],
+      },
+      {
+        eyebrow: "Lebenssituationen",
+        title: "Beratung, die zu Ihrer aktuellen Phase passt.",
+        cards: [
+          { title: "Beruf & Einkommen", text: "Mit dem Einkommen entstehen neue Möglichkeiten, aber auch neue Verantwortungen. Wir prüfen, ob Absicherung, Vorsorge, Sparziele und Steuerfragen zu Ihrer aktuellen Situation passen." },
+          { title: "Familie & Verantwortung", text: "Wenn Partner, Kinder oder gemeinsame Verpflichtungen dazukommen, zeigen wir, ob Einkommen, Risiken, Vorsorge und bestehende Lösungen sinnvoll aufeinander abgestimmt sind." },
+          { title: "Eigenheim & Hypothek", text: "Wir betrachten Tragbarkeit, Amortisation, Steuern, Liquidität und Absicherung im Zusammenhang mit Ihrer gesamten Lebensplanung." },
+          { title: "Selbstständigkeit", text: "Wir helfen Ihnen, private und geschäftliche Themen sauber zu trennen und wichtige Risiken frühzeitig zu erkennen." },
+          { title: "Vermögen & Zukunft", text: "Vermögensaufbau beginnt mit klaren Zielen. Entscheidend ist, wofür Sie sparen, wie viel Risiko zu Ihnen passt und wie flexibel Sie bleiben möchten." },
+          { title: "Pensionierung", text: "Kapital oder Rente, Pensionskasse, Steuern, Hypothek, Einkommen und Nachlass sollten rechtzeitig sichtbar werden." },
+        ],
+      },
+      {
+        eyebrow: "Was wir konkret prüfen",
+        title: "Ein klarer Blick auf das, was für Sie relevant ist.",
+        intro: "Je nach Situation prüfen wir unter anderem:",
+        items: [
+          "Bestehende Versicherungen und mögliche Doppelspurigkeiten",
+          "Absicherung bei Krankheit, Unfall, Erwerbsunfähigkeit und Tod",
+          "Säule 3a, Pensionskasse und Vorsorgepotenzial",
+          "Steuerliche Möglichkeiten im Zusammenhang mit Vorsorge und Eigenheim",
+          "Hypothek, Tragbarkeit, Amortisation und Finanzierungsspielraum",
+          "Anlagen, Sparziele, Risiko und Liquidität",
+          "Private und geschäftliche Finanzstruktur bei Selbstständigkeit",
+          "Prioritäten für die nächsten Monate und Jahre",
+        ],
+        paragraphs: [
+          "Sie erhalten keine unübersichtliche Produktliste, sondern eine verständliche Einschätzung mit klaren nächsten Schritten.",
+        ],
+      },
+      {
+        eyebrow: "Ergebnis",
+        title: "Mehr Überblick. Bessere Entscheidungen. Weniger Unsicherheit.",
+        paragraphs: [
+          "Nach der Analyse wissen Sie, wo Sie stehen und welche Themen wirklich wichtig sind.",
+          "Unser Ziel ist, dass Sie Ihre Entscheidungen verstehen und mit einem guten Gefühl treffen können.",
+        ],
+        items: [
+          "Eine verständliche Übersicht Ihrer aktuellen Situation",
+          "Eine Einschätzung zu Lücken, Risiken und unnötigen Überschneidungen",
+          "Klare Prioritäten statt einzelne Produktvorschläge",
+          "Konkrete Empfehlungen für die nächsten Schritte",
+          "Begleitung bei Vergleichen, Offerten und Anpassungen",
+          "Einen persönlichen Ansprechpartner für Ihre weiteren Fragen",
+        ],
+      },
+      {
+        eyebrow: "Zusammenarbeit",
+        title: "Einfach, persönlich und transparent.",
+        steps: [
+          { title: "01 Erstgespräch", text: "Wir lernen Ihre Situation kennen und klären, welche Fragen für Sie aktuell am wichtigsten sind. Das Gespräch ist unverbindlich und dient der ersten Einordnung." },
+          { title: "02 Analyse", text: "Wir prüfen die relevanten Unterlagen und betrachten Ihre Situation strukturiert. Dabei zeigen sich Lücken, Doppelspurigkeiten, Risiken und mögliche Optimierungen." },
+          { title: "03 Empfehlung", text: "Sie erhalten eine klare Einschätzung mit Prioritäten und verständlichen Empfehlungen. Wir erklären Ihnen, warum ein Schritt sinnvoll ist und welche Alternativen bestehen." },
+          { title: "04 Umsetzung", text: "Wenn Sie möchten, begleiten wir Sie bei Vergleichen, Offerten, Anpassungen und weiteren Entscheidungen. Auch danach bleiben wir Ihr Ansprechpartner." },
+        ],
+      },
+      {
+        eyebrow: "Warum Veonis",
+        title: "Weil gute Beratung nicht beim Abschluss endet.",
+        paragraphs: [
+          "Finanzielle Entscheidungen begleiten Sie über viele Jahre. Deshalb braucht es nicht nur eine einmalige Empfehlung, sondern jemanden, der Ihre Situation versteht und Entwicklungen mitdenkt.",
+          "Veonis steht für persönliche Beratung, klare Struktur und langfristige Begleitung. Wir möchten, dass Sie nicht einfach eine Lösung übernehmen, sondern verstehen, warum sie zu Ihnen passt.",
         ],
       },
     ],
   },
+
   "corporate-clients": {
     seoTitle: "Finanz- und Versicherungsberatung für Firmenkunden | Veonis",
     metaDescription:
@@ -932,14 +1012,126 @@ const englishBase: Record<PageKey, PageContent> = {
     ...dePages["private-clients"],
     seoTitle: "Financial advice for private clients in Switzerland | Veonis",
     metaDescription:
-      "Veonis supports private clients with insurance, pension planning, taxes, mortgages, investments and financial planning.",
+      "Veonis supports private clients with protection, pension planning, home ownership, taxes, wealth building and retirement. Personal, understandable and focused on your life situation.",
     eyebrow: "Private clients",
-    title: "Financial advice for private clients",
+    title: "Financial advice for the moments when good decisions matter.",
     description: [
-      "Your financial situation changes with your life. Career, family, home ownership, self-employment or retirement all raise new questions.",
-      "Veonis helps you structure your finances and make decisions that fit your current phase of life and long-term goals.",
+      "Finances change with life. A new job, a family, home ownership, self-employment or preparing for retirement bring questions that should not be answered in isolation.",
+      "Veonis helps you classify your situation clearly, recognize risks and make decisions deliberately. Personal, understandable and with a view to what fits you long term.",
+    ],
+    cta: "Book a free initial conversation",
+    sections: [
+      {
+        eyebrow: "What you can expect",
+        title: "Personal advice with a clear view of your life situation.",
+        cards: [
+          { title: "Personal advice", text: "Your questions, goals and life phase are at the center." },
+          { title: "Independent perspective", text: "Existing solutions are reviewed calmly and understandably." },
+          { title: "Clear priorities", text: "You see which topics matter first and why." },
+          { title: "Long-term guidance", text: "Veonis remains your point of contact when your situation changes." },
+        ],
+      },
+      {
+        eyebrow: "When does a conversation help?",
+        title: "When your life changes, your financial structure should move with it.",
+        paragraphs: [
+          "Many contracts and solutions arise step by step. What made sense a few years ago may no longer fit your current life situation.",
+          "A financial check is especially useful when you are facing an important decision or feel that your documents, policies and pension topics are no longer truly clear.",
+        ],
+        items: [
+          "You are starting your career and want to build pension planning correctly.",
+          "Your income is growing and you want to use taxes and pension planning sensibly.",
+          "You are starting a family and want to protect responsibility properly.",
+          "You are planning home ownership or want to review your mortgage.",
+          "You are self-employed or want to separate private and business topics more clearly.",
+          "You are approaching retirement and want to plan in good time.",
+          "You have many existing contracts and finally want an overview.",
+        ],
+      },
+      {
+        eyebrow: "Your questions",
+        title: "We begin where uncertainty exists for you.",
+        paragraphs: [
+          "For private clients, the issue is rarely just one policy or one financial product. Usually there is a larger question behind it.",
+          "Veonis puts these questions into context with you. Not complicated, not sales-driven, but understandable and structured.",
+        ],
+        items: [
+          "Am I and is my family really properly protected?",
+          "Am I paying for benefits I do not need?",
+          "What happens financially in the event of illness, accident or disability?",
+          "Am I using my pension opportunities sensibly?",
+          "How does home ownership affect my long-term planning?",
+          "Can I build wealth without endangering liquidity?",
+          "What should I clarify today so gaps do not appear later?",
+        ],
+      },
+      {
+        eyebrow: "Life situations",
+        title: "Advice that fits your current phase.",
+        cards: [
+          { title: "Career & income", text: "Income creates new opportunities and responsibilities. We review whether protection, pension planning, savings goals and tax questions fit your current situation." },
+          { title: "Family & responsibility", text: "When partners, children or shared obligations are added, we show whether income, risks, pension planning and existing solutions are aligned." },
+          { title: "Home ownership & mortgage", text: "We review affordability, amortization, taxes, liquidity and protection in relation to your overall life planning." },
+          { title: "Self-employment", text: "We help separate private and business topics clearly and identify the most important risks early." },
+          { title: "Wealth & future", text: "Wealth building starts with clear goals: what you save for, how much risk fits you and how flexible you want to remain." },
+          { title: "Retirement", text: "Capital or pension, pension fund, taxes, mortgage, income and estate topics should become visible early enough." },
+        ],
+      },
+      {
+        eyebrow: "What we review",
+        title: "A clear look at what is relevant for you.",
+        intro: "Depending on the situation, we review topics such as:",
+        items: [
+          "Existing insurance policies and possible overlaps",
+          "Protection in case of illness, accident, disability and death",
+          "Pillar 3a, pension fund and pension potential",
+          "Tax options connected to pension planning and home ownership",
+          "Mortgage, affordability, amortization and financing room",
+          "Investments, savings goals, risk and liquidity",
+          "Private and business financial structure for self-employment",
+          "Priorities for the coming months and years",
+        ],
+        paragraphs: [
+          "You do not receive an unclear product list, but an understandable assessment with clear next steps.",
+        ],
+      },
+      {
+        eyebrow: "Outcome",
+        title: "More overview. Better decisions. Less uncertainty.",
+        paragraphs: [
+          "After the analysis, you know where you stand and which topics truly matter.",
+          "Our goal is that you understand your decisions and can make them with a good feeling.",
+        ],
+        items: [
+          "An understandable overview of your current situation",
+          "An assessment of gaps, risks and unnecessary overlaps",
+          "Clear priorities instead of isolated product proposals",
+          "Concrete recommendations for the next steps",
+          "Guidance with comparisons, offers and adjustments",
+          "One personal point of contact for your further questions",
+        ],
+      },
+      {
+        eyebrow: "Collaboration",
+        title: "Simple, personal and transparent.",
+        steps: [
+          { title: "01 Initial conversation", text: "We get to know your situation and clarify which questions are currently most important. The conversation is non-binding and provides an initial classification." },
+          { title: "02 Analysis", text: "We review the relevant documents and look at your situation structurally. Gaps, overlaps, risks and possible optimizations become visible." },
+          { title: "03 Recommendation", text: "You receive a clear assessment with priorities and understandable recommendations. We explain why a step makes sense and which alternatives exist." },
+          { title: "04 Implementation", text: "If you wish, we accompany you through comparisons, offers, adjustments and further decisions. We remain your point of contact afterwards too." },
+        ],
+      },
+      {
+        eyebrow: "Why Veonis",
+        title: "Because good advice does not end with completion.",
+        paragraphs: [
+          "Financial decisions accompany you for many years. That is why you need more than a one-time recommendation: you need someone who understands your situation and thinks along with developments.",
+          "Veonis stands for personal advice, clear structure and long-term guidance. We want you not just to accept a solution, but to understand why it fits you.",
+        ],
+      },
     ],
   },
+
   "corporate-clients": {
     ...dePages["corporate-clients"],
     seoTitle: "Financial and insurance advice for corporate clients | Veonis",
@@ -1113,6 +1305,10 @@ export function getLocalizedPath(locale: Locale, key: PageKey) {
   }
 
   if (locale === "de") {
+    if (key === "private-clients") {
+      return "/de/privatkunden";
+    }
+
     return `/de/${key}`;
   }
 

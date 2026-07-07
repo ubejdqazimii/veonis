@@ -446,6 +446,7 @@ export function StandardPage({ locale, pageKey }: PageProps) {
   const page = getPage(locale, pageKey);
   const isServices = pageKey === "services";
   const isAnalysis = pageKey === "veonis-360-analysis";
+  const isPrivateClients = pageKey === "private-clients";
 
   return (
     <>
@@ -475,7 +476,18 @@ export function StandardPage({ locale, pageKey }: PageProps) {
       {page.sections.map((section, index) => (
         <SectionBlock key={`${section.title}-${index}`} section={section} tone={index % 2 === 0 ? "white" : "grey"} />
       ))}
-      <CTASection locale={locale} button={page.cta ?? "Jetzt Kontakt aufnehmen"} />
+      <CTASection
+        locale={locale}
+        button={page.cta ?? "Jetzt Kontakt aufnehmen"}
+        title={isPrivateClients ? (locale === "de" ? "Bereit für mehr Klarheit?" : "Ready for more clarity?") : undefined}
+        text={
+          isPrivateClients
+            ? locale === "de"
+              ? "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir hören zu, ordnen ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Klar."
+              : "An initial conversation is often enough to make the most important topics visible. We listen, put things into context and show which next steps make sense. Non-binding. Personal. Clear."
+            : undefined
+        }
+      />
     </>
   );
 }
