@@ -23,19 +23,19 @@ const cockpitContent = {
   de: [
     {
       label: "Gesamtbild",
-      title: "Alle Finanzthemen auf einer Oberfläche.",
-      text: "Versicherungen, Vorsorge, Hypothek, Steuern, Anlagen und Liquidität werden nicht isoliert betrachtet.",
+      title: "Die Veonis 360° Analyse",
+      text: "Die Veonis 360° Analyse ist der Einstieg in unsere Beratung. Sie zeigt, wo Sie heute stehen, welche Themen bereits gut geregelt sind und wo Optimierungspotenzial besteht.",
       metrics: [
         ["5", "Themenfelder"],
         ["1", "Struktur"],
         ["360°", "Überblick"],
       ],
-      notes: ["Zusammenhänge sichtbar machen", "Doppelspurigkeiten erkennen", "Kosten und Risiken einordnen"],
+      notes: ["Bestehende Verträge prüfen", "Vorsorge und Absicherung einordnen", "Prioritäten und nächste Schritte klären"],
     },
     {
       label: "360° Analyse",
-      title: "Bestehende Lösungen werden sauber geprüft.",
-      text: "Veonis ordnet Unterlagen, Verträge und Ziele so, dass Lücken, Überschneidungen und Handlungsfelder klar werden.",
+      title: "Was passt, was fehlt, was zuerst kommt.",
+      text: "Wir prüfen bestehende Verträge, Vorsorgelösungen, Absicherung, Hypothekarsituation, Steuerpotenzial, Anlagen und Ihre finanzielle Struktur.",
       metrics: [
         ["01", "Unterlagen"],
         ["02", "Einordnung"],
@@ -80,8 +80,8 @@ const cockpitContent = {
     },
     {
       label: "Priorities",
-      title: "Not everything has to be decided at once.",
-      text: "The analysis creates a sequence based on impact, urgency and personal situation.",
+      title: "Clear priorities and recommendations.",
+      text: "The result is a clear overview with priorities, recommendations and possible next steps.",
       metrics: [
         ["A", "Urgent"],
         ["B", "Planned"],
@@ -95,76 +95,54 @@ const cockpitContent = {
 const serviceContent = {
   de: [
     {
-      label: "Absicherung",
-      title: "Schutz, Kosten und Risiken passend abstimmen.",
+      label: "Versicherungen & Vorsorge",
+      title: "Gut abgesichert zu sein bedeutet nicht, möglichst viele Versicherungen zu haben.",
+      text: "Entscheidend ist, dass Ihre Absicherung zu Ihrer Lebenssituation, Ihren Verpflichtungen und Ihren langfristigen Zielen passt. Wir prüfen, ob Leistungen, Prämien, Vorsorge und Risiken sinnvoll aufeinander abgestimmt sind - privat wie geschäftlich.",
       image: "/brand/photos/veonis-advisor-conversation-optimized.jpg",
       alt: "Persönliche Beratung zu Absicherung und Vorsorge",
-      points: ["Krankenkasse und Zusatzversicherung", "Haushalt, Rechtsschutz und Haftpflicht", "Erwerbsunfähigkeit und Todesfall"],
+      points: ["Bin ich richtig abgesichert?", "Zahle ich für doppelte oder unnötige Versicherungen?", "Passt meine Vorsorge zu Familie, Einkommen und Zukunftsplänen?"],
     },
     {
-      label: "Immobilien",
-      title: "Wohneigentum im Gesamtbild prüfen.",
+      label: "Hypotheken & Immobilien",
+      title: "Eine Immobilie beeinflusst mehr als nur Ihre Wohnkosten.",
+      text: "Sie wirkt sich auf Liquidität, Steuern, Vorsorge, Risikoabsicherung und langfristige Planung aus. Veonis hilft Ihnen, Hypotheken nicht nur über den Zinssatz zu beurteilen, sondern im Zusammenhang mit Ihrer gesamten finanziellen Situation.",
       image: "/brand/photos/veonis-corporate-meeting-optimized.jpg",
       alt: "Beratung zu Hypothek und Immobilienplanung",
-      points: ["Tragbarkeit und Eigenkapital", "Hypothekarmodelle vergleichen", "Amortisation und Steuerfolgen"],
+      points: ["Welche Hypothekarstrategie passt zu mir?", "Wie wirkt sich die Finanzierung auf Steuern und Vorsorge aus?", "Bleibt die Belastung langfristig tragbar?"],
     },
     {
-      label: "Steuern & Planung",
-      title: "Planungsspielräume früh erkennen.",
+      label: "Steuern, Anlagen & Finanzplanung",
+      title: "Viele finanzielle Entscheidungen haben steuerliche Auswirkungen.",
+      text: "Vorsorge, Wohneigentum, Anlagen, Selbstständigkeit und Nachlassplanung greifen oft ineinander. Wir helfen Ihnen, Ihre Möglichkeiten zu erkennen, Prioritäten zu setzen und Entscheidungen verständlich zu planen.",
       image: "/brand/photos/veonis-planning-session-optimized.jpg",
       alt: "Finanzplanung mit Dokumenten und digitaler Übersicht",
-      points: ["Säule 3a und Pensionskasse", "Steuerliche Abzüge", "Liquidität und Pensionierung"],
-    },
-    {
-      label: "Vermögen",
-      title: "Vermögen mit Ziel, Zeit und Risiko strukturieren.",
-      image: "/brand/photos/veonis-digital-collaboration-optimized.jpg",
-      alt: "Digitale Zusammenarbeit zur Vermögensplanung",
-      points: ["Ziele und Risikobereitschaft", "Bestehende Anlagen prüfen", "Vorsorge und Anlagen verbinden"],
-    },
-    {
-      label: "Unternehmen",
-      title: "Firmenrisiken und Vorsorge professionell ordnen.",
-      image: "/brand/photos/veonis-corporate-workshop-optimized.jpg",
-      alt: "Firmenkundenberatung in einem Workshop",
-      points: ["Firmenversicherungen", "Betriebliche Vorsorge", "Mitarbeiterlösungen"],
+      points: ["Wo gibt es steuerliches Optimierungspotenzial?", "Passt meine Anlagestruktur zu meinen Zielen?", "Wie kann ich Liquidität, Risiko und Vermögensaufbau besser koordinieren?"],
     },
   ],
   en: [
     {
-      label: "Protection",
-      title: "Align coverage, costs and risks.",
+      label: "Insurance & pension planning",
+      title: "Being well protected does not mean having as many policies as possible.",
+      text: "What matters is that protection fits your life situation, obligations and long-term goals. We review whether benefits, premiums, pensions and risks are meaningfully aligned - privately and professionally.",
       image: "/brand/photos/veonis-advisor-conversation-optimized.jpg",
       alt: "Personal advice on protection and pensions",
-      points: ["Health and supplementary insurance", "Household, legal and liability cover", "Disability and death protection"],
+      points: ["Am I properly protected?", "Am I paying for duplicate or unnecessary insurance?", "Does my pension planning fit my family, income and future plans?"],
     },
     {
-      label: "Real estate",
-      title: "Review home ownership in context.",
+      label: "Mortgages & real estate",
+      title: "A property affects more than your housing costs.",
+      text: "It influences liquidity, taxes, pension planning, risk protection and long-term planning. Veonis helps you assess mortgages beyond the interest rate and in relation to your full financial situation.",
       image: "/brand/photos/veonis-corporate-meeting-optimized.jpg",
       alt: "Advice on mortgages and real estate planning",
-      points: ["Affordability and equity", "Compare mortgage models", "Amortization and tax effects"],
+      points: ["Which mortgage strategy fits me?", "How does financing affect taxes and pension planning?", "Will the burden remain sustainable long term?"],
     },
     {
-      label: "Taxes & planning",
-      title: "Identify planning options early.",
+      label: "Taxes, investments & financial planning",
+      title: "Many financial decisions have tax implications.",
+      text: "Pension planning, home ownership, investments, self-employment and estate planning often interact. We help you identify options, set priorities and plan decisions clearly.",
       image: "/brand/photos/veonis-planning-session-optimized.jpg",
       alt: "Financial planning with documents and a digital overview",
-      points: ["Pillar 3a and pension fund", "Tax deductions", "Liquidity and retirement"],
-    },
-    {
-      label: "Wealth",
-      title: "Structure wealth by goal, time and risk.",
-      image: "/brand/photos/veonis-digital-collaboration-optimized.jpg",
-      alt: "Digital collaboration for wealth planning",
-      points: ["Goals and risk appetite", "Review existing investments", "Connect pensions and investments"],
-    },
-    {
-      label: "Companies",
-      title: "Organize business risks and pensions professionally.",
-      image: "/brand/photos/veonis-corporate-workshop-optimized.jpg",
-      alt: "Corporate advisory workshop",
-      points: ["Business insurance", "Occupational pensions", "Employee solutions"],
+      points: ["Where is there tax optimization potential?", "Does my investment structure fit my goals?", "How can I coordinate liquidity, risk and wealth building better?"],
     },
   ],
 };
@@ -324,7 +302,9 @@ export function HomeV3ServicesTabs({ locale }: { locale: Locale }) {
             <FileSearch className="size-5" />
           </div>
           <h3 className="mt-5 text-2xl font-semibold leading-tight text-[#111827]">{current.title}</h3>
-          <div className="mt-5 grid gap-2">
+          {"text" in current ? <p className="mt-3 text-sm leading-6 text-[#5f6368]">{current.text}</p> : null}
+          <p className="mt-5 text-xs font-semibold uppercase text-[#c63d4d]">{locale === "de" ? "Typische Fragen" : "Typical questions"}</p>
+          <div className="mt-3 grid gap-2">
             {current.points.map((point) => (
               <div className="flex min-w-0 items-center gap-3 rounded-lg border border-[#ead9dc] bg-[#fbf7f5] px-3 py-3 text-sm font-semibold text-[#5f6368]" key={point}>
                 <BadgeCheck className="size-4 shrink-0 text-[#c63d4d]" />

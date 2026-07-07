@@ -311,8 +311,8 @@ export const blogPosts: BlogPost[] = [
       en: "How pension planning and taxes connect in Switzerland",
     },
     excerpt: {
-      de: "Säule 3a, Pensionskasseneinkäufe und Wohneigentum wirken selten isoliert. Ein kurzer Überblick, wo Planung spürbar mehr Klarheit schafft.",
-      en: "Pillar 3a, pension fund purchases and home ownership rarely work in isolation. A concise view of where planning creates real clarity.",
+      de: "Säule 3a, Pensionskasseneinkäufe und Wohneigentum wirken selten isoliert. Wer diese Themen gemeinsam betrachtet, erkennt schneller, wo Planung wirklich Mehrwert schafft.",
+      en: "Pillar 3a, pension fund purchases and home ownership rarely work in isolation. Looking at these topics together shows more quickly where planning creates real value.",
     },
     category: { de: "Vorsorge", en: "Pension planning" },
     readTime: { de: "5 Min.", en: "5 min" },
@@ -347,8 +347,8 @@ export const blogPosts: BlogPost[] = [
       en: "Insurance: where overlaps often appear",
     },
     excerpt: {
-      de: "Viele Policen sind historisch gewachsen. Wer Haushalt, Rechtsschutz, Erwerbsunfähigkeit und Firmenrisiken gemeinsam prüft, erkennt schneller Lücken und Überschneidungen.",
-      en: "Many policies grow over time. Reviewing household, legal protection, disability and business risks together reveals gaps and overlaps faster.",
+      de: "Viele Policen sind historisch gewachsen. Wer Verträge gemeinsam prüft, erkennt schneller Lücken, Überschneidungen und unnötige Kosten.",
+      en: "Many policies have grown over time. Reviewing contracts together reveals gaps, overlaps and unnecessary costs faster.",
     },
     category: { de: "Versicherungen", en: "Insurance" },
     readTime: { de: "4 Min.", en: "4 min" },
@@ -500,12 +500,11 @@ const homeV3: PageContent = {
   ...home,
   seoTitle: "Veonis Homepage Version 3 | Finanzberatung Schweiz",
   metaDescription:
-    "Kompakte Beratungsübersicht von Veonis für Versicherungen, Vorsorge, Hypotheken, Steuern, Anlagen und finanzielle Planung in der Schweiz.",
+    "Veonis bringt Ordnung in Versicherungen, Vorsorge, Hypotheken, Steuern, Anlagen und finanzielle Planung in der Schweiz.",
   eyebrow: "Veonis Schweiz",
   title: "Ein Ansprechpartner für Versicherungen, Vorsorge und Finanzen.",
   description: [
-    "Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen hängen stärker zusammen, als viele denken. Eine Entscheidung in einem Bereich kann Auswirkungen auf Ihre gesamte finanzielle Situation haben.",
-    "Veonis hilft Ihnen, den Überblick zu behalten. Wir prüfen Ihre aktuelle Situation, zeigen Ihnen verständlich Ihre Möglichkeiten und begleiten Sie bei Entscheidungen, die langfristig zu Ihnen passen.",
+    "Veonis bringt Ordnung in Ihre finanzielle Situation. Wir prüfen Versicherungen, Vorsorge, Hypotheken, Steuern und Anlagen im Zusammenhang - damit Sie klar erkennen, was passt, wo Lücken bestehen und welche nächsten Schritte sinnvoll sind.",
   ],
 };
 
@@ -912,12 +911,11 @@ const englishBase: Record<PageKey, PageContent> = {
     ...homeV3,
     seoTitle: "Veonis Homepage Version 3 | Financial advice Switzerland",
     metaDescription:
-      "Compact Veonis advisory overview for insurance, pension planning, mortgages, taxes, investments and financial planning in Switzerland.",
+      "Veonis brings structure to insurance, pension planning, mortgages, taxes, investments and financial planning in Switzerland.",
     eyebrow: "Veonis Switzerland",
     title: "One contact for insurance, pension planning and finances.",
     description: [
-      "Insurance, pension planning, taxes, mortgages and investments are more connected than many people realize. One decision in one area can affect your entire financial situation.",
-      "Veonis helps you keep the overview. We review your current situation, explain your options clearly and support decisions that fit you long term.",
+      "Veonis brings structure to your financial situation. We review insurance, pension planning, mortgages, taxes and investments in context - so you clearly see what fits, where gaps exist and which next steps make sense.",
     ],
   },
   blog: {

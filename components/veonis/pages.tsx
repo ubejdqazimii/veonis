@@ -306,8 +306,8 @@ function V3HeroSection({
 }) {
   const proof =
     locale === "de"
-      ? ["Broker-Blick", "360° Analyse", "Swiss Advisory"]
-      : ["Broker perspective", "360° analysis", "Swiss advisory"];
+      ? ["Ganzheitliche Analyse", "Unabhängiger Blick", "Persönliche Begleitung", "Klare Empfehlungen"]
+      : ["Holistic analysis", "Independent perspective", "Personal guidance", "Clear recommendations"];
 
   return (
     <section className="relative isolate overflow-hidden bg-[#21191c] text-white">
@@ -680,29 +680,51 @@ function DigitalClaritySection() {
 function V3FinanceMapSection({ locale }: { locale: Locale }) {
   const effects =
     locale === "de"
-      ? ["Vorsorge beeinflusst Steuern", "Hypothek verändert Liquidität", "Versicherung prägt monatliche Kosten"]
-      : ["Pension planning affects taxes", "Mortgage choices change liquidity", "Insurance shapes monthly costs"];
+      ? [
+          { title: "Gesamtbild statt Einzelentscheid", text: "Wir betrachten Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen gemeinsam." },
+          { title: "Prioritäten vor Produkten", text: "Zuerst klären wir, was wirklich wichtig ist - erst danach geht es um mögliche Lösungen." },
+          { title: "Beratung mit Umsetzungsplan", text: "Sie erhalten verständliche Empfehlungen und konkrete nächste Schritte." },
+        ]
+      : [
+          { title: "Overall picture before single decisions", text: "We look at insurance, pensions, taxes, mortgages and investments together." },
+          { title: "Priorities before products", text: "First we clarify what truly matters - only then do possible solutions come into focus." },
+          { title: "Advice with an implementation plan", text: "You receive understandable recommendations and concrete next steps." },
+        ];
+  const paragraphs =
+    locale === "de"
+      ? [
+          "Viele Menschen haben Versicherungen, Vorsorgelösungen, Hypotheken, Anlagen und Steuerfragen an verschiedenen Orten geregelt. Jede einzelne Lösung kann sinnvoll wirken - aber erst im Zusammenspiel zeigt sich, ob wirklich alles zusammenpasst.",
+          "Ihre Vorsorge beeinflusst Ihre Steuern. Ihre Hypothek beeinflusst Ihre Liquidität. Ihre Versicherungen beeinflussen Ihre monatlichen Kosten. Ihre Anlagen sollten zu Ihren Zielen, Ihrer Risikobereitschaft und Ihrer Lebensphase passen.",
+          "Veonis betrachtet diese Themen nicht einzeln, sondern als Gesamtbild. So entstehen klare Prioritäten statt isolierte Entscheidungen.",
+        ]
+      : [
+          "Many people have insurance, pension solutions, mortgages, investments and tax questions arranged in different places. Each solution can look sensible on its own - but only the interaction shows whether everything truly fits together.",
+          "Your pension planning affects your taxes. Your mortgage affects your liquidity. Your insurance affects your monthly costs. Your investments should fit your goals, risk appetite and life phase.",
+          "Veonis does not review these topics in isolation, but as one overall picture. That creates clear priorities instead of isolated decisions.",
+        ];
 
   return (
     <section className="bg-[#f6f2ef] py-12 sm:py-16">
       <Container>
-        <div className="grid min-w-0 gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
           <article className="rounded-lg bg-[#24191c] p-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:p-8">
-            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">360° Finanzbild</p>
+            <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{locale === "de" ? "Gesamtbild" : "Overall picture"}</p>
             <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
               {locale === "de"
-                ? "Eine Entscheidung wirkt selten nur in einem Bereich."
-                : "One decision rarely affects only one area."}
+                ? "Finanzielle Klarheit beginnt nicht bei einem Produkt, sondern beim Gesamtbild."
+                : "Financial clarity does not start with a product, but with the overall picture."}
             </h2>
-            <p className="mt-5 leading-7 text-white/66">
-              {locale === "de"
-                ? "Die Veonis 360° Analyse macht sichtbar, wie Versicherungen, Vorsorge, Hypotheken, Steuern und Anlagen zusammenhängen."
-                : "The Veonis 360° analysis shows how insurance, pension planning, mortgages, taxes and investments are connected."}
-            </p>
+            <div className="mt-5 space-y-4 leading-7 text-white/66">
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
             <div className="mt-6 grid gap-2">
-              {effects.map((effect) => (
-                <div className="rounded-lg border border-white/12 bg-white/8 p-3 text-sm font-semibold text-white/78" key={effect}>
-                  {effect}
+              {effects.map((effect, index) => (
+                <div className="rounded-lg border border-white/12 bg-white/8 p-3 text-sm text-white/78" key={effect.title}>
+                  <p className="text-xs font-semibold text-[#ef7d8b]">{String(index + 1).padStart(2, "0")}</p>
+                  <p className="mt-1 font-semibold text-white">{effect.title}</p>
+                  <p className="mt-1 leading-6 text-white/64">{effect.text}</p>
                 </div>
               ))}
             </div>
@@ -861,10 +883,10 @@ function V3ServicesMatrixSection({ locale }: { locale: Locale }) {
             eyebrow="Services"
             intro={
               locale === "de"
-                ? "Die wichtigsten Beratungsfelder bleiben kompakt sichtbar und führen jeweils zurück zum finanziellen Gesamtbild."
-                : "The key advisory fields stay compact and always lead back to the overall financial picture."
+                ? "Je nach Situation starten wir dort, wo der grösste Handlungsbedarf besteht. Der Unterschied zu klassischer Beratung: Wir betrachten jedes Thema im Zusammenhang mit Ihrer gesamten finanziellen Situation."
+                : "Depending on your situation, we start where the greatest need for action exists. The difference to classic advice: every topic is considered in relation to your overall financial situation."
             }
-            title={locale === "de" ? "Services im Zusammenhang." : "Services in context."}
+            title={locale === "de" ? "Drei Einstiege. Ein Gesamtbild." : "Three entry points. One overall picture."}
           />
           <HomeV3ServicesTabs locale={locale} />
         </div>
@@ -949,16 +971,14 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
   const cards =
     locale === "de"
       ? [
-          { number: "01", title: "Analyse", text: "Bestehende Verträge, Ziele und finanzielle Wechselwirkungen werden sichtbar.", icon: ScanSearch },
-          { number: "02", title: "Priorität", text: "Nicht alles ist gleich wichtig. Veonis ordnet nach Wirkung und Timing.", icon: Layers3 },
-          { number: "03", title: "Umsetzung", text: "Vergleiche, Offerten und Anpassungen werden ruhig begleitet.", icon: ClipboardCheck },
-          { number: "04", title: "Betreuung", text: "Bei Lebens- und Unternehmensveränderungen bleibt der Überblick aktuell.", icon: Handshake },
+          { number: "01", title: "Kennenlernen", text: "In einem unverbindlichen Erstgespräch klären wir Ihre Situation, Ihre Ziele und Ihre wichtigsten Fragen. Sie erhalten eine erste Einschätzung, welche Themen für Sie aktuell relevant sind.", icon: Handshake },
+          { number: "02", title: "360° Check", text: "Wir prüfen Ihre Unterlagen, Verträge und finanziellen Themen im Zusammenhang. Dabei erkennen wir Lücken, Doppelspurigkeiten, Risiken und mögliche Optimierungen.", icon: ScanSearch },
+          { number: "03", title: "Plan", text: "Sie erhalten eine klare Übersicht mit Prioritäten und konkreten Empfehlungen. Auf Wunsch begleiten wir Sie auch bei Offerten, Vergleichen, Anpassungen und der weiteren Umsetzung.", icon: ClipboardCheck },
         ]
       : [
-          { number: "01", title: "Analysis", text: "Existing contracts, goals and financial interactions become visible.", icon: ScanSearch },
-          { number: "02", title: "Priority", text: "Not everything matters equally. Veonis orders by impact and timing.", icon: Layers3 },
-          { number: "03", title: "Execution", text: "Comparisons, offers and adjustments are guided calmly.", icon: ClipboardCheck },
-          { number: "04", title: "Care", text: "As life and business change, the overview stays current.", icon: Handshake },
+          { number: "01", title: "First conversation", text: "In a non-binding initial conversation, we clarify your situation, goals and most important questions. You receive a first assessment of which topics are currently relevant.", icon: Handshake },
+          { number: "02", title: "360° check", text: "We review your documents, contracts and financial topics in context. This reveals gaps, overlaps, risks and possible optimizations.", icon: ScanSearch },
+          { number: "03", title: "Plan", text: "You receive a clear overview with priorities and concrete recommendations. If desired, we also support offers, comparisons, adjustments and further implementation.", icon: ClipboardCheck },
         ];
 
   return (
@@ -971,12 +991,12 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
                 {locale === "de" ? "Zusammenarbeit" : "Collaboration"}
               </p>
               <h2 className="display-title mt-3 max-w-xl text-3xl leading-tight text-white sm:text-5xl">
-                {locale === "de" ? "So entsteht eine klare Empfehlung." : "How a clear recommendation takes shape."}
+                {locale === "de" ? "Klarer Ablauf. Persönliche Begleitung." : "Clear process. Personal guidance."}
               </h2>
               <p className="mt-4 max-w-xl leading-7 text-white/70">
                 {locale === "de"
-                  ? "Vom ersten Gespräch bis zur laufenden Betreuung bleibt der Ablauf verständlich, persönlich und strukturiert."
-                  : "From the first conversation to ongoing support, the process remains understandable, personal and structured."}
+                  ? "Bei Veonis wissen Sie von Anfang an, was geprüft wird, warum es relevant ist und welcher Schritt als Nächstes sinnvoll ist. Unsere Beratung bleibt persönlich, verständlich und strukturiert."
+                  : "With Veonis, you know from the beginning what is being reviewed, why it matters and which next step makes sense. Our advice remains personal, understandable and structured."}
               </p>
             </div>
             <div className="min-w-0 rounded-lg border border-white/14 bg-white/10 p-4 backdrop-blur">
@@ -988,7 +1008,7 @@ function V3SnapCardsSection({ locale }: { locale: Locale }) {
               </div>
             </div>
           </div>
-          <div className="mt-7 flex max-w-full min-w-0 snap-x gap-4 overflow-x-auto overflow-y-hidden pb-1 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-4 lg:overflow-visible">
+          <div className="mt-7 flex max-w-full min-w-0 snap-x gap-4 overflow-x-auto overflow-y-hidden pb-1 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-3 lg:overflow-visible">
             {cards.map((card) => {
               const Icon = card.icon;
 
@@ -1025,7 +1045,12 @@ function V3InsightsSection({ locale, posts }: { locale: Locale; posts: BlogPost[
         <div className="mb-7 flex items-end justify-between gap-5">
           <SectionHeader
             eyebrow={locale === "de" ? "Aktuelle Impulse" : "Latest insights"}
-            title={locale === "de" ? "Einordnung für bessere Finanzentscheide." : "Context for better financial decisions."}
+            intro={
+              locale === "de"
+                ? "Im Veonis Blog erklären wir Finanzthemen so, wie sie im echten Leben vorkommen: vernetzt, verständlich und mit Blick auf die Schweiz."
+                : "In the Veonis blog, we explain financial topics as they appear in real life: connected, understandable and with a Swiss perspective."
+            }
+            title={locale === "de" ? "Finanzwissen, das Entscheidungen einfacher macht." : "Financial knowledge that makes decisions easier."}
           />
         </div>
         <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
@@ -1569,12 +1594,12 @@ function V2CTASection({ locale }: { locale: Locale }) {
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{brand.claim}</p>
             <h2 className="display-title mt-3 max-w-3xl text-3xl leading-tight text-white sm:text-5xl">
-              {locale === "de" ? "Bereit für eine klare Einordnung?" : "Ready for a clear assessment?"}
+              {locale === "de" ? "Bereit für mehr Überblick?" : "Ready for more overview?"}
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/66">
               {locale === "de"
-                ? "Wenn Sie wissen möchten, welche Finanzthemen zuerst relevant sind, starten wir mit einem ruhigen Erstgespräch."
-                : "If you want to know which financial topics matter first, we start with a calm initial conversation."}
+                ? "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir nehmen uns Zeit für Ihre Fragen, ordnen Ihre Situation ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Mit klarem Blick auf Ihre finanzielle Gesamtsituation."
+                : "An initial conversation is often enough to make the most important topics visible. We take time for your questions, put your situation into context and show which next steps make sense. Non-binding. Personal. With a clear view of your overall financial situation."}
             </p>
           </div>
           <Link
@@ -1582,7 +1607,7 @@ function V2CTASection({ locale }: { locale: Locale }) {
             href={getLocalizedPath(locale, "contact")}
           >
             <span className="min-w-0 break-words">
-              {locale === "de" ? "Erstgespräch anfragen" : "Request a conversation"}
+              {locale === "de" ? "Kostenloses Erstgespräch vereinbaren" : "Book a free initial conversation"}
             </span>
             <ArrowRight className="ml-2 size-4 shrink-0" />
           </Link>
