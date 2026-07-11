@@ -23,6 +23,9 @@ export function PreHeader({ locale }: PreHeaderProps) {
           <Link className="hover:text-[#c63d4d]" href={localizedHomeHref[locale]}>
             Home
           </Link>
+          <Link className="hover:text-[#c63d4d]" href={getLocalizedPath(locale, "blog")}>
+            Blog
+          </Link>
           <Link className="hover:text-[#c63d4d]" href={getLocalizedPath(locale, "contact")}>
             Contact
           </Link>
