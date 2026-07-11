@@ -25,6 +25,8 @@ export type CardContent = {
   text: string;
   ctaLabel?: string;
   href?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export type ProcessStep = {
@@ -1323,6 +1325,14 @@ const dePages: Record<PageKey, PageContent> = {
         paragraphs: [
           "Veonis wird von Menschen geführt, die Finanz- und Versicherungsthemen nicht abstrakt betrachten, sondern aus der Beratungspraxis kennen.",
           "Unser Anspruch ist, Kunden auf Augenhöhe zu begleiten: direkt, erreichbar und verständlich. Wir möchten nicht nur Verträge vermitteln, sondern Beziehungen aufbauen, die langfristig tragen.",
+        ],
+        cards: [
+          {
+            title: "Edison Istrefi",
+            text: "Geschäftsführer",
+            image: "/brand/photos/edison-istrefi.jpg",
+            imageAlt: "Edison Istrefi, Geschäftsführer von Veonis",
+          },
         ],
       },
       {
@@ -2914,6 +2924,14 @@ const englishBase: Record<PageKey, PageContent> = {
         paragraphs: [
           "Veonis is led by people who do not view finance and insurance topics abstractly, but know them from advisory practice.",
           "Our aim is to support clients at eye level: direct, reachable and understandable. We do not only want to arrange contracts, but to build relationships that last.",
+        ],
+        cards: [
+          {
+            title: "Edison Istrefi",
+            text: "Managing Director",
+            image: "/brand/photos/edison-istrefi.jpg",
+            imageAlt: "Edison Istrefi, Managing Director of Veonis",
+          },
         ],
       },
       {
