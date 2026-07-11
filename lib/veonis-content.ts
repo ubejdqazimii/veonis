@@ -141,18 +141,10 @@ export const legalLinks: Record<Locale, { label: string; href: string }[]> = {
   de: [
     { label: "Impressum", href: "/de/legal/impressum" },
     { label: "Datenschutz", href: "/de/legal/datenschutz" },
-    {
-      label: "Informationen gemäss Art. 45 VAG",
-      href: "/de/legal/informationen-gemaess-art-45-vag",
-    },
   ],
   en: [
     { label: "Imprint", href: "/en/legal/imprint" },
     { label: "Privacy", href: "/en/legal/privacy" },
-    {
-      label: "Information according to Art. 45 ISA",
-      href: "/en/legal/information-according-to-art-45-isa",
-    },
   ],
 };
 
