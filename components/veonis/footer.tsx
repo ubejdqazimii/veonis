@@ -30,7 +30,7 @@ export function Footer({ locale }: FooterProps) {
               Veonis begleitet Privat- und Firmenkunden in der Schweiz bei Versicherungen,
               Vorsorge, Hypotheken, Steuern, Anlagen und finanzieller Planung.
             </p>
-            <div className="mt-7 grid gap-3 sm:grid-cols-3">
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
               {contactItems.map((item) => {
                 const Icon = item.icon;
 
