@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { Locale } from "@/lib/veonis-content";
-import { getLocalizedPath, getNavItemLabel, homepageVersions, primaryNavItems } from "@/lib/veonis-content";
+import { getLocalizedPath, getNavItemLabel, localizedHomeHref, primaryNavItems } from "@/lib/veonis-content";
 
 type MobileMenuProps = {
   locale: Locale;
@@ -31,19 +31,13 @@ export function MobileMenu({ locale }: MobileMenuProps) {
       {open ? (
         <div className="absolute inset-x-4 top-[calc(100%+0.75rem)] z-50 rounded-3xl border border-[#e6e2dc] bg-white p-4 shadow-[0_24px_70px_rgba(17,24,39,0.16)]">
           <nav className="grid gap-1">
-            <div className="rounded-2xl bg-[#f7f7f6] p-2">
-              <p className="px-2 py-1 text-xs font-semibold uppercase text-[#c63d4d]">Home</p>
-              {homepageVersions[locale].map((version) => (
-                <Link
-                  className="block rounded-xl px-3 py-2 text-sm font-semibold text-[#111827] hover:bg-white"
-                  href={version.href}
-                  key={version.value}
-                  onClick={() => setOpen(false)}
-                >
-                  {version.label}
-                </Link>
-              ))}
-            </div>
+            <Link
+              className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#111827] hover:bg-[#f7f7f6]"
+              href={localizedHomeHref[locale]}
+              onClick={() => setOpen(false)}
+            >
+              Home
+            </Link>
             {primaryNavItems.map((item) => (
               <Link
                 className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#111827] hover:bg-[#f7f7f6]"
