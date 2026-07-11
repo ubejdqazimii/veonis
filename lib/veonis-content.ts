@@ -122,7 +122,7 @@ export function getNavItemLabel(item: NavItem, locale: Locale) {
 }
 
 export const primaryNavItems = navItems.filter(
-  (item) => !["Home", "Career", "Contact"].includes(item.label),
+  (item) => !["Home", "Blog", "Career", "Contact"].includes(item.label),
 );
 
 export const homepageVersions: Record<Locale, { label: string; value: "v1" | "v2" | "v3"; href: string; note: string }[]> = {
