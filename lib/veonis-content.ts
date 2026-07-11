@@ -72,6 +72,12 @@ export type BlogPost = {
   alt: Record<Locale, string>;
 };
 
+export type BlogArticleContent = {
+  intro: string[];
+  sections: { title: string; paragraphs: string[] }[];
+  takeaways: string[];
+};
+
 export const brand = {
   name: "Veonis",
   claim: "Ein Ansprechpartner für Ihre Finanzen.",
@@ -409,6 +415,359 @@ export const blogPosts: BlogPost[] = [
     },
   },
 ];
+
+export const blogArticleContent: Record<string, Record<Locale, BlogArticleContent>> = {
+  "vorsorge-steuern-schweiz": {
+    de: {
+      intro: [
+        "Vorsorge und Steuern werden oft getrennt betrachtet. In der Praxis beeinflussen sie sich jedoch laufend: eine Einzahlung in die Säule 3a, ein Einkauf in die Pensionskasse, Wohneigentum oder eine spätere Pensionierung können steuerliche und finanzielle Folgen haben.",
+        "Wer diese Themen gemeinsam einordnet, erkennt schneller, welche Schritte wirklich sinnvoll sind und welche Entscheidungen besser vorbereitet werden sollten.",
+      ],
+      sections: [
+        {
+          title: "Warum Einzelentscheidungen selten ausreichen",
+          paragraphs: [
+            "Eine Vorsorgelösung kann heute steuerlich attraktiv wirken, aber langfristig nur dann passen, wenn Liquidität, Risikoabsicherung, Familie und Pensionierungsziel berücksichtigt werden.",
+            "Deshalb beginnt eine gute Planung nicht mit der Frage nach einem Produkt, sondern mit der Frage, welche Wirkung eine Entscheidung auf die gesamte finanzielle Situation hat.",
+          ],
+        },
+        {
+          title: "Säule 3a und Pensionskasse richtig einordnen",
+          paragraphs: [
+            "Einzahlungen in die Säule 3a oder Einkäufe in die Pensionskasse können steuerlich interessant sein. Gleichzeitig sollten Sperrfristen, Bezugsmöglichkeiten, Einkaufspotenzial und die spätere Auszahlung mitbedacht werden.",
+            "Wichtig ist, dass die Massnahme zu Lebensphase, Einkommen, Vermögen und Zukunftsplanung passt. Nicht jeder steuerliche Vorteil ist automatisch die beste finanzielle Entscheidung.",
+          ],
+        },
+        {
+          title: "Wohneigentum verändert die Planung",
+          paragraphs: [
+            "Mit einem Eigenheim kommen Hypothek, Amortisation, Tragbarkeit, Unterhalt, Steuern und Vorsorge enger zusammen. Eine Veränderung bei einem Thema kann direkte Auswirkungen auf andere Bereiche haben.",
+            "Gerade deshalb lohnt es sich, Vorsorge und Steuern nicht erst kurz vor der Pensionierung zu prüfen, sondern bereits bei grossen Finanzentscheidungen mitzudenken.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Vorsorge und Steuern sollten gemeinsam betrachtet werden.",
+        "Steuerliche Vorteile sind nur sinnvoll, wenn sie langfristig zur Situation passen.",
+        "Ein 360° Blick hilft, Liquidität, Sicherheit und Zukunftsziele zu verbinden.",
+      ],
+    },
+    en: {
+      intro: [
+        "Pension planning and taxes are often reviewed separately. In practice, they constantly influence each other: a pillar 3a payment, a pension fund purchase, home ownership or retirement planning can all have tax and financial effects.",
+        "Looking at these topics together makes it easier to see which steps create real value and which decisions should be prepared more carefully.",
+      ],
+      sections: [
+        {
+          title: "Why isolated decisions are rarely enough",
+          paragraphs: [
+            "A pension solution may look attractive from a tax perspective today, but it only fits long term if liquidity, risk protection, family situation and retirement goals are considered as well.",
+            "Good planning therefore starts less with a product and more with the effect a decision has on the overall financial picture.",
+          ],
+        },
+        {
+          title: "Putting pillar 3a and pension funds into context",
+          paragraphs: [
+            "Payments into pillar 3a or pension fund purchases can be tax-efficient. At the same time, access rules, withdrawal planning, purchase potential and later payout timing need to be considered.",
+            "The measure should fit the life phase, income, assets and future plans. Not every tax advantage is automatically the best financial decision.",
+          ],
+        },
+        {
+          title: "Home ownership changes the plan",
+          paragraphs: [
+            "With a home, mortgage, amortization, affordability, maintenance, taxes and pension planning become more closely connected. A change in one area can directly affect others.",
+            "That is why it helps to review pension and tax topics before major financial decisions, not only shortly before retirement.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Pension planning and taxes should be reviewed together.",
+        "Tax advantages only make sense if they fit the long-term situation.",
+        "A 360° view connects liquidity, security and future goals.",
+      ],
+    },
+  },
+  "hypothek-liquiditaet-tragbarkeit": {
+    de: {
+      intro: [
+        "Bei einer Hypothek steht oft der Zinssatz im Vordergrund. Er ist wichtig, aber er erzählt nicht die ganze Geschichte. Entscheidend ist, wie Finanzierung, Tragbarkeit, Amortisation, Steuern, Vorsorge und Liquidität zusammenspielen.",
+        "Eine gute Hypothekenprüfung zeigt deshalb nicht nur, ob eine Finanzierung möglich ist, sondern ob sie langfristig zur finanziellen Situation passt.",
+      ],
+      sections: [
+        {
+          title: "Tragbarkeit ist nur der Startpunkt",
+          paragraphs: [
+            "Banken prüfen, ob eine Hypothek rechnerisch tragbar ist. Für Kundinnen und Kunden reicht diese Sicht allein jedoch oft nicht aus.",
+            "Relevant ist auch, wie viel Spielraum nach Zins, Amortisation, Unterhalt, Steuern und Lebenshaltungskosten bleibt. Nur so wird sichtbar, ob die Finanzierung auch in veränderten Situationen robust bleibt.",
+          ],
+        },
+        {
+          title: "Amortisation, Steuern und Vorsorge verbinden",
+          paragraphs: [
+            "Direkte oder indirekte Amortisation kann unterschiedliche Auswirkungen auf Steuern, Vorsorgekapital und Liquidität haben. Welche Variante sinnvoll ist, hängt von Einkommen, Vermögen, Vorsorgesituation und Planungshorizont ab.",
+            "Auch die Absicherung sollte geprüft werden: Was passiert bei Erwerbsunfähigkeit, Tod, Trennung oder Pensionierung? Eine Hypothek ist selten nur ein Kreditvertrag.",
+          ],
+        },
+        {
+          title: "Verhandeln braucht Vergleichbarkeit",
+          paragraphs: [
+            "Wer Offerten vergleicht, sollte nicht nur den tiefsten Zinssatz betrachten. Laufzeit, Flexibilität, Bedingungen, Gebühren und Anschlussfinanzierung können genauso wichtig sein.",
+            "Eine saubere Vorbereitung verbessert die Gesprächsgrundlage mit Banken und Anbietern und macht Entscheidungen nachvollziehbarer.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Der Zinssatz ist wichtig, aber nicht das einzige Kriterium.",
+        "Tragbarkeit sollte auch mit Blick auf Liquidität und Lebensplanung geprüft werden.",
+        "Vergleichbare Offerten schaffen bessere Verhandlungsgrundlagen.",
+      ],
+    },
+    en: {
+      intro: [
+        "Mortgage conversations often focus on the interest rate. It matters, but it is not the whole picture. The decisive question is how financing, affordability, amortization, taxes, pension planning and liquidity work together.",
+        "A good mortgage review therefore shows not only whether financing is possible, but whether it fits the overall financial situation long term.",
+      ],
+      sections: [
+        {
+          title: "Affordability is only the starting point",
+          paragraphs: [
+            "Banks check whether a mortgage is affordable on paper. For clients, this view is often not enough.",
+            "It is also important to understand how much room remains after interest, amortization, maintenance, taxes and living costs. This shows whether the financing remains robust when circumstances change.",
+          ],
+        },
+        {
+          title: "Connecting amortization, taxes and pension planning",
+          paragraphs: [
+            "Direct and indirect amortization can have different effects on taxes, pension assets and liquidity. The right structure depends on income, assets, pension situation and planning horizon.",
+            "Protection should also be reviewed: what happens in the event of disability, death, separation or retirement? A mortgage is rarely just a loan agreement.",
+          ],
+        },
+        {
+          title: "Negotiation needs comparability",
+          paragraphs: [
+            "When comparing offers, the lowest rate is not the only factor. Term, flexibility, conditions, fees and refinancing options can be just as important.",
+            "Clear preparation improves the basis for conversations with banks and providers and makes decisions easier to understand.",
+          ],
+        },
+      ],
+      takeaways: [
+        "The interest rate matters, but it is not the only criterion.",
+        "Affordability should be reviewed together with liquidity and life planning.",
+        "Comparable offers create a stronger basis for negotiation.",
+      ],
+    },
+  },
+  "versicherungen-doppelspurigkeiten": {
+    de: {
+      intro: [
+        "Versicherungen entstehen oft über Jahre: eine Police beim ersten Job, eine Anpassung bei Familiengründung, ein zusätzlicher Vertrag beim Eigenheim oder eine Lösung über den Arbeitgeber. Irgendwann fehlt der Überblick.",
+        "Genau dort entstehen Doppelspurigkeiten, Lücken oder unnötige Kosten. Eine strukturierte Prüfung hilft, Verträge wieder verständlich einzuordnen.",
+      ],
+      sections: [
+        {
+          title: "Wo Überschneidungen häufig auftreten",
+          paragraphs: [
+            "Doppelspurigkeiten entstehen besonders dort, wo private, berufliche und familiäre Absicherung ineinandergreifen. Unfall, Krankheit, Todesfall, Haftpflicht, Hausrat oder Rechtsschutz werden oft einzeln abgeschlossen, aber selten gemeinsam geprüft.",
+            "Manche Leistungen überschneiden sich, andere fehlen genau dort, wo sie im Ernstfall wichtig wären. Deshalb zählt nicht die Anzahl Verträge, sondern deren Zusammenspiel.",
+          ],
+        },
+        {
+          title: "Nicht jede tiefere Prämie ist eine Verbesserung",
+          paragraphs: [
+            "Eine günstigere Prämie kann sinnvoll sein, wenn die Leistung weiterhin passt. Sie kann aber auch bedeuten, dass Deckungen, Wartefristen, Ausschlüsse oder Flexibilität ungünstiger werden.",
+            "Ein Vergleich sollte deshalb immer Leistung, Bedingungen und Bedarf berücksichtigen. Rabatt allein schafft noch keine gute Absicherung.",
+          ],
+        },
+        {
+          title: "Regelmässig prüfen, aber nicht ständig wechseln",
+          paragraphs: [
+            "Versicherungen müssen nicht jedes Jahr vollständig neu aufgebaut werden. Sinnvoll ist eine Prüfung, wenn sich Lebenssituation, Einkommen, Wohnsituation, Familie oder berufliche Verantwortung verändert.",
+            "Das Ziel ist Stabilität mit klarer Struktur: behalten, was passt; anpassen, was nicht mehr stimmt; entfernen, was keinen Nutzen bringt.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Viele Doppelspurigkeiten entstehen durch historisch gewachsene Verträge.",
+        "Entscheidend ist das Zusammenspiel von Deckung, Bedarf und Kosten.",
+        "Eine Prüfung schafft Klarheit, bevor ein Wechsel entschieden wird.",
+      ],
+    },
+    en: {
+      intro: [
+        "Insurance contracts often grow over many years: a policy from the first job, an adjustment when starting a family, an additional contract for home ownership or a solution through the employer. At some point, the overview is lost.",
+        "This is where overlaps, gaps and unnecessary costs appear. A structured review helps put contracts back into context.",
+      ],
+      sections: [
+        {
+          title: "Where overlaps often appear",
+          paragraphs: [
+            "Overlaps often occur where private, professional and family protection interact. Accident, illness, death, liability, household or legal protection policies are often taken out separately but rarely reviewed together.",
+            "Some benefits overlap, while others are missing exactly where they would matter in a serious case. The number of contracts is less important than how they work together.",
+          ],
+        },
+        {
+          title: "A lower premium is not always an improvement",
+          paragraphs: [
+            "A lower premium can make sense if the cover still fits. It can also mean that benefits, waiting periods, exclusions or flexibility become less favorable.",
+            "A comparison should therefore always include benefits, conditions and actual need. A discount alone does not create good protection.",
+          ],
+        },
+        {
+          title: "Review regularly, but do not change constantly",
+          paragraphs: [
+            "Insurance does not need to be rebuilt every year. A review is useful when life situation, income, housing, family or professional responsibility changes.",
+            "The goal is stability with clear structure: keep what fits, adjust what no longer fits and remove what no longer creates value.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Many overlaps come from contracts that have grown over time.",
+        "What matters is the interaction between cover, need and cost.",
+        "A review creates clarity before deciding on a change.",
+      ],
+    },
+  },
+  "selbststaendige-private-firmenfinanzen": {
+    de: {
+      intro: [
+        "Wer selbstständig ist, entscheidet oft gleichzeitig privat und geschäftlich. Einkommen, Liquidität, Steuern, Vorsorge, Versicherungen und Unternehmensrisiken hängen direkt zusammen.",
+        "Eine klare Trennung zwischen privaten und geschäftlichen Finanzen hilft, Risiken besser zu steuern und Entscheidungen planbarer zu machen.",
+      ],
+      sections: [
+        {
+          title: "Private Sicherheit bleibt wichtig",
+          paragraphs: [
+            "Gerade in der Selbstständigkeit sollte die private Absicherung nicht nebenbei laufen. Erwerbsausfall, Unfall, Krankheit, Familie, Hypothek und Pensionierung brauchen eine Struktur, die zum tatsächlichen Einkommen und Risiko passt.",
+            "Wer nur auf das Unternehmen schaut, übersieht schnell private Verpflichtungen. Wer nur privat plant, unterschätzt geschäftliche Schwankungen.",
+          ],
+        },
+        {
+          title: "Liquidität und Steuern früh einplanen",
+          paragraphs: [
+            "Selbstständige müssen Liquidität oft bewusster steuern als Angestellte. Rückstellungen für Steuern, Vorsorge, Investitionen und ruhigere Phasen sollten realistisch eingeplant werden.",
+            "Eine gute Struktur zeigt, welche Mittel kurzfristig verfügbar bleiben müssen und welche langfristig aufgebaut werden können.",
+          ],
+        },
+        {
+          title: "Unternehmensrisiken sauber abgrenzen",
+          paragraphs: [
+            "Betriebsversicherung, Haftpflicht, Krankentaggeld, Unfall, Pensionskasse oder weitere Lösungen müssen zur Tätigkeit und Unternehmensgrösse passen.",
+            "Das Ziel ist nicht, möglichst viele Verträge abzuschliessen, sondern die relevanten Risiken nachvollziehbar zu ordnen und private sowie geschäftliche Themen sauber zu trennen.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Selbstständige brauchen eine klare Verbindung zwischen Privat- und Firmenfinanzen.",
+        "Liquidität, Steuern und Vorsorge sollten früh strukturiert werden.",
+        "Gute Absicherung schützt nicht alles, sondern das Richtige.",
+      ],
+    },
+    en: {
+      intro: [
+        "Self-employed people often make private and business decisions at the same time. Income, liquidity, taxes, pension planning, insurance and business risks are directly connected.",
+        "A clear separation between private and business finances helps manage risks better and makes decisions easier to plan.",
+      ],
+      sections: [
+        {
+          title: "Private security remains important",
+          paragraphs: [
+            "Especially in self-employment, private protection should not run in the background. Income loss, accident, illness, family, mortgage and retirement need a structure that fits actual income and risk.",
+            "Looking only at the business can overlook private obligations. Planning only privately can underestimate business fluctuations.",
+          ],
+        },
+        {
+          title: "Plan liquidity and taxes early",
+          paragraphs: [
+            "Self-employed people often need to manage liquidity more consciously than employees. Reserves for taxes, pension planning, investments and quieter periods should be planned realistically.",
+            "A good structure shows which funds should remain available short term and which can be built up long term.",
+          ],
+        },
+        {
+          title: "Separate business risks clearly",
+          paragraphs: [
+            "Business insurance, liability, daily sickness benefits, accident cover, pension fund solutions or other arrangements need to fit the activity and company size.",
+            "The goal is not to take out as many contracts as possible, but to organize the relevant risks clearly and separate private and business topics cleanly.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Self-employed people need a clear link between private and business finances.",
+        "Liquidity, taxes and pension planning should be structured early.",
+        "Good protection does not cover everything, but the right things.",
+      ],
+    },
+  },
+  "finanzcheck-lebensphasen": {
+    de: {
+      intro: [
+        "Ein Finanzcheck ist besonders wertvoll, wenn sich das Leben verändert. Neue Ziele, neue Verpflichtungen oder neue Risiken führen oft dazu, dass bestehende Lösungen nicht mehr vollständig passen.",
+        "Der 360° Blick hilft, Prioritäten neu zu ordnen und Entscheidungen nicht isoliert zu treffen.",
+      ],
+      sections: [
+        {
+          title: "Lebensphasen verändern Prioritäten",
+          paragraphs: [
+            "Berufseinstieg, Partnerschaft, Familie, Eigenheim, Selbstständigkeit, Erbschaft oder Pensionierung bringen unterschiedliche Fragen mit sich. Was gestern sinnvoll war, kann heute zu wenig, zu viel oder falsch gewichtet sein.",
+            "Ein Finanzcheck zeigt, welche Themen aktuell wichtig sind und welche später vertieft werden können.",
+          ],
+        },
+        {
+          title: "Klarheit vor grossen Entscheidungen",
+          paragraphs: [
+            "Vor Hypothek, Pensionierung, Unternehmensgründung, grösserer Investition oder Vertragswechsel lohnt sich eine saubere Einordnung. So werden Folgen sichtbar, bevor Entscheidungen bindend werden.",
+            "Das reduziert Unsicherheit und schafft eine bessere Grundlage für Gespräche mit Banken, Versicherungen oder weiteren Partnern.",
+          ],
+        },
+        {
+          title: "Nicht alles gleichzeitig lösen",
+          paragraphs: [
+            "Ein guter Finanzcheck muss nicht alle Themen sofort verändern. Oft ist der wichtigste Schritt, die Reihenfolge zu klären: Was ist dringend, was ist wichtig, was kann warten?",
+            "So entsteht aus vielen offenen Fragen ein verständlicher Plan mit nächsten Schritten.",
+          ],
+        },
+      ],
+      takeaways: [
+        "Ein Finanzcheck lohnt sich besonders bei Veränderungen und grösseren Entscheidungen.",
+        "Der Überblick zeigt Prioritäten statt isolierte Einzelmassnahmen.",
+        "Gute Beratung macht sichtbar, was jetzt wichtig ist und was später folgen kann.",
+      ],
+    },
+    en: {
+      intro: [
+        "A financial check is especially valuable when life changes. New goals, obligations or risks often mean existing solutions no longer fully fit.",
+        "A 360° view helps reorder priorities and prevents decisions from being made in isolation.",
+      ],
+      sections: [
+        {
+          title: "Life phases change priorities",
+          paragraphs: [
+            "Career start, partnership, family, home ownership, self-employment, inheritance or retirement each bring different questions. What made sense yesterday may be too little, too much or weighted incorrectly today.",
+            "A financial check shows which topics matter now and which can be reviewed later.",
+          ],
+        },
+        {
+          title: "Clarity before major decisions",
+          paragraphs: [
+            "Before a mortgage, retirement, business launch, larger investment or contract change, a clean assessment is worthwhile. It makes consequences visible before decisions become binding.",
+            "This reduces uncertainty and creates a better basis for conversations with banks, insurers or other partners.",
+          ],
+        },
+        {
+          title: "Not everything needs to be solved at once",
+          paragraphs: [
+            "A good financial check does not have to change every topic immediately. Often the most important step is clarifying the order: what is urgent, what is important and what can wait?",
+            "This turns many open questions into an understandable plan with next steps.",
+          ],
+        },
+      ],
+      takeaways: [
+        "A financial check is especially useful during changes and before major decisions.",
+        "The overview shows priorities instead of isolated measures.",
+        "Good advice makes clear what matters now and what can follow later.",
+      ],
+    },
+  },
+};
 
 const home: PageContent = {
   seoTitle: "Veonis - Finanzberatung, Versicherungen & Vorsorge in der Schweiz",
@@ -2686,6 +3045,14 @@ export function getPage(locale: Locale, key: PageKey) {
   return pages[locale][key];
 }
 
+export function getBlogPost(slug: string) {
+  return blogPosts.find((post) => post.slug === slug);
+}
+
+export function getBlogArticle(slug: string, locale: Locale) {
+  return blogArticleContent[slug]?.[locale];
+}
+
 export function getLocalizedPath(locale: Locale, key: PageKey) {
   if (key === "home") {
     return localizedHomeHref[locale];
@@ -2718,4 +3085,8 @@ export function getLocalizedPath(locale: Locale, key: PageKey) {
   };
 
   return `/en/${englishLegalMap[key] ?? key}`;
+}
+
+export function getBlogPostPath(locale: Locale, slug: string) {
+  return `${getLocalizedPath(locale, "blog")}/${slug}`;
 }

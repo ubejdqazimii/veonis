@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import {
   ArrowRight,
   BadgeCheck,
@@ -47,7 +48,17 @@ import { ServiceCard } from "@/components/veonis/service-card";
 import { ValueCard } from "@/components/veonis/value-card";
 import { cn } from "@/lib/utils";
 import type { BlogPost, CardContent, Locale, PageKey } from "@/lib/veonis-content";
-import { blogPosts, brand, getLocalizedPath, getPage, services, valueCards } from "@/lib/veonis-content";
+import {
+  blogPosts,
+  brand,
+  getBlogArticle,
+  getBlogPost,
+  getBlogPostPath,
+  getLocalizedPath,
+  getPage,
+  services,
+  valueCards,
+} from "@/lib/veonis-content";
 
 export function createPageMetadata(locale: Locale, key: PageKey): Metadata {
   const page = getPage(locale, key);
@@ -209,6 +220,136 @@ export function BlogPage({ locale }: Pick<PageProps, "locale">) {
         button={locale === "de" ? "Eigene Finanzfragen besprechen" : "Discuss your financial questions"}
         locale={locale}
         title={locale === "de" ? "Lesen ist gut. Einordnung ist besser." : "Reading helps. Context helps more."}
+      />
+    </>
+  );
+}
+
+export function BlogArticlePage({ locale, slug }: { locale: Locale; slug: string }) {
+  const post = getBlogPost(slug);
+  const article = getBlogArticle(slug, locale);
+
+  if (!post || !article) {
+    notFound();
+  }
+
+  const relatedPosts = blogPosts.filter((item) => item.slug !== slug).slice(0, 3);
+
+  return (
+    <>
+      <section className="relative isolate overflow-hidden bg-[#f6f2ef] py-12 sm:py-16">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_12%_8%,rgba(198,61,77,0.15),transparent_24rem)]" />
+        <Container>
+          <Link
+            className="inline-flex items-center text-sm font-semibold text-[#c63d4d]"
+            href={getLocalizedPath(locale, "blog")}
+          >
+            <ChevronRight className="mr-1 size-4 rotate-180" />
+            {locale === "de" ? "Zurück zum Blog" : "Back to blog"}
+          </Link>
+          <div className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div>
+              <p className="eyebrow">
+                {post.category[locale]} · {post.readTime[locale]}
+              </p>
+              <h1 className="display-title mt-4 text-4xl leading-tight text-[#111827] sm:text-6xl">
+                {post.title[locale]}
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#5f6368]">{post.excerpt[locale]}</p>
+            </div>
+            <div className="relative min-h-[320px] overflow-hidden rounded-lg bg-[#24191c] shadow-[0_24px_80px_rgba(68,24,32,0.18)] sm:min-h-[430px]">
+              <Image
+                alt={post.alt[locale]}
+                className="object-cover"
+                fill
+                priority
+                sizes="(min-width: 1024px) 52vw, 100vw"
+                src={post.image}
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,25,28,0.02),rgba(36,25,28,0.24))]" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)] lg:items-start">
+            <article className="min-w-0 rounded-lg border border-[#e6e2dc] bg-white p-5 shadow-[0_20px_60px_rgba(17,24,39,0.06)] sm:p-8 lg:p-10">
+              <div className="space-y-5 text-lg leading-8 text-[#3f4348]">
+                {article.intro.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+
+              <div className="mt-10 space-y-10">
+                {article.sections.map((section) => (
+                  <section key={section.title}>
+                    <h2 className="text-2xl font-semibold leading-tight text-[#111827] sm:text-3xl">{section.title}</h2>
+                    <div className="mt-4 space-y-4 text-base leading-8 text-[#5f6368]">
+                      {section.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+
+              <div className="mt-10 rounded-lg bg-[#f7f7f6] p-5 sm:p-6">
+                <h2 className="text-lg font-semibold text-[#111827]">
+                  {locale === "de" ? "Kurz zusammengefasst" : "In brief"}
+                </h2>
+                <div className="mt-4 grid gap-3">
+                  {article.takeaways.map((item) => (
+                    <div className="flex gap-3 text-sm leading-6 text-[#4b5563]" key={item}>
+                      <Check className="mt-1 size-4 shrink-0 text-[#c63d4d]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+
+            <aside className="grid gap-4 lg:sticky lg:top-28">
+              <div className="rounded-lg border border-[#e6e2dc] bg-[#f7f7f6] p-5">
+                <p className="eyebrow">{locale === "de" ? "Mehr lesen" : "Read more"}</p>
+                <div className="mt-4 grid gap-3">
+                  {relatedPosts.map((item) => (
+                    <Link
+                      className="group rounded-lg bg-white p-4 shadow-[0_12px_34px_rgba(17,24,39,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_44px_rgba(68,24,32,0.1)]"
+                      href={getBlogPostPath(locale, item.slug)}
+                      key={item.slug}
+                    >
+                      <span className="text-xs font-semibold text-[#c63d4d]">{item.category[locale]}</span>
+                      <span className="mt-2 block text-sm font-semibold leading-6 text-[#111827] group-hover:text-[#8f2535]">
+                        {item.title[locale]}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-lg bg-[#24191c] p-5 text-white">
+                <p className="text-sm font-semibold text-[#ef7d8b]">{brand.claim}</p>
+                <p className="mt-3 text-lg font-semibold leading-7">
+                  {locale === "de" ? "Möchten Sie Ihre Situation persönlich einordnen?" : "Would you like to review your situation personally?"}
+                </p>
+                <Link
+                  className="mt-5 inline-flex items-center text-sm font-semibold text-white"
+                  href={getLocalizedPath(locale, "contact")}
+                >
+                  {locale === "de" ? "Erstgespräch vereinbaren" : "Book an initial conversation"}
+                  <ArrowRight className="ml-2 size-4" />
+                </Link>
+              </div>
+            </aside>
+          </div>
+        </Container>
+      </section>
+
+      <CTASection
+        button={locale === "de" ? "Kostenloses Erstgespräch vereinbaren" : "Book a free initial conversation"}
+        locale={locale}
+        title={locale === "de" ? "Aus einem Artikel wird Klarheit im Gespräch." : "An article becomes clarity in conversation."}
       />
     </>
   );
@@ -1072,6 +1213,8 @@ function V3InsightsSection({ locale, posts }: { locale: Locale; posts: BlogPost[
     return null;
   }
 
+  const featuredHref = getBlogPostPath(locale, featured.slug);
+
   return (
     <section className="bg-[#f6f2ef] py-12 sm:py-16">
       <Container>
@@ -1102,36 +1245,52 @@ function V3InsightsSection({ locale, posts }: { locale: Locale; posts: BlogPost[
             </div>
             <div className="p-4 sm:p-6">
               <p className="eyebrow">{locale === "de" ? "Fokusbeitrag" : "Featured insight"}</p>
-              <h2 className="mt-3 text-2xl font-semibold leading-tight text-[#111827]">{featured.title[locale]}</h2>
+              <Link href={featuredHref}>
+                <h2 className="mt-3 text-2xl font-semibold leading-tight text-[#111827] transition hover:text-[#8f2535]">
+                  {featured.title[locale]}
+                </h2>
+              </Link>
               <p className="mt-3 line-clamp-3 leading-7 text-[#5f6368]">{featured.excerpt[locale]}</p>
+              <Link className="mt-5 inline-flex items-center text-sm font-semibold text-[#c63d4d]" href={featuredHref}>
+                <BookOpen className="mr-2 size-4" />
+                {locale === "de" ? "Artikel lesen" : "Read article"}
+              </Link>
             </div>
           </article>
 
           <div className="rounded-lg border border-[#e6e2dc] bg-white p-3 shadow-[0_20px_60px_rgba(17,24,39,0.06)] sm:p-4">
             <p className="eyebrow">{locale === "de" ? "Weitere Impulse" : "More insights"}</p>
             <div className="mt-4 grid gap-3">
-              {rest.slice(0, 4).map((post) => (
-                <article className="grid grid-cols-[5rem_1fr] gap-3 rounded-lg bg-[#f7f7f6] p-2 sm:grid-cols-[6.5rem_1fr] sm:p-3" key={post.slug}>
-                  <div className="relative min-h-24 overflow-hidden rounded-lg bg-[#24191c]">
-                    <Image
-                      alt={post.alt[locale]}
-                      className="object-cover"
-                      fill
-                      sizes="112px"
-                      src={post.image}
-                    />
-                    <div className="absolute inset-0 bg-[#8f2535]/14" />
-                  </div>
-                  <div className="min-w-0 py-1">
-                    <div className="flex flex-wrap gap-2 text-xs font-semibold text-[#939598]">
-                      <span className="text-[#c63d4d]">{post.category[locale]}</span>
-                      <span>{post.readTime[locale]}</span>
+              {rest.slice(0, 4).map((post) => {
+                const href = getBlogPostPath(locale, post.slug);
+
+                return (
+                  <article className="grid grid-cols-[5rem_1fr] gap-3 rounded-lg bg-[#f7f7f6] p-2 sm:grid-cols-[6.5rem_1fr] sm:p-3" key={post.slug}>
+                    <Link className="relative min-h-24 overflow-hidden rounded-lg bg-[#24191c]" href={href}>
+                      <Image
+                        alt={post.alt[locale]}
+                        className="object-cover transition duration-500 hover:scale-[1.04]"
+                        fill
+                        sizes="112px"
+                        src={post.image}
+                      />
+                      <div className="absolute inset-0 bg-[#8f2535]/14" />
+                    </Link>
+                    <div className="min-w-0 py-1">
+                      <div className="flex flex-wrap gap-2 text-xs font-semibold text-[#939598]">
+                        <span className="text-[#c63d4d]">{post.category[locale]}</span>
+                        <span>{post.readTime[locale]}</span>
+                      </div>
+                      <Link href={href}>
+                        <h3 className="mt-2 text-base font-semibold leading-tight text-[#111827] transition hover:text-[#8f2535]">
+                          {post.title[locale]}
+                        </h3>
+                      </Link>
+                      <p className="mt-1 line-clamp-2 text-sm leading-6 text-[#5f6368]">{post.excerpt[locale]}</p>
                     </div>
-                    <h3 className="mt-2 text-base font-semibold leading-tight text-[#111827]">{post.title[locale]}</h3>
-                    <p className="mt-1 line-clamp-2 text-sm leading-6 text-[#5f6368]">{post.excerpt[locale]}</p>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -1628,6 +1787,8 @@ function V2LatestBlogPostsSection({ locale, posts }: { locale: Locale; posts: Bl
     return null;
   }
 
+  const featuredHref = getBlogPostPath(locale, featured.slug);
+
   return (
     <section className="bg-[#f7f7f6] py-14 sm:py-20">
       <Container>
@@ -1665,30 +1826,42 @@ function V2LatestBlogPostsSection({ locale, posts }: { locale: Locale; posts: Bl
               </div>
             </div>
             <div className="p-5 sm:p-6">
-              <h3 className="text-2xl font-semibold leading-tight text-[#111827]">{featured.title[locale]}</h3>
+              <Link href={featuredHref}>
+                <h3 className="text-2xl font-semibold leading-tight text-[#111827] transition hover:text-[#8f2535]">
+                  {featured.title[locale]}
+                </h3>
+              </Link>
               <p className="mt-3 leading-7 text-[#5f6368]">{featured.excerpt[locale]}</p>
               <Link
                 className="mt-5 inline-flex items-center text-sm font-semibold text-[#c63d4d]"
-                href={getLocalizedPath(locale, "blog")}
+                href={featuredHref}
               >
                 <BookOpen className="mr-2 size-4" />
-                {locale === "de" ? "Im Blog ansehen" : "View in blog"}
+                {locale === "de" ? "Artikel lesen" : "Read article"}
               </Link>
             </div>
           </article>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            {smallPosts.slice(0, 4).map((post) => (
-              <article className="rounded-lg border border-[#e6e2dc] bg-white p-5 shadow-[0_16px_44px_rgba(17,24,39,0.05)]" key={post.slug}>
-                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#939598]">
-                  <span className="text-[#c63d4d]">{post.category[locale]}</span>
-                  <span>·</span>
-                  <span>{post.readTime[locale]}</span>
-                </div>
-                <h3 className="mt-4 text-lg font-semibold leading-tight text-[#111827]">{post.title[locale]}</h3>
-                <p className="mt-2 text-sm leading-6 text-[#5f6368]">{post.excerpt[locale]}</p>
-              </article>
-            ))}
+            {smallPosts.slice(0, 4).map((post) => {
+              const href = getBlogPostPath(locale, post.slug);
+
+              return (
+                <article className="rounded-lg border border-[#e6e2dc] bg-white p-5 shadow-[0_16px_44px_rgba(17,24,39,0.05)]" key={post.slug}>
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#939598]">
+                    <span className="text-[#c63d4d]">{post.category[locale]}</span>
+                    <span>·</span>
+                    <span>{post.readTime[locale]}</span>
+                  </div>
+                  <Link href={href}>
+                    <h3 className="mt-4 text-lg font-semibold leading-tight text-[#111827] transition hover:text-[#8f2535]">
+                      {post.title[locale]}
+                    </h3>
+                  </Link>
+                  <p className="mt-2 text-sm leading-6 text-[#5f6368]">{post.excerpt[locale]}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </Container>
@@ -1740,47 +1913,53 @@ function BlogPostsGrid({
     <section className={compact ? "" : "bg-white py-16 sm:py-20"}>
       <Container className={compact ? "px-0 sm:px-0 lg:px-0" : undefined}>
         <div className={cn("grid gap-5", compact ? "lg:grid-cols-5" : "md:grid-cols-2 lg:grid-cols-3")}>
-          {posts.map((post, index) => (
-            <article
-              className={cn(
-                "group overflow-hidden rounded-lg border border-[#e6e2dc] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(68,24,32,0.12)]",
-                !compact && index === 0 ? "lg:col-span-2" : "",
-              )}
-              key={post.slug}
-            >
-              <div className={cn("relative overflow-hidden", compact ? "aspect-[1.05]" : "aspect-[1.45]")}>
-                <Image
-                  alt={post.alt[locale]}
-                  className="object-cover transition duration-500 group-hover:scale-[1.035]"
-                  fill
-                  sizes={compact ? "(min-width: 1024px) 18vw, 90vw" : "(min-width: 1024px) 31vw, 90vw"}
-                  src={post.image}
-                />
-                <div className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/86 px-3 py-1 text-xs font-semibold text-[#8f2535] shadow-[inset_0_1px_0_white] backdrop-blur">
-                  {post.category[locale]}
-                </div>
-              </div>
-              <div className={cn("p-5", compact ? "" : "sm:p-6")}>
-                <div className="flex items-center gap-2 text-xs font-semibold text-[#939598]">
-                  <Clock className="size-3.5" />
-                  {post.readTime[locale]}
-                </div>
-                <h3 className={cn("mt-4 font-semibold leading-tight text-[#111827]", compact ? "text-base" : "text-2xl")}>
-                  {post.title[locale]}
-                </h3>
-                <p className={cn("mt-3 leading-6 text-[#5f6368]", compact ? "text-sm" : "")}>{post.excerpt[locale]}</p>
-                {!compact ? (
-                  <Link
-                    className="mt-5 inline-flex items-center text-sm font-semibold text-[#c63d4d]"
-                    href={getLocalizedPath(locale, "blog")}
-                  >
-                    <BookOpen className="mr-2 size-4" />
-                    {locale === "de" ? "Im Blog einordnen" : "Read in the blog"}
+          {posts.map((post, index) => {
+            const href = getBlogPostPath(locale, post.slug);
+
+            return (
+              <article
+                className={cn(
+                  "group overflow-hidden rounded-lg border border-[#e6e2dc] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(68,24,32,0.12)]",
+                  !compact && index === 0 ? "lg:col-span-2" : "",
+                )}
+                key={post.slug}
+              >
+                <Link className={cn("relative block overflow-hidden", compact ? "aspect-[1.05]" : "aspect-[1.45]")} href={href}>
+                  <Image
+                    alt={post.alt[locale]}
+                    className="object-cover transition duration-500 group-hover:scale-[1.035]"
+                    fill
+                    sizes={compact ? "(min-width: 1024px) 18vw, 90vw" : "(min-width: 1024px) 31vw, 90vw"}
+                    src={post.image}
+                  />
+                  <div className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/86 px-3 py-1 text-xs font-semibold text-[#8f2535] shadow-[inset_0_1px_0_white] backdrop-blur">
+                    {post.category[locale]}
+                  </div>
+                </Link>
+                <div className={cn("p-5", compact ? "" : "sm:p-6")}>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#939598]">
+                    <Clock className="size-3.5" />
+                    {post.readTime[locale]}
+                  </div>
+                  <Link href={href}>
+                    <h3 className={cn("mt-4 font-semibold leading-tight text-[#111827] transition hover:text-[#8f2535]", compact ? "text-base" : "text-2xl")}>
+                      {post.title[locale]}
+                    </h3>
                   </Link>
-                ) : null}
-              </div>
-            </article>
-          ))}
+                  <p className={cn("mt-3 leading-6 text-[#5f6368]", compact ? "text-sm" : "")}>{post.excerpt[locale]}</p>
+                  {!compact ? (
+                    <Link
+                      className="mt-5 inline-flex items-center text-sm font-semibold text-[#c63d4d]"
+                      href={href}
+                    >
+                      <BookOpen className="mr-2 size-4" />
+                      {locale === "de" ? "Artikel lesen" : "Read article"}
+                    </Link>
+                  ) : null}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </Container>
     </section>
