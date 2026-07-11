@@ -1334,7 +1334,7 @@ const dePages: Record<PageKey, PageContent> = {
             image: "/brand/photos/edison-istrefi.jpg",
             imageAlt: "Edison Istrefi, Geschäftsführer von Veonis",
           },
-          { title: "Visa Ademi", text: "", profile: true },
+          { title: "Visar Ademi", text: "", profile: true },
         ],
       },
       {
@@ -2934,7 +2934,7 @@ const englishBase: Record<PageKey, PageContent> = {
             image: "/brand/photos/edison-istrefi.jpg",
             imageAlt: "Edison Istrefi, Managing Director of Veonis",
           },
-          { title: "Visa Ademi", text: "", profile: true },
+          { title: "Visar Ademi", text: "", profile: true },
         ],
       },
       {
