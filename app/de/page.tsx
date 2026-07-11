@@ -1,7 +1,7 @@
-import { HomePage, createPageMetadata } from "@/components/veonis/pages";
+import { HomePageVersion2, createPageMetadata } from "@/components/veonis/pages";
 
-export const metadata = createPageMetadata("de", "home");
+export const metadata = createPageMetadata("de", "home-v2");
 
 export default function GermanHomePage() {
-  return <HomePage locale="de" />;
+  return <HomePageVersion2 locale="de" />;
 }

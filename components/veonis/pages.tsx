@@ -105,7 +105,6 @@ export function HomePageVersion2({ locale }: Pick<PageProps, "locale">) {
   return (
     <>
       <V2HeroSection locale={locale} page={page} />
-      <VersionSelectorBand current="v2" locale={locale} />
       <V2OverviewSection locale={locale} />
       <V2ServicesSection locale={locale} />
       <V2CollaborationSection locale={locale} />
