@@ -586,15 +586,21 @@ export function LegalPage({ locale, pageKey }: PageProps) {
               {page.sections.map((section) => (
                 <article className="premium-card p-6 sm:p-8" key={section.title}>
                   <h2 className="display-title text-2xl text-[#111827]">{section.title}</h2>
-                  {section.content?.map((block, index) =>
-                    block.type === "paragraph" ? (
-                      <p className="mt-4 leading-7 text-[#5f6368]" key={`paragraph-${index}`}>
-                        {block.text}
-                      </p>
-                    ) : (
-                      <LegalList items={block.items} key={`list-${index}`} />
-                    ),
-                  )}
+                  {section.content?.map((block, index) => {
+                    if (block.type === "paragraph") {
+                      return (
+                        <p className="mt-4 leading-7 text-[#5f6368]" key={`paragraph-${index}`}>
+                          {block.text}
+                        </p>
+                      );
+                    }
+
+                    if (block.type === "details") {
+                      return <LegalDetails items={block.items} key={`details-${index}`} />;
+                    }
+
+                    return <LegalList items={block.items} key={`list-${index}`} />;
+                  })}
                   {section.paragraphs?.map((paragraph) => (
                     <p className="mt-4 leading-7 text-[#5f6368]" key={paragraph}>
                       {paragraph}
@@ -1779,6 +1785,18 @@ function BlogPostsGrid({
         </div>
       </Container>
     </section>
+  );
+}
+
+function LegalDetails({ items }: { items: string[] }) {
+  return (
+    <div className="mt-4 space-y-1 rounded-2xl bg-[#f7f7f6] p-5 text-[#5f6368]">
+      {items.map((item) => (
+        <p className="leading-7" key={item}>
+          {item}
+        </p>
+      ))}
+    </div>
   );
 }
 

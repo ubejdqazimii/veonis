@@ -34,6 +34,7 @@ export type ProcessStep = {
 
 export type ContentBlock =
   | { type: "paragraph"; text: string }
+  | { type: "details"; items: string[] }
   | { type: "list"; items: string[] };
 
 export type ContentSection = {
@@ -1047,25 +1048,122 @@ const dePages: Record<PageKey, PageContent> = {
     sections: [{ title: "Antworten", cards: faqItems }],
   },
   "legal/impressum": {
-    seoTitle: "Impressum | Veonis",
-    metaDescription: "Impressum und Anbieterkennzeichnung von Veonis.",
+    seoTitle: "Impressum | Veonis GmbH",
+    metaDescription:
+      "Impressum der Veonis GmbH mit Kontakt, Handelsregister, FINMA-Registrierung, Haftungsausschluss und Urheberrecht.",
     eyebrow: "Legal",
     title: "Impressum",
-    description: ["Anbieterkennzeichnung und rechtliche Angaben von Veonis."],
+    description: ["Kontakt- und Anbieterinformationen der Veonis GmbH."],
     sections: [
       {
-        title: "Angaben zum Unternehmen",
-        items: [
-          "Firma: Veonis GmbH",
-          "Firmensitz: Regensdorf",
-          "UID: CHE-421.273.988",
-          "E-Mail: info@veonissuisse.ch",
-          "Telefon: +41 79 812 81 88",
+        title: "Kontakt",
+        content: [
+          {
+            type: "details",
+            items: [
+              "Veonis GmbH",
+              "Im Dreispitz 39",
+              "8105 Regensdorf",
+              "Schweiz",
+              "UID: CHE-421.273.988",
+              "E-Mail: info@veonissuisse.ch",
+            ],
+          },
         ],
       },
       {
-        title: "Hinweis",
-        paragraphs: [brand.disclaimer],
+        title: "Handelsregister",
+        content: [
+          {
+            type: "paragraph",
+            text: "Eingetragen im Handelsregister des Kantons Zürich.",
+          },
+          {
+            type: "paragraph",
+            text: "Unternehmens-Identifikationsnummer (UID): CHE-421.273.988",
+          },
+        ],
+      },
+      {
+        title: "FINMA",
+        content: [
+          {
+            type: "paragraph",
+            text: "Veonis GmbH ist als ungebundene Versicherungsvermittlerin im öffentlichen Vermittlerregister der Eidgenössischen Finanzmarktaufsicht (FINMA) eingetragen.",
+          },
+          {
+            type: "paragraph",
+            text: "FINMA-Registrierungsnummer: F01572559",
+          },
+        ],
+      },
+      {
+        title: "Haftungsausschluss",
+        content: [
+          {
+            type: "paragraph",
+            text: "Die Inhalte dieser Website wurden mit grösster Sorgfalt erstellt und werden laufend überprüft und aktualisiert. Dennoch übernimmt die Veonis GmbH keine Gewähr für die Richtigkeit, Vollständigkeit, Aktualität oder Genauigkeit der bereitgestellten Informationen.",
+          },
+          {
+            type: "paragraph",
+            text: "Die Nutzung der Inhalte dieser Website erfolgt auf eigenes Risiko. Haftungsansprüche gegen die Veonis GmbH wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff auf diese Website oder deren Nutzung beziehungsweise Nichtnutzung entstehen, sind ausgeschlossen, soweit kein vorsätzliches oder grobfahrlässiges Verhalten vorliegt.",
+          },
+          {
+            type: "paragraph",
+            text: "Die Veonis GmbH behält sich das Recht vor, Inhalte dieser Website jederzeit und ohne Vorankündigung zu ergänzen, zu ändern oder zu entfernen.",
+          },
+        ],
+      },
+      {
+        title: "Haftung für externe Links",
+        content: [
+          {
+            type: "paragraph",
+            text: "Diese Website kann Links zu Websites Dritter enthalten. Auf deren Inhalte hat die Veonis GmbH keinen Einfluss. Für die Inhalte und Datenschutzbestimmungen der verlinkten Seiten sind ausschliesslich deren jeweilige Betreiber verantwortlich.",
+          },
+          {
+            type: "paragraph",
+            text: "Zum Zeitpunkt der Verlinkung wurden die externen Seiten auf mögliche Rechtsverstösse überprüft. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Werden uns entsprechende Rechtsverletzungen bekannt, entfernen wir die betreffenden Links umgehend.",
+          },
+        ],
+      },
+      {
+        title: "Urheberrecht",
+        content: [
+          {
+            type: "paragraph",
+            text: "Sämtliche Inhalte dieser Website, insbesondere Texte, Bilder, Grafiken, Logos, Dokumente, Videos sowie sonstige Dateien, sind urheberrechtlich geschützt.",
+          },
+          {
+            type: "paragraph",
+            text: "Alle Rechte liegen bei der Veonis GmbH oder den jeweils genannten Rechteinhabern.",
+          },
+          {
+            type: "paragraph",
+            text: "Jegliche Vervielfältigung, Bearbeitung, Verbreitung oder sonstige Verwendung ausserhalb der gesetzlichen Schranken des Urheberrechts bedarf der vorherigen schriftlichen Zustimmung der Veonis GmbH beziehungsweise des jeweiligen Rechteinhabers.",
+          },
+        ],
+      },
+      {
+        title: "Kontakt",
+        content: [
+          {
+            type: "paragraph",
+            text: "Bei Fragen zu dieser Website oder zum Impressum erreichen Sie uns unter:",
+          },
+          {
+            type: "details",
+            items: [
+              "Veonis GmbH",
+              "Im Dreispitz 39",
+              "8105 Regensdorf",
+              "Schweiz",
+              "E-Mail: info@veonissuisse.ch",
+              "UID: CHE-421.273.988",
+              "Stand: Juli 2026",
+            ],
+          },
+        ],
       },
     ],
   },
