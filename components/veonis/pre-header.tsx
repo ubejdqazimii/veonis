@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 
 import { Container } from "@/components/veonis/container";
 import type { Locale } from "@/lib/veonis-content";
@@ -17,10 +17,6 @@ export function PreHeader({ locale }: PreHeaderProps) {
           <a className="inline-flex items-center gap-2 hover:text-[#c63d4d]" href={`mailto:${brand.email}`}>
             <Mail className="size-4" />
             {brand.email}
-          </a>
-          <a className="inline-flex items-center gap-2 hover:text-[#c63d4d]" href={`tel:${brand.phone}`}>
-            <Phone className="size-4" />
-            {brand.phone}
           </a>
         </div>
         <div className="flex items-center gap-4">

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, BadgeCheck, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Mail, MapPin, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/veonis/container";
 import type { Locale } from "@/lib/veonis-content";
@@ -12,7 +12,6 @@ type FooterProps = {
 export function Footer({ locale }: FooterProps) {
   const contactItems = [
     { icon: Mail, label: brand.email, href: `mailto:${brand.email}` },
-    { icon: Phone, label: brand.phone, href: `tel:${brand.phone}` },
     { icon: MapPin, label: "Schweiz", href: localizedHomeHref[locale] },
   ];
 

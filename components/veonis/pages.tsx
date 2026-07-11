@@ -533,9 +533,6 @@ export function ContactPage({ locale }: Pick<PageProps, "locale">) {
                 <a className="mt-4 block text-[#c63d4d]" href={`mailto:${brand.email}`}>
                   {brand.email}
                 </a>
-                <a className="mt-2 block text-[#c63d4d]" href={`tel:${brand.phone}`}>
-                  {brand.phone}
-                </a>
               </div>
             </div>
             <ContactForm />

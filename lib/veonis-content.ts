@@ -69,8 +69,8 @@ export type BlogPost = {
 export const brand = {
   name: "Veonis",
   claim: "Ein Ansprechpartner für Ihre Finanzen.",
-  email: "info@veonis.ch",
-  phone: "+41 XX XXX XX XX",
+  email: "info@veonissuisse.ch",
+  phone: "+41 79 812 81 88",
   disclaimer:
     "Die Informationen auf dieser Website dienen ausschliesslich allgemeinen Informationszwecken und stellen keine individuelle Finanz-, Rechts-, Steuer- oder Versicherungsberatung dar.",
 };
@@ -693,18 +693,6 @@ const dePages: Record<PageKey, PageContent> = {
         ],
       },
       {
-        title: "Für wen",
-        items: [
-          "KMU",
-          "Start-ups",
-          "Selbstständige",
-          "Handwerksbetriebe",
-          "Dienstleistungsunternehmen",
-          "Beratungsunternehmen",
-          "Unternehmen mit Mitarbeitenden",
-        ],
-      },
-      {
         title: "Ihr Vorteil",
         paragraphs: [
           "Sie erhalten keine Standardlösung. Wir analysieren Ihre Unternehmensstruktur, Ihre Risiken und Ihre Ziele.",
@@ -1070,7 +1058,13 @@ const dePages: Record<PageKey, PageContent> = {
     sections: [
       {
         title: "Angaben zum Unternehmen",
-        items: ["Firma: [einfügen]", "Firmensitz: [einfügen]", "UID: [einfügen]", "E-Mail: [einfügen]", "Telefon: [einfügen]"],
+        items: [
+          "Firma: Veonis GmbH",
+          "Firmensitz: Regensdorf",
+          "UID: CHE-421.273.988",
+          "E-Mail: info@veonissuisse.ch",
+          "Telefon: +41 79 812 81 88",
+        ],
       },
       {
         title: "Hinweis",
@@ -1639,11 +1633,11 @@ const englishBase: Record<PageKey, PageContent> = {
       {
         title: "Company information",
         items: [
-          "Company: [to be inserted]",
-          "Registered office: [to be inserted]",
-          "UID: [to be inserted]",
-          "Email: [to be inserted]",
-          "Telephone: [to be inserted]",
+          "Company: Veonis GmbH",
+          "Registered office: Regensdorf",
+          "UID: CHE-421.273.988",
+          "Email: info@veonissuisse.ch",
+          "Telephone: +41 79 812 81 88",
         ],
       },
       {
