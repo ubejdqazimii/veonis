@@ -586,12 +586,21 @@ export function LegalPage({ locale, pageKey }: PageProps) {
               {page.sections.map((section) => (
                 <article className="premium-card p-6 sm:p-8" key={section.title}>
                   <h2 className="display-title text-2xl text-[#111827]">{section.title}</h2>
+                  {section.content?.map((block, index) =>
+                    block.type === "paragraph" ? (
+                      <p className="mt-4 leading-7 text-[#5f6368]" key={`paragraph-${index}`}>
+                        {block.text}
+                      </p>
+                    ) : (
+                      <LegalList items={block.items} key={`list-${index}`} />
+                    ),
+                  )}
                   {section.paragraphs?.map((paragraph) => (
                     <p className="mt-4 leading-7 text-[#5f6368]" key={paragraph}>
                       {paragraph}
                     </p>
                   ))}
-                  {section.items ? <Checklist items={section.items} /> : null}
+                  {section.items ? <LegalList items={section.items} /> : null}
                 </article>
               ))}
             </div>
@@ -1770,6 +1779,18 @@ function BlogPostsGrid({
         </div>
       </Container>
     </section>
+  );
+}
+
+function LegalList({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-4 space-y-2 pl-5 text-[#5f6368]">
+      {items.map((item) => (
+        <li className="list-disc leading-7" key={item}>
+          {item}
+        </li>
+      ))}
+    </ul>
   );
 }
 

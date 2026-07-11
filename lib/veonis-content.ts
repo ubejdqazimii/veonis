@@ -32,6 +32,10 @@ export type ProcessStep = {
   text: string;
 };
 
+export type ContentBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "list"; items: string[] };
+
 export type ContentSection = {
   eyebrow?: string;
   title: string;
@@ -39,6 +43,7 @@ export type ContentSection = {
   paragraphs?: string[];
   items?: string[];
   cards?: CardContent[];
+  content?: ContentBlock[];
   steps?: ProcessStep[];
   note?: string;
   cta?: string;
@@ -1073,26 +1078,907 @@ const dePages: Record<PageKey, PageContent> = {
     ],
   },
   "legal/datenschutz": {
-    seoTitle: "Datenschutz | Veonis",
-    metaDescription: "Datenschutzerklärung von Veonis.",
+    seoTitle: "Datenschutzerklärung | Veonis",
+    metaDescription:
+      "Datenschutzerklärung der Veonis GmbH zur Bearbeitung von Personendaten im Rahmen der Website, Beratung und Geschäftsbeziehungen.",
     eyebrow: "Legal",
-    title: "Datenschutz",
-    description: ["Datenschutzinformationen zur Bearbeitung personenbezogener Daten durch Veonis."],
+    title: "Datenschutzerklärung",
+    description: [
+      "Diese Datenschutzerklärung informiert darüber, wie die Veonis GmbH Personendaten erhebt, bearbeitet, verwendet, speichert und weitergibt.",
+    ],
     sections: [
       {
-        title: "Datenschutzinformationen",
-        items: [
-          "Verantwortliche Stelle: [einfügen]",
-          "Zwecke der Datenbearbeitung: Kontaktaufnahme, Beratungsvorbereitung, gesetzliche Pflichten",
-          "Rechtsgrundlagen und Aufbewahrungsfristen: [einfügen]",
-          "Empfänger und Dienstleister: [einfügen]",
-          "Betroffenenrechte und Kontakt: [einfügen]",
-        ],
+        title: "1. Allgemeine Hinweise",
+        content: [
+          {
+            type: "paragraph",
+            text: "Mit dieser Datenschutzerklärung informieren wir Sie darüber, wie die Veonis GmbH Personendaten erhebt, bearbeitet, verwendet, speichert und weitergibt."
+          },
+          {
+            type: "paragraph",
+            text: "Als Personendaten gelten sämtliche Angaben, die sich auf eine bestimmte oder bestimmbare natürliche Person beziehen. Dazu gehören beispielsweise Name, Kontaktdaten, Geburtsdatum, finanzielle Verhältnisse, Versicherungsinformationen und Angaben zur Nutzung unserer Website."
+          },
+          {
+            type: "paragraph",
+            text: "Wir bearbeiten Personendaten vertraulich und unter Beachtung des schweizerischen Datenschutzrechts, insbesondere des Bundesgesetzes über den Datenschutz (DSG) und der Datenschutzverordnung (DSV). Soweit die Datenschutz-Grundverordnung der Europäischen Union (DSGVO) anwendbar ist, berücksichtigen wir auch deren Bestimmungen."
+          },
+          {
+            type: "paragraph",
+            text: "Diese Datenschutzerklärung gilt für unsere Website, unsere Beratungs- und Vermittlungstätigkeit sowie für sämtliche weiteren Kontakte und Geschäftsbeziehungen mit Veonis."
+          }
+        ]
       },
       {
-        title: "Hinweis",
-        paragraphs: [brand.disclaimer],
+        title: "2. Verantwortliche Stelle",
+        content: [
+          {
+            type: "paragraph",
+            text: "Verantwortlich für die Bearbeitung Ihrer Personendaten ist:"
+          },
+          {
+            type: "list",
+            items: [
+              "Veonis GmbH",
+              "Im Dreispitz 39",
+              "8105 Regensdorf",
+              "Schweiz"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "UID: CHE-421.273.988",
+              "E-Mail: info@veonissuisse.ch"
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Nachfolgend wird die Veonis GmbH als «Veonis», «wir» oder «uns» bezeichnet."
+          },
+          {
+            type: "paragraph",
+            text: "Anfragen zum Datenschutz sowie Gesuche zur Ausübung Ihrer Datenschutzrechte können schriftlich oder per E-Mail an die oben genannten Kontaktdaten gerichtet werden."
+          }
+        ]
       },
+      {
+        title: "3. Welche Personendaten wir bearbeiten",
+        content: [
+          {
+            type: "paragraph",
+            text: "Welche Personendaten wir bearbeiten, hängt von Ihrer Beziehung zu uns sowie von den von Ihnen beanspruchten Dienstleistungen ab."
+          },
+          {
+            type: "paragraph",
+            text: "Wir können insbesondere folgende Kategorien von Personendaten bearbeiten:"
+          },
+          {
+            type: "paragraph",
+            text: "Kontakt- und Identifikationsdaten"
+          },
+          {
+            type: "list",
+            items: [
+              "Vorname und Nachname",
+              "Adresse und Wohnort",
+              "E-Mail-Adresse",
+              "Telefonnummer",
+              "Geburtsdatum",
+              "Geschlecht",
+              "Zivilstand",
+              "Nationalität",
+              "Aufenthaltsstatus",
+              "AHV-Nummer",
+              "Angaben aus Identitätsdokumenten",
+              "Persönliche und berufliche Angaben"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "Beruf und Arbeitgeber",
+              "Beschäftigungsgrad",
+              "Ausbildung und berufliche Stellung",
+              "Familiäre Verhältnisse",
+              "Angaben zu Ehepartnern, Lebenspartnern, Kindern oder anderen nahestehenden Personen",
+              "Finanz- und Vermögensdaten"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "Einkommen und Ausgaben",
+              "Vermögen und Verbindlichkeiten",
+              "Bankverbindungen",
+              "Steuerdaten",
+              "Anlagen und Wertschriften",
+              "Vorsorgeguthaben",
+              "Hypotheken und andere Finanzierungen",
+              "Angaben zu Liegenschaften und Eigentumsverhältnissen",
+              "Bonitäts- und Finanzierungsinformationen",
+              "Versicherungs- und Vorsorgedaten"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "Bestehende Versicherungsverträge und Policen",
+              "Versicherungsdeckung und Versicherungsleistungen",
+              "Angaben zu Vorsorgeeinrichtungen",
+              "Pensionskassenausweise",
+              "Angaben zur Säule 3a und 3b",
+              "Leistungs- und Schadeninformationen",
+              "Angaben aus Versicherungsanträgen",
+              "Beratungs- und Vermittlungsunterlagen",
+              "Besonders schützenswerte Personendaten"
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Soweit dies für die gewünschte Beratung, einen Versicherungsantrag oder die Erbringung einer Dienstleistung notwendig ist, können wir auch besonders schützenswerte Personendaten bearbeiten."
+          },
+          {
+            type: "paragraph",
+            text: "Dazu können insbesondere gehören:"
+          },
+          {
+            type: "list",
+            items: [
+              "Gesundheitsdaten",
+              "Angaben zu Krankheiten, Behandlungen oder Arbeitsunfähigkeiten",
+              "Angaben zu Versicherungsfällen",
+              "Daten über Massnahmen der sozialen Hilfe",
+              "Daten zu Betreibungen, Pfändungen oder anderen finanziellen Verfahren",
+              "weitere besonders schützenswerte Angaben, sofern sie für die jeweilige Dienstleistung erforderlich sind",
+              "Wir bearbeiten solche Daten nur, wenn dies notwendig und gesetzlich zulässig ist oder wenn Sie uns dazu Ihre ausdrückliche Einwilligung erteilt haben."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Unternehmens- und Mitarbeiterdaten"
+          },
+          {
+            type: "paragraph",
+            text: "Bei Firmenkundinnen und Firmenkunden können wir zusätzlich folgende Informationen bearbeiten:"
+          },
+          {
+            type: "list",
+            items: [
+              "Unternehmens- und Kontaktdaten",
+              "Handelsregisterinformationen",
+              "Eigentums- und Beteiligungsverhältnisse",
+              "Angaben zu wirtschaftlich berechtigten Personen",
+              "Buchhaltungs- und Finanzdaten",
+              "Angaben zu Mitarbeitenden",
+              "Lohn- und Sozialversicherungsdaten",
+              "Daten zu Personalversicherungen und Vorsorgelösungen",
+              "Informationen zu betrieblichen Risiken",
+              "Website- und Nutzungsdaten"
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Beim Besuch unserer Website können insbesondere folgende technische Daten bearbeitet werden:"
+          },
+          {
+            type: "list",
+            items: [
+              "IP-Adresse",
+              "Datum und Uhrzeit des Zugriffs",
+              "aufgerufene Seiten und Inhalte",
+              "übertragene Datenmenge",
+              "verwendeter Browser",
+              "Betriebssystem und Geräteinformationen",
+              "Herkunftsseite beziehungsweise Referrer-URL",
+              "ungefähre Standortangaben",
+              "technische Protokoll- und Fehlerdaten",
+              "Angaben zur Nutzung unserer Website",
+              "Kommunikationsdaten"
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Wenn Sie mit uns kommunizieren, können wir insbesondere folgende Daten bearbeiten:"
+          },
+          {
+            type: "list",
+            items: [
+              "Inhalt von E-Mails und Nachrichten",
+              "Angaben aus Kontaktformularen",
+              "Gesprächsnotizen",
+              "Korrespondenz",
+              "Beratungsanfragen",
+              "Terminvereinbarungen",
+              "Einwilligungen und Widerrufe",
+              "Bewerbungsdaten"
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Im Rahmen eines Bewerbungsverfahrens können wir insbesondere bearbeiten:"
+          },
+          {
+            type: "list",
+            items: [
+              "Bewerbungsunterlagen",
+              "Lebenslauf",
+              "Arbeitszeugnisse",
+              "Diplome und Zertifikate",
+              "Referenzen",
+              "Angaben zu Ausbildung und Berufserfahrung",
+              "Gesprächsnotizen",
+              "weitere freiwillig eingereichte Informationen"
+            ]
+          }
+        ]
+      },
+      {
+        title: "4. Herkunft der Personendaten",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir erheben Personendaten grundsätzlich direkt bei Ihnen, beispielsweise:"
+          },
+          {
+            type: "list",
+            items: [
+              "im Rahmen eines Beratungsgesprächs",
+              "über unsere Website",
+              "über Kontaktformulare",
+              "per E-Mail oder Telefon",
+              "im Rahmen einer Terminvereinbarung",
+              "durch eingereichte Dokumente",
+              "bei der Teilnahme an einem Wettbewerb",
+              "im Rahmen eines Versicherungs-, Vorsorge-, Finanzierungs- oder Anlageantrags",
+              "Wir können Personendaten zudem von Dritten erhalten, insbesondere von:"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "Versicherungsunternehmen",
+              "Banken und Finanzinstituten",
+              "Vorsorgeeinrichtungen und Pensionskassen",
+              "Hypothekar- und Finanzierungspartnern",
+              "Behörden und öffentlichen Registern",
+              "Geschäftspartnern und Vermittlungsplattformen",
+              "Arbeitgebern",
+              "Familienangehörigen oder bevollmächtigten Personen",
+              "Auskunfteien und Bonitätsdienstleistern",
+              "anderen Personen oder Unternehmen, sofern die Bekanntgabe gesetzlich zulässig ist",
+              "Wenn Sie uns Personendaten anderer Personen mitteilen, setzen wir voraus, dass Sie dazu berechtigt sind und die betroffenen Personen über diese Datenschutzerklärung informiert haben."
+            ]
+          }
+        ]
+      },
+      {
+        title: "5. Zwecke der Datenbearbeitung",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir bearbeiten Personendaten insbesondere für folgende Zwecke:"
+          },
+          {
+            type: "list",
+            items: [
+              "Betrieb und Bereitstellung unserer Website",
+              "Bearbeitung von Kontakt- und Terminanfragen",
+              "Durchführung von Erstgesprächen und Bedarfsanalysen",
+              "Vorbereitung, Durchführung und Dokumentation von Beratungen",
+              "Durchführung der Veonis 360°-Analyse",
+              "Beratung und Vermittlung in den Bereichen Versicherungen und Vorsorge",
+              "Beratung zu Finanzen, Anlagen und Vermögensplanung",
+              "Beratung und Vermittlung von Hypotheken und Finanzierungslösungen",
+              "Unterstützung bei Immobilienfragen",
+              "Unterstützung in Steuer- und Rechtsthemen",
+              "Einholung, Prüfung und Vergleich von Offerten",
+              "Verhandlung mit Versicherungen, Banken und weiteren Produktanbietern",
+              "Abschluss und Verwaltung von Verträgen",
+              "Betreuung bestehender Kundenbeziehungen",
+              "Beantwortung von Fragen und Bearbeitung von Beschwerden",
+              "Erfüllung gesetzlicher, regulatorischer und vertraglicher Pflichten",
+              "Identitäts-, Sorgfalts- und Compliance-Prüfungen",
+              "Verhinderung von Betrug, Geldwäscherei und sonstigem Missbrauch",
+              "Sicherstellung der IT-, Daten- und Betriebssicherheit",
+              "Durchsetzung oder Abwehr rechtlicher Ansprüche",
+              "Buchhaltung, Rechnungsstellung und Unternehmensadministration",
+              "Qualitätskontrolle sowie Verbesserung unserer Dienstleistungen",
+              "Durchführung von Marketingmassnahmen",
+              "Durchführung von Wettbewerben und Verlosungen",
+              "Durchführung von Bewerbungs- und Rekrutierungsverfahren",
+              "Wir verwenden Personendaten grundsätzlich nur für diejenigen Zwecke, für die sie erhoben wurden, sowie für damit vereinbare Zwecke."
+            ]
+          }
+        ]
+      },
+      {
+        title: "6. Besuch unserer Website",
+        content: [
+          {
+            type: "paragraph",
+            text: "Unsere Website kann grundsätzlich ohne Registrierung besucht werden."
+          },
+          {
+            type: "paragraph",
+            text: "Beim Aufruf unserer Website übermittelt Ihr Browser automatisch technische Informationen an den Server beziehungsweise an den Hostinganbieter. Diese Daten können in Server-Protokolldateien gespeichert werden."
+          },
+          {
+            type: "paragraph",
+            text: "Die Bearbeitung erfolgt insbesondere, um:"
+          },
+          {
+            type: "list",
+            items: [
+              "die Website technisch bereitzustellen",
+              "eine sichere und stabile Verbindung zu gewährleisten",
+              "Fehler und Störungen zu erkennen",
+              "Angriffe und Missbrauch zu verhindern",
+              "die Nutzung und Leistung der Website zu analysieren",
+              "die Website weiterzuentwickeln",
+              "Eine direkte Zusammenführung dieser technischen Daten mit anderen Personendaten erfolgt grundsätzlich nicht, sofern dies nicht für die Sicherheit, Fehlerbehebung oder Aufklärung eines Missbrauchs erforderlich ist."
+            ]
+          }
+        ]
+      },
+      {
+        title: "7. Hosting der Website",
+        content: [
+          {
+            type: "paragraph",
+            text: "Unsere Website wird über einen externen Hosting- und Infrastrukturpartner betrieben."
+          },
+          {
+            type: "paragraph",
+            text: "Der Hostinganbieter kann im Rahmen der Bereitstellung der Website insbesondere IP-Adressen, technische Protokolldaten, Geräteinformationen und Nutzungsdaten bearbeiten."
+          },
+          {
+            type: "paragraph",
+            text: "Da unsere Website derzeit über die Infrastruktur von Vercel bereitgestellt wird, können Daten durch Unternehmen der Vercel-Gruppe bearbeitet werden. Dabei kann eine Bearbeitung von Daten ausserhalb der Schweiz stattfinden."
+          },
+          {
+            type: "paragraph",
+            text: "Wir treffen angemessene vertragliche und organisatorische Massnahmen, damit Personendaten auch bei einer Bearbeitung durch externe Dienstleister angemessen geschützt werden."
+          }
+        ]
+      },
+      {
+        title: "8. Kontaktaufnahme",
+        content: [
+          {
+            type: "paragraph",
+            text: "Sie können über E-Mail, Telefon, Kontaktformular oder weitere Kommunikationskanäle mit uns Kontakt aufnehmen."
+          },
+          {
+            type: "paragraph",
+            text: "Dabei bearbeiten wir die von Ihnen übermittelten Daten, insbesondere:"
+          },
+          {
+            type: "list",
+            items: [
+              "Name",
+              "Kontaktdaten",
+              "Inhalt Ihrer Anfrage",
+              "gewünschte Dienstleistung",
+              "bevorzugter Kontaktweg",
+              "mitgesendete Dokumente und Informationen",
+              "Die Daten werden zur Bearbeitung Ihrer Anfrage, zur Vorbereitung eines Beratungsgesprächs und zur Beantwortung allfälliger Anschlussfragen verwendet."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Bitte beachten Sie, dass die Kommunikation per gewöhnlicher E-Mail nicht vollständig gegen den Zugriff durch unbefugte Dritte geschützt ist. Besonders vertrauliche oder gesundheitsbezogene Informationen sollten daher nur über einen vereinbarten sicheren Kommunikationsweg übermittelt werden."
+          }
+        ]
+      },
+      {
+        title: "9. Beanspruchung unserer Dienstleistungen",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wenn Sie unsere Beratungs-, Vermittlungs- oder Betreuungsdienstleistungen beanspruchen, bearbeiten wir diejenigen Personendaten, die zur Durchführung des jeweiligen Auftrags erforderlich sind."
+          },
+          {
+            type: "paragraph",
+            text: "Dies betrifft insbesondere Dienstleistungen in den Bereichen:"
+          },
+          {
+            type: "list",
+            items: [
+              "Vorsorge und Versicherungen",
+              "Finanzen und Anlagen",
+              "Hypotheken und Immobilien",
+              "Steuern und Recht",
+              "Finanz- und Vorsorgeplanung",
+              "Risiko- und Versicherungsanalyse",
+              "Veonis 360°-Analyse",
+              "Je nach Auftrag können wir Ihre Daten analysieren, mit bestehenden Verträgen und Leistungen abgleichen sowie Offerten und Lösungsvorschläge bei geeigneten Produktanbietern einholen."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Sofern erforderlich, übermitteln wir die notwendigen Daten an Versicherungsunternehmen, Banken, Vorsorgeeinrichtungen, Hypothekaranbieter oder weitere involvierte Fach- und Vertragspartner."
+          },
+          {
+            type: "paragraph",
+            text: "Besonders schützenswerte Personendaten werden nur bearbeitet oder weitergegeben, wenn dies für die angefragte Dienstleistung notwendig und gesetzlich zulässig ist oder wenn eine entsprechende Einwilligung vorliegt."
+          }
+        ]
+      },
+      {
+        title: "10. Wettbewerbe und Verlosungen",
+        content: [
+          {
+            type: "paragraph",
+            text: "Veonis kann Wettbewerbe, Gewinnspiele, Verlosungen oder vergleichbare Aktionen durchführen."
+          },
+          {
+            type: "paragraph",
+            text: "Für die Teilnahme können wir insbesondere folgende Daten bearbeiten:"
+          },
+          {
+            type: "list",
+            items: [
+              "Vorname und Nachname",
+              "E-Mail-Adresse",
+              "Telefonnummer",
+              "Wohnort oder Adresse",
+              "Geburtsdatum, sofern eine Altersprüfung erforderlich ist",
+              "Wettbewerbsantworten oder Teilnahmedaten",
+              "Informationen zur Ermittlung und Kontaktierung der Gewinnerinnen und Gewinner",
+              "Die Daten werden insbesondere verwendet, um:"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "die Teilnahme zu registrieren",
+              "die Teilnahmebedingungen zu überprüfen",
+              "Gewinnerinnen und Gewinner zu ermitteln",
+              "Teilnehmende zu kontaktieren",
+              "Gewinne zuzustellen oder zu übergeben",
+              "Missbrauch und Mehrfachteilnahmen zu verhindern",
+              "gesetzliche und steuerliche Pflichten zu erfüllen",
+              "den Wettbewerb auszuwerten",
+              "Sofern im jeweiligen Wettbewerb transparent darauf hingewiesen wird und eine entsprechende Einwilligung vorliegt, können die Kontaktdaten zudem für Marketing- und Informationszwecke verwendet werden."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Eine Teilnahme an einem Wettbewerb darf nicht automatisch mit einer Einwilligung in allgemeine Werbung verbunden werden, sofern dies nicht ausdrücklich, freiwillig und separat erklärt wird."
+          },
+          {
+            type: "paragraph",
+            text: "Gewinnerinnen und Gewinner können, sofern dies in den Teilnahmebedingungen vorgesehen ist und eine entsprechende Einwilligung besteht, mit ihrem Namen, Bild oder Wohnort veröffentlicht werden."
+          },
+          {
+            type: "paragraph",
+            text: "Für einzelne Wettbewerbe können ergänzende Teilnahmebedingungen gelten."
+          }
+        ]
+      },
+      {
+        title: "11. Marketing und Informationen",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir können Personendaten verwenden, um bestehende Kundinnen und Kunden über relevante Dienstleistungen, Neuigkeiten, Veranstaltungen oder Aktionen von Veonis zu informieren."
+          },
+          {
+            type: "paragraph",
+            text: "Eine Kontaktaufnahme kann insbesondere per E-Mail, Telefon, Post oder über andere vereinbarte Kommunikationskanäle erfolgen."
+          },
+          {
+            type: "paragraph",
+            text: "Sie können der Verwendung Ihrer Daten für Marketingzwecke jederzeit widersprechen. Eine entsprechende Mitteilung an info@veonissuisse.ch genügt."
+          },
+          {
+            type: "paragraph",
+            text: "Sofern für eine bestimmte Marketingmassnahme eine Einwilligung erforderlich ist, bearbeiten wir Ihre Daten erst nach Erteilung dieser Einwilligung. Eine erteilte Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden."
+          }
+        ]
+      },
+      {
+        title: "12. Bewerbungen",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wenn Sie sich bei Veonis bewerben, bearbeiten wir die von Ihnen eingereichten Bewerbungsdaten zur Prüfung Ihrer Bewerbung und zur Durchführung des Bewerbungsverfahrens."
+          },
+          {
+            type: "paragraph",
+            text: "Wir können ergänzende Informationen einholen, sofern dies für die Beurteilung Ihrer Bewerbung erforderlich und zulässig ist."
+          },
+          {
+            type: "paragraph",
+            text: "Bewerbungsdaten von Personen, mit denen kein Arbeitsverhältnis zustande kommt, werden grundsätzlich nach Abschluss des Bewerbungsverfahrens gelöscht, sofern keine Einwilligung für eine längere Aufbewahrung vorliegt und keine gesetzlichen oder berechtigten Gründe für eine weitere Speicherung bestehen."
+          },
+          {
+            type: "paragraph",
+            text: "In der Regel werden abgelehnte oder zurückgezogene Bewerbungen nicht länger als sechs Monate nach Abschluss des Bewerbungsverfahrens aufbewahrt."
+          }
+        ]
+      },
+      {
+        title: "13. Weitergabe von Personendaten an Dritte",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir geben Personendaten nur weiter, wenn dies:"
+          },
+          {
+            type: "list",
+            items: [
+              "zur Erbringung unserer Dienstleistungen erforderlich ist",
+              "zur Erfüllung eines Vertrags notwendig ist",
+              "zur Einhaltung gesetzlicher oder regulatorischer Verpflichtungen erforderlich ist",
+              "zur Wahrung berechtigter Interessen notwendig ist",
+              "zur Durchsetzung oder Abwehr rechtlicher Ansprüche erforderlich ist",
+              "aufgrund einer behördlichen Anordnung verlangt wird",
+              "oder von Ihrer Einwilligung gedeckt ist",
+              "Empfänger von Personendaten können insbesondere sein:"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "Versicherungsunternehmen",
+              "Banken und Finanzinstitute",
+              "Vorsorgeeinrichtungen und Pensionskassen",
+              "Hypothekar- und Finanzierungspartner",
+              "Anlage- und Vermögensdienstleister",
+              "Immobilien- und Bewertungspartner",
+              "Steuerberater und Treuhandunternehmen",
+              "Rechtsanwälte und Notariate",
+              "Co-Broker, Maklerpools und Vermittlungspartner",
+              "IT-, Software-, Hosting- und Cloudanbieter",
+              "Kommunikations- und E-Mail-Dienstleister",
+              "Marketing- und Werbedienstleister",
+              "Druck- und Versanddienstleister",
+              "Behörden, Gerichte und Aufsichtsstellen",
+              "Revisions- und Compliance-Stellen",
+              "Inkasso- und Bonitätsdienstleister",
+              "weitere Fachpersonen und Dienstleister, die zur Vertragserfüllung beigezogen werden",
+              "Diese Empfänger dürfen Personendaten grundsätzlich nur im Rahmen des jeweiligen Auftrags, der gesetzlichen Vorgaben oder für eigene zulässige Zwecke bearbeiten."
+            ]
+          }
+        ]
+      },
+      {
+        title: "14. Bekanntgabe von Personendaten ins Ausland",
+        content: [
+          {
+            type: "paragraph",
+            text: "Unsere Personendatenbearbeitung erfolgt grundsätzlich in der Schweiz."
+          },
+          {
+            type: "paragraph",
+            text: "Bestimmte von uns eingesetzte Dienstleister, Plattformen oder deren Unterauftragnehmer können sich jedoch im Ausland befinden oder Daten auf Servern ausserhalb der Schweiz bearbeiten."
+          },
+          {
+            type: "paragraph",
+            text: "Eine Bekanntgabe kann insbesondere in Staaten des Europäischen Wirtschaftsraums, in den Vereinigten Staaten oder in weiteren Ländern erfolgen, in denen unsere Dienstleister tätig sind."
+          },
+          {
+            type: "paragraph",
+            text: "Wenn Personendaten in ein Land übermittelt werden, das keinen angemessenen gesetzlichen Datenschutz gewährleistet, sorgen wir soweit erforderlich durch geeignete Garantien für einen angemessenen Schutz. Dazu können insbesondere gehören:"
+          },
+          {
+            type: "list",
+            items: [
+              "anerkannte Standarddatenschutzklauseln",
+              "vertragliche Datenschutzvereinbarungen",
+              "anerkannte Datenschutzrahmen",
+              "zusätzliche technische und organisatorische Schutzmassnahmen",
+              "Ihre ausdrückliche Einwilligung",
+              "gesetzlich vorgesehene Ausnahmen"
+            ]
+          }
+        ]
+      },
+      {
+        title: "15. Auftragsbearbeiter und externe Dienstleister",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir können externe Dienstleister mit der Bearbeitung von Personendaten beauftragen."
+          },
+          {
+            type: "paragraph",
+            text: "Diese Dienstleister bearbeiten Personendaten grundsätzlich nur gemäss unseren Weisungen und soweit dies zur Erfüllung ihres Auftrags erforderlich ist."
+          },
+          {
+            type: "paragraph",
+            text: "Wir wählen unsere Dienstleister sorgfältig aus und verpflichten sie, angemessene Massnahmen zur Datensicherheit und Vertraulichkeit einzuhalten."
+          }
+        ]
+      },
+      {
+        title: "16. Cookies",
+        content: [
+          {
+            type: "paragraph",
+            text: "Unsere Website kann Cookies und vergleichbare Technologien verwenden."
+          },
+          {
+            type: "paragraph",
+            text: "Cookies sind kleine Dateien, die beim Besuch einer Website auf Ihrem Gerät gespeichert werden. Sie ermöglichen es, bestimmte Einstellungen und Informationen über einen bestimmten Zeitraum zu speichern."
+          },
+          {
+            type: "paragraph",
+            text: "Wir können insbesondere folgende Arten von Cookies einsetzen:"
+          },
+          {
+            type: "paragraph",
+            text: "Notwendige Cookies"
+          },
+          {
+            type: "paragraph",
+            text: "Diese Cookies sind für den Betrieb, die Sicherheit und die grundlegenden Funktionen der Website erforderlich."
+          },
+          {
+            type: "paragraph",
+            text: "Funktionale Cookies"
+          },
+          {
+            type: "paragraph",
+            text: "Diese Cookies ermöglichen zusätzliche Funktionen und speichern beispielsweise von Ihnen vorgenommene Einstellungen."
+          },
+          {
+            type: "paragraph",
+            text: "Analyse-Cookies"
+          },
+          {
+            type: "paragraph",
+            text: "Diese Cookies helfen uns dabei zu verstehen, wie Besucherinnen und Besucher unsere Website nutzen und wie wir deren Leistung und Benutzerfreundlichkeit verbessern können."
+          },
+          {
+            type: "paragraph",
+            text: "Marketing-Cookies"
+          },
+          {
+            type: "paragraph",
+            text: "Diese Cookies können verwendet werden, um die Wirkung von Werbemassnahmen zu messen und Inhalte oder Werbung relevanter zu gestalten."
+          },
+          {
+            type: "paragraph",
+            text: "Soweit gesetzlich erforderlich, werden nicht notwendige Cookies erst nach Ihrer Einwilligung eingesetzt."
+          },
+          {
+            type: "paragraph",
+            text: "Sie können Ihre Einwilligung jederzeit über die Cookie-Einstellungen unserer Website ändern oder widerrufen. Cookies können zudem über die Einstellungen Ihres Browsers eingeschränkt, blockiert oder gelöscht werden."
+          },
+          {
+            type: "paragraph",
+            text: "Die Deaktivierung von Cookies kann dazu führen, dass bestimmte Funktionen der Website nicht oder nur eingeschränkt verfügbar sind."
+          }
+        ]
+      },
+      {
+        title: "17. Social Media und externe Links",
+        content: [
+          {
+            type: "paragraph",
+            text: "Unsere Website kann Links oder Verknüpfungen zu sozialen Netzwerken und externen Plattformen enthalten, beispielsweise:"
+          },
+          {
+            type: "list",
+            items: [
+              "LinkedIn",
+              "Instagram",
+              "Facebook",
+              "WhatsApp",
+              "Wenn Sie einen solchen Link aufrufen, verlassen Sie unsere Website. Der jeweilige Plattformbetreiber kann dabei Personendaten nach seinen eigenen Datenschutzbestimmungen bearbeiten."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Wir haben keinen vollständigen Einfluss auf Art und Umfang der Datenbearbeitung durch diese Drittanbieter. Für weitere Informationen gelten die Datenschutzerklärungen der jeweiligen Plattformen."
+          }
+        ]
+      },
+      {
+        title: "18. Automatische Protokolldaten",
+        content: [
+          {
+            type: "paragraph",
+            text: "Unser Hostinganbieter kann Zugriffe auf unsere Website automatisch in Protokolldateien erfassen."
+          },
+          {
+            type: "paragraph",
+            text: "Dabei können insbesondere folgende Informationen protokolliert werden:"
+          },
+          {
+            type: "list",
+            items: [
+              "IP-Adresse",
+              "Datum und Uhrzeit des Zugriffs",
+              "aufgerufene Seite",
+              "übertragene Datenmenge",
+              "Referrer-URL",
+              "Browsertyp und Browserversion",
+              "Betriebssystem",
+              "Geräteinformationen",
+              "technische Fehler- und Sicherheitsinformationen",
+              "Diese Daten werden insbesondere zur technischen Bereitstellung, Systemadministration, Fehleranalyse und Gewährleistung der Sicherheit verwendet."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Wir behalten uns vor, Protokolldaten nachträglich zu prüfen, wenn konkrete Anhaltspunkte für eine rechtswidrige oder missbräuchliche Nutzung bestehen."
+          }
+        ]
+      },
+      {
+        title: "19. Aufbewahrungsdauer",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir speichern Personendaten so lange, wie dies zur Erfüllung des jeweiligen Bearbeitungszwecks erforderlich ist."
+          },
+          {
+            type: "paragraph",
+            text: "Eine längere Aufbewahrung kann erfolgen, wenn:"
+          },
+          {
+            type: "list",
+            items: [
+              "gesetzliche Aufbewahrungspflichten bestehen",
+              "vertragliche Verpflichtungen erfüllt werden müssen",
+              "regulatorische Anforderungen dies verlangen",
+              "Beweissicherungsinteressen bestehen",
+              "rechtliche Ansprüche geltend gemacht, durchgesetzt oder abgewehrt werden können",
+              "andere berechtigte Interessen eine Aufbewahrung rechtfertigen",
+              "Geschäftsunterlagen, Vertragsunterlagen, Beratungsdokumentationen und Buchhaltungsdaten werden in der Regel während mindestens zehn Jahren aufbewahrt, sofern keine längere oder kürzere Frist gilt."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Daten aus Bewerbungsverfahren werden grundsätzlich spätestens sechs Monate nach Abschluss des Verfahrens gelöscht, sofern kein Arbeitsverhältnis entsteht und keine Einwilligung für eine längere Aufbewahrung vorliegt."
+          },
+          {
+            type: "paragraph",
+            text: "Wettbewerbsdaten werden nach Abschluss und Abwicklung des Wettbewerbs gelöscht oder anonymisiert, sofern keine gesetzlichen Aufbewahrungspflichten bestehen oder eine separate Einwilligung zur weiteren Bearbeitung vorliegt."
+          },
+          {
+            type: "paragraph",
+            text: "Nach Ablauf der jeweiligen Aufbewahrungsfrist werden Personendaten gelöscht, anonymisiert oder gesperrt."
+          }
+        ]
+      },
+      {
+        title: "20. Datensicherheit",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir treffen angemessene technische und organisatorische Massnahmen, um Personendaten insbesondere gegen folgende Risiken zu schützen:"
+          },
+          {
+            type: "list",
+            items: [
+              "unbefugten Zugriff",
+              "unzulässige Bearbeitung",
+              "Verlust",
+              "Veränderung",
+              "Offenlegung",
+              "Zerstörung",
+              "Missbrauch",
+              "Zu unseren Massnahmen können insbesondere gehören:"
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              "Verschlüsselung von Datenübertragungen",
+              "Zugriffsbeschränkungen und Berechtigungskonzepte",
+              "Passwort- und Authentifizierungsschutz",
+              "regelmässige Datensicherungen",
+              "technische Sicherheitskontrollen",
+              "Vertraulichkeitsverpflichtungen",
+              "Schulung und Sensibilisierung",
+              "sorgfältige Auswahl externer Dienstleister",
+              "regelmässige Überprüfung unserer Schutzmassnahmen",
+              "Trotz angemessener Sicherheitsmassnahmen kann eine Datenübertragung über das Internet nicht vollständig gegen sämtliche Risiken geschützt werden. Ein absoluter Schutz kann daher nicht garantiert werden."
+            ]
+          }
+        ]
+      },
+      {
+        title: "21. Automatisierte Entscheidungen und Profiling",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir können Personendaten analysieren und miteinander verknüpfen, um Ihre finanzielle, versicherungstechnische oder vorsorgerechtliche Situation zu beurteilen und geeignete Empfehlungen vorzubereiten."
+          },
+          {
+            type: "paragraph",
+            text: "Solche Auswertungen dienen insbesondere der Beratung, Risikoanalyse, Angebotserstellung und Ermittlung geeigneter Lösungen."
+          },
+          {
+            type: "paragraph",
+            text: "Veonis trifft grundsätzlich keine ausschliesslich automatisierten Einzelentscheidungen, die für Sie erhebliche rechtliche oder vergleichbare Auswirkungen haben."
+          },
+          {
+            type: "paragraph",
+            text: "Sollte in einem Einzelfall eine solche automatisierte Entscheidung erfolgen, informieren wir Sie entsprechend und gewähren Ihnen die gesetzlich vorgesehenen Rechte."
+          },
+          {
+            type: "paragraph",
+            text: "Produktanbieter wie Versicherungsunternehmen, Banken oder Finanzierungsinstitute können im Rahmen ihrer eigenen Antrags- und Risikoprüfung automatisierte Verfahren verwenden. Für diese Bearbeitungen ist grundsätzlich der jeweilige Anbieter verantwortlich."
+          }
+        ]
+      },
+      {
+        title: "22. Ihre Rechte",
+        content: [
+          {
+            type: "paragraph",
+            text: "Im Rahmen des anwendbaren Datenschutzrechts haben Sie insbesondere das Recht:"
+          },
+          {
+            type: "list",
+            items: [
+              "Auskunft darüber zu verlangen, ob und welche Personendaten wir über Sie bearbeiten",
+              "eine Kopie Ihrer Personendaten zu erhalten",
+              "unrichtige oder unvollständige Daten berichtigen zu lassen",
+              "die Löschung von Personendaten zu verlangen",
+              "die Bearbeitung bestimmter Daten einzuschränken",
+              "einer Datenbearbeitung zu widersprechen",
+              "eine erteilte Einwilligung jederzeit zu widerrufen",
+              "die Herausgabe oder Übertragung bestimmter Personendaten zu verlangen",
+              "eine ausschliesslich automatisierte Entscheidung durch eine natürliche Person überprüfen zu lassen",
+              "Diese Rechte können aufgrund gesetzlicher Vorschriften eingeschränkt sein. Insbesondere können gesetzliche Aufbewahrungspflichten, überwiegende Interessen oder die Durchsetzung rechtlicher Ansprüche einer sofortigen Löschung entgegenstehen."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Zur Ausübung Ihrer Rechte können Sie uns unter folgender Adresse kontaktieren:"
+          },
+          {
+            type: "list",
+            items: [
+              "Veonis GmbH",
+              "Im Dreispitz 39",
+              "8105 Regensdorf",
+              "Schweiz"
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "E-Mail: info@veonissuisse.ch"
+          },
+          {
+            type: "paragraph",
+            text: "Zur Vermeidung einer unbefugten Herausgabe von Personendaten können wir einen geeigneten Identitätsnachweis verlangen."
+          },
+          {
+            type: "paragraph",
+            text: "Sie haben zudem das Recht, sich an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten zu wenden."
+          }
+        ]
+      },
+      {
+        title: "23. Änderungen dieser Datenschutzerklärung",
+        content: [
+          {
+            type: "paragraph",
+            text: "Wir können diese Datenschutzerklärung jederzeit anpassen, insbesondere wenn:"
+          },
+          {
+            type: "list",
+            items: [
+              "sich unsere Dienstleistungen verändern",
+              "neue technische Lösungen eingesetzt werden",
+              "sich unsere Datenbearbeitungen verändern",
+              "neue gesetzliche oder regulatorische Anforderungen gelten",
+              "Es gilt jeweils die aktuelle, auf unserer Website veröffentlichte Fassung."
+            ]
+          },
+          {
+            type: "paragraph",
+            text: "Stand: Juli 2026"
+          }
+        ]
+      }
     ],
   },
   "legal/informationen-gemaess-art-45-vag": {
