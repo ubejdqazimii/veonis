@@ -252,10 +252,6 @@ function V2HeroSection({
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(239,125,139,0.2),transparent_28rem)]" />
       <Container className="relative grid min-h-[560px] items-center gap-8 py-12 sm:min-h-[600px] lg:grid-cols-[0.92fr_0.58fr]">
         <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/24 bg-white/12 px-3 py-2 text-xs font-semibold uppercase text-white/84 shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] backdrop-blur-md">
-            <BadgeCheck className="size-4 text-[#ef7d8b]" />
-            {page.eyebrow}
-          </p>
           <h1 className="display-title mt-6 text-4xl leading-[1.02] text-white sm:text-6xl lg:text-[4.25rem]">
             {page.title}
           </h1>
