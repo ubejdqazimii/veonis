@@ -15,24 +15,28 @@ import {
 
 import type { CardContent } from "@/lib/veonis-content";
 
-export function ValueCard({ title, text, ctaLabel, href, image, imageAlt }: CardContent) {
+export function ValueCard({ title, text, ctaLabel, href, image, imageAlt, profile }: CardContent) {
   const Icon = getValueIcon(title);
 
-  if (image) {
+  if (image || profile) {
     return (
       <article className="overflow-hidden rounded-3xl border border-[#e6e2dc] bg-white shadow-[0_20px_56px_rgba(17,24,39,0.09)]">
         <div className="relative aspect-[4/5] overflow-hidden bg-[#e9e7e4]">
-          <Image
-            alt={imageAlt ?? title}
-            className="object-cover object-top transition duration-500 hover:scale-[1.015]"
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            src={image}
-          />
+          {image ? (
+            <Image
+              alt={imageAlt ?? title}
+              className="object-cover object-top transition duration-500 hover:scale-[1.015]"
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              src={image}
+            />
+          ) : null}
         </div>
         <div className="p-6 sm:p-7">
           <h3 className="text-xl font-semibold text-[#111827]">{title}</h3>
-          <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-[#c63d4d]">{text}</p>
+          {text ? (
+            <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-[#c63d4d]">{text}</p>
+          ) : null}
         </div>
       </article>
     );
