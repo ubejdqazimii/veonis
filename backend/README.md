@@ -12,6 +12,9 @@ Laravel 13 and Filament 5 power the Veonis content administration and mini CRM.
 
 The admin is available at `/admin`. Public JSON endpoints live under `/api/v1`.
 
+The production target is `https://adcms.veonissuisse.ch`. See
+[`deploy/HOSTPOINT.md`](deploy/HOSTPOINT.md) for the Hostpoint-specific setup.
+
 ## Local setup
 
 Requirements: PHP 8.2 or newer, Composer, Node.js for the separate Next.js frontend.
