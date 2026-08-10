@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import type { Locale } from "@/lib/veonis-content";
 
 const contactSchema = z.object({
   firstName: z.string().min(2, "Bitte geben Sie Ihren Vornamen ein."),
@@ -21,6 +22,7 @@ const contactSchema = z.object({
   message: z.string().min(10, "Bitte schreiben Sie kurz, worum es geht."),
   contactMethod: z.string().min(1, "Bitte wählen Sie eine Kontaktart."),
   privacy: z.boolean().refine((value) => value, "Bitte akzeptieren Sie den Datenschutz-Hinweis."),
+  website: z.string().max(0).optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -38,8 +40,9 @@ const interests = [
 
 const contactMethods = ["Telefon", "E-Mail", "Videocall", "Persönlicher Termin"];
 
-export function ContactForm() {
-  const [sent, setSent] = useState(false);
+export function ContactForm({ locale }: { locale: Locale }) {
+  const [reference, setReference] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -53,15 +56,48 @@ export function ContactForm() {
       interest: "",
       contactMethod: "",
       privacy: false,
+      website: "",
     },
   });
 
-  function onSubmit() {
-    setSent(true);
+  async function onSubmit(values: ContactFormValues) {
+    setReference(null);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("/api/contact-requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...values,
+          locale,
+          sourceUrl: window.location.href,
+        }),
+      });
+      const payload = (await response.json()) as { message?: string; reference?: string };
+
+      if (!response.ok || !payload.reference) {
+        throw new Error(payload.message);
+      }
+
+      setReference(payload.reference);
+    } catch {
+      setSubmitError(
+        locale === "de"
+          ? "Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns per E-Mail."
+          : "Your request could not be sent. Please try again or contact us by email.",
+      );
+    }
   }
 
   return (
     <form className="premium-card p-6 sm:p-8" onSubmit={handleSubmit(onSubmit)}>
+      <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
+        <label>
+          Website
+          <input autoComplete="off" tabIndex={-1} {...register("website")} />
+        </label>
+      </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Vorname" error={errors.firstName?.message}>
           <Input className="h-12 bg-white" {...register("firstName")} />
@@ -128,10 +164,18 @@ export function ContactForm() {
       >
         Anfrage senden
       </Button>
-      {sent ? (
+      {reference ? (
         <div className="mt-5 flex items-center gap-3 rounded-2xl border border-[#c63d4d]/20 bg-[#c63d4d]/10 p-4 text-sm font-medium text-[#8f2632]">
           <CheckCircle className="size-5" />
-          Danke. Die Formularvalidierung funktioniert; ein Versanddienst kann später angeschlossen werden.
+          <span>
+            {locale === "de" ? "Danke. Ihre Anfrage wurde übermittelt." : "Thank you. Your request has been received."}
+            <span className="ml-1 text-xs opacity-70">#{reference.slice(0, 8)}</span>
+          </span>
+        </div>
+      ) : null}
+      {submitError ? (
+        <div className="mt-5 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-800" role="alert">
+          {submitError}
         </div>
       ) : null}
     </form>

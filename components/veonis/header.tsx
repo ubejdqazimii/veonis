@@ -4,15 +4,18 @@ import { Container } from "@/components/veonis/container";
 import { MobileMenu } from "@/components/veonis/mobile-menu";
 import { PreHeader } from "@/components/veonis/pre-header";
 import { Button } from "@/components/ui/button";
+import type { ManagedNavigationItem } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
 import { getLocalizedPath, getNavItemLabel, localizedHomeHref, primaryNavItems } from "@/lib/veonis-content";
 
 type HeaderProps = {
   locale: Locale;
+  navigation?: ManagedNavigationItem[] | null;
 };
 
-export function Header({ locale }: HeaderProps) {
+export function Header({ locale, navigation }: HeaderProps) {
   const otherLocale = locale === "de" ? "en" : "de";
+  const managedPrimary = navigation?.filter((item) => item.group === "primary");
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#e6e2dc]/80 bg-white/92 backdrop-blur-xl">
@@ -28,13 +31,16 @@ export function Header({ locale }: HeaderProps) {
           >
             Home
           </Link>
-          {primaryNavItems.map((item) => (
+          {(managedPrimary ?? primaryNavItems.map((item) => ({
+            label: getNavItemLabel(item, locale),
+            href: item[locale],
+          }))).map((item) => (
             <Link
               className="rounded-full px-3 py-2 text-sm font-medium text-[#4b5563] transition hover:bg-[#f7f7f6] hover:text-[#111827]"
-              href={item[locale]}
-              key={getNavItemLabel(item, locale)}
+              href={item.href}
+              key={`${item.label}-${item.href}`}
             >
-              {getNavItemLabel(item, locale)}
+              {item.label}
             </Link>
           ))}
         </nav>
@@ -49,7 +55,7 @@ export function Header({ locale }: HeaderProps) {
             <Link href={getLocalizedPath(locale, "contact")}>Termin vereinbaren</Link>
           </Button>
         </div>
-        <MobileMenu locale={locale} />
+        <MobileMenu locale={locale} navigation={managedPrimary} />
       </Container>
     </header>
   );

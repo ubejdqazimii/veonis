@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { Footer } from "@/components/veonis/footer";
 import { Header } from "@/components/veonis/header";
+import { getManagedNavigation } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
 
 type SiteShellProps = {
@@ -9,12 +10,14 @@ type SiteShellProps = {
   locale: Locale;
 };
 
-export function SiteShell({ children, locale }: SiteShellProps) {
+export async function SiteShell({ children, locale }: SiteShellProps) {
+  const navigation = await getManagedNavigation(locale);
+
   return (
     <>
-      <Header locale={locale} />
+      <Header locale={locale} navigation={navigation} />
       <main className="flex-1">{children}</main>
-      <Footer locale={locale} />
+      <Footer locale={locale} navigation={navigation} />
     </>
   );
 }

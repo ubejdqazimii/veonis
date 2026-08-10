@@ -2,14 +2,18 @@ import Link from "next/link";
 import { ArrowUpRight, BadgeCheck, Mail, MapPin, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/veonis/container";
+import type { ManagedNavigationItem } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
 import { brand, getNavItemLabel, legalDisclaimer, legalLinks, localizedHomeHref, navItems } from "@/lib/veonis-content";
 
 type FooterProps = {
   locale: Locale;
+  navigation?: ManagedNavigationItem[] | null;
 };
 
-export function Footer({ locale }: FooterProps) {
+export function Footer({ locale, navigation }: FooterProps) {
+  const managedNavigation = navigation?.filter((item) => item.group !== "footer");
+  const managedLegal = navigation?.filter((item) => item.group === "footer");
   const contactItems = [
     { icon: Mail, label: brand.email, href: `mailto:${brand.email}` },
     { icon: MapPin, label: "Schweiz", href: localizedHomeHref[locale] },
@@ -54,13 +58,16 @@ export function Footer({ locale }: FooterProps) {
             <div className="rounded-lg border border-white/10 bg-white/5 p-6">
               <h2 className="text-sm font-semibold uppercase tracking-normal text-white/54">Navigation</h2>
               <div className="mt-5 grid gap-3">
-                {navItems.map((item) => (
+                {(managedNavigation ?? navItems.map((item) => ({
+                  label: getNavItemLabel(item, locale),
+                  href: item[locale],
+                }))).map((item) => (
                   <Link
                     className="group flex items-center justify-between gap-3 text-sm text-white/72 transition hover:text-white"
-                    href={item[locale]}
-                    key={item.label}
+                    href={item.href}
+                    key={`${item.label}-${item.href}`}
                   >
-                    {getNavItemLabel(item, locale)}
+                    {item.label}
                     <ArrowUpRight className="size-3.5 opacity-0 transition group-hover:opacity-100" />
                   </Link>
                 ))}
@@ -70,7 +77,7 @@ export function Footer({ locale }: FooterProps) {
             <div className="rounded-lg border border-white/10 bg-white/5 p-6">
               <h2 className="text-sm font-semibold uppercase tracking-normal text-white/54">Legal</h2>
               <div className="mt-5 grid gap-3">
-                {legalLinks[locale].map((item) => (
+                {(managedLegal ?? legalLinks[locale]).map((item) => (
                   <Link
                     className="group flex items-start justify-between gap-3 text-sm leading-5 text-white/72 transition hover:text-white"
                     href={item.href}

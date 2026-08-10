@@ -5,14 +5,16 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import type { ManagedNavigationItem } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
 import { getLocalizedPath, getNavItemLabel, localizedHomeHref, primaryNavItems } from "@/lib/veonis-content";
 
 type MobileMenuProps = {
   locale: Locale;
+  navigation?: ManagedNavigationItem[] | null;
 };
 
-export function MobileMenu({ locale }: MobileMenuProps) {
+export function MobileMenu({ locale, navigation }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -38,14 +40,17 @@ export function MobileMenu({ locale }: MobileMenuProps) {
             >
               Home
             </Link>
-            {primaryNavItems.map((item) => (
+            {(navigation ?? primaryNavItems.map((item) => ({
+              label: getNavItemLabel(item, locale),
+              href: item[locale],
+            }))).map((item) => (
               <Link
                 className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#111827] hover:bg-[#f7f7f6]"
-                href={item[locale]}
-                key={getNavItemLabel(item, locale)}
+                href={item.href}
+                key={`${item.label}-${item.href}`}
                 onClick={() => setOpen(false)}
               >
-                {getNavItemLabel(item, locale)}
+                {item.label}
               </Link>
             ))}
           </nav>

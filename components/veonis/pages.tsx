@@ -47,12 +47,10 @@ import { SectionHeader } from "@/components/veonis/section-header";
 import { ServiceCard } from "@/components/veonis/service-card";
 import { ValueCard } from "@/components/veonis/value-card";
 import { cn } from "@/lib/utils";
-import type { BlogPost, CardContent, Locale, PageKey } from "@/lib/veonis-content";
+import { getManagedBlogArticle, getManagedBlogPosts, getManagedPage } from "@/lib/cms";
+import type { BlogPost, CardContent, ContentSection, Locale, PageKey } from "@/lib/veonis-content";
 import {
-  blogPosts,
   brand,
-  getBlogArticle,
-  getBlogPost,
   getBlogPostPath,
   getLocalizedPath,
   getPage,
@@ -77,8 +75,11 @@ type PageProps = {
   pageKey: PageKey;
 };
 
-export function HomePage({ locale }: Pick<PageProps, "locale">) {
-  const page = getPage(locale, "home");
+export async function HomePage({ locale }: Pick<PageProps, "locale">) {
+  const [page, managedPosts] = await Promise.all([
+    getManagedPage(locale, "home"),
+    getManagedBlogPosts(locale),
+  ]);
 
   return (
     <>
@@ -96,7 +97,7 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
       <HomeTrustStrip />
       <ConnectedFinanceSection section={page.sections[0]} />
       <HumanAdvisorySection />
-      <AnalysisSection locale={locale} />
+      <AnalysisSection locale={locale} section={page.sections[1]} />
       <HomeFocusTabsSection />
       <ServicesEditorialSection locale={locale} />
       <DigitalClaritySection />
@@ -104,14 +105,17 @@ export function HomePage({ locale }: Pick<PageProps, "locale">) {
       <WhyVeonisSection cards={page.sections[3].cards ?? []} />
       <CollaborationSection steps={page.sections[4].steps ?? []} />
       <AudienceSection cards={page.sections[5].cards ?? []} />
-      <LatestBlogPostsSection locale={locale} posts={blogPosts.slice(0, 5)} />
+      <LatestBlogPostsSection locale={locale} posts={managedPosts.slice(0, 5)} />
       <CTASection locale={locale} />
     </>
   );
 }
 
-export function HomePageVersion2({ locale }: Pick<PageProps, "locale">) {
-  const page = getPage(locale, "home-v2");
+export async function HomePageVersion2({ locale }: Pick<PageProps, "locale">) {
+  const [page, managedPosts] = await Promise.all([
+    getManagedPage(locale, "home-v2"),
+    getManagedBlogPosts(locale),
+  ]);
 
   return (
     <>
@@ -119,14 +123,17 @@ export function HomePageVersion2({ locale }: Pick<PageProps, "locale">) {
       <V2OverviewSection locale={locale} />
       <V2ServicesSection locale={locale} />
       <V2CollaborationSection locale={locale} />
-      <V2LatestBlogPostsSection locale={locale} posts={blogPosts.slice(0, 5)} />
+      <V2LatestBlogPostsSection locale={locale} posts={managedPosts.slice(0, 5)} />
       <V2CTASection locale={locale} />
     </>
   );
 }
 
-export function HomePageVersion3({ locale }: Pick<PageProps, "locale">) {
-  const page = getPage(locale, "home-v3");
+export async function HomePageVersion3({ locale }: Pick<PageProps, "locale">) {
+  const [page, managedPosts] = await Promise.all([
+    getManagedPage(locale, "home-v3"),
+    getManagedBlogPosts(locale),
+  ]);
 
   return (
     <>
@@ -138,7 +145,7 @@ export function HomePageVersion3({ locale }: Pick<PageProps, "locale">) {
       <V3HumanMomentsSection locale={locale} />
       <V3ServicesMatrixSection locale={locale} />
       <V3SnapCardsSection locale={locale} />
-      <V3InsightsSection locale={locale} posts={blogPosts.slice(0, 5)} />
+      <V3InsightsSection locale={locale} posts={managedPosts.slice(0, 5)} />
       <V2CTASection locale={locale} />
     </>
   );
@@ -192,8 +199,11 @@ function V3RedCoverSection({ locale }: { locale: Locale }) {
   );
 }
 
-export function BlogPage({ locale }: Pick<PageProps, "locale">) {
-  const page = getPage(locale, "blog");
+export async function BlogPage({ locale }: Pick<PageProps, "locale">) {
+  const [page, managedPosts] = await Promise.all([
+    getManagedPage(locale, "blog"),
+    getManagedBlogPosts(locale),
+  ]);
 
   return (
     <>
@@ -215,7 +225,7 @@ export function BlogPage({ locale }: Pick<PageProps, "locale">) {
           </div>
         </Container>
       </section>
-      <BlogPostsGrid locale={locale} posts={blogPosts} />
+      <BlogPostsGrid locale={locale} posts={managedPosts} />
       <CTASection
         button={locale === "de" ? "Eigene Finanzfragen besprechen" : "Discuss your financial questions"}
         locale={locale}
@@ -225,15 +235,18 @@ export function BlogPage({ locale }: Pick<PageProps, "locale">) {
   );
 }
 
-export function BlogArticlePage({ locale, slug }: { locale: Locale; slug: string }) {
-  const post = getBlogPost(slug);
-  const article = getBlogArticle(slug, locale);
+export async function BlogArticlePage({ locale, slug }: { locale: Locale; slug: string }) {
+  const [managedArticle, managedPosts] = await Promise.all([
+    getManagedBlogArticle(locale, slug),
+    getManagedBlogPosts(locale),
+  ]);
 
-  if (!post || !article) {
+  if (!managedArticle) {
     notFound();
   }
 
-  const relatedPosts = blogPosts.filter((item) => item.slug !== slug).slice(0, 3);
+  const { post, article } = managedArticle;
+  const relatedPosts = managedPosts.filter((item) => item.slug !== slug).slice(0, 3);
 
   return (
     <>
@@ -577,8 +590,8 @@ function AdvisoryMomentsSection() {
   );
 }
 
-export function StandardPage({ locale, pageKey }: PageProps) {
-  const page = getPage(locale, pageKey);
+export async function StandardPage({ locale, pageKey }: PageProps) {
+  const page = await getManagedPage(locale, pageKey);
   const isServices = pageKey === "services";
   const isAnalysis = pageKey === "veonis-360-analysis";
   const isPrivateClients = pageKey === "private-clients";
@@ -642,8 +655,8 @@ export function StandardPage({ locale, pageKey }: PageProps) {
   );
 }
 
-export function ContactPage({ locale }: Pick<PageProps, "locale">) {
-  const page = getPage(locale, "contact");
+export async function ContactPage({ locale }: Pick<PageProps, "locale">) {
+  const page = await getManagedPage(locale, "contact");
 
   return (
     <>
@@ -671,7 +684,7 @@ export function ContactPage({ locale }: Pick<PageProps, "locale">) {
                 </a>
               </div>
             </div>
-            <ContactForm />
+            <ContactForm locale={locale} />
           </div>
         </Container>
       </section>
@@ -679,8 +692,8 @@ export function ContactPage({ locale }: Pick<PageProps, "locale">) {
   );
 }
 
-export function FAQPage({ locale }: Pick<PageProps, "locale">) {
-  const page = getPage(locale, "faq");
+export async function FAQPage({ locale }: Pick<PageProps, "locale">) {
+  const page = await getManagedPage(locale, "faq");
 
   return (
     <>
@@ -701,8 +714,8 @@ export function FAQPage({ locale }: Pick<PageProps, "locale">) {
   );
 }
 
-export function LegalPage({ locale, pageKey }: PageProps) {
-  const page = getPage(locale, pageKey);
+export async function LegalPage({ locale, pageKey }: PageProps) {
+  const page = await getManagedPage(locale, pageKey);
 
   return (
     <>
@@ -1633,8 +1646,7 @@ function SectionBlock({
   );
 }
 
-function AnalysisSection({ locale }: { locale: Locale }) {
-  const section = getPage(locale, "home").sections[1];
+function AnalysisSection({ locale, section }: { locale: Locale; section: ContentSection }) {
 
   return (
     <section className="bg-[linear-gradient(135deg,#24191c_0%,#351b21_55%,#551c27_100%)] py-20 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:py-24">

@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Veonis website and administration
 
-## Getting Started
+This repository contains two applications:
 
-First, run the development server:
+- `/` — Next.js 16 public website
+- `/backend` — Laravel 13 + Filament 5 content administration and mini CRM
+
+The public website reads published page, blog and navigation content from Laravel
+when `CMS_API_URL` is configured. It falls back to the checked-in TypeScript content
+if the CMS cannot be reached, keeping the website resilient during backend maintenance.
+
+Contact forms post to the same-origin Next.js route `/api/contact-requests`, which
+proxies validated submissions to Laravel and stores them in the CRM.
+
+## Public website
+
+Copy `.env.example` to `.env.local`, set the Laravel URL, then run:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). See
+[`backend/README.md`](backend/README.md) for administration setup and deployment.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verification
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build -- --webpack
+cd backend
+php artisan test
+vendor/bin/pint --test
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Deploy the Laravel application first, run its migrations and seed, and set its
+public URL as `CMS_API_URL` in the Next.js hosting environment. The website
+revalidates managed content every 60 seconds.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The included `backend/Dockerfile` is suitable for a container host. Configure a
+persistent MySQL database and object storage before production use.
