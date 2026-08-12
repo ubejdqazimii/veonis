@@ -14,6 +14,7 @@ Laravel 13 and Filament 5 power the Veonis content administration and mini CRM.
 - User accounts, account activation, password changes and role-based privileges
 - First-party analytics for pages, sessions, acquisition, geography, technology and engagement
 - Live visitor presence with current page, country, city, device and browser
+- Country and device charts with page-view and unique-session breakdowns
 
 Super admins have access to the complete dashboard and user management. Blog
 editors can only create, edit and publish blog articles; destructive blog
