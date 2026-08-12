@@ -11,6 +11,11 @@ Laravel 13 and Filament 5 power the Veonis content administration and mini CRM.
 - LinkedIn, Instagram, Facebook and additional social profiles
 - Draft and published states
 - Contact requests with status, priority, owner, notes and source/privacy metadata
+- User accounts, account activation, password changes and role-based privileges
+
+Super admins have access to the complete dashboard and user management. Blog
+editors can only create, edit and publish blog articles; destructive blog
+actions and every other dashboard resource remain restricted to super admins.
 
 The admin is available at `/admin`. Public JSON endpoints live under `/api/v1`.
 

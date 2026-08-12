@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\UserRole;
 use App\Models\ContactRequest;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,6 +22,31 @@ class AdminPanelTest extends TestCase
         $this->actingAs($user)->get('/admin/blog-posts/create')->assertOk();
         $this->actingAs($user)->get('/admin/navigation-items/create')->assertOk();
         $this->actingAs($user)->get('/admin/site-settings')->assertOk();
+        $this->actingAs($user)->get('/admin/users')->assertOk();
+        $this->actingAs($user)->get('/admin/users/create')->assertOk();
+        $this->actingAs($user)->get("/admin/users/{$user->id}/edit")->assertOk();
+    }
+
+    public function test_a_blog_editor_can_only_manage_blog_articles(): void
+    {
+        $editor = User::factory()->create(['role' => UserRole::BlogEditor]);
+
+        $this->actingAs($editor)->get('/admin')->assertOk();
+        $this->actingAs($editor)->get('/admin/blog-posts')->assertOk();
+        $this->actingAs($editor)->get('/admin/blog-posts/create')->assertOk();
+
+        $this->actingAs($editor)->get('/admin/pages')->assertForbidden();
+        $this->actingAs($editor)->get('/admin/navigation-items')->assertForbidden();
+        $this->actingAs($editor)->get('/admin/site-settings')->assertForbidden();
+        $this->actingAs($editor)->get('/admin/contact-requests')->assertForbidden();
+        $this->actingAs($editor)->get('/admin/users')->assertForbidden();
+    }
+
+    public function test_a_disabled_user_cannot_access_the_admin_panel(): void
+    {
+        $user = User::factory()->create(['is_active' => false]);
+
+        $this->actingAs($user)->get('/admin')->assertForbidden();
     }
 
     public function test_an_administrator_can_open_a_crm_request(): void

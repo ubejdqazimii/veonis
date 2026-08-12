@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserRole;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'password', 'role', 'is_active'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser
 {
@@ -28,12 +29,24 @@ class User extends Authenticatable implements FilamentUser
     {
         return [
             'email_verified_at' => 'datetime',
+            'is_active' => 'boolean',
             'password' => 'hashed',
+            'role' => UserRole::class,
         ];
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return $this->is_active && in_array($this->role, [UserRole::BlogEditor, UserRole::SuperAdmin], true);
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->is_active && $this->role === UserRole::SuperAdmin;
+    }
+
+    public function canManageBlog(): bool
+    {
+        return $this->is_active && in_array($this->role, [UserRole::BlogEditor, UserRole::SuperAdmin], true);
     }
 }
