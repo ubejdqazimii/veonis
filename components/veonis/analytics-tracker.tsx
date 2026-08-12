@@ -3,7 +3,15 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-const endpoint = "/api/analytics";
+const endpoint = "https://adcms.veonissuisse.ch/api/v1/analytics";
+
+type VisitorLocation = { country: string | null; region: string | null; city: string | null };
+
+function getVisitorLocation(): Promise<VisitorLocation> {
+  return fetch("/api/analytics", { cache: "no-store" })
+    .then((response) => response.json() as Promise<VisitorLocation>)
+    .catch(() => ({ country: null, region: null, city: null }));
+}
 
 function sessionId() {
   const key = "veonis_analytics_session";
@@ -38,12 +46,14 @@ export function AnalyticsTracker() {
       screen_height: window.screen.height,
     };
 
-    void fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    });
+    void getVisitorLocation().then((location) =>
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ ...payload, ...location }),
+        keepalive: true,
+      }),
+    );
 
     const reportPresence = () => {
       if (document.visibilityState !== "visible") return;
@@ -52,7 +62,7 @@ export function AnalyticsTracker() {
 
       void fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           event_type: "heartbeat",
           session_id: payload.session_id,
@@ -68,14 +78,17 @@ export function AnalyticsTracker() {
 
     const reportEngagement = () => {
       const seconds = Math.min(86400, Math.max(0, Math.round((Date.now() - startedAt) / 1000)));
-      const body = JSON.stringify({
-        event_type: "engagement",
-        session_id: payload.session_id,
-        path: pathname,
-        engagement_seconds: seconds,
+      void fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          event_type: "engagement",
+          session_id: payload.session_id,
+          path: pathname,
+          engagement_seconds: seconds,
+        }),
+        keepalive: true,
       });
-
-      navigator.sendBeacon(endpoint, new Blob([body], { type: "application/json" }));
     };
 
     window.addEventListener("pagehide", reportEngagement, { once: true });

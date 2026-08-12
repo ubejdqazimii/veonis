@@ -43,6 +43,24 @@ class AnalyticsTest extends TestCase
         $this->assertArrayNotHasKey('ip_address', $event->getAttributes());
     }
 
+    public function test_it_accepts_vercel_location_forwarded_by_the_public_browser(): void
+    {
+        $this->withHeader('Origin', 'https://www.veonissuisse.ch')->postJson('/api/v1/analytics', [
+            'event_type' => 'page_view',
+            'session_id' => (string) Str::uuid(),
+            'path' => '/de',
+            'country' => 'CH',
+            'region' => 'ZH',
+            'city' => 'Zurich',
+        ])->assertNoContent();
+
+        $event = AnalyticsEvent::query()->firstOrFail();
+
+        $this->assertSame('CH', $event->country);
+        $this->assertSame('ZH', $event->region);
+        $this->assertSame('Zurich', $event->city);
+    }
+
     public function test_engagement_updates_the_matching_page_view(): void
     {
         $event = AnalyticsEvent::query()->create([

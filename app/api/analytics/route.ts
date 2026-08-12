@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
 
+export function GET(request: Request) {
+  const headers = request.headers;
+
+  return NextResponse.json({
+    country: headers.get("x-vercel-ip-country") || null,
+    region: headers.get("x-vercel-ip-country-region") || null,
+    city: decodeURIComponent(headers.get("x-vercel-ip-city") ?? "") || null,
+  });
+}
+
 export async function POST(request: Request) {
   const baseUrl = (
     process.env.CMS_API_URL ??

@@ -25,6 +25,9 @@ class AnalyticsController extends Controller
             'screen_width' => ['nullable', 'integer', 'between:1,10000'],
             'screen_height' => ['nullable', 'integer', 'between:1,10000'],
             'engagement_seconds' => ['nullable', 'integer', 'between:0,86400'],
+            'country' => ['nullable', 'string', 'size:2'],
+            'region' => ['nullable', 'string', 'max:100'],
+            'city' => ['nullable', 'string', 'max:150'],
         ]);
 
         $userAgent = $request->userAgent() ?? '';
@@ -59,9 +62,9 @@ class AnalyticsController extends Controller
             'visitor_hash' => hash_hmac('sha256', $ip.'|'.$userAgent, config('app.key')),
             'referrer_host' => $referrerHost ? Str::lower($referrerHost) : null,
             'source' => $data['source'] ?? ($referrerHost ?: 'direct'),
-            'country' => $request->header('X-Visitor-Country'),
-            'region' => $request->header('X-Visitor-Region'),
-            'city' => $request->header('X-Visitor-City'),
+            'country' => $request->header('X-Visitor-Country') ?: ($data['country'] ?? null),
+            'region' => $request->header('X-Visitor-Region') ?: ($data['region'] ?? null),
+            'city' => $request->header('X-Visitor-City') ?: ($data['city'] ?? null),
             'browser' => $this->browser($userAgent),
             'operating_system' => $this->operatingSystem($userAgent),
             'device_type' => $this->deviceType($userAgent),
