@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AnalyticsTracker } from "@/components/veonis/analytics-tracker";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className="h-full scroll-smooth antialiased">
-      <body className="flex min-h-full flex-col bg-white text-[#111827]">{children}</body>
+      <body className="flex min-h-full flex-col bg-white text-[#111827]">
+        {children}
+        <AnalyticsTracker />
+      </body>
     </html>
   );
 }

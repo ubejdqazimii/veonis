@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AnalyticsController;
 use App\Http\Controllers\Api\V1\BlogPostController;
 use App\Http\Controllers\Api\V1\ContactRequestController;
 use App\Http\Controllers\Api\V1\NavigationController;
@@ -20,4 +21,6 @@ Route::prefix('v1')->group(function (): void {
     Route::get('/site-settings', SiteSettingController::class);
     Route::post('/contact-requests', ContactRequestController::class)
         ->middleware('throttle:10,1');
+    Route::post('/analytics', AnalyticsController::class)
+        ->middleware('throttle:120,1');
 });

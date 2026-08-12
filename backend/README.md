@@ -12,6 +12,7 @@ Laravel 13 and Filament 5 power the Veonis content administration and mini CRM.
 - Draft and published states
 - Contact requests with status, priority, owner, notes and source/privacy metadata
 - User accounts, account activation, password changes and role-based privileges
+- First-party analytics for pages, sessions, acquisition, geography, technology and engagement
 
 Super admins have access to the complete dashboard and user management. Blog
 editors can only create, edit and publish blog articles; destructive blog
@@ -81,9 +82,12 @@ hosting platform has an ephemeral filesystem.
 - `GET /api/v1/navigation/{locale}`
 - `GET /api/v1/site-settings`
 - `POST /api/v1/contact-requests`
+- `POST /api/v1/analytics`
 
 Contact submissions are validated, rate-limited and protected with a honeypot.
 IP addresses are not stored directly; only an application-keyed hash is retained.
+Analytics follows the same privacy approach: it stores an application-keyed
+visitor hash and aggregated browser/location attributes, never a raw IP address.
 
 ## Quality checks
 
