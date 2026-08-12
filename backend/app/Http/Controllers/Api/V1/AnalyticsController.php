@@ -13,7 +13,7 @@ class AnalyticsController extends Controller
     public function __invoke(Request $request): Response
     {
         $data = $request->validate([
-            'event_type' => ['required', 'in:page_view,engagement'],
+            'event_type' => ['required', 'in:page_view,engagement,heartbeat'],
             'session_id' => ['required', 'uuid'],
             'path' => ['required', 'string', 'max:500', 'regex:/^\//'],
             'page_title' => ['nullable', 'string', 'max:255'],
@@ -31,14 +31,17 @@ class AnalyticsController extends Controller
         $ip = $request->ip() ?? 'unknown';
         $referrerHost = filled($data['referrer'] ?? null) ? parse_url($data['referrer'], PHP_URL_HOST) : null;
 
-        if ($data['event_type'] === 'engagement') {
+        if (in_array($data['event_type'], ['engagement', 'heartbeat'], true)) {
             AnalyticsEvent::query()
                 ->where('event_type', 'page_view')
                 ->where('session_id', $data['session_id'])
                 ->where('path', $data['path'])
                 ->latest()
                 ->first()
-                ?->update(['engagement_seconds' => $data['engagement_seconds'] ?? 0]);
+                ?->update([
+                    'engagement_seconds' => $data['engagement_seconds'] ?? 0,
+                    'updated_at' => now(),
+                ]);
 
             return response()->noContent();
         }

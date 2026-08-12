@@ -4,6 +4,7 @@ namespace App\Filament\Resources\AnalyticsEvents\Pages;
 
 use App\Filament\Resources\AnalyticsEvents\AnalyticsEventResource;
 use App\Filament\Widgets\AnalyticsOverview;
+use App\Filament\Widgets\LiveVisitors;
 use App\Filament\Widgets\PagePerformance;
 use App\Filament\Widgets\TrafficSources;
 use App\Filament\Widgets\TrafficTrend;
@@ -15,7 +16,7 @@ class ListAnalyticsEvents extends ListRecords
 
     protected function getHeaderWidgets(): array
     {
-        return [AnalyticsOverview::class, TrafficTrend::class, TrafficSources::class, PagePerformance::class];
+        return [AnalyticsOverview::class, LiveVisitors::class, TrafficTrend::class, TrafficSources::class, PagePerformance::class];
     }
 
     public function getHeaderWidgetsColumns(): int|array

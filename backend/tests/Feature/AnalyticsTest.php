@@ -62,4 +62,26 @@ class AnalyticsTest extends TestCase
         $this->assertDatabaseCount('analytics_events', 1);
         $this->assertSame(82, $event->refresh()->engagement_seconds);
     }
+
+    public function test_heartbeat_keeps_a_visitor_live_without_creating_extra_views(): void
+    {
+        $event = AnalyticsEvent::query()->create([
+            'event_type' => 'page_view',
+            'session_id' => (string) Str::uuid(),
+            'visitor_hash' => str_repeat('b', 64),
+            'path' => '/de/contact',
+            'updated_at' => now()->subMinutes(5),
+        ]);
+
+        $this->postJson('/api/v1/analytics', [
+            'event_type' => 'heartbeat',
+            'session_id' => $event->session_id,
+            'path' => $event->path,
+            'engagement_seconds' => 125,
+        ])->assertNoContent();
+
+        $this->assertDatabaseCount('analytics_events', 1);
+        $this->assertSame(125, $event->refresh()->engagement_seconds);
+        $this->assertTrue($event->updated_at->isAfter(now()->subMinute()));
+    }
 }

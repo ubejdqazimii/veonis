@@ -45,6 +45,27 @@ export function AnalyticsTracker() {
       keepalive: true,
     });
 
+    const reportPresence = () => {
+      if (document.visibilityState !== "visible") return;
+
+      const seconds = Math.min(86400, Math.max(0, Math.round((Date.now() - startedAt) / 1000)));
+
+      void fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_type: "heartbeat",
+          session_id: payload.session_id,
+          path: pathname,
+          engagement_seconds: seconds,
+        }),
+        keepalive: true,
+      });
+    };
+
+    const heartbeat = window.setInterval(reportPresence, 30_000);
+    document.addEventListener("visibilitychange", reportPresence);
+
     const reportEngagement = () => {
       const seconds = Math.min(86400, Math.max(0, Math.round((Date.now() - startedAt) / 1000)));
       const body = JSON.stringify({
@@ -60,6 +81,8 @@ export function AnalyticsTracker() {
     window.addEventListener("pagehide", reportEngagement, { once: true });
 
     return () => {
+      window.clearInterval(heartbeat);
+      document.removeEventListener("visibilitychange", reportPresence);
       window.removeEventListener("pagehide", reportEngagement);
       reportEngagement();
     };
