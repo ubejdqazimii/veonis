@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { AnalyticsTracker } from "@/components/veonis/analytics-tracker";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-white text-[#111827]">
         {children}
         <AnalyticsTracker />
+        <Analytics />
       </body>
     </html>
   );
