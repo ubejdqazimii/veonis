@@ -53,11 +53,11 @@ class SiteSettingForm
                         ->columns(2)
                         ->schema([
                             TextInput::make('label')
-                                ->helperText('Accessible name, e.g. LinkedIn.')
+                                ->helperText('Platform name used for the icon and accessibility, e.g. LinkedIn.')
                                 ->required(),
                             TextInput::make('short_label')
                                 ->label('Short label')
-                                ->helperText('Text inside the circle, e.g. in, ig, fb, yt or x.')
+                                ->helperText('Fallback initials for platforms without a built-in icon, e.g. tk.')
                                 ->required()
                                 ->maxLength(4),
                             TextInput::make('url')

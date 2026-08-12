@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, BadgeCheck, ExternalLink, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/veonis/container";
+import { SocialIcon } from "@/components/veonis/social-icon";
 import type { ManagedNavigationItem, ManagedSiteSettings } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
 import { getNavItemLabel, legalDisclaimer, legalLinks, localizedHomeHref, navItems } from "@/lib/veonis-content";
@@ -71,7 +72,7 @@ export function Footer({ locale, navigation, siteSettings }: FooterProps) {
                     target={item.open_new_tab ? "_blank" : undefined}
                     title={item.label}
                   >
-                    {item.short_label}
+                    <SocialIcon className="size-4" {...item} />
                   </a>
                 ))}
               </div>

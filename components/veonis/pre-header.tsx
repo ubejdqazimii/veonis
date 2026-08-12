@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ExternalLink, Mail, Phone } from "lucide-react";
 
 import { Container } from "@/components/veonis/container";
+import { SocialIcon } from "@/components/veonis/social-icon";
 import type { ManagedNavigationItem, ManagedSiteSettings } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
 import { getLocalizedPath, localizedHomeHref } from "@/lib/veonis-content";
@@ -65,7 +66,7 @@ export function PreHeader({ locale, navigation, siteSettings }: PreHeaderProps) 
                   target={item.open_new_tab ? "_blank" : undefined}
                   title={item.label}
                 >
-                  {item.short_label}
+                  <SocialIcon {...item} />
                 </a>
               ))}
             </div>
