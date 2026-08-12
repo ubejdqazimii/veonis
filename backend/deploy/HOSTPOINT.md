@@ -66,12 +66,22 @@ cp deploy/hostpoint.env.example .env
 ```
 
 Edit `.env` and replace every placeholder with the database and administrator
-credentials. Then run:
+credentials. For the first deployment only, run:
 
 ```bash
 chmod +x deploy/hostpoint-deploy.sh
+INITIAL_DEPLOY=1 ./deploy/hostpoint-deploy.sh
+```
+
+For every later code update, run the script without `INITIAL_DEPLOY=1`:
+
+```bash
 ./deploy/hostpoint-deploy.sh
 ```
+
+This is important: the initial seed creates the administrator and imports the
+website content. Later deployments must not seed again, because doing so could
+replace content edited through the dashboard.
 
 Open:
 

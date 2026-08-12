@@ -25,7 +25,11 @@ fi
 
 "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction
 "$PHP_BIN" artisan migrate --force
-"$PHP_BIN" artisan db:seed --force
+
+if [[ "${INITIAL_DEPLOY:-0}" == "1" ]]; then
+    "$PHP_BIN" artisan db:seed --force
+fi
+
 "$PHP_BIN" artisan storage:link --force
 "$PHP_BIN" artisan optimize
 
