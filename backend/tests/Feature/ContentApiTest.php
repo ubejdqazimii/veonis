@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\NavigationItem;
 use App\Models\Page;
+use App\Models\SiteSetting;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -59,5 +60,29 @@ class ContentApiTest extends TestCase
             ->assertOk()
             ->assertJsonCount(2, 'data')
             ->assertJsonPath('data.0.label', 'Eins');
+    }
+
+    public function test_it_returns_visible_contact_and_social_settings(): void
+    {
+        SiteSetting::create([
+            'key' => 'global',
+            'name' => 'Global website settings',
+            'preheader_enabled' => true,
+            'contact_items' => [
+                ['type' => 'email', 'label' => 'Team email', 'href' => 'mailto:team@example.com', 'is_visible' => true],
+                ['type' => 'phone', 'label' => 'Hidden phone', 'href' => 'tel:+41000000000', 'is_visible' => false],
+            ],
+            'social_links' => [
+                ['label' => 'LinkedIn', 'short_label' => 'in', 'url' => 'https://linkedin.com/company/example', 'open_new_tab' => true, 'is_visible' => true],
+            ],
+        ]);
+
+        $this->getJson('/api/v1/site-settings')
+            ->assertOk()
+            ->assertJsonPath('data.preheaderEnabled', true)
+            ->assertJsonCount(1, 'data.contactItems')
+            ->assertJsonPath('data.contactItems.0.label', 'Team email')
+            ->assertJsonCount(1, 'data.socialLinks')
+            ->assertJsonPath('data.socialLinks.0.short_label', 'in');
     }
 }

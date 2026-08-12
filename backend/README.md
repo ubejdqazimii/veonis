@@ -7,6 +7,8 @@ Laravel 13 and Filament 5 power the Veonis content administration and mini CRM.
 - German and English website pages, SEO, hero content and reorderable sections
 - Cards, checklists, process steps, calls to action and profile images
 - Localized blog articles and navigation
+- Top-bar email, phone and additional contact links
+- LinkedIn, Instagram, Facebook and additional social profiles
 - Draft and published states
 - Contact requests with status, priority, owner, notes and source/privacy metadata
 
@@ -72,6 +74,7 @@ hosting platform has an ephemeral filesystem.
 - `GET /api/v1/blog-posts/{locale}`
 - `GET /api/v1/blog-posts/{locale}/{slug}`
 - `GET /api/v1/navigation/{locale}`
+- `GET /api/v1/site-settings`
 - `POST /api/v1/contact-requests`
 
 Contact submissions are validated, rate-limited and protected with a honeypot.

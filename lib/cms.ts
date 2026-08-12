@@ -10,6 +10,39 @@ export type ManagedNavigationItem = {
   sort_order: number;
 };
 
+export type ManagedContactItem = {
+  type: "email" | "phone" | "link";
+  label: string;
+  href: string;
+  is_visible?: boolean;
+};
+
+export type ManagedSocialLink = {
+  label: string;
+  short_label: string;
+  url: string;
+  open_new_tab?: boolean;
+  is_visible?: boolean;
+};
+
+export type ManagedSiteSettings = {
+  preheaderEnabled: boolean;
+  contactItems: ManagedContactItem[];
+  socialLinks: ManagedSocialLink[];
+};
+
+export const defaultSiteSettings: ManagedSiteSettings = {
+  preheaderEnabled: true,
+  contactItems: [
+    {
+      type: "email",
+      label: "info@veonissuisse.ch",
+      href: "mailto:info@veonissuisse.ch",
+    },
+  ],
+  socialLinks: [],
+};
+
 function cmsUrl(path: string) {
   const baseUrl = process.env.CMS_API_URL?.replace(/\/$/, "");
 
@@ -50,6 +83,24 @@ export async function getManagedNavigation(locale: Locale): Promise<ManagedNavig
     return payload.data ?? null;
   } catch {
     return null;
+  }
+}
+
+export async function getManagedSiteSettings(): Promise<ManagedSiteSettings> {
+  const url = cmsUrl("/api/v1/site-settings");
+
+  if (!url) return defaultSiteSettings;
+
+  try {
+    const response = await fetch(url, { next: { revalidate: 60, tags: ["site-settings"] } });
+
+    if (!response.ok) return defaultSiteSettings;
+
+    const payload = (await response.json()) as { data?: ManagedSiteSettings };
+
+    return payload.data ?? defaultSiteSettings;
+  } catch {
+    return defaultSiteSettings;
   }
 }
 

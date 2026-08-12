@@ -4,22 +4,23 @@ import { Container } from "@/components/veonis/container";
 import { MobileMenu } from "@/components/veonis/mobile-menu";
 import { PreHeader } from "@/components/veonis/pre-header";
 import { Button } from "@/components/ui/button";
-import type { ManagedNavigationItem } from "@/lib/cms";
+import type { ManagedNavigationItem, ManagedSiteSettings } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
 import { getLocalizedPath, getNavItemLabel, localizedHomeHref, primaryNavItems } from "@/lib/veonis-content";
 
 type HeaderProps = {
   locale: Locale;
   navigation?: ManagedNavigationItem[] | null;
+  siteSettings: ManagedSiteSettings;
 };
 
-export function Header({ locale, navigation }: HeaderProps) {
+export function Header({ locale, navigation, siteSettings }: HeaderProps) {
   const otherLocale = locale === "de" ? "en" : "de";
   const managedPrimary = navigation?.filter((item) => item.group === "primary");
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#e6e2dc]/80 bg-white/92 backdrop-blur-xl">
-      <PreHeader locale={locale} />
+      <PreHeader locale={locale} navigation={navigation} siteSettings={siteSettings} />
       <Container className="relative flex min-h-20 items-center justify-between gap-5 py-3">
         <Link className="shrink-0" href={localizedHomeHref[locale]} aria-label="Veonis Home">
           <img className="h-12 w-auto" src="/brand/veonis-header.svg" alt="Veonis" />

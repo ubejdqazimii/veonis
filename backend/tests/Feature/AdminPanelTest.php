@@ -20,6 +20,7 @@ class AdminPanelTest extends TestCase
         $this->actingAs($user)->get('/admin/pages/create')->assertOk();
         $this->actingAs($user)->get('/admin/blog-posts/create')->assertOk();
         $this->actingAs($user)->get('/admin/navigation-items/create')->assertOk();
+        $this->actingAs($user)->get('/admin/site-settings')->assertOk();
     }
 
     public function test_an_administrator_can_open_a_crm_request(): void

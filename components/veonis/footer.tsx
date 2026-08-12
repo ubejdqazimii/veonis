@@ -1,21 +1,28 @@
 import Link from "next/link";
-import { ArrowUpRight, BadgeCheck, Mail, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, ExternalLink, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/veonis/container";
-import type { ManagedNavigationItem } from "@/lib/cms";
+import type { ManagedNavigationItem, ManagedSiteSettings } from "@/lib/cms";
 import type { Locale } from "@/lib/veonis-content";
-import { brand, getNavItemLabel, legalDisclaimer, legalLinks, localizedHomeHref, navItems } from "@/lib/veonis-content";
+import { getNavItemLabel, legalDisclaimer, legalLinks, localizedHomeHref, navItems } from "@/lib/veonis-content";
 
 type FooterProps = {
   locale: Locale;
   navigation?: ManagedNavigationItem[] | null;
+  siteSettings: ManagedSiteSettings;
 };
 
-export function Footer({ locale, navigation }: FooterProps) {
+const contactIcons = { email: Mail, phone: Phone, link: ExternalLink };
+
+export function Footer({ locale, navigation, siteSettings }: FooterProps) {
   const managedNavigation = navigation?.filter((item) => item.group !== "footer");
   const managedLegal = navigation?.filter((item) => item.group === "footer");
   const contactItems = [
-    { icon: Mail, label: brand.email, href: `mailto:${brand.email}` },
+    ...siteSettings.contactItems.map((item) => ({
+      icon: contactIcons[item.type] ?? ExternalLink,
+      label: item.label,
+      href: item.href,
+    })),
     { icon: MapPin, label: "Schweiz", href: localizedHomeHref[locale] },
   ];
 
@@ -52,6 +59,23 @@ export function Footer({ locale, navigation }: FooterProps) {
                 );
               })}
             </div>
+            {siteSettings.socialLinks.length ? (
+              <div className="mt-6 flex flex-wrap items-center gap-2" aria-label="Social media">
+                {siteSettings.socialLinks.map((item) => (
+                  <a
+                    aria-label={item.label}
+                    className="flex size-10 items-center justify-center rounded-full border border-white/14 bg-white/8 text-xs font-semibold uppercase text-white/72 transition hover:border-[#ef7d8b] hover:text-white"
+                    href={item.url}
+                    key={`${item.label}-${item.url}`}
+                    rel={item.open_new_tab ? "noreferrer noopener" : undefined}
+                    target={item.open_new_tab ? "_blank" : undefined}
+                    title={item.label}
+                  >
+                    {item.short_label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

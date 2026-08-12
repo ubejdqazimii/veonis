@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\BlogPostController;
 use App\Http\Controllers\Api\V1\ContactRequestController;
 use App\Http\Controllers\Api\V1\NavigationController;
 use App\Http\Controllers\Api\V1\PageController;
+use App\Http\Controllers\Api\V1\SiteSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function (): void {
@@ -16,6 +17,7 @@ Route::prefix('v1')->group(function (): void {
         ->whereIn('locale', ['de', 'en']);
     Route::get('/navigation/{locale}', NavigationController::class)
         ->whereIn('locale', ['de', 'en']);
+    Route::get('/site-settings', SiteSettingController::class);
     Route::post('/contact-requests', ContactRequestController::class)
         ->middleware('throttle:10,1');
 });
