@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const baseUrl = (process.env.CMS_API_URL ?? process.env.NEXT_PUBLIC_CMS_URL)?.replace(/\/$/, "");
-
-  if (!baseUrl) return new NextResponse(null, { status: 204 });
+  const baseUrl = (
+    process.env.CMS_API_URL ??
+    process.env.NEXT_PUBLIC_CMS_URL ??
+    "https://adcms.veonissuisse.ch"
+  ).replace(/\/$/, "");
 
   const headers = request.headers;
 
@@ -23,8 +25,18 @@ export async function POST(request: Request) {
       cache: "no-store",
     });
 
-    return new NextResponse(null, { status: response.ok ? 204 : response.status });
-  } catch {
+    if (!response.ok) {
+      return NextResponse.json(
+        { message: "The analytics service rejected the event." },
+        { status: response.status },
+      );
+    }
+
     return new NextResponse(null, { status: 204 });
+  } catch {
+    return NextResponse.json(
+      { message: "The analytics service is temporarily unavailable." },
+      { status: 502 },
+    );
   }
 }
