@@ -16,11 +16,11 @@ Only the Laravel `public` directory may be exposed as the document root.
 
 ## 2. Create the MySQL database
 
-Create a database and database user in **Databases**. The internal database
-hostname is normally:
+Create a database and database user in **Databases**. For this Hostpoint
+account, use the internal database hostname shown in the control panel:
 
 ```text
-HOSTPOINT_USERNAME.mysql.db.hostpoint.ch
+epipuxan.mysql.db.internal
 ```
 
 Do not enable external database access; Laravel connects from the same Hostpoint
