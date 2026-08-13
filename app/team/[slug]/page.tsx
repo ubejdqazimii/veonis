@@ -134,17 +134,6 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
                 LinkedIn
               </a>
             ) : null}
-            {mapsUrl ? (
-              <a
-                className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl border border-[#e5e0dd] bg-white px-1 text-[11px] font-semibold text-[#4b4547] shadow-sm transition active:scale-[0.97]"
-                href={mapsUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><GoogleMapsIcon /></span>
-                Maps
-              </a>
-            ) : null}
           </div>
 
           <div className="mt-2 flex flex-wrap justify-center gap-2" aria-label="Veonis Website und soziale Medien">
@@ -169,6 +158,18 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
                 <SocialIcon className="h-5 w-5" {...social} />
               </a>
             ))}
+            {mapsUrl ? (
+              <a
+                aria-label="Veonis auf Google Maps"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white shadow-sm transition hover:border-[#c63d4d] active:scale-[0.96]"
+                href={mapsUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                title="Google Maps"
+              >
+                <GoogleMapsIcon />
+              </a>
+            ) : null}
           </div>
 
           <div className="mt-6 overflow-hidden rounded-3xl border border-[#e9e4e1] bg-[#fbfaf9]">
