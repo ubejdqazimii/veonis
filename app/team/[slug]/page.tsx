@@ -110,17 +110,27 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             </a>
           </div>
 
-          {card.linkedinUrl ? (
+          <div className="mt-2.5 flex justify-end gap-2.5">
+            {card.linkedinUrl ? (
+              <a
+                className="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#0a66c2] px-4 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
+                href={card.linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LinkedInIcon />
+                LinkedIn-Profil besuchen
+              </a>
+            ) : null}
             <a
-              className="mt-2.5 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0a66c2] px-4 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
-              href={card.linkedinUrl}
-              target="_blank"
-              rel="noreferrer"
+              aria-label="Zurück zur Veonis Website"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white p-2.5 shadow-sm transition active:scale-[0.96]"
+              href="/de"
+              title="Zurück zur Veonis Website"
             >
-              <LinkedInIcon />
-              LinkedIn-Profil besuchen
+              <img className="h-full w-full" src="/icon.svg" alt="" />
             </a>
-          ) : null}
+          </div>
 
           <div className="mt-6 overflow-hidden rounded-3xl border border-[#e9e4e1] bg-[#fbfaf9]">
             {card.phone && phoneHref ? (
