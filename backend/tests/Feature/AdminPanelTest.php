@@ -26,6 +26,8 @@ class AdminPanelTest extends TestCase
         $this->actingAs($user)->get('/admin/users/create')->assertOk();
         $this->actingAs($user)->get("/admin/users/{$user->id}/edit")->assertOk();
         $this->actingAs($user)->get('/admin/analytics-events')->assertOk();
+        $this->actingAs($user)->get('/admin/digital-cards')->assertOk();
+        $this->actingAs($user)->get('/admin/digital-cards/create')->assertOk();
     }
 
     public function test_a_blog_editor_can_only_manage_blog_articles(): void
@@ -42,6 +44,7 @@ class AdminPanelTest extends TestCase
         $this->actingAs($editor)->get('/admin/contact-requests')->assertForbidden();
         $this->actingAs($editor)->get('/admin/users')->assertForbidden();
         $this->actingAs($editor)->get('/admin/analytics-events')->assertForbidden();
+        $this->actingAs($editor)->get('/admin/digital-cards')->assertForbidden();
     }
 
     public function test_a_disabled_user_cannot_access_the_admin_panel(): void

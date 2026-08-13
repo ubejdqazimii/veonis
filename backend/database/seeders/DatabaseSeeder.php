@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(WebsiteContentSeeder::class);
+        $this->call(DigitalCardSeeder::class);
 
         if (env('ADMIN_EMAIL') && env('ADMIN_PASSWORD')) {
             User::query()->updateOrCreate(

@@ -13,6 +13,7 @@ Laravel 13 and Filament 5 power the Veonis content administration and mini CRM.
 - Contact requests with status, priority, owner, notes and source/privacy metadata
 - User accounts, account activation, password changes and role-based privileges
 - First-party analytics with weekly and monthly statistics for pages, sessions, acquisition, geography, technology and engagement
+- Hidden, mobile-first digital business cards with direct URLs and downloadable phone contacts
 - Live visitor presence with current page, country, city, device and browser
 - Country and device charts with page-view and unique-session breakdowns
 

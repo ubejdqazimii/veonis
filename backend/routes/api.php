@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AnalyticsController;
 use App\Http\Controllers\Api\V1\BlogPostController;
 use App\Http\Controllers\Api\V1\ContactRequestController;
+use App\Http\Controllers\Api\V1\DigitalCardController;
 use App\Http\Controllers\Api\V1\NavigationController;
 use App\Http\Controllers\Api\V1\PageController;
 use App\Http\Controllers\Api\V1\SiteSettingController;
@@ -19,6 +20,7 @@ Route::prefix('v1')->group(function (): void {
     Route::get('/navigation/{locale}', NavigationController::class)
         ->whereIn('locale', ['de', 'en']);
     Route::get('/site-settings', SiteSettingController::class);
+    Route::get('/digital-cards/{slug}', DigitalCardController::class);
     Route::post('/contact-requests', ContactRequestController::class)
         ->middleware('throttle:10,1');
     Route::post('/analytics', AnalyticsController::class)

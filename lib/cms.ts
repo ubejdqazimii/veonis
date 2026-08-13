@@ -31,6 +31,24 @@ export type ManagedSiteSettings = {
   socialLinks: ManagedSocialLink[];
 };
 
+export type ManagedDigitalCard = {
+  slug: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  position: string | null;
+  company: string;
+  phone: string | null;
+  email: string | null;
+  address: {
+    street: string | null;
+    zipCode: string | null;
+    city: string | null;
+    country: string | null;
+  };
+  photo: string | null;
+};
+
 export const defaultSiteSettings: ManagedSiteSettings = {
   preheaderEnabled: true,
   contactItems: [
@@ -101,6 +119,24 @@ export async function getManagedSiteSettings(): Promise<ManagedSiteSettings> {
     return payload.data ?? defaultSiteSettings;
   } catch {
     return defaultSiteSettings;
+  }
+}
+
+export async function getManagedDigitalCard(slug: string): Promise<ManagedDigitalCard | null> {
+  const url = cmsUrl(`/api/v1/digital-cards/${encodeURIComponent(slug)}`);
+
+  if (!url) return null;
+
+  try {
+    const response = await fetch(url, { cache: "no-store" });
+
+    if (!response.ok) return null;
+
+    const payload = (await response.json()) as { data?: ManagedDigitalCard };
+
+    return payload.data ?? null;
+  } catch {
+    return null;
   }
 }
 
