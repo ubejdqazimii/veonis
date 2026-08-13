@@ -158,13 +158,13 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             {card.phone && phoneHref ? (
               <a className="flex items-center gap-4 px-5 py-4 text-[#2f292b]" href={phoneHref}>
                 <span className="text-[#c63d4d] [&>svg]:h-5 [&>svg]:w-5"><PhoneIcon /></span>
-                <span className="text-[15px] font-semibold">{card.phone}</span>
+                <span className="text-[15px]">{card.phone}</span>
               </a>
             ) : null}
             {card.email ? (
               <a className="flex items-center gap-4 border-t border-[#e9e4e1] px-5 py-4 text-[#2f292b]" href={`mailto:${card.email}`}>
                 <span className="text-[#c63d4d] [&>svg]:h-5 [&>svg]:w-5"><MailIcon /></span>
-                <span className="min-w-0 break-all text-[15px] font-semibold">{card.email}</span>
+                <span className="min-w-0 break-all text-[15px]">{card.email}</span>
               </a>
             ) : null}
             {addressLines.length ? (
