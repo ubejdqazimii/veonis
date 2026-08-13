@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { SocialIcon } from "@/components/veonis/social-icon";
-import { getManagedDigitalCard, getManagedSiteSettings } from "@/lib/cms";
+import { getManagedDigitalCard, getManagedSiteSettings, resolveManagedCardLocation } from "@/lib/cms";
 
 type DigitalCardPageProps = {
   params: Promise<{ slug: string }>;
@@ -84,8 +84,7 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
   if (!card) notFound();
 
   const initials = `${card.firstName.charAt(0)}${card.lastName.charAt(0)}`.toUpperCase();
-  const addressLines = [card.address.street, [card.address.zipCode, card.address.city].filter(Boolean).join(" "), card.address.country].filter(Boolean);
-  const mapQuery = encodeURIComponent(addressLines.join(", "));
+  const { addressLines, mapsUrl } = resolveManagedCardLocation(card, siteSettings);
   const phoneHref = card.phone ? `tel:${card.phone.replace(/[^+\d]/g, "")}` : null;
 
   return (
@@ -135,10 +134,10 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
                 LinkedIn
               </a>
             ) : null}
-            {addressLines.length ? (
+            {mapsUrl ? (
               <a
                 className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl border border-[#e5e0dd] bg-white px-1 text-[11px] font-semibold text-[#4b4547] shadow-sm transition active:scale-[0.97]"
-                href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+                href={mapsUrl}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -192,7 +191,7 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
               </a>
             ) : null}
             {addressLines.length ? (
-              <a className="flex items-start gap-4 border-t border-[#e9e4e1] px-5 py-4 text-[15px] leading-6 text-[#5f5759]" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">
+              <a className="flex items-start gap-4 border-t border-[#e9e4e1] px-5 py-4 text-[15px] leading-6 text-[#5f5759]" href={mapsUrl ?? undefined} target="_blank" rel="noreferrer">
                 <span className="mt-0.5 text-[#c63d4d]"><LocationIcon /></span>
                 <span>
                   <span className="block text-xs font-semibold uppercase text-[#938b8d]">Büroadresse</span>

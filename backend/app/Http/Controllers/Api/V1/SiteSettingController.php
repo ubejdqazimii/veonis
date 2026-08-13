@@ -24,6 +24,13 @@ class SiteSettingController extends Controller
                 'preheaderEnabled' => $settings?->preheader_enabled ?? true,
                 'contactItems' => $contacts,
                 'socialLinks' => $socialLinks,
+                'officeAddress' => [
+                    'street' => $settings?->office_street,
+                    'zipCode' => $settings?->office_zip_code,
+                    'city' => $settings?->office_city,
+                    'country' => $settings?->office_country,
+                ],
+                'googleMapsUrl' => $settings?->google_maps_url,
             ],
         ])->setPublic()->setMaxAge(60);
     }

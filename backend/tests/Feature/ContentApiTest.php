@@ -75,6 +75,11 @@ class ContentApiTest extends TestCase
             'social_links' => [
                 ['label' => 'LinkedIn', 'short_label' => 'in', 'url' => 'https://linkedin.com/company/example', 'open_new_tab' => true, 'is_visible' => true],
             ],
+            'office_street' => 'Im Dreispitz 39',
+            'office_zip_code' => '8105',
+            'office_city' => 'Regensdorf',
+            'office_country' => 'Schweiz',
+            'google_maps_url' => 'https://maps.google.com/?q=Veonis',
         ]);
 
         $this->getJson('/api/v1/site-settings')
@@ -83,6 +88,9 @@ class ContentApiTest extends TestCase
             ->assertJsonCount(1, 'data.contactItems')
             ->assertJsonPath('data.contactItems.0.label', 'Team email')
             ->assertJsonCount(1, 'data.socialLinks')
-            ->assertJsonPath('data.socialLinks.0.short_label', 'in');
+            ->assertJsonPath('data.socialLinks.0.short_label', 'in')
+            ->assertJsonPath('data.officeAddress.street', 'Im Dreispitz 39')
+            ->assertJsonPath('data.officeAddress.city', 'Regensdorf')
+            ->assertJsonPath('data.googleMapsUrl', 'https://maps.google.com/?q=Veonis');
     }
 }

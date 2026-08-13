@@ -71,6 +71,33 @@ class SiteSettingForm
                         ->collapsible()
                         ->addActionLabel('Add social profile'),
                 ]),
+            Section::make('Global office & Google Maps')
+                ->description('This shared location is used on every digital team card, in the Maps button and in downloaded contacts.')
+                ->columns(2)
+                ->schema([
+                    TextInput::make('office_street')
+                        ->label('Street and number')
+                        ->columnSpanFull()
+                        ->maxLength(255),
+                    TextInput::make('office_zip_code')
+                        ->label('ZIP code')
+                        ->maxLength(24),
+                    TextInput::make('office_city')
+                        ->label('City')
+                        ->maxLength(255),
+                    TextInput::make('office_country')
+                        ->label('Country')
+                        ->default('Schweiz')
+                        ->columnSpanFull()
+                        ->maxLength(255),
+                    TextInput::make('google_maps_url')
+                        ->label('Google Maps URL')
+                        ->url()
+                        ->placeholder('https://maps.google.com/...')
+                        ->helperText('Optional. Leave empty to generate the Maps link automatically from the address above.')
+                        ->columnSpanFull()
+                        ->maxLength(2048),
+                ]),
             TextInput::make('key')->default('global')->hidden(),
             TextInput::make('name')->default('Global website settings')->hidden(),
         ]);

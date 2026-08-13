@@ -1,4 +1,4 @@
-import { getManagedDigitalCard } from "@/lib/cms";
+import { getManagedDigitalCard, getManagedSiteSettings, resolveManagedCardLocation } from "@/lib/cms";
 
 function escapeVCard(value: string | null | undefined) {
   return (value ?? "")
@@ -10,11 +10,14 @@ function escapeVCard(value: string | null | undefined) {
 
 export async function GET(_request: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const card = await getManagedDigitalCard(slug);
+  const [card, siteSettings] = await Promise.all([
+    getManagedDigitalCard(slug),
+    getManagedSiteSettings(),
+  ]);
 
   if (!card) return new Response("Not found", { status: 404 });
 
-  const address = card.address;
+  const { address } = resolveManagedCardLocation(card, siteSettings);
   const vcard = [
     "BEGIN:VCARD",
     "VERSION:3.0",

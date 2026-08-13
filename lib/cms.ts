@@ -25,10 +25,19 @@ export type ManagedSocialLink = {
   is_visible?: boolean;
 };
 
+export type ManagedOfficeAddress = {
+  street: string | null;
+  zipCode: string | null;
+  city: string | null;
+  country: string | null;
+};
+
 export type ManagedSiteSettings = {
   preheaderEnabled: boolean;
   contactItems: ManagedContactItem[];
   socialLinks: ManagedSocialLink[];
+  officeAddress?: ManagedOfficeAddress;
+  googleMapsUrl?: string | null;
 };
 
 export type ManagedDigitalCard = {
@@ -41,12 +50,7 @@ export type ManagedDigitalCard = {
   phone: string | null;
   email: string | null;
   linkedinUrl: string | null;
-  address: {
-    street: string | null;
-    zipCode: string | null;
-    city: string | null;
-    country: string | null;
-  };
+  address: ManagedOfficeAddress;
   photo: string | null;
 };
 
@@ -60,7 +64,35 @@ export const defaultSiteSettings: ManagedSiteSettings = {
     },
   ],
   socialLinks: [],
+  officeAddress: {
+    street: null,
+    zipCode: null,
+    city: null,
+    country: null,
+  },
+  googleMapsUrl: null,
 };
+
+export function resolveManagedCardLocation(card: ManagedDigitalCard, settings: ManagedSiteSettings) {
+  const globalAddress = settings.officeAddress;
+  const address = globalAddress && Object.values(globalAddress).some(Boolean)
+    ? globalAddress
+    : card.address;
+  const addressLines = [
+    address.street,
+    [address.zipCode, address.city].filter(Boolean).join(" "),
+    address.country,
+  ].filter(Boolean) as string[];
+  const generatedMapsUrl = addressLines.length
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressLines.join(", "))}`
+    : null;
+
+  return {
+    address,
+    addressLines,
+    mapsUrl: settings.googleMapsUrl?.trim() || generatedMapsUrl,
+  };
+}
 
 function cmsUrl(path: string) {
   const baseUrl = process.env.CMS_API_URL?.replace(/\/$/, "");

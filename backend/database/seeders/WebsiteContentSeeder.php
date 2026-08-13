@@ -65,6 +65,11 @@ class WebsiteContentSeeder extends Seeder
                     ['label' => 'YouTube', 'short_label' => 'yt', 'url' => 'https://www.youtube.com/', 'open_new_tab' => true, 'is_visible' => false],
                     ['label' => 'TikTok', 'short_label' => 'tt', 'url' => 'https://www.tiktok.com/', 'open_new_tab' => true, 'is_visible' => false],
                 ],
+                'office_street' => 'Im Dreispitz 39',
+                'office_zip_code' => '8105',
+                'office_city' => 'Regensdorf',
+                'office_country' => 'Schweiz',
+                'google_maps_url' => null,
             ],
         );
     }

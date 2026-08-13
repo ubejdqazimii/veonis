@@ -20,11 +20,11 @@ class SiteSettingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $navigationLabel = 'Contact & social';
+    protected static ?string $navigationLabel = 'Global settings';
 
-    protected static ?string $modelLabel = 'website setting';
+    protected static ?string $modelLabel = 'global setting';
 
-    protected static ?string $pluralModelLabel = 'contact & social';
+    protected static ?string $pluralModelLabel = 'global settings';
 
     public static function canCreate(): bool
     {
