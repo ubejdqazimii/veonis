@@ -40,6 +40,7 @@ export type ManagedDigitalCard = {
   company: string;
   phone: string | null;
   email: string | null;
+  linkedinUrl: string | null;
   address: {
     street: string | null;
     zipCode: string | null;

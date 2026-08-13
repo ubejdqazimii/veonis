@@ -42,6 +42,14 @@ function LocationIcon() {
   );
 }
 
+function LinkedInIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+      <path d="M6.53 8.56H3.11V19.5h3.42V8.56ZM4.82 3.1a1.99 1.99 0 1 0 0 3.98 1.99 1.99 0 0 0 0-3.98ZM19.5 13.23c0-3.3-1.76-4.84-4.12-4.84-1.9 0-2.75 1.05-3.23 1.78V8.56H8.73c.05 1.07 0 10.94 0 10.94h3.42v-6.11c0-.33.02-.65.12-.89.24-.65.79-1.33 1.71-1.33 1.21 0 1.69.92 1.69 2.27v6.06h3.42l.41-6.27Z" />
+    </svg>
+  );
+}
+
 export async function generateMetadata({ params }: DigitalCardPageProps): Promise<Metadata> {
   const { slug } = await params;
   const card = await getManagedDigitalCard(slug);
@@ -101,6 +109,18 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
               Speichern
             </a>
           </div>
+
+          {card.linkedinUrl ? (
+            <a
+              className="mt-2.5 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0a66c2] px-4 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
+              href={card.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkedInIcon />
+              LinkedIn-Profil besuchen
+            </a>
+          ) : null}
 
           <div className="mt-6 overflow-hidden rounded-3xl border border-[#e9e4e1] bg-[#fbfaf9]">
             {card.phone && phoneHref ? (

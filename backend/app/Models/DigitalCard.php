@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 #[Fillable([
-    'slug', 'first_name', 'last_name', 'position', 'company', 'phone', 'email',
+    'slug', 'first_name', 'last_name', 'position', 'company', 'phone', 'email', 'linkedin_url',
     'street', 'zip_code', 'city', 'country', 'photo', 'is_active',
 ])]
 class DigitalCard extends Model

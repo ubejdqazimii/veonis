@@ -42,6 +42,12 @@ class DigitalCardForm
                 ->schema([
                     TextInput::make('phone')->tel()->maxLength(255),
                     TextInput::make('email')->email()->maxLength(255),
+                    TextInput::make('linkedin_url')
+                        ->label('Personal LinkedIn profile URL')
+                        ->url()
+                        ->placeholder('https://www.linkedin.com/in/name')
+                        ->columnSpanFull()
+                        ->maxLength(255),
                 ]),
             Section::make('Office address')
                 ->columns(2)

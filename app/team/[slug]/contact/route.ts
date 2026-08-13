@@ -24,6 +24,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
     card.position ? `TITLE:${escapeVCard(card.position)}` : null,
     card.phone ? `TEL;TYPE=CELL,VOICE:${escapeVCard(card.phone)}` : null,
     card.email ? `EMAIL;TYPE=INTERNET,WORK:${escapeVCard(card.email)}` : null,
+    card.linkedinUrl ? `X-SOCIALPROFILE;TYPE=linkedin:${escapeVCard(card.linkedinUrl)}` : null,
     [address.street, address.zipCode, address.city, address.country].some(Boolean)
       ? `ADR;TYPE=WORK:;;${escapeVCard(address.street)};${escapeVCard(address.city)};;${escapeVCard(address.zipCode)};${escapeVCard(address.country)}`
       : null,

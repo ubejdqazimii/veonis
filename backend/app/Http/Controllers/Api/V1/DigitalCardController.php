@@ -25,6 +25,7 @@ class DigitalCardController extends Controller
                 'company' => $card->company,
                 'phone' => $card->phone,
                 'email' => $card->email,
+                'linkedinUrl' => $card->linkedin_url,
                 'address' => [
                     'street' => $card->street,
                     'zipCode' => $card->zip_code,

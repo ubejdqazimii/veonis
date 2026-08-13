@@ -20,6 +20,7 @@ class DigitalCardTest extends TestCase
             'company' => 'Veonis GmbH',
             'phone' => '+41 79 000 00 00',
             'email' => 'anna@example.com',
+            'linkedin_url' => 'https://www.linkedin.com/in/anna-muster',
             'street' => 'Im Dreispitz 39',
             'zip_code' => '8105',
             'city' => 'Regensdorf',
@@ -32,6 +33,7 @@ class DigitalCardTest extends TestCase
             ->assertOk()
             ->assertJsonPath('data.fullName', 'Anna Muster')
             ->assertJsonPath('data.position', 'Beraterin')
+            ->assertJsonPath('data.linkedinUrl', 'https://www.linkedin.com/in/anna-muster')
             ->assertJsonPath('data.address.city', 'Regensdorf')
             ->assertJsonPath('data.photo', 'http://localhost/storage/digital-cards/anna.jpg');
     }
