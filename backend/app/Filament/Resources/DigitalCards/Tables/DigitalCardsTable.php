@@ -22,8 +22,8 @@ class DigitalCardsTable
                 TextColumn::make('position')->placeholder('Not set')->searchable(),
                 TextColumn::make('slug')
                     ->label('Direct card URL')
-                    ->formatStateUsing(fn (string $state): string => 'https://www.veonissuisse.ch/card/'.$state)
-                    ->url(fn (DigitalCard $record): string => 'https://www.veonissuisse.ch/card/'.$record->slug)
+                    ->formatStateUsing(fn (string $state): string => 'https://www.veonissuisse.ch/team/'.$state)
+                    ->url(fn (DigitalCard $record): string => 'https://www.veonissuisse.ch/team/'.$record->slug)
                     ->openUrlInNewTab()
                     ->copyable(),
                 IconColumn::make('is_active')->label('Active')->boolean(),

@@ -27,7 +27,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
     [address.street, address.zipCode, address.city, address.country].some(Boolean)
       ? `ADR;TYPE=WORK:;;${escapeVCard(address.street)};${escapeVCard(address.city)};;${escapeVCard(address.zipCode)};${escapeVCard(address.country)}`
       : null,
-    `URL:https://www.veonissuisse.ch/card/${encodeURIComponent(card.slug)}`,
+    `URL:https://www.veonissuisse.ch/team/${encodeURIComponent(card.slug)}`,
     "END:VCARD",
   ].filter(Boolean).join("\r\n");
 

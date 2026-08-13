@@ -69,7 +69,7 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
       <article className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-white sm:min-h-0 sm:max-w-[430px] sm:rounded-[2rem] sm:shadow-[0_30px_90px_rgba(35,22,26,0.18)]">
         <div className="absolute inset-x-0 top-0 h-56 bg-[radial-gradient(circle_at_50%_-10%,#8d3a49_0%,#5d1d29_45%,#2d191e_100%)]" />
         <div className="relative flex flex-1 flex-col px-6 pb-8 pt-8 sm:px-8">
-          <img className="mx-auto h-12 w-auto brightness-0 invert" src="/brand/veonis-header.svg" alt="Veonis" />
+          <img className="mx-auto h-12 w-auto" src="/brand/veonis-footer.svg" alt="Veonis" />
 
           <div className="mt-7 flex justify-center">
             <div className="flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border-[5px] border-white bg-[#efe9e7] text-4xl font-semibold text-[#5d1d29] shadow-[0_14px_40px_rgba(26,15,18,0.25)]">
@@ -83,36 +83,51 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             <p className="mt-1 text-sm text-[#6b6466]">{card.company}</p>
           </header>
 
-          <div className="mt-7 flex gap-3">
+          <div className="mt-6 flex gap-2.5">
             {phoneHref ? (
-              <a className="flex min-h-24 flex-1 flex-col items-center justify-center gap-2 rounded-2xl bg-[#5d1d29] px-2 text-sm font-semibold text-white shadow-sm transition active:scale-[0.97]" href={phoneHref}>
-                <PhoneIcon />
+              <a className="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 rounded-xl bg-[#5d1d29] px-2 py-2 text-xs font-semibold text-white shadow-sm transition active:scale-[0.97]" href={phoneHref}>
+                <span className="[&>svg]:h-5 [&>svg]:w-5"><PhoneIcon /></span>
                 Anrufen
               </a>
             ) : null}
             {card.email ? (
-              <a className="flex min-h-24 flex-1 flex-col items-center justify-center gap-2 rounded-2xl bg-[#f5f2f0] px-2 text-sm font-semibold text-[#5d1d29] transition active:scale-[0.97]" href={`mailto:${card.email}`}>
-                <MailIcon />
+              <a className="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 rounded-xl bg-[#f5f2f0] px-2 py-2 text-xs font-semibold text-[#5d1d29] transition active:scale-[0.97]" href={`mailto:${card.email}`}>
+                <span className="[&>svg]:h-5 [&>svg]:w-5"><MailIcon /></span>
                 E-Mail
               </a>
             ) : null}
-            <a className="flex min-h-24 flex-1 flex-col items-center justify-center gap-2 rounded-2xl bg-[#c63d4d] px-2 text-center text-sm font-semibold text-white shadow-sm transition active:scale-[0.97]" href={`/card/${card.slug}/contact`}>
-              <ContactIcon />
+            <a className="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 rounded-xl bg-[#c63d4d] px-2 py-2 text-center text-xs font-semibold text-white shadow-sm transition active:scale-[0.97]" href={`/team/${card.slug}/contact`}>
+              <span className="[&>svg]:h-5 [&>svg]:w-5"><ContactIcon /></span>
               Speichern
             </a>
           </div>
 
-          <div className="mt-7 space-y-3 rounded-3xl border border-[#e9e4e1] bg-[#fbfaf9] p-5">
+          <div className="mt-6 overflow-hidden rounded-3xl border border-[#e9e4e1] bg-[#fbfaf9]">
             {card.phone && phoneHref ? (
-              <a className="block text-[15px] font-medium text-[#2f292b]" href={phoneHref}>{card.phone}</a>
+              <a className="flex items-center gap-4 px-5 py-4 text-[#2f292b]" href={phoneHref}>
+                <span className="text-[#c63d4d] [&>svg]:h-5 [&>svg]:w-5"><PhoneIcon /></span>
+                <span>
+                  <span className="block text-xs font-semibold uppercase text-[#938b8d]">Persönliche Telefonnummer</span>
+                  <span className="mt-1 block text-[15px] font-semibold">{card.phone}</span>
+                </span>
+              </a>
             ) : null}
             {card.email ? (
-              <a className="block break-all text-[15px] font-medium text-[#2f292b]" href={`mailto:${card.email}`}>{card.email}</a>
+              <a className="flex items-center gap-4 border-t border-[#e9e4e1] px-5 py-4 text-[#2f292b]" href={`mailto:${card.email}`}>
+                <span className="text-[#c63d4d] [&>svg]:h-5 [&>svg]:w-5"><MailIcon /></span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-semibold uppercase text-[#938b8d]">Persönliche E-Mail</span>
+                  <span className="mt-1 block break-all text-[15px] font-semibold">{card.email}</span>
+                </span>
+              </a>
             ) : null}
             {addressLines.length ? (
-              <a className="flex items-start gap-3 border-t border-[#e9e4e1] pt-4 text-[15px] leading-6 text-[#5f5759]" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">
-                <LocationIcon />
-                <span>{addressLines.map((line) => <span className="block" key={line}>{line}</span>)}</span>
+              <a className="flex items-start gap-4 border-t border-[#e9e4e1] px-5 py-4 text-[15px] leading-6 text-[#5f5759]" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">
+                <span className="mt-0.5 text-[#c63d4d]"><LocationIcon /></span>
+                <span>
+                  <span className="block text-xs font-semibold uppercase text-[#938b8d]">Büroadresse</span>
+                  <span className="mt-1 block">{addressLines.map((line) => <span className="block" key={line}>{line}</span>)}</span>
+                </span>
               </a>
             ) : null}
           </div>
