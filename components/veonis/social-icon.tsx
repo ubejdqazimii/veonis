@@ -14,6 +14,8 @@ const paths = {
   x: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z",
   youtube:
     "M23.499 6.203a3.008 3.008 0 0 0-2.117-2.131C19.505 3.568 12 3.568 12 3.568s-7.505 0-9.382.504A3.008 3.008 0 0 0 .501 6.203 31.36 31.36 0 0 0 0 12a31.36 31.36 0 0 0 .501 5.797 3.008 3.008 0 0 0 2.117 2.131c1.877.504 9.382.504 9.382.504s7.505 0 9.382-.504a3.008 3.008 0 0 0 2.117-2.131A31.36 31.36 0 0 0 24 12a31.36 31.36 0 0 0-.501-5.797ZM9.545 15.568V8.432L15.818 12l-6.273 3.568Z",
+  tiktok:
+    "M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2-2.75v-3.5a6.33 6.33 0 1 0 5.45 6.25V8.73a8.2 8.2 0 0 0 4.77 1.52V6.82c-.34 0-.67-.04-1-.13Z",
 } as const;
 
 function getPlatform({ label, short_label, url }: SocialIconProps): keyof typeof paths | null {
@@ -23,6 +25,7 @@ function getPlatform({ label, short_label, url }: SocialIconProps): keyof typeof
   if (value.includes("instagram") || /\big\b/.test(value)) return "instagram";
   if (value.includes("facebook") || /\bfb\b/.test(value)) return "facebook";
   if (value.includes("youtube") || /\byt\b/.test(value)) return "youtube";
+  if (value.includes("tiktok") || /\btt\b/.test(value)) return "tiktok";
   if (value.includes("twitter") || value.includes("x.com") || /\bx\b/.test(value)) return "x";
 
   return null;

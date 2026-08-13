@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getManagedDigitalCard } from "@/lib/cms";
+import { SocialIcon } from "@/components/veonis/social-icon";
+import { getManagedDigitalCard, getManagedSiteSettings } from "@/lib/cms";
 
 type DigitalCardPageProps = {
   params: Promise<{ slug: string }>;
@@ -63,7 +64,10 @@ export async function generateMetadata({ params }: DigitalCardPageProps): Promis
 
 export default async function DigitalCardPage({ params }: DigitalCardPageProps) {
   const { slug } = await params;
-  const card = await getManagedDigitalCard(slug);
+  const [card, siteSettings] = await Promise.all([
+    getManagedDigitalCard(slug),
+    getManagedSiteSettings(),
+  ]);
 
   if (!card) notFound();
 
@@ -110,26 +114,40 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             </a>
           </div>
 
-          <div className="mt-2.5 flex justify-end gap-2.5">
-            {card.linkedinUrl ? (
-              <a
-                className="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#0a66c2] px-4 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
-                href={card.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <LinkedInIcon />
-                LinkedIn-Profil besuchen
-              </a>
-            ) : null}
+          {card.linkedinUrl ? (
+            <a
+              className="mt-2.5 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0a66c2] px-4 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
+              href={card.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkedInIcon />
+              LinkedIn-Profil besuchen
+            </a>
+          ) : null}
+
+          <div className="mt-2.5 flex flex-wrap justify-center gap-2" aria-label="Veonis Website und soziale Medien">
             <a
               aria-label="Zurück zur Veonis Website"
-              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white p-2.5 shadow-sm transition active:scale-[0.96]"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white p-2.5 shadow-sm transition active:scale-[0.96]"
               href="/de"
               title="Zurück zur Veonis Website"
             >
               <img className="h-full w-full" src="/icon.svg" alt="" />
             </a>
+            {siteSettings.socialLinks.map((social) => (
+              <a
+                aria-label={`Veonis auf ${social.label}`}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
+                href={social.url}
+                key={`${social.label}-${social.url}`}
+                rel={social.open_new_tab ? "noreferrer noopener" : undefined}
+                target={social.open_new_tab ? "_blank" : undefined}
+                title={social.label}
+              >
+                <SocialIcon className="h-5 w-5" {...social} />
+              </a>
+            ))}
           </div>
 
           <div className="mt-6 overflow-hidden rounded-3xl border border-[#e9e4e1] bg-[#fbfaf9]">

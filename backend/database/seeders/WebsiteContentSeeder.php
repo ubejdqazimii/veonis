@@ -62,6 +62,8 @@ class WebsiteContentSeeder extends Seeder
                     ['label' => 'LinkedIn', 'short_label' => 'in', 'url' => 'https://www.linkedin.com/', 'open_new_tab' => true, 'is_visible' => false],
                     ['label' => 'Instagram', 'short_label' => 'ig', 'url' => 'https://www.instagram.com/', 'open_new_tab' => true, 'is_visible' => false],
                     ['label' => 'Facebook', 'short_label' => 'fb', 'url' => 'https://www.facebook.com/', 'open_new_tab' => true, 'is_visible' => false],
+                    ['label' => 'YouTube', 'short_label' => 'yt', 'url' => 'https://www.youtube.com/', 'open_new_tab' => true, 'is_visible' => false],
+                    ['label' => 'TikTok', 'short_label' => 'tt', 'url' => 'https://www.tiktok.com/', 'open_new_tab' => true, 'is_visible' => false],
                 ],
             ],
         );
