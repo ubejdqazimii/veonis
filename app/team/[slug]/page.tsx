@@ -51,6 +51,18 @@ function LinkedInIcon() {
   );
 }
 
+function GoogleMapsIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
+      <path fill="#34a853" d="M12 1.75A7.25 7.25 0 0 0 4.75 9c0 5.44 7.25 13.25 7.25 13.25S19.25 14.44 19.25 9A7.25 7.25 0 0 0 12 1.75Z" />
+      <path fill="#4285f4" d="M4.75 9c0-4 3.25-7.25 7.25-7.25v4.18A3.08 3.08 0 0 0 8.92 9c0 .84.34 1.6.88 2.16l-2.95 2.95C5.54 12.79 4.75 11 4.75 9Z" />
+      <path fill="#fbbc04" d="m6.85 14.11 2.95-2.95c.56.57 1.34.92 2.2.92.85 0 1.63-.35 2.19-.91l2.95 2.95A34.78 34.78 0 0 1 12 22.25s-3.08-3.32-5.15-8.14Z" />
+      <path fill="#ea4335" d="M12 1.75A7.25 7.25 0 0 1 19.25 9c0 1.78-.78 3.56-2.11 5.12l-2.95-2.95A3.08 3.08 0 0 0 12 5.93V1.75Z" />
+      <circle cx="12" cy="9" r="2.05" fill="#fff" />
+    </svg>
+  );
+}
+
 export async function generateMetadata({ params }: DigitalCardPageProps): Promise<Metadata> {
   const { slug } = await params;
   const card = await getManagedDigitalCard(slug);
@@ -95,7 +107,7 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             <p className="mt-1 text-sm text-[#6b6466]">{card.company}</p>
           </header>
 
-          <div className="mt-5 flex gap-2">
+          <div className="mt-5 flex gap-1.5">
             {phoneHref ? (
               <a className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl bg-[#5d1d29] px-1 text-[11px] font-semibold text-white shadow-sm transition active:scale-[0.97]" href={phoneHref}>
                 <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><PhoneIcon /></span>
@@ -121,6 +133,17 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
               >
                 <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><LinkedInIcon /></span>
                 LinkedIn
+              </a>
+            ) : null}
+            {addressLines.length ? (
+              <a
+                className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl border border-[#e5e0dd] bg-white px-1 text-[11px] font-semibold text-[#4b4547] shadow-sm transition active:scale-[0.97]"
+                href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><GoogleMapsIcon /></span>
+                Maps
               </a>
             ) : null}
           </div>
