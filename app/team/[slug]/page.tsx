@@ -53,12 +53,17 @@ function LinkedInIcon() {
 
 function GoogleMapsIcon() {
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
-      <path fill="#34a853" d="M12 1.75A7.25 7.25 0 0 0 4.75 9c0 5.44 7.25 13.25 7.25 13.25S19.25 14.44 19.25 9A7.25 7.25 0 0 0 12 1.75Z" />
-      <path fill="#4285f4" d="M4.75 9c0-4 3.25-7.25 7.25-7.25v4.18A3.08 3.08 0 0 0 8.92 9c0 .84.34 1.6.88 2.16l-2.95 2.95C5.54 12.79 4.75 11 4.75 9Z" />
-      <path fill="#fbbc04" d="m6.85 14.11 2.95-2.95c.56.57 1.34.92 2.2.92.85 0 1.63-.35 2.19-.91l2.95 2.95A34.78 34.78 0 0 1 12 22.25s-3.08-3.32-5.15-8.14Z" />
-      <path fill="#ea4335" d="M12 1.75A7.25 7.25 0 0 1 19.25 9c0 1.78-.78 3.56-2.11 5.12l-2.95-2.95A3.08 3.08 0 0 0 12 5.93V1.75Z" />
-      <circle cx="12" cy="9" r="2.05" fill="#fff" />
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s7.5-6.1 7.5-13.125a7.5 7.5 0 1 0-15 0C4.5 14.9 12 21 12 21Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14.625 7.875a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+    </svg>
+  );
+}
+
+function VeonisMarkIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+      <path d="M12 2.2c2.75 2.75 2.75 7.2 0 9.95-2.75-2.75-2.75-7.2 0-9.95ZM12 12.15c-2.75 2.75-7.2 2.75-9.95 0 2.75-2.75 7.2-2.75 9.95 0ZM21.95 12.15c-2.75 2.75-7.2 2.75-9.95 0 2.75-2.75 7.2-2.75 9.95 0ZM12 12.15c2.75 2.75 2.75 7.2 0 9.95-2.75-2.75-2.75-7.2 0-9.95Z" />
     </svg>
   );
 }
@@ -149,42 +154,6 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             ) : null}
           </div>
 
-          <div className="mt-2 flex flex-wrap justify-center gap-2" aria-label="Veonis Website und soziale Medien">
-            <a
-              aria-label="Zurück zur Veonis Website"
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white p-2.5 shadow-sm transition active:scale-[0.96]"
-              href="/de"
-              title="Zurück zur Veonis Website"
-            >
-              <img className="h-full w-full" src="/icon.svg" alt="" />
-            </a>
-            {siteSettings.socialLinks.map((social) => (
-              <a
-                aria-label={`Veonis auf ${social.label}`}
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
-                href={social.url}
-                key={`${social.label}-${social.url}`}
-                rel={social.open_new_tab ? "noreferrer noopener" : undefined}
-                target={social.open_new_tab ? "_blank" : undefined}
-                title={social.label}
-              >
-                <SocialIcon className="h-5 w-5" {...social} />
-              </a>
-            ))}
-            {mapsUrl ? (
-              <a
-                aria-label="Veonis auf Google Maps"
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white shadow-sm transition hover:border-[#c63d4d] active:scale-[0.96]"
-                href={mapsUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                title="Google Maps"
-              >
-                <GoogleMapsIcon />
-              </a>
-            ) : null}
-          </div>
-
           <div className="mt-6 overflow-hidden rounded-3xl border border-[#e9e4e1] bg-[#fbfaf9]">
             {card.phone && phoneHref ? (
               <a className="flex items-center gap-4 px-5 py-4 text-[#2f292b]" href={phoneHref}>
@@ -208,7 +177,44 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             ) : null}
           </div>
 
-          <p className="mt-auto pt-8 text-center text-xs text-[#9a9294]">Ein Ansprechpartner für Ihre Finanzen.</p>
+          <div className="mt-auto pt-8">
+            <div className="flex flex-wrap justify-center gap-2" aria-label="Veonis Website und soziale Medien">
+              <a
+                aria-label="Zurück zur Veonis Website"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
+                href="/de"
+                title="Zurück zur Veonis Website"
+              >
+                <VeonisMarkIcon />
+              </a>
+              {siteSettings.socialLinks.map((social) => (
+                <a
+                  aria-label={`Veonis auf ${social.label}`}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
+                  href={social.url}
+                  key={`${social.label}-${social.url}`}
+                  rel={social.open_new_tab ? "noreferrer noopener" : undefined}
+                  target={social.open_new_tab ? "_blank" : undefined}
+                  title={social.label}
+                >
+                  <SocialIcon className="h-5 w-5" {...social} />
+                </a>
+              ))}
+              {mapsUrl ? (
+                <a
+                  aria-label="Veonis auf Google Maps"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  title="Google Maps"
+                >
+                  <GoogleMapsIcon />
+                </a>
+              ) : null}
+            </div>
+            <p className="mt-5 text-center text-xs text-[#9a9294]">Ein Ansprechpartner für Ihre Finanzen.</p>
+          </div>
         </div>
       </article>
     </main>
