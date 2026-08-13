@@ -106,32 +106,45 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             <p className="mt-1 text-sm text-[#6b6466]">{card.company}</p>
           </header>
 
-          <div className="mt-5 flex gap-1.5">
+          <div className="mt-5 flex justify-center gap-2" aria-label="Persönliche Kontaktaktionen">
             {phoneHref ? (
-              <a className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl bg-[#5d1d29] px-1 text-[11px] font-semibold text-white shadow-sm transition active:scale-[0.97]" href={phoneHref}>
-                <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><PhoneIcon /></span>
-                Anrufen
+              <a
+                aria-label="Anrufen"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
+                href={phoneHref}
+                title="Anrufen"
+              >
+                <span className="[&>svg]:h-5 [&>svg]:w-5"><PhoneIcon /></span>
               </a>
             ) : null}
             {card.email ? (
-              <a className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl bg-[#f5f2f0] px-1 text-[11px] font-semibold text-[#5d1d29] transition active:scale-[0.97]" href={`mailto:${card.email}`}>
-                <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><MailIcon /></span>
-                E-Mail
+              <a
+                aria-label="E-Mail senden"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
+                href={`mailto:${card.email}`}
+                title="E-Mail senden"
+              >
+                <span className="[&>svg]:h-5 [&>svg]:w-5"><MailIcon /></span>
               </a>
             ) : null}
-            <a className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl bg-[#c63d4d] px-1 text-center text-[11px] font-semibold text-white shadow-sm transition active:scale-[0.97]" href={`/team/${card.slug}/contact`}>
-              <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><ContactIcon /></span>
-              Speichern
+            <a
+              aria-label="Kontakt speichern"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
+              href={`/team/${card.slug}/contact`}
+              title="Kontakt speichern"
+            >
+              <span className="[&>svg]:h-5 [&>svg]:w-5"><ContactIcon /></span>
             </a>
             {card.linkedinUrl ? (
               <a
-                className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl bg-[#0a66c2] px-1 text-[11px] font-semibold text-white shadow-sm transition active:scale-[0.97]"
+                aria-label="LinkedIn-Profil besuchen"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e1d9d6] bg-white text-[#5d1d29] shadow-sm transition hover:border-[#c63d4d] hover:text-[#c63d4d] active:scale-[0.96]"
                 href={card.linkedinUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
+                title="LinkedIn-Profil besuchen"
               >
-                <span className="[&>svg]:h-4.5 [&>svg]:w-4.5"><LinkedInIcon /></span>
-                LinkedIn
+                <LinkedInIcon />
               </a>
             ) : null}
           </div>
@@ -176,27 +189,20 @@ export default async function DigitalCardPage({ params }: DigitalCardPageProps) 
             {card.phone && phoneHref ? (
               <a className="flex items-center gap-4 px-5 py-4 text-[#2f292b]" href={phoneHref}>
                 <span className="text-[#c63d4d] [&>svg]:h-5 [&>svg]:w-5"><PhoneIcon /></span>
-                <span>
-                  <span className="block text-xs font-semibold uppercase text-[#938b8d]">Persönliche Telefonnummer</span>
-                  <span className="mt-1 block text-[15px] font-semibold">{card.phone}</span>
-                </span>
+                <span className="text-[15px] font-semibold">{card.phone}</span>
               </a>
             ) : null}
             {card.email ? (
               <a className="flex items-center gap-4 border-t border-[#e9e4e1] px-5 py-4 text-[#2f292b]" href={`mailto:${card.email}`}>
                 <span className="text-[#c63d4d] [&>svg]:h-5 [&>svg]:w-5"><MailIcon /></span>
-                <span className="min-w-0">
-                  <span className="block text-xs font-semibold uppercase text-[#938b8d]">Persönliche E-Mail</span>
-                  <span className="mt-1 block break-all text-[15px] font-semibold">{card.email}</span>
-                </span>
+                <span className="min-w-0 break-all text-[15px] font-semibold">{card.email}</span>
               </a>
             ) : null}
             {addressLines.length ? (
               <a className="flex items-start gap-4 border-t border-[#e9e4e1] px-5 py-4 text-[15px] leading-6 text-[#5f5759]" href={mapsUrl ?? undefined} target="_blank" rel="noreferrer">
                 <span className="mt-0.5 text-[#c63d4d]"><LocationIcon /></span>
                 <span>
-                  <span className="block text-xs font-semibold uppercase text-[#938b8d]">Büroadresse</span>
-                  <span className="mt-1 block">{addressLines.map((line) => <span className="block" key={line}>{line}</span>)}</span>
+                  {addressLines.map((line) => <span className="block" key={line}>{line}</span>)}
                 </span>
               </a>
             ) : null}
