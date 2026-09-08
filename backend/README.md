@@ -123,3 +123,5 @@ published automatically. Configure `CMS_API_URL` for the frontend as usual.
 Campaign forms do not change the existing homepage or `/home-neu` preview.
 
 Validation: `php artisan test --filter=CampaignTest`.
+
+Use **Duplicate** on a campaign to choose a new title and URL and copy its content, pictures and terms into an unpublished draft. Leads are never copied. Individual giveaway entries can also be cloned in the editor. The **VORLAGE – Ihre Giveaway-Kampagne** draft is a reusable starting point; replace its sample text, supply real pictures, and complete the terms before publishing.

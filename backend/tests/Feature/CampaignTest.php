@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Enums\UserRole;
+use App\Filament\Resources\Campaigns\Pages\EditCampaign;
 use App\Models\Campaign;
 use App\Models\CampaignLead;
 use App\Models\User;
+use Database\Seeders\CampaignTemplateSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class CampaignTest extends TestCase
@@ -83,5 +86,35 @@ class CampaignTest extends TestCase
         $editor = User::factory()->create(['role' => UserRole::BlogEditor]);
         $this->actingAs($editor)->get('/admin/campaigns')->assertForbidden();
         $this->actingAs($editor)->get('/admin/campaign-leads')->assertForbidden();
+    }
+
+    public function test_duplicate_copies_content_to_a_draft_with_no_leads(): void
+    {
+        $campaign = $this->campaign();
+        $this->postJson('/api/v1/campaigns/summer/leads', $this->payload($campaign))->assertCreated();
+        $this->actingAs(User::factory()->create());
+        Livewire::test(EditCampaign::class, ['record' => $campaign->id])
+            ->callAction('duplicate', data: ['title' => 'Winter giveaway', 'slug' => 'winter-giveaway'])
+            ->assertHasNoActionErrors();
+        $copy = Campaign::where('slug', 'winter-giveaway')->firstOrFail();
+        $this->assertFalse($copy->is_published);
+        $this->assertSame($campaign->giveaways, $copy->giveaways);
+        $this->assertSame($campaign->description, $copy->description);
+        $this->assertSame($campaign->terms, $copy->terms);
+        $this->assertSame(0, $copy->leads()->count());
+        $this->assertSame(1, $campaign->leads()->count());
+    }
+
+    public function test_duplicate_rejects_an_existing_url_and_template_is_idempotent(): void
+    {
+        $campaign = $this->campaign();
+        $this->actingAs(User::factory()->create());
+        Livewire::test(EditCampaign::class, ['record' => $campaign->id])
+            ->callAction('duplicate', data: ['title' => 'Copy', 'slug' => 'summer'])
+            ->assertHasActionErrors(['slug' => 'unique']);
+        $this->seed(CampaignTemplateSeeder::class);
+        $this->seed(CampaignTemplateSeeder::class);
+        $this->assertSame(1, Campaign::where('slug', 'vorlage-giveaway-kampagne')->count());
+        $this->assertFalse(Campaign::where('slug', 'vorlage-giveaway-kampagne')->firstOrFail()->is_published);
     }
 }
