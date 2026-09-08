@@ -41,7 +41,7 @@ class CampaignTest extends TestCase
         $this->postJson('/api/v1/campaigns/summer/leads', [...$this->payload($campaign), 'campaign_title' => 'Spoofed', 'source_url' => 'https://wrong.example', 'consent_text' => 'wrong'])->assertCreated();
         $lead = CampaignLead::firstOrFail();
         $this->assertSame('Summer campaign', $lead->campaign_title);
-        $this->assertSame('https://www.veonissuisse.ch/campaign/summer', $lead->source_url);
+        $this->assertSame('https://www.veonissuisse.ch/summer', $lead->source_url);
         $this->assertSame('Participation rules', $lead->terms_snapshot);
         $this->assertNotNull($lead->consented_at);
         $this->assertStringContainsString('E-Mail oder Telefon', $lead->consent_text);

@@ -20,6 +20,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\Rule;
 
 class CampaignResource extends Resource
 {
@@ -31,14 +32,14 @@ class CampaignResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return PageVisitMetrics::apply(parent::getEloquentQuery(), '/campaign/');
+        return PageVisitMetrics::apply(parent::getEloquentQuery(), '/', '/campaign/');
     }
 
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
             TextInput::make('title')->label('Campaign title')->required()->maxLength(255),
-            TextInput::make('slug')->label('URL slug')->helperText('Public URL: https://www.veonissuisse.ch/campaign/your-slug. The URL is fixed after creation.')->required()->maxLength(120)->regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/')->unique(ignoreRecord: true)->disabledOn('edit'),
+            TextInput::make('slug')->label('URL slug')->helperText('Public URL: https://www.veonissuisse.ch/your-slug. The URL is fixed after creation.')->required()->maxLength(120)->rules([Rule::notIn(Campaign::RESERVED_SLUGS)])->regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/')->unique(ignoreRecord: true)->disabledOn('edit'),
             Textarea::make('description')->label('Main campaign description')->required()->rows(5)->columnSpanFull(),
             Repeater::make('giveaways')->schema([
                 TextInput::make('title')->required()->maxLength(255),
@@ -70,7 +71,7 @@ class CampaignResource extends Resource
             ->modalDescription('Copies descriptions, giveaways, pictures and terms into a new unpublished draft. Leads stay with the original campaign.')
             ->schema([
                 TextInput::make('title')->label('New campaign title')->required()->maxLength(255),
-                TextInput::make('slug')->label('New URL slug')->required()->maxLength(120)->regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/')->unique(table: Campaign::class, column: 'slug'),
+                TextInput::make('slug')->label('New URL slug')->required()->maxLength(120)->rules([Rule::notIn(Campaign::RESERVED_SLUGS)])->regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/')->unique(table: Campaign::class, column: 'slug'),
             ])
             ->mutateRecordDataUsing(fn (array $data): array => [...$data, 'title' => mb_substr($data['title'].' – Copy', 0, 255), 'slug' => ''])
             ->beforeReplicaSaved(function (Campaign $replica): void {

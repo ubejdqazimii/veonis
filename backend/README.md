@@ -105,7 +105,7 @@ Super admins manage **Lead campaigns** and **Campaign leads** in the admin menu.
 Create a campaign with a title, unique URL slug, main description, one or more
 named giveaways with descriptions and optional individual pictures (JPEG, PNG or WebP, up to 5 MB), and participation terms. Campaigns start as
 drafts. Publish when ready, then copy the campaign link from the list. Public
-pages use `/campaign/{slug}`; slugs are fixed after creation to preserve links.
+pages use `/{slug}`; slugs are fixed after creation to preserve links.
 Unpublishing disables both the public page and new submissions immediately.
 
 The shared form collects first name, surname, Swiss postcode, city, email,
@@ -127,3 +127,5 @@ Validation: `php artisan test --filter=CampaignTest`.
 Use **Duplicate** on a campaign to choose a new title and URL and copy its content, pictures and terms into an unpublished draft. Leads are never copied. Individual giveaway entries can also be cloned in the editor. The **VORLAGE – Ihre Giveaway-Kampagne** draft is a reusable starting point; replace its sample text, supply real pictures, and complete the terms before publishing.
 
 The campaign and digital-card CRM lists show **Visits** (recorded page views) and **Visitors** (distinct browser sessions), based on the existing analytics history for the exact public URL. Heartbeats and engagement updates do not count as visits. These metrics are admin-only and are not added to public APIs. Counts reflect recorded analytics; blocked tracking is not counted.
+
+Campaign links now use the root URL (`/{slug}`). Legacy `/campaign/{slug}` URLs redirect permanently. Counters include both URL forms and deduplicate visitor sessions across them. Existing lead URL snapshots are preserved; new leads store the direct URL. Reserved website routes cannot be selected as new campaign slugs.

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Campaign extends Model
 {
+    public const RESERVED_SLUGS = ['de', 'en', 'api', 'campaign', 'card', 'team', 'home-neu', 'admin', 'storage', 'robots', 'sitemap'];
+
     protected $fillable = ['title', 'slug', 'description', 'giveaways', 'terms', 'is_published'];
 
     protected function casts(): array
@@ -21,7 +23,7 @@ class Campaign extends Model
 
     public function getPublicUrlAttribute(): string
     {
-        return 'https://www.veonissuisse.ch/campaign/'.$this->slug;
+        return 'https://www.veonissuisse.ch/'.$this->slug;
     }
 
     public function getRevisionAttribute(): string

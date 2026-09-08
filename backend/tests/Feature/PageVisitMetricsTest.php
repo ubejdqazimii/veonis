@@ -45,4 +45,25 @@ class PageVisitMetricsTest extends TestCase
             ->call('create')->assertHasNoFormErrors();
         $this->assertDatabaseHas('campaigns', ['slug' => 'no-picture']);
     }
+
+    public function test_direct_and_legacy_campaign_visitors_are_combined(): void
+    {
+        $campaign = Campaign::create(['slug'=>'promo','title'=>'Promo','description'=>'Text','giveaways'=>[],'terms'=>'Terms']);
+        $session = (string) Str::uuid();
+        foreach (['/promo','/campaign/promo'] as $path) {
+            AnalyticsEvent::create(['path'=>$path,'session_id'=>$session,'event_type'=>'page_view','visitor_hash'=>'test']);
+        }
+        $record = PageVisitMetrics::apply(Campaign::query(), '/', '/campaign/')->findOrFail($campaign->id);
+        $this->assertSame(2, (int) $record->visits_count);
+        $this->assertSame(1, (int) $record->visitors_count);
+    }
+
+    public function test_reserved_campaign_url_is_rejected(): void
+    {
+        $this->actingAs(\App\Models\User::factory()->create());
+        \Livewire\Livewire::test(\App\Filament\Resources\Campaigns\Pages\CreateCampaign::class)
+            ->fillForm(['title'=>'Conflict','slug'=>'de','description'=>'Text','giveaways'=>[['title'=>'Gift','description'=>'Text']],'terms'=>'Terms'])
+            ->call('create')->assertHasFormErrors(['slug']);
+        $this->assertDatabaseMissing('campaigns', ['slug'=>'de']);
+    }
 }
