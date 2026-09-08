@@ -44,6 +44,9 @@ import { Hero } from "@/components/veonis/hero";
 import { LegalNoticeBlock } from "@/components/veonis/legal-notice-block";
 import { ProcessTimeline } from "@/components/veonis/process-timeline";
 import { SectionHeader } from "@/components/veonis/section-header";
+import { ServiceUniverse } from "@/components/veonis/service-universe";
+import { InnovationSections } from "@/components/veonis/innovation-sections";
+import { InsightsExplorer } from "@/components/veonis/insights-explorer";
 import { ServiceCard } from "@/components/veonis/service-card";
 import { ValueCard } from "@/components/veonis/value-card";
 import { cn } from "@/lib/utils";
@@ -2012,5 +2015,25 @@ function Checklist({ items }: { items: string[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+
+export async function HomePreviewPage({ locale }: { locale: Locale }) {
+  const [page, posts] = await Promise.all([
+    getManagedPage(locale, "home-v2"),
+    getManagedBlogPosts(locale),
+  ]);
+  return (
+    <>
+      <V2HeroSection locale={locale} page={page} />
+      <ServiceUniverse locale={locale} />
+      <V2OverviewSection locale={locale} />
+      <V2ServicesSection locale={locale} />
+      <InnovationSections locale={locale} />
+      <V2CollaborationSection locale={locale} />
+      <InsightsExplorer locale={locale} posts={posts.slice(0, 5)} />
+      <V2CTASection locale={locale} />
+    </>
   );
 }

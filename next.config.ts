@@ -4,6 +4,7 @@ const cmsApiUrl = process.env.CMS_API_URL?.replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
   images: {
+    qualities: [75, 76, 78],
     remotePatterns: cmsApiUrl ? [new URL(`${cmsApiUrl}/storage/**`)] : [],
   },
   async headers() {

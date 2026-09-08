@@ -3,7 +3,21 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-const endpoint = "https://adcms.veonissuisse.ch/api/v1/analytics";
+const endpoint = "/api/analytics";
+
+// Analytics is best-effort and must never interrupt the visitor's experience.
+async function sendEvent(payload: Record<string, unknown>) {
+  try {
+    await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    });
+  } catch {
+    // Offline visitors and blocked analytics can continue using the site.
+  }
+}
 
 type VisitorLocation = { country: string | null; region: string | null; city: string | null };
 
@@ -15,20 +29,24 @@ function getVisitorLocation(): Promise<VisitorLocation> {
 
 function sessionId() {
   const key = "veonis_analytics_session";
-  const existing = sessionStorage.getItem(key);
+  try {
+    const existing = sessionStorage.getItem(key);
 
-  if (existing) return existing;
+    if (existing) return existing;
 
-  const created = crypto.randomUUID();
-  sessionStorage.setItem(key, created);
-  return created;
+    const created = crypto.randomUUID();
+    sessionStorage.setItem(key, created);
+    return created;
+  } catch {
+    return crypto.randomUUID();
+  }
 }
 
 export function AnalyticsTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!pathname || navigator.webdriver || window.location.hostname === "localhost") return;
+    if (!pathname || navigator.webdriver || ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname)) return;
 
     const startedAt = Date.now();
     const parameters = new URLSearchParams(window.location.search);
@@ -46,30 +64,18 @@ export function AnalyticsTracker() {
       screen_height: window.screen.height,
     };
 
-    void getVisitorLocation().then((location) =>
-      fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...payload, ...location }),
-        keepalive: true,
-      }),
-    );
+    void getVisitorLocation().then((location) => sendEvent({ ...payload, ...location }));
 
     const reportPresence = () => {
       if (document.visibilityState !== "visible") return;
 
       const seconds = Math.min(86400, Math.max(0, Math.round((Date.now() - startedAt) / 1000)));
 
-      void fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          event_type: "heartbeat",
-          session_id: payload.session_id,
-          path: pathname,
-          engagement_seconds: seconds,
-        }),
-        keepalive: true,
+      void sendEvent({
+        event_type: "heartbeat",
+        session_id: payload.session_id,
+        path: pathname,
+        engagement_seconds: seconds,
       });
     };
 
@@ -78,16 +84,11 @@ export function AnalyticsTracker() {
 
     const reportEngagement = () => {
       const seconds = Math.min(86400, Math.max(0, Math.round((Date.now() - startedAt) / 1000)));
-      void fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          event_type: "engagement",
-          session_id: payload.session_id,
-          path: pathname,
-          engagement_seconds: seconds,
-        }),
-        keepalive: true,
+      void sendEvent({
+        event_type: "engagement",
+        session_id: payload.session_id,
+        path: pathname,
+        engagement_seconds: seconds,
       });
     };
 
