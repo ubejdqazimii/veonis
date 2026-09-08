@@ -103,7 +103,7 @@ vendor/bin/pint --test
 
 Super admins manage **Lead campaigns** and **Campaign leads** in the admin menu.
 Create a campaign with a title, unique URL slug, main description, one or more
-named giveaways with descriptions and individual pictures (JPEG, PNG or WebP, up to 5 MB), and participation terms. Campaigns start as
+named giveaways with descriptions and optional individual pictures (JPEG, PNG or WebP, up to 5 MB), and participation terms. Campaigns start as
 drafts. Publish when ready, then copy the campaign link from the list. Public
 pages use `/campaign/{slug}`; slugs are fixed after creation to preserve links.
 Unpublishing disables both the public page and new submissions immediately.
@@ -125,3 +125,5 @@ Campaign forms do not change the existing homepage or `/home-neu` preview.
 Validation: `php artisan test --filter=CampaignTest`.
 
 Use **Duplicate** on a campaign to choose a new title and URL and copy its content, pictures and terms into an unpublished draft. Leads are never copied. Individual giveaway entries can also be cloned in the editor. The **VORLAGE – Ihre Giveaway-Kampagne** draft is a reusable starting point; replace its sample text, supply real pictures, and complete the terms before publishing.
+
+The campaign and digital-card CRM lists show **Visits** (recorded page views) and **Visitors** (distinct browser sessions), based on the existing analytics history for the exact public URL. Heartbeats and engagement updates do not count as visits. These metrics are admin-only and are not added to public APIs. Counts reflect recorded analytics; blocked tracking is not counted.

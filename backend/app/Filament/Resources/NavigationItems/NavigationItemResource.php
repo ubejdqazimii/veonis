@@ -18,7 +18,7 @@ class NavigationItemResource extends Resource
 {
     protected static ?string $model = NavigationItem::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBars3;
 
     protected static ?string $navigationLabel = 'Navigation';
 

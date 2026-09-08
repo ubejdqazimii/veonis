@@ -26,6 +26,8 @@ class DigitalCardsTable
                     ->url(fn (DigitalCard $record): string => 'https://www.veonissuisse.ch/team/'.$record->slug)
                     ->openUrlInNewTab()
                     ->copyable(),
+                TextColumn::make('visits_count')->label('Visits')->numeric()->sortable()->tooltip('Total recorded page views for this URL'),
+                TextColumn::make('visitors_count')->label('Visitors')->numeric()->sortable()->tooltip('Distinct browser sessions for this URL'),
                 IconColumn::make('is_active')->label('Active')->boolean(),
                 TextColumn::make('updated_at')->dateTime()->sortable(),
             ])

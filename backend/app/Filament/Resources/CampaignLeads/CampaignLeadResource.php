@@ -3,12 +3,14 @@
 namespace App\Filament\Resources\CampaignLeads;
 
 use App\Models\CampaignLead;
+use BackedEnum;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -16,6 +18,8 @@ use Filament\Tables\Table;
 class CampaignLeadResource extends Resource
 {
     protected static ?string $model = CampaignLead::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserPlus;
 
     protected static ?string $navigationLabel = 'Campaign leads';
 
