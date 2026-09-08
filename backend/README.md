@@ -98,3 +98,28 @@ visitor hash and aggregated browser/location attributes, never a raw IP address.
 php artisan test
 vendor/bin/pint --test
 ```
+
+## Lead campaigns
+
+Super admins manage **Lead campaigns** and **Campaign leads** in the admin menu.
+Create a campaign with a title, unique URL slug, main description, one or more
+named giveaways with descriptions and individual pictures (JPEG, PNG or WebP, up to 5 MB), and participation terms. Campaigns start as
+drafts. Publish when ready, then copy the campaign link from the list. Public
+pages use `/campaign/{slug}`; slugs are fixed after creation to preserve links.
+Unpublishing disables both the public page and new submissions immediately.
+
+The shared form collects first name, surname, Swiss postcode, city, email,
+mobile number and birth year. The required checkbox records acceptance of the
+terms/privacy notice and permission for email or telephone contact. Each lead
+stores its campaign relationship, campaign title and URL snapshot, accepted terms,
+consent wording and timestamp. Changing campaign details requires visitors with
+an older page to reload before submitting. Duplicate email submissions within
+one campaign return confirmation without creating another lead. Campaign leads
+can be filtered by campaign and marked new/contacted/closed.
+
+Deployment: deploy the backend and run `php artisan migrate --force` followed by
+`php artisan optimize` before deploying the frontend. No campaign is seeded or
+published automatically. Configure `CMS_API_URL` for the frontend as usual.
+Campaign forms do not change the existing homepage or `/home-neu` preview.
+
+Validation: `php artisan test --filter=CampaignTest`.
