@@ -53,10 +53,13 @@ export function MobileMenu({ locale, navigation }: MobileMenuProps) {
                 {item.label}
               </Link>
             ))}
+            <Link className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#c63d4d]" href={localizedHomeHref[locale === "de" ? "en" : "de"]} onClick={() => setOpen(false)} lang={locale === "de" ? "en" : "de"}>
+              {locale === "de" ? "English" : "Deutsch"}
+            </Link>
           </nav>
           <Button asChild className="mt-4 h-11 w-full rounded-full bg-[#c63d4d] text-white hover:bg-[#b23443]">
             <Link href={getLocalizedPath(locale, "contact")} onClick={() => setOpen(false)}>
-              Kostenloses Erstgespräch vereinbaren
+              {locale === "de" ? "Kostenloses Erstgespräch vereinbaren" : "Book a free consultation"}
             </Link>
           </Button>
         </div>

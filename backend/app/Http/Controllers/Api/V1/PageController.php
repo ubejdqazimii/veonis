@@ -49,6 +49,8 @@ class PageController extends Controller
                     })
                     ->values()
                     ->all(),
+                'homepageContent' => $page->homepage_content ?? [],
+                'homepageImages' => collect($page->homepage_images ?? [])->map(fn ($path) => $path ? $this->mediaUrl($path) : null)->all(),
                 'updatedAt' => $page->updated_at?->toAtomString(),
             ],
         ])->setPublic()->setMaxAge(60);

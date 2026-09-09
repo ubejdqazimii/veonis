@@ -1,12 +1,5 @@
-import type { Metadata } from "next";
-import { HomePreviewPage } from "@/components/veonis/pages";
-import { SiteShell } from "@/components/veonis/site-shell";
+import { permanentRedirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Veonis | Neue Homepage – Vorschau",
-  robots: { index: false, follow: false },
-};
-
-export default function NewHomePreview() {
-  return <SiteShell locale="de"><HomePreviewPage locale="de" /></SiteShell>;
+export default function PreviousHomePreview() {
+  permanentRedirect("/de");
 }

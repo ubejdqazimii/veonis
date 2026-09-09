@@ -1,3 +1,4 @@
+import { createHomepageCopy, type HomepageContent } from "@/lib/homepage-content";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -388,21 +389,22 @@ function V2HeroSection({
   locale: Locale;
   page: ReturnType<typeof getPage>;
 }) {
+  const copy = createHomepageCopy(page.homepageContent?.hero);
   const proofPoints =
     locale === "de"
-      ? ["Ganzheitliche Analyse", "Unabhängiger Blick", "Persönliche Begleitung", "Klare Empfehlungen"]
-      : ["Holistic analysis", "Independent perspective", "Personal guidance", "Clear recommendations"];
+      ? [copy("Ganzheitliche Analyse"), copy("Unabhängiger Blick"), copy("Persönliche Begleitung"), copy("Klare Empfehlungen")]
+      : [copy("Holistic analysis"), copy("Independent perspective"), copy("Personal guidance"), copy("Clear recommendations")];
 
   return (
     <section className="relative isolate overflow-hidden bg-[#24191c] text-white">
       <Image
-        alt={locale === "de" ? "Premium Beratungssituation bei Veonis" : "Premium advisory setting at Veonis"}
+        alt={locale === "de" ? copy("Premium Beratungssituation bei Veonis") : copy("Premium advisory setting at Veonis")}
         className="object-cover object-[54%_center] opacity-74"
         fill
         preload
         quality={76}
         sizes="100vw"
-        src="/brand/photos/veonis-team-workshop-optimized.jpg"
+        src={page.homepageImages?.hero || "/brand/photos/veonis-team-workshop-optimized.jpg"}
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(37,19,24,0.98)_0%,rgba(47,22,28,0.9)_44%,rgba(72,25,34,0.38)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(239,125,139,0.2),transparent_28rem)]" />
@@ -432,7 +434,7 @@ function V2HeroSection({
         </div>
         <div className="rounded-lg border border-white/14 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_26px_70px_rgba(0,0,0,0.16)] backdrop-blur-md sm:p-5">
           <p className="text-xs font-semibold uppercase text-[#ef7d8b]">
-            {locale === "de" ? "Veonis Prinzip" : "Veonis principle"}
+            {locale === "de" ? copy("Veonis Prinzip") : copy("Veonis principle")}
           </p>
           <div className="mt-4 grid gap-2">
             {proofPoints.map((point) => (
@@ -1315,40 +1317,41 @@ function V3InsightsSection({ locale, posts }: { locale: Locale; posts: BlogPost[
   );
 }
 
-function V2OverviewSection({ locale }: { locale: Locale }) {
+function V2OverviewSection({ locale, homepageContent, image }: { locale: Locale; homepageContent?: HomepageContent; image?: string }) {
+  const copy = createHomepageCopy(homepageContent?.overview);
   const overview =
     locale === "de"
       ? {
-          eyebrow: "Gesamtbild",
-          title: "Finanzielle Klarheit beginnt nicht bei einem Produkt, sondern beim Gesamtbild.",
+          eyebrow: copy("Gesamtbild"),
+          title: copy("Finanzielle Klarheit beginnt nicht bei einem Produkt, sondern beim Gesamtbild."),
           paragraphs: [
-            "Viele Menschen haben einzelne Lösungen an unterschiedlichen Orten: eine Versicherung hier, eine Vorsorge dort, eine Hypothek bei einer Bank, Anlagen an anderer Stelle.",
-            "Doch finanzielle Entscheidungen wirken selten isoliert. Vorsorge beeinflusst Steuern. Eine Hypothek beeinflusst Liquidität. Versicherungen beeinflussen Sicherheit und Planungsspielraum.",
+            copy("Viele Menschen haben einzelne Lösungen an unterschiedlichen Orten: eine Versicherung hier, eine Vorsorge dort, eine Hypothek bei einer Bank, Anlagen an anderer Stelle."),
+            copy("Doch finanzielle Entscheidungen wirken selten isoliert. Vorsorge beeinflusst Steuern. Eine Hypothek beeinflusst Liquidität. Versicherungen beeinflussen Sicherheit und Planungsspielraum."),
           ],
           analysis:
-            "Der Veonis 360°-Check zeigt, was passt, was fehlt und was zuerst angegangen werden sollte.",
+            copy("Der Veonis 360°-Check zeigt, was passt, was fehlt und was zuerst angegangen werden sollte."),
         }
       : {
-          eyebrow: "Overall picture",
-          title: "Financial clarity does not start with a product, but with the full picture.",
+          eyebrow: copy("Overall picture"),
+          title: copy("Financial clarity does not start with a product, but with the full picture."),
           paragraphs: [
-            "Many people have individual solutions in different places: one insurance policy here, pension planning there, a mortgage at one bank and investments somewhere else.",
-            "Financial decisions rarely work in isolation. Pension planning affects taxes. A mortgage affects liquidity. Insurance affects security and planning room.",
+            copy("Many people have individual solutions in different places: one insurance policy here, pension planning there, a mortgage at one bank and investments somewhere else."),
+            copy("Financial decisions rarely work in isolation. Pension planning affects taxes. A mortgage affects liquidity. Insurance affects security and planning room."),
           ],
           analysis:
-            "The Veonis 360° analysis shows what fits, what is missing and what should be addressed first.",
+            copy("The Veonis 360° analysis shows what fits, what is missing and what should be addressed first."),
         };
   const cards =
     locale === "de"
       ? [
-          ["01", "Gesamtbild statt Einzelentscheid", "Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen werden gemeinsam betrachtet."],
-          ["02", "Prioritäten vor Produkten", "Zuerst klären wir, was wirklich wichtig ist - danach geht es um mögliche Lösungen."],
-          ["03", "Beratung mit Umsetzungsplan", "Sie erhalten verständliche Empfehlungen und konkrete nächste Schritte."],
+          ["01", copy("Gesamtbild statt Einzelentscheid"), copy("Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen werden gemeinsam betrachtet.")],
+          ["02", copy("Prioritäten vor Produkten"), copy("Zuerst klären wir, was wirklich wichtig ist - danach geht es um mögliche Lösungen.")],
+          ["03", copy("Beratung mit Umsetzungsplan"), copy("Sie erhalten verständliche Empfehlungen und konkrete nächste Schritte.")],
         ]
       : [
-          ["01", "Overall picture before isolated decisions", "Insurance, pension planning, taxes, mortgages and investments are reviewed together."],
-          ["02", "Priorities before products", "First we clarify what truly matters - then we look at possible solutions."],
-          ["03", "Advice with an action plan", "You receive understandable recommendations and clear next steps."],
+          ["01", copy("Overall picture before isolated decisions"), copy("Insurance, pension planning, taxes, mortgages and investments are reviewed together.")],
+          ["02", copy("Priorities before products"), copy("First we clarify what truly matters - then we look at possible solutions.")],
+          ["03", copy("Advice with an action plan"), copy("You receive understandable recommendations and clear next steps.")],
         ];
 
   return (
@@ -1367,11 +1370,11 @@ function V2OverviewSection({ locale }: { locale: Locale }) {
 
           <article className="relative min-h-[640px] overflow-hidden sm:min-h-[560px] lg:min-h-[420px] rounded-lg bg-[#24191c] lg:col-span-7">
             <Image
-              alt={locale === "de" ? "Digitale Finanzübersicht in einer Beratung" : "Digital financial overview in an advisory meeting"}
+              alt={locale === "de" ? copy("Digitale Finanzübersicht in einer Beratung") : copy("Digital financial overview in an advisory meeting")}
               className="object-cover object-[45%_center]"
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"
-              src="/brand/photos/veonis-digital-collaboration-optimized.jpg"
+              src={image || "/brand/photos/veonis-digital-collaboration-optimized.jpg"}
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,25,28,0.05),rgba(36,25,28,0.82))]" />
             <div className="absolute bottom-5 left-5 right-5 grid gap-3 rounded-lg border border-white/18 bg-white/14 p-4 text-white backdrop-blur-md sm:p-5 lg:grid-cols-3">
@@ -1396,41 +1399,42 @@ function V2OverviewSection({ locale }: { locale: Locale }) {
   );
 }
 
-function V2ServicesSection({ locale }: { locale: Locale }) {
+function V2ServicesSection({ locale, homepageContent }: { locale: Locale; homepageContent?: HomepageContent }) {
+  const copy = createHomepageCopy(homepageContent?.highlights);
   const highlights =
     locale === "de"
       ? [
           {
-            title: "Versicherungen & Vorsorge",
-            text: "Veonis prüft, ob Absicherung, Vorsorge und Lebensphase zusammenpassen - verständlich, unabhängig und mit Blick auf Ihre Prioritäten.",
-            questions: ["Bin ich richtig abgesichert?", "Wie wirkt sich Vorsorge auf Steuern aus?"],
+            title: copy("Versicherungen & Vorsorge"),
+            text: copy("Veonis prüft, ob Absicherung, Vorsorge und Lebensphase zusammenpassen - verständlich, unabhängig und mit Blick auf Ihre Prioritäten."),
+            questions: [copy("Bin ich richtig abgesichert?"), copy("Wie wirkt sich Vorsorge auf Steuern aus?")],
           },
           {
-            title: "Hypotheken & Immobilien",
-            text: "Wir ordnen Finanzierung, Tragbarkeit, Zinsrisiken und Liquidität ein, damit Wohneigentum zur gesamten Planung passt.",
-            questions: ["Welche Hypothek passt?", "Was bleibt langfristig finanziell tragbar?"],
+            title: copy("Hypotheken & Immobilien"),
+            text: copy("Wir ordnen Finanzierung, Tragbarkeit, Zinsrisiken und Liquidität ein, damit Wohneigentum zur gesamten Planung passt."),
+            questions: [copy("Welche Hypothek passt?"), copy("Was bleibt langfristig finanziell tragbar?")],
           },
           {
-            title: "Steuern, Anlagen & Finanzplanung",
-            text: "Steuerfragen, Anlagen und Liquidität werden nicht isoliert betrachtet, sondern als Teil einer klaren Finanzstruktur.",
-            questions: ["Wo lassen sich Steuern optimieren?", "Wie soll freies Kapital eingesetzt werden?"],
+            title: copy("Steuern, Anlagen & Finanzplanung"),
+            text: copy("Steuerfragen, Anlagen und Liquidität werden nicht isoliert betrachtet, sondern als Teil einer klaren Finanzstruktur."),
+            questions: [copy("Wo lassen sich Steuern optimieren?"), copy("Wie soll freies Kapital eingesetzt werden?")],
           },
         ]
       : [
           {
-            title: "Insurance & pension planning",
-            text: "Veonis reviews whether protection, pension planning and life stage fit together - clearly, independently and with your priorities in view.",
-            questions: ["Am I properly protected?", "How does pension planning affect taxes?"],
+            title: copy("Insurance & pension planning"),
+            text: copy("Veonis reviews whether protection, pension planning and life stage fit together - clearly, independently and with your priorities in view."),
+            questions: [copy("Am I properly protected?"), copy("How does pension planning affect taxes?")],
           },
           {
-            title: "Mortgages & real estate",
-            text: "We put financing, affordability, interest-rate risk and liquidity into context so home ownership fits the full plan.",
-            questions: ["Which mortgage fits?", "What remains sustainable long term?"],
+            title: copy("Mortgages & real estate"),
+            text: copy("We put financing, affordability, interest-rate risk and liquidity into context so home ownership fits the full plan."),
+            questions: [copy("Which mortgage fits?"), copy("What remains sustainable long term?")],
           },
           {
-            title: "Taxes, investments & planning",
-            text: "Tax questions, investments and liquidity are not reviewed in isolation, but as part of a clear financial structure.",
-            questions: ["Where can taxes be optimized?", "How should free capital be used?"],
+            title: copy("Taxes, investments & planning"),
+            text: copy("Tax questions, investments and liquidity are not reviewed in isolation, but as part of a clear financial structure."),
+            questions: [copy("Where can taxes be optimized?"), copy("How should free capital be used?")],
           },
         ];
   const icons = [ShieldCheck, House, ChartNoAxesCombined];
@@ -1443,10 +1447,10 @@ function V2ServicesSection({ locale }: { locale: Locale }) {
             eyebrow="Services"
             intro={
               locale === "de"
-                ? "Je nach Situation starten wir dort, wo der grösste Handlungsbedarf besteht. Entscheidend bleibt immer der Zusammenhang zwischen allen Finanzthemen."
-                : "Depending on your situation, we start where the greatest need for action exists. The connection between all financial topics remains decisive."
+                ? copy("Je nach Situation starten wir dort, wo der grösste Handlungsbedarf besteht. Entscheidend bleibt immer der Zusammenhang zwischen allen Finanzthemen.")
+                : copy("Depending on your situation, we start where the greatest need for action exists. The connection between all financial topics remains decisive.")
             }
-            title={locale === "de" ? "Drei Einstiege. Ein Gesamtbild." : "Three entry points. One overall picture."}
+            title={locale === "de" ? copy("Drei Einstiege. Ein Gesamtbild.") : copy("Three entry points. One overall picture.")}
           />
           <div className="grid gap-4 lg:grid-cols-3">
             {highlights.map((service, index) => {
@@ -1480,18 +1484,19 @@ function V2ServicesSection({ locale }: { locale: Locale }) {
   );
 }
 
-function V2CollaborationSection({ locale }: { locale: Locale }) {
+function V2CollaborationSection({ locale, homepageContent }: { locale: Locale; homepageContent?: HomepageContent }) {
+  const copy = createHomepageCopy(homepageContent?.collaboration);
   const steps =
     locale === "de"
       ? [
-          ["Kennenlernen", "Wir sprechen über Ihre Situation, Ihre Fragen und die Unterlagen, die für den Überblick wichtig sind."],
-          ["360° Check", "Wir prüfen Zusammenhänge, Prioritäten, mögliche Lücken und bestehende Verträge."],
-          ["Empfehlung & Begleitung", "Sie erhalten klare Empfehlungen und werden bei den sinnvollen nächsten Schritten begleitet."],
+          [copy("Kennenlernen"), copy("Wir sprechen über Ihre Situation, Ihre Fragen und die Unterlagen, die für den Überblick wichtig sind.")],
+          [copy("360° Check"), copy("Wir prüfen Zusammenhänge, Prioritäten, mögliche Lücken und bestehende Verträge.")],
+          [copy("Empfehlung & Begleitung"), copy("Sie erhalten klare Empfehlungen und werden bei den sinnvollen nächsten Schritten begleitet.")],
         ]
       : [
-          ["First conversation", "We talk about your situation, your questions and the documents needed for a clear overview."],
-          ["360° check", "We review connections, priorities, potential gaps and existing contracts."],
-          ["Recommendation & guidance", "You receive clear recommendations and guidance through the next sensible steps."],
+          [copy("First conversation"), copy("We talk about your situation, your questions and the documents needed for a clear overview.")],
+          [copy("360° check"), copy("We review connections, priorities, potential gaps and existing contracts.")],
+          [copy("Recommendation & guidance"), copy("You receive clear recommendations and guidance through the next sensible steps.")],
         ];
 
   return (
@@ -1499,14 +1504,14 @@ function V2CollaborationSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="veonis-gloss-red grid overflow-hidden rounded-lg text-white lg:grid-cols-[0.76fr_1.24fr]">
           <div className="p-6 sm:p-8 lg:p-10">
-            <p className="text-xs font-semibold uppercase text-white/70">{locale === "de" ? "Zusammenarbeit" : "Collaboration"}</p>
+            <p className="text-xs font-semibold uppercase text-white/70">{locale === "de" ? copy("Zusammenarbeit") : copy("Collaboration")}</p>
             <h2 className="display-title mt-4 text-3xl leading-tight text-white sm:text-5xl">
-              {locale === "de" ? "Klarer Ablauf. Persönliche Begleitung." : "Clear process. Personal guidance."}
+              {locale === "de" ? copy("Klarer Ablauf. Persönliche Begleitung.") : copy("Clear process. Personal guidance.")}
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-white/72">
               {locale === "de"
-                ? "Bei Veonis wissen Sie von Anfang an, was geprüft wird, warum es relevant ist und welche Entscheidung als Nächstes sinnvoll ist."
-                : "With Veonis, you know from the beginning what is being reviewed, why it matters and which decision makes sense next."}
+                ? copy("Bei Veonis wissen Sie von Anfang an, was geprüft wird, warum es relevant ist und welche Entscheidung als Nächstes sinnvoll ist.")
+                : copy("With Veonis, you know from the beginning what is being reviewed, why it matters and which decision makes sense next.")}
             </p>
           </div>
           <div className="grid border-t border-white/14 lg:grid-cols-3 lg:border-l lg:border-t-0">
@@ -1884,7 +1889,8 @@ function V2LatestBlogPostsSection({ locale, posts }: { locale: Locale; posts: Bl
   );
 }
 
-function V2CTASection({ locale }: { locale: Locale }) {
+function V2CTASection({ locale, homepageContent }: { locale: Locale; homepageContent?: HomepageContent }) {
+  const copy = createHomepageCopy(homepageContent?.cta);
   return (
     <section className="relative isolate overflow-hidden bg-white py-14 sm:py-20">
       <Container>
@@ -1892,12 +1898,12 @@ function V2CTASection({ locale }: { locale: Locale }) {
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase text-[#ef7d8b]">{brand.claim}</p>
             <h2 className="display-title mt-3 max-w-3xl text-3xl leading-tight text-white sm:text-5xl">
-              {locale === "de" ? "Bereit für mehr Überblick?" : "Ready for more overview?"}
+              {locale === "de" ? copy("Bereit für mehr Überblick?") : copy("Ready for more overview?")}
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/66">
               {locale === "de"
-                ? "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir nehmen uns Zeit für Ihre Fragen, ordnen Ihre Situation ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Mit klarem Blick auf Ihre finanzielle Gesamtsituation."
-                : "An initial conversation is often enough to make the most important topics visible. We take time for your questions, put your situation into context and show which next steps make sense. Non-binding. Personal. With a clear view of your overall financial situation."}
+                ? copy("Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir nehmen uns Zeit für Ihre Fragen, ordnen Ihre Situation ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Mit klarem Blick auf Ihre finanzielle Gesamtsituation.")
+                : copy("An initial conversation is often enough to make the most important topics visible. We take time for your questions, put your situation into context and show which next steps make sense. Non-binding. Personal. With a clear view of your overall financial situation.")}
             </p>
           </div>
           <Link
@@ -1905,7 +1911,7 @@ function V2CTASection({ locale }: { locale: Locale }) {
             href={getLocalizedPath(locale, "contact")}
           >
             <span className="min-w-0 break-words">
-              {locale === "de" ? "Kostenloses Erstgespräch vereinbaren" : "Book a free initial conversation"}
+              {locale === "de" ? copy("Kostenloses Erstgespräch vereinbaren") : copy("Book a free initial conversation")}
             </span>
             <ArrowRight className="ml-2 size-4 shrink-0" />
           </Link>
@@ -2027,13 +2033,13 @@ export async function HomePreviewPage({ locale }: { locale: Locale }) {
   return (
     <>
       <V2HeroSection locale={locale} page={page} />
-      <ServiceUniverse locale={locale} />
-      <V2OverviewSection locale={locale} />
-      <V2ServicesSection locale={locale} />
-      <InnovationSections locale={locale} />
-      <V2CollaborationSection locale={locale} />
-      <InsightsExplorer locale={locale} posts={posts.slice(0, 5)} />
-      <V2CTASection locale={locale} />
+      <ServiceUniverse locale={locale} homepageContent={page.homepageContent} />
+      <V2OverviewSection locale={locale} homepageContent={page.homepageContent} image={page.homepageImages?.overview} />
+      <V2ServicesSection locale={locale} homepageContent={page.homepageContent} />
+      <InnovationSections locale={locale} homepageContent={page.homepageContent} />
+      <V2CollaborationSection locale={locale} homepageContent={page.homepageContent} />
+      <InsightsExplorer locale={locale} posts={posts.slice(0, 5)} homepageContent={page.homepageContent} />
+      <V2CTASection locale={locale} homepageContent={page.homepageContent} />
     </>
   );
 }

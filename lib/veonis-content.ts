@@ -54,6 +54,8 @@ export type ContentSection = {
 };
 
 export type PageContent = {
+  homepageContent?: import("./homepage-content").HomepageContent;
+  homepageImages?: { hero?: string; overview?: string };
   seoTitle: string;
   metaDescription: string;
   eyebrow: string;

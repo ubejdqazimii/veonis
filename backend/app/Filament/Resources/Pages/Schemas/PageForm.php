@@ -6,13 +6,16 @@ use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class PageForm
 {
@@ -32,7 +35,8 @@ class PageForm
                             ->helperText('Stable frontend key, for example about-veonis.')
                             ->required()
                             ->maxLength(150),
-                        TextInput::make('slug')->required()->maxLength(255),
+                        TextInput::make('slug')->required()->maxLength(255)
+                            ->helperText(fn (Get $get): ?string => $get('key') === 'home-v2' ? 'This main homepage is published at /'.$get('locale').'. The stored content path is retained for compatibility.' : null),
                         TextInput::make('seo_title')->required()->maxLength(255)->columnSpanFull(),
                         Textarea::make('meta_description')->required()->rows(3)->columnSpanFull(),
                         Toggle::make('is_published')->label('Published')->live(),
@@ -52,7 +56,16 @@ class PageForm
                         TextInput::make('cta')->label('Primary button')->maxLength(150),
                         TextInput::make('secondary_cta')->label('Secondary button')->maxLength(150),
                     ]),
+                Section::make('Homepage images')
+                    ->visible(fn (Get $get): bool => $get('key') === 'home-v2')
+                    ->description('Optional images for the main homepage. Leave empty to use the current photographs.')
+                    ->schema([
+                        FileUpload::make('homepage_images.hero')->label('Hero image')->image()->disk('public')->directory('pages/homepage')->visibility('public')->maxSize(5120),
+                        FileUpload::make('homepage_images.overview')->label('Overall picture image')->image()->disk('public')->directory('pages/homepage')->visibility('public')->maxSize(5120),
+                    ]),
+                ...self::homepageSections(),
                 Section::make('Page sections')
+                    ->visible(fn (Get $get): bool => $get('key') !== 'home-v2')
                     ->description('Add, reorder, duplicate or remove structured website sections.')
                     ->schema([
                         Builder::make('sections')
@@ -123,5 +136,34 @@ class PageForm
                             ->columnSpanFull(),
                     ]),
             ]);
+    }
+
+    private static function homepageSections(): array
+    {
+        $groups = [
+            'hero' => 'Homepage · Hero details',
+            'services' => 'Homepage · Interactive service explorer',
+            'overview' => 'Homepage · Overall picture',
+            'highlights' => 'Homepage · Service highlights',
+            'innovation' => 'Homepage · Connected thinking & life situations',
+            'collaboration' => 'Homepage · Collaboration',
+            'insights' => 'Homepage · Journal headings & controls',
+            'cta' => 'Homepage · Final call to action',
+        ];
+
+        return collect($groups)->map(fn (string $label, string $key) => Section::make($label)
+            ->visible(fn (Get $get): bool => $get('key') === 'home-v2')
+            ->description('Edit the text for this page’s language. Blog articles are managed under Blog Posts. Changes appear on the website within about one minute.')
+            ->collapsed()
+            ->schema([
+                Repeater::make('homepage_content.'.$key)
+                    ->label('Website text')
+                    ->schema([
+                        Hidden::make('source')->required(),
+                        Textarea::make('text')->label('Text shown on the website')->rows(3)->required()->maxLength(5000),
+                    ])
+                    ->itemLabel(fn (array $state): string => Str::limit($state['source'] ?? 'Text', 90))
+                    ->addable(false)->deletable(false)->reorderable(false)->collapsible(),
+            ]))->values()->all();
     }
 }

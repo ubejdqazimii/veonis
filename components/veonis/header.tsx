@@ -53,7 +53,7 @@ export function Header({ locale, navigation, siteSettings }: HeaderProps) {
             {otherLocale}
           </Link>
           <Button asChild className="h-11 rounded-full bg-[#c63d4d] px-5 text-white hover:bg-[#b23443]">
-            <Link href={getLocalizedPath(locale, "contact")}>Termin vereinbaren</Link>
+            <Link href={getLocalizedPath(locale, "contact")}>{locale === "de" ? "Termin vereinbaren" : "Book a consultation"}</Link>
           </Button>
         </div>
         <MobileMenu locale={locale} navigation={managedPrimary} />

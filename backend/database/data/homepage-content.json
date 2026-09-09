@@ -1,0 +1,1454 @@
+{
+  "de": {
+    "services": [
+      {
+        "source": "Absichern",
+        "text": "Absichern"
+      },
+      {
+        "source": "Versicherungen & Vorsorge",
+        "text": "Versicherungen & Vorsorge"
+      },
+      {
+        "source": "Bin ich richtig abgesichert?",
+        "text": "Bin ich richtig abgesichert?"
+      },
+      {
+        "source": "Wir prüfen Ihre Versicherungen und Vorsorge gemeinsam – passend zu Ihrer Lebensphase.",
+        "text": "Wir prüfen Ihre Versicherungen und Vorsorge gemeinsam – passend zu Ihrer Lebensphase."
+      },
+      {
+        "source": "Lücken und doppelte Deckungen erkennen",
+        "text": "Lücken und doppelte Deckungen erkennen"
+      },
+      {
+        "source": "Krankenkasse, Haushalt und Rechtsschutz",
+        "text": "Krankenkasse, Haushalt und Rechtsschutz"
+      },
+      {
+        "source": "Säule 3a und berufliche Vorsorge",
+        "text": "Säule 3a und berufliche Vorsorge"
+      },
+      {
+        "source": "Wohnen",
+        "text": "Wohnen"
+      },
+      {
+        "source": "Hypotheken & Immobilien",
+        "text": "Hypotheken & Immobilien"
+      },
+      {
+        "source": "Kann ich mir mein Eigenheim leisten?",
+        "text": "Kann ich mir mein Eigenheim leisten?"
+      },
+      {
+        "source": "Wir verbinden Ihre Immobilienfinanzierung mit Ihrer gesamten Finanzplanung.",
+        "text": "Wir verbinden Ihre Immobilienfinanzierung mit Ihrer gesamten Finanzplanung."
+      },
+      {
+        "source": "Tragbarkeit und Eigenkapital prüfen",
+        "text": "Tragbarkeit und Eigenkapital prüfen"
+      },
+      {
+        "source": "Hypothekarmodelle vergleichen",
+        "text": "Hypothekarmodelle vergleichen"
+      },
+      {
+        "source": "Liquidität und Amortisation einordnen",
+        "text": "Liquidität und Amortisation einordnen"
+      },
+      {
+        "source": "Planen",
+        "text": "Planen"
+      },
+      {
+        "source": "Steuern & Finanzplanung",
+        "text": "Steuern & Finanzplanung"
+      },
+      {
+        "source": "Wie bringe ich Ordnung in meine Finanzen?",
+        "text": "Wie bringe ich Ordnung in meine Finanzen?"
+      },
+      {
+        "source": "Wir betrachten Steuern, Vorsorge und Liquidität im Zusammenhang.",
+        "text": "Wir betrachten Steuern, Vorsorge und Liquidität im Zusammenhang."
+      },
+      {
+        "source": "Steuerliche Möglichkeiten erkennen",
+        "text": "Steuerliche Möglichkeiten erkennen"
+      },
+      {
+        "source": "Einnahmen und Ausgaben einordnen",
+        "text": "Einnahmen und Ausgaben einordnen"
+      },
+      {
+        "source": "Pensionierung vorausschauend planen",
+        "text": "Pensionierung vorausschauend planen"
+      },
+      {
+        "source": "Aufbauen",
+        "text": "Aufbauen"
+      },
+      {
+        "source": "Anlagen & Vermögensaufbau",
+        "text": "Anlagen & Vermögensaufbau"
+      },
+      {
+        "source": "Wie baue ich langfristig Vermögen auf?",
+        "text": "Wie baue ich langfristig Vermögen auf?"
+      },
+      {
+        "source": "Zuerst klären wir Ihre Ziele, Ihren Zeithorizont und Ihre Risikobereitschaft.",
+        "text": "Zuerst klären wir Ihre Ziele, Ihren Zeithorizont und Ihre Risikobereitschaft."
+      },
+      {
+        "source": "Bestehende Anlagen und Kosten prüfen",
+        "text": "Bestehende Anlagen und Kosten prüfen"
+      },
+      {
+        "source": "Vorsorge und Anlagen verbinden",
+        "text": "Vorsorge und Anlagen verbinden"
+      },
+      {
+        "source": "Eine langfristige Strategie entwickeln",
+        "text": "Eine langfristige Strategie entwickeln"
+      },
+      {
+        "source": "Nachlass",
+        "text": "Nachlass"
+      },
+      {
+        "source": "Vorsorge & Nachlass",
+        "text": "Vorsorge & Nachlass"
+      },
+      {
+        "source": "Was passiert, wenn ich nicht entscheiden kann?",
+        "text": "Was passiert, wenn ich nicht entscheiden kann?"
+      },
+      {
+        "source": "Wir erkennen Handlungsbedarf und koordinieren bei Bedarf geeignete Fachpersonen.",
+        "text": "Wir erkennen Handlungsbedarf und koordinieren bei Bedarf geeignete Fachpersonen."
+      },
+      {
+        "source": "Vorsorgeauftrag und Patientenverfügung",
+        "text": "Vorsorgeauftrag und Patientenverfügung"
+      },
+      {
+        "source": "Testament und Nachlassplanung",
+        "text": "Testament und Nachlassplanung"
+      },
+      {
+        "source": "Familie und Nachfolge berücksichtigen",
+        "text": "Familie und Nachfolge berücksichtigen"
+      },
+      {
+        "source": "Unternehmen",
+        "text": "Unternehmen"
+      },
+      {
+        "source": "Firmenkunden",
+        "text": "Firmenkunden"
+      },
+      {
+        "source": "Wie sichere ich mein Unternehmen ab?",
+        "text": "Wie sichere ich mein Unternehmen ab?"
+      },
+      {
+        "source": "Wir ordnen betriebliche Absicherung und Vorsorge – auch mit Blick auf Sie als Inhaber.",
+        "text": "Wir ordnen betriebliche Absicherung und Vorsorge – auch mit Blick auf Sie als Inhaber."
+      },
+      {
+        "source": "Firmen-, Unfall- und Krankentaggeldversicherung",
+        "text": "Firmen-, Unfall- und Krankentaggeldversicherung"
+      },
+      {
+        "source": "Betriebliche Vorsorge und Mitarbeiterlösungen",
+        "text": "Betriebliche Vorsorge und Mitarbeiterlösungen"
+      },
+      {
+        "source": "Private und geschäftliche Finanzen strukturieren",
+        "text": "Private und geschäftliche Finanzen strukturieren"
+      },
+      {
+        "source": "INTERAKTIVER ÜBERBLICK",
+        "text": "INTERAKTIVER ÜBERBLICK"
+      },
+      {
+        "source": "Ihr Leben. Ihre Ziele.",
+        "text": "Ihr Leben. Ihre Ziele."
+      },
+      {
+        "source": "Alles verbunden.",
+        "text": "Alles verbunden."
+      },
+      {
+        "source": "Sechs Themen. Ein Ansprechpartner. Wählen Sie, was Sie bewegt – und entdecken Sie, wie wir Sie begleiten.",
+        "text": "Sechs Themen. Ein Ansprechpartner. Wählen Sie, was Sie bewegt – und entdecken Sie, wie wir Sie begleiten."
+      },
+      {
+        "source": "Sie im Mittelpunkt",
+        "text": "Sie im Mittelpunkt"
+      },
+      {
+        "source": "Tour pausieren",
+        "text": "Tour pausieren"
+      },
+      {
+        "source": "Geführte Tour starten",
+        "text": "Geführte Tour starten"
+      },
+      {
+        "source": "oder ein Thema wählen",
+        "text": "oder ein Thema wählen"
+      },
+      {
+        "source": "Kostenloses Erstgespräch",
+        "text": "Kostenloses Erstgespräch"
+      },
+      {
+        "source": "Alle Dienstleistungen",
+        "text": "Alle Dienstleistungen"
+      },
+      {
+        "source": "Vorheriges Thema",
+        "text": "Vorheriges Thema"
+      },
+      {
+        "source": "Nächstes Thema",
+        "text": "Nächstes Thema"
+      },
+      {
+        "source": "Noch unsicher, wo Sie starten sollen?",
+        "text": "Noch unsicher, wo Sie starten sollen?"
+      },
+      {
+        "source": "Mit dem 360°-Check das Gesamtbild sehen",
+        "text": "Mit dem 360°-Check das Gesamtbild sehen"
+      }
+    ],
+    "innovation": [
+      {
+        "source": "Zusammenführen",
+        "text": "Zusammenführen"
+      },
+      {
+        "source": "Einzelne Unterlagen. Ein gemeinsamer Blick.",
+        "text": "Einzelne Unterlagen. Ein gemeinsamer Blick."
+      },
+      {
+        "source": "Policen, Vorsorge und Finanzierungsfragen bilden die Grundlage für Ihr persönliches Gespräch.",
+        "text": "Policen, Vorsorge und Finanzierungsfragen bilden die Grundlage für Ihr persönliches Gespräch."
+      },
+      {
+        "source": "Versicherungen",
+        "text": "Versicherungen"
+      },
+      {
+        "source": "Vorsorge",
+        "text": "Vorsorge"
+      },
+      {
+        "source": "Finanzierung",
+        "text": "Finanzierung"
+      },
+      {
+        "source": "Zusammenhänge sehen",
+        "text": "Zusammenhänge sehen"
+      },
+      {
+        "source": "Was zusammenhängt, gehört zusammen.",
+        "text": "Was zusammenhängt, gehört zusammen."
+      },
+      {
+        "source": "Wir prüfen, wie Absicherung, Liquidität und langfristige Ziele aufeinander wirken.",
+        "text": "Wir prüfen, wie Absicherung, Liquidität und langfristige Ziele aufeinander wirken."
+      },
+      {
+        "source": "Absicherung",
+        "text": "Absicherung"
+      },
+      {
+        "source": "Liquidität",
+        "text": "Liquidität"
+      },
+      {
+        "source": "Lebensziele",
+        "text": "Lebensziele"
+      },
+      {
+        "source": "Prioritäten setzen",
+        "text": "Prioritäten setzen"
+      },
+      {
+        "source": "Aus vielen Fragen wird ein nächster Schritt.",
+        "text": "Aus vielen Fragen wird ein nächster Schritt."
+      },
+      {
+        "source": "Sie besprechen mit uns, welche Themen zuerst Aufmerksamkeit brauchen und wie es weitergeht.",
+        "text": "Sie besprechen mit uns, welche Themen zuerst Aufmerksamkeit brauchen und wie es weitergeht."
+      },
+      {
+        "source": "Überblick",
+        "text": "Überblick"
+      },
+      {
+        "source": "Empfehlungen",
+        "text": "Empfehlungen"
+      },
+      {
+        "source": "Begleitung",
+        "text": "Begleitung"
+      },
+      {
+        "source": "Mehr Überblick",
+        "text": "Mehr Überblick"
+      },
+      {
+        "source": "Ihre Finanzen als Gesamtbild.",
+        "text": "Ihre Finanzen als Gesamtbild."
+      },
+      {
+        "source": "Der 360°-Check ist ein möglicher Einstieg, wenn Sie Ihre bestehenden Lösungen gemeinsam betrachten möchten.",
+        "text": "Der 360°-Check ist ein möglicher Einstieg, wenn Sie Ihre bestehenden Lösungen gemeinsam betrachten möchten."
+      },
+      {
+        "source": "Bestehende Verträge sammeln",
+        "text": "Bestehende Verträge sammeln"
+      },
+      {
+        "source": "Ihre wichtigsten Fragen notieren",
+        "text": "Ihre wichtigsten Fragen notieren"
+      },
+      {
+        "source": "Ziele im Erstgespräch besprechen",
+        "text": "Ziele im Erstgespräch besprechen"
+      },
+      {
+        "source": "Ein Eigenheim",
+        "text": "Ein Eigenheim"
+      },
+      {
+        "source": "Wohnen beginnt mit einem guten Plan.",
+        "text": "Wohnen beginnt mit einem guten Plan."
+      },
+      {
+        "source": "Finanzierung, Vorsorge und Steuern greifen ineinander. Im Gespräch klären wir, welche Fragen für Ihr Vorhaben wichtig sind.",
+        "text": "Finanzierung, Vorsorge und Steuern greifen ineinander. Im Gespräch klären wir, welche Fragen für Ihr Vorhaben wichtig sind."
+      },
+      {
+        "source": "Eigenkapital und Budget einordnen",
+        "text": "Eigenkapital und Budget einordnen"
+      },
+      {
+        "source": "Bestehende Vorsorge berücksichtigen",
+        "text": "Bestehende Vorsorge berücksichtigen"
+      },
+      {
+        "source": "Finanzierungsmöglichkeiten besprechen",
+        "text": "Finanzierungsmöglichkeiten besprechen"
+      },
+      {
+        "source": "Meine Familie",
+        "text": "Meine Familie"
+      },
+      {
+        "source": "Für heute sorgen. An morgen denken.",
+        "text": "Für heute sorgen. An morgen denken."
+      },
+      {
+        "source": "Wenn sich Ihr Leben verändert, lohnt sich ein gemeinsamer Blick auf Absicherung, Vorsorge und rechtliche Vorsorgethemen.",
+        "text": "Wenn sich Ihr Leben verändert, lohnt sich ein gemeinsamer Blick auf Absicherung, Vorsorge und rechtliche Vorsorgethemen."
+      },
+      {
+        "source": "Absicherung der Familie prüfen",
+        "text": "Absicherung der Familie prüfen"
+      },
+      {
+        "source": "Vorsorgeziele neu einordnen",
+        "text": "Vorsorgeziele neu einordnen"
+      },
+      {
+        "source": "Vorsorgeauftrag und Nachlass ansprechen",
+        "text": "Vorsorgeauftrag und Nachlass ansprechen"
+      },
+      {
+        "source": "Mein Unternehmen",
+        "text": "Mein Unternehmen"
+      },
+      {
+        "source": "Unternehmerisch denken. Ganzheitlich planen.",
+        "text": "Unternehmerisch denken. Ganzheitlich planen."
+      },
+      {
+        "source": "Wir betrachten Ihre geschäftliche Absicherung und Ihre persönliche Situation im Zusammenhang.",
+        "text": "Wir betrachten Ihre geschäftliche Absicherung und Ihre persönliche Situation im Zusammenhang."
+      },
+      {
+        "source": "Betriebliche Risiken besprechen",
+        "text": "Betriebliche Risiken besprechen"
+      },
+      {
+        "source": "Mitarbeitervorsorge einordnen",
+        "text": "Mitarbeitervorsorge einordnen"
+      },
+      {
+        "source": "Private und geschäftliche Planung verbinden",
+        "text": "Private und geschäftliche Planung verbinden"
+      },
+      {
+        "source": "Komplexität wird",
+        "text": "Komplexität wird"
+      },
+      {
+        "source": "Klarheit.",
+        "text": "Klarheit."
+      },
+      {
+        "source": "Ihre finanzielle Welt ist vernetzt. Unsere Beratung auch. Entdecken Sie, wie aus einzelnen Themen eine gemeinsame Richtung entsteht.",
+        "text": "Ihre finanzielle Welt ist vernetzt. Unsere Beratung auch. Entdecken Sie, wie aus einzelnen Themen eine gemeinsame Richtung entsteht."
+      },
+      {
+        "source": "Beratungsablauf entdecken",
+        "text": "Beratungsablauf entdecken"
+      },
+      {
+        "source": "Interaktive Darstellung unseres Beratungsansatzes",
+        "text": "Interaktive Darstellung unseres Beratungsansatzes"
+      },
+      {
+        "source": "DER WEG ZUM ÜBERBLICK",
+        "text": "DER WEG ZUM ÜBERBLICK"
+      },
+      {
+        "source": "Vernetzt betrachtet.",
+        "text": "Vernetzt betrachtet."
+      },
+      {
+        "source": "Persönlich besprochen.",
+        "text": "Persönlich besprochen."
+      },
+      {
+        "source": "IHR NÄCHSTER SCHRITT",
+        "text": "IHR NÄCHSTER SCHRITT"
+      },
+      {
+        "source": "Was bewegt Sie gerade?",
+        "text": "Was bewegt Sie gerade?"
+      },
+      {
+        "source": "Wählen Sie Ihre Situation. Entdecken Sie einen passenden Gesprächseinstieg.",
+        "text": "Wählen Sie Ihre Situation. Entdecken Sie einen passenden Gesprächseinstieg."
+      },
+      {
+        "source": "Ihre Situation",
+        "text": "Ihre Situation"
+      },
+      {
+        "source": "DAS KÖNNEN WIR GEMEINSAM KLÄREN",
+        "text": "DAS KÖNNEN WIR GEMEINSAM KLÄREN"
+      },
+      {
+        "source": "Darüber sprechen",
+        "text": "Darüber sprechen"
+      },
+      {
+        "source": "Eine erste Orientierung. Ihre persönliche Empfehlung entsteht im Gespräch.",
+        "text": "Eine erste Orientierung. Ihre persönliche Empfehlung entsteht im Gespräch."
+      }
+    ],
+    "insights": [
+      {
+        "source": "Wissen, das verbindet.",
+        "text": "Wissen, das verbindet."
+      },
+      {
+        "source": "Neue Perspektiven auf Ihre Finanzen. Entdecken Sie die Themen, die Sie weiterbringen.",
+        "text": "Neue Perspektiven auf Ihre Finanzen. Entdecken Sie die Themen, die Sie weiterbringen."
+      },
+      {
+        "source": "Zum Journal",
+        "text": "Zum Journal"
+      },
+      {
+        "source": "Artikelthemen",
+        "text": "Artikelthemen"
+      },
+      {
+        "source": "Alle Themen",
+        "text": "Alle Themen"
+      },
+      {
+        "source": "Beiträge durchsuchen",
+        "text": "Beiträge durchsuchen"
+      },
+      {
+        "source": "Wissen entdecken …",
+        "text": "Wissen entdecken …"
+      },
+      {
+        "source": "Beitrag zum Entdecken",
+        "text": "Beitrag zum Entdecken"
+      },
+      {
+        "source": "Beiträge zum Entdecken",
+        "text": "Beiträge zum Entdecken"
+      },
+      {
+        "source": "Ein Thema wählen. Zusammenhänge verstehen.",
+        "text": "Ein Thema wählen. Zusammenhänge verstehen."
+      },
+      {
+        "source": "IM FOKUS",
+        "text": "IM FOKUS"
+      },
+      {
+        "source": "Perspektive entdecken",
+        "text": "Perspektive entdecken"
+      },
+      {
+        "source": "Artikelauswahl",
+        "text": "Artikelauswahl"
+      },
+      {
+        "source": "IHR WISSENSKOMPASS",
+        "text": "IHR WISSENSKOMPASS"
+      },
+      {
+        "source": "Gute Fragen sind der Anfang.",
+        "text": "Gute Fragen sind der Anfang."
+      },
+      {
+        "source": "Unsere Beiträge helfen Ihnen, Finanzthemen einzuordnen und das nächste Gespräch vorzubereiten.",
+        "text": "Unsere Beiträge helfen Ihnen, Finanzthemen einzuordnen und das nächste Gespräch vorzubereiten."
+      },
+      {
+        "source": "Ihre Fragen mit uns besprechen",
+        "text": "Ihre Fragen mit uns besprechen"
+      },
+      {
+        "source": "Noch kein passender Beitrag.",
+        "text": "Noch kein passender Beitrag."
+      },
+      {
+        "source": "Versuchen Sie einen anderen Suchbegriff oder zeigen Sie alle Themen an.",
+        "text": "Versuchen Sie einen anderen Suchbegriff oder zeigen Sie alle Themen an."
+      },
+      {
+        "source": "Alle Beiträge anzeigen",
+        "text": "Alle Beiträge anzeigen"
+      }
+    ],
+    "hero": [
+      {
+        "source": "Ganzheitliche Analyse",
+        "text": "Ganzheitliche Analyse"
+      },
+      {
+        "source": "Unabhängiger Blick",
+        "text": "Unabhängiger Blick"
+      },
+      {
+        "source": "Persönliche Begleitung",
+        "text": "Persönliche Begleitung"
+      },
+      {
+        "source": "Klare Empfehlungen",
+        "text": "Klare Empfehlungen"
+      },
+      {
+        "source": "Premium Beratungssituation bei Veonis",
+        "text": "Premium Beratungssituation bei Veonis"
+      },
+      {
+        "source": "Veonis Prinzip",
+        "text": "Veonis Prinzip"
+      }
+    ],
+    "overview": [
+      {
+        "source": "Gesamtbild",
+        "text": "Gesamtbild"
+      },
+      {
+        "source": "Finanzielle Klarheit beginnt nicht bei einem Produkt, sondern beim Gesamtbild.",
+        "text": "Finanzielle Klarheit beginnt nicht bei einem Produkt, sondern beim Gesamtbild."
+      },
+      {
+        "source": "Viele Menschen haben einzelne Lösungen an unterschiedlichen Orten: eine Versicherung hier, eine Vorsorge dort, eine Hypothek bei einer Bank, Anlagen an anderer Stelle.",
+        "text": "Viele Menschen haben einzelne Lösungen an unterschiedlichen Orten: eine Versicherung hier, eine Vorsorge dort, eine Hypothek bei einer Bank, Anlagen an anderer Stelle."
+      },
+      {
+        "source": "Doch finanzielle Entscheidungen wirken selten isoliert. Vorsorge beeinflusst Steuern. Eine Hypothek beeinflusst Liquidität. Versicherungen beeinflussen Sicherheit und Planungsspielraum.",
+        "text": "Doch finanzielle Entscheidungen wirken selten isoliert. Vorsorge beeinflusst Steuern. Eine Hypothek beeinflusst Liquidität. Versicherungen beeinflussen Sicherheit und Planungsspielraum."
+      },
+      {
+        "source": "Der Veonis 360°-Check zeigt, was passt, was fehlt und was zuerst angegangen werden sollte.",
+        "text": "Der Veonis 360°-Check zeigt, was passt, was fehlt und was zuerst angegangen werden sollte."
+      },
+      {
+        "source": "Gesamtbild statt Einzelentscheid",
+        "text": "Gesamtbild statt Einzelentscheid"
+      },
+      {
+        "source": "Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen werden gemeinsam betrachtet.",
+        "text": "Versicherungen, Vorsorge, Steuern, Hypotheken und Anlagen werden gemeinsam betrachtet."
+      },
+      {
+        "source": "Prioritäten vor Produkten",
+        "text": "Prioritäten vor Produkten"
+      },
+      {
+        "source": "Zuerst klären wir, was wirklich wichtig ist - danach geht es um mögliche Lösungen.",
+        "text": "Zuerst klären wir, was wirklich wichtig ist - danach geht es um mögliche Lösungen."
+      },
+      {
+        "source": "Beratung mit Umsetzungsplan",
+        "text": "Beratung mit Umsetzungsplan"
+      },
+      {
+        "source": "Sie erhalten verständliche Empfehlungen und konkrete nächste Schritte.",
+        "text": "Sie erhalten verständliche Empfehlungen und konkrete nächste Schritte."
+      },
+      {
+        "source": "Digitale Finanzübersicht in einer Beratung",
+        "text": "Digitale Finanzübersicht in einer Beratung"
+      }
+    ],
+    "highlights": [
+      {
+        "source": "Versicherungen & Vorsorge",
+        "text": "Versicherungen & Vorsorge"
+      },
+      {
+        "source": "Veonis prüft, ob Absicherung, Vorsorge und Lebensphase zusammenpassen - verständlich, unabhängig und mit Blick auf Ihre Prioritäten.",
+        "text": "Veonis prüft, ob Absicherung, Vorsorge und Lebensphase zusammenpassen - verständlich, unabhängig und mit Blick auf Ihre Prioritäten."
+      },
+      {
+        "source": "Bin ich richtig abgesichert?",
+        "text": "Bin ich richtig abgesichert?"
+      },
+      {
+        "source": "Wie wirkt sich Vorsorge auf Steuern aus?",
+        "text": "Wie wirkt sich Vorsorge auf Steuern aus?"
+      },
+      {
+        "source": "Hypotheken & Immobilien",
+        "text": "Hypotheken & Immobilien"
+      },
+      {
+        "source": "Wir ordnen Finanzierung, Tragbarkeit, Zinsrisiken und Liquidität ein, damit Wohneigentum zur gesamten Planung passt.",
+        "text": "Wir ordnen Finanzierung, Tragbarkeit, Zinsrisiken und Liquidität ein, damit Wohneigentum zur gesamten Planung passt."
+      },
+      {
+        "source": "Welche Hypothek passt?",
+        "text": "Welche Hypothek passt?"
+      },
+      {
+        "source": "Was bleibt langfristig finanziell tragbar?",
+        "text": "Was bleibt langfristig finanziell tragbar?"
+      },
+      {
+        "source": "Steuern, Anlagen & Finanzplanung",
+        "text": "Steuern, Anlagen & Finanzplanung"
+      },
+      {
+        "source": "Steuerfragen, Anlagen und Liquidität werden nicht isoliert betrachtet, sondern als Teil einer klaren Finanzstruktur.",
+        "text": "Steuerfragen, Anlagen und Liquidität werden nicht isoliert betrachtet, sondern als Teil einer klaren Finanzstruktur."
+      },
+      {
+        "source": "Wo lassen sich Steuern optimieren?",
+        "text": "Wo lassen sich Steuern optimieren?"
+      },
+      {
+        "source": "Wie soll freies Kapital eingesetzt werden?",
+        "text": "Wie soll freies Kapital eingesetzt werden?"
+      },
+      {
+        "source": "Je nach Situation starten wir dort, wo der grösste Handlungsbedarf besteht. Entscheidend bleibt immer der Zusammenhang zwischen allen Finanzthemen.",
+        "text": "Je nach Situation starten wir dort, wo der grösste Handlungsbedarf besteht. Entscheidend bleibt immer der Zusammenhang zwischen allen Finanzthemen."
+      },
+      {
+        "source": "Drei Einstiege. Ein Gesamtbild.",
+        "text": "Drei Einstiege. Ein Gesamtbild."
+      }
+    ],
+    "collaboration": [
+      {
+        "source": "Kennenlernen",
+        "text": "Kennenlernen"
+      },
+      {
+        "source": "Wir sprechen über Ihre Situation, Ihre Fragen und die Unterlagen, die für den Überblick wichtig sind.",
+        "text": "Wir sprechen über Ihre Situation, Ihre Fragen und die Unterlagen, die für den Überblick wichtig sind."
+      },
+      {
+        "source": "360° Check",
+        "text": "360° Check"
+      },
+      {
+        "source": "Wir prüfen Zusammenhänge, Prioritäten, mögliche Lücken und bestehende Verträge.",
+        "text": "Wir prüfen Zusammenhänge, Prioritäten, mögliche Lücken und bestehende Verträge."
+      },
+      {
+        "source": "Empfehlung & Begleitung",
+        "text": "Empfehlung & Begleitung"
+      },
+      {
+        "source": "Sie erhalten klare Empfehlungen und werden bei den sinnvollen nächsten Schritten begleitet.",
+        "text": "Sie erhalten klare Empfehlungen und werden bei den sinnvollen nächsten Schritten begleitet."
+      },
+      {
+        "source": "Zusammenarbeit",
+        "text": "Zusammenarbeit"
+      },
+      {
+        "source": "Klarer Ablauf. Persönliche Begleitung.",
+        "text": "Klarer Ablauf. Persönliche Begleitung."
+      },
+      {
+        "source": "Bei Veonis wissen Sie von Anfang an, was geprüft wird, warum es relevant ist und welche Entscheidung als Nächstes sinnvoll ist.",
+        "text": "Bei Veonis wissen Sie von Anfang an, was geprüft wird, warum es relevant ist und welche Entscheidung als Nächstes sinnvoll ist."
+      }
+    ],
+    "cta": [
+      {
+        "source": "Bereit für mehr Überblick?",
+        "text": "Bereit für mehr Überblick?"
+      },
+      {
+        "source": "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir nehmen uns Zeit für Ihre Fragen, ordnen Ihre Situation ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Mit klarem Blick auf Ihre finanzielle Gesamtsituation.",
+        "text": "Ein erstes Gespräch reicht oft aus, um die wichtigsten Themen sichtbar zu machen. Wir nehmen uns Zeit für Ihre Fragen, ordnen Ihre Situation ein und zeigen Ihnen, welche nächsten Schritte sinnvoll sind. Unverbindlich. Persönlich. Mit klarem Blick auf Ihre finanzielle Gesamtsituation."
+      },
+      {
+        "source": "Kostenloses Erstgespräch vereinbaren",
+        "text": "Kostenloses Erstgespräch vereinbaren"
+      }
+    ]
+  },
+  "en": {
+    "services": [
+      {
+        "source": "Protect",
+        "text": "Protect"
+      },
+      {
+        "source": "Insurance & pensions",
+        "text": "Insurance & pensions"
+      },
+      {
+        "source": "Am I properly protected?",
+        "text": "Am I properly protected?"
+      },
+      {
+        "source": "We review your insurance and pension arrangements together, in the context of your life stage.",
+        "text": "We review your insurance and pension arrangements together, in the context of your life stage."
+      },
+      {
+        "source": "Identify gaps and overlapping cover",
+        "text": "Identify gaps and overlapping cover"
+      },
+      {
+        "source": "Health, household and legal insurance",
+        "text": "Health, household and legal insurance"
+      },
+      {
+        "source": "Pillar 3a and occupational pensions",
+        "text": "Pillar 3a and occupational pensions"
+      },
+      {
+        "source": "Own a home",
+        "text": "Own a home"
+      },
+      {
+        "source": "Mortgages & property",
+        "text": "Mortgages & property"
+      },
+      {
+        "source": "Can I afford my own home?",
+        "text": "Can I afford my own home?"
+      },
+      {
+        "source": "We connect your property financing with your wider financial plan.",
+        "text": "We connect your property financing with your wider financial plan."
+      },
+      {
+        "source": "Review affordability and equity",
+        "text": "Review affordability and equity"
+      },
+      {
+        "source": "Compare mortgage models",
+        "text": "Compare mortgage models"
+      },
+      {
+        "source": "Understand liquidity and repayments",
+        "text": "Understand liquidity and repayments"
+      },
+      {
+        "source": "Plan ahead",
+        "text": "Plan ahead"
+      },
+      {
+        "source": "Taxes & financial planning",
+        "text": "Taxes & financial planning"
+      },
+      {
+        "source": "How do I put my finances in order?",
+        "text": "How do I put my finances in order?"
+      },
+      {
+        "source": "We look at tax, pensions and liquidity as parts of one financial picture.",
+        "text": "We look at tax, pensions and liquidity as parts of one financial picture."
+      },
+      {
+        "source": "Identify tax planning opportunities",
+        "text": "Identify tax planning opportunities"
+      },
+      {
+        "source": "Review income and expenditure",
+        "text": "Review income and expenditure"
+      },
+      {
+        "source": "Plan ahead for retirement",
+        "text": "Plan ahead for retirement"
+      },
+      {
+        "source": "Build wealth",
+        "text": "Build wealth"
+      },
+      {
+        "source": "Investments & wealth building",
+        "text": "Investments & wealth building"
+      },
+      {
+        "source": "How can I build wealth over time?",
+        "text": "How can I build wealth over time?"
+      },
+      {
+        "source": "We start with your goals, time horizon and appetite for risk.",
+        "text": "We start with your goals, time horizon and appetite for risk."
+      },
+      {
+        "source": "Review existing investments and costs",
+        "text": "Review existing investments and costs"
+      },
+      {
+        "source": "Connect pensions and investments",
+        "text": "Connect pensions and investments"
+      },
+      {
+        "source": "Develop a long-term strategy",
+        "text": "Develop a long-term strategy"
+      },
+      {
+        "source": "Pass it on",
+        "text": "Pass it on"
+      },
+      {
+        "source": "Future care & estate planning",
+        "text": "Future care & estate planning"
+      },
+      {
+        "source": "What if I can no longer make decisions?",
+        "text": "What if I can no longer make decisions?"
+      },
+      {
+        "source": "We identify areas to address and coordinate with suitable specialists when needed.",
+        "text": "We identify areas to address and coordinate with suitable specialists when needed."
+      },
+      {
+        "source": "Advance care and healthcare directives",
+        "text": "Advance care and healthcare directives"
+      },
+      {
+        "source": "Wills and estate planning",
+        "text": "Wills and estate planning"
+      },
+      {
+        "source": "Consider family and succession",
+        "text": "Consider family and succession"
+      },
+      {
+        "source": "Run a business",
+        "text": "Run a business"
+      },
+      {
+        "source": "Business clients",
+        "text": "Business clients"
+      },
+      {
+        "source": "How do I protect my business?",
+        "text": "How do I protect my business?"
+      },
+      {
+        "source": "We review business protection and pensions, including your needs as an owner.",
+        "text": "We review business protection and pensions, including your needs as an owner."
+      },
+      {
+        "source": "Business, accident and daily sickness cover",
+        "text": "Business, accident and daily sickness cover"
+      },
+      {
+        "source": "Occupational pensions and employee solutions",
+        "text": "Occupational pensions and employee solutions"
+      },
+      {
+        "source": "Structure personal and business finances",
+        "text": "Structure personal and business finances"
+      },
+      {
+        "source": "INTERACTIVE OVERVIEW",
+        "text": "INTERACTIVE OVERVIEW"
+      },
+      {
+        "source": "Your life. Your goals.",
+        "text": "Your life. Your goals."
+      },
+      {
+        "source": "Everything connected.",
+        "text": "Everything connected."
+      },
+      {
+        "source": "Six areas. One point of contact. Choose what matters to you and discover how we can help.",
+        "text": "Six areas. One point of contact. Choose what matters to you and discover how we can help."
+      },
+      {
+        "source": "You at the centre",
+        "text": "You at the centre"
+      },
+      {
+        "source": "Pause tour",
+        "text": "Pause tour"
+      },
+      {
+        "source": "Start guided tour",
+        "text": "Start guided tour"
+      },
+      {
+        "source": "or choose a topic",
+        "text": "or choose a topic"
+      },
+      {
+        "source": "Free initial consultation",
+        "text": "Free initial consultation"
+      },
+      {
+        "source": "All services",
+        "text": "All services"
+      },
+      {
+        "source": "Previous topic",
+        "text": "Previous topic"
+      },
+      {
+        "source": "Next topic",
+        "text": "Next topic"
+      },
+      {
+        "source": "Not sure where to start?",
+        "text": "Not sure where to start?"
+      },
+      {
+        "source": "See the full picture with a 360° check",
+        "text": "See the full picture with a 360° check"
+      }
+    ],
+    "innovation": [
+      {
+        "source": "Bring together",
+        "text": "Bring together"
+      },
+      {
+        "source": "Separate documents. One shared picture.",
+        "text": "Separate documents. One shared picture."
+      },
+      {
+        "source": "Policies, pensions and financing questions form the starting point for your personal consultation.",
+        "text": "Policies, pensions and financing questions form the starting point for your personal consultation."
+      },
+      {
+        "source": "Insurance",
+        "text": "Insurance"
+      },
+      {
+        "source": "Pensions",
+        "text": "Pensions"
+      },
+      {
+        "source": "Financing",
+        "text": "Financing"
+      },
+      {
+        "source": "See connections",
+        "text": "See connections"
+      },
+      {
+        "source": "Connected decisions belong together.",
+        "text": "Connected decisions belong together."
+      },
+      {
+        "source": "We review how protection, liquidity and long-term goals affect one another.",
+        "text": "We review how protection, liquidity and long-term goals affect one another."
+      },
+      {
+        "source": "Protection",
+        "text": "Protection"
+      },
+      {
+        "source": "Liquidity",
+        "text": "Liquidity"
+      },
+      {
+        "source": "Life goals",
+        "text": "Life goals"
+      },
+      {
+        "source": "Set priorities",
+        "text": "Set priorities"
+      },
+      {
+        "source": "Many questions. One clear next step.",
+        "text": "Many questions. One clear next step."
+      },
+      {
+        "source": "Together, we discuss which areas need attention first and how to move forward.",
+        "text": "Together, we discuss which areas need attention first and how to move forward."
+      },
+      {
+        "source": "Overview",
+        "text": "Overview"
+      },
+      {
+        "source": "Recommendations",
+        "text": "Recommendations"
+      },
+      {
+        "source": "Ongoing support",
+        "text": "Ongoing support"
+      },
+      {
+        "source": "More clarity",
+        "text": "More clarity"
+      },
+      {
+        "source": "Your finances as one picture.",
+        "text": "Your finances as one picture."
+      },
+      {
+        "source": "The 360° check can be a starting point when you want to review your existing arrangements together.",
+        "text": "The 360° check can be a starting point when you want to review your existing arrangements together."
+      },
+      {
+        "source": "Gather existing contracts",
+        "text": "Gather existing contracts"
+      },
+      {
+        "source": "Note your main questions",
+        "text": "Note your main questions"
+      },
+      {
+        "source": "Discuss goals in an initial consultation",
+        "text": "Discuss goals in an initial consultation"
+      },
+      {
+        "source": "A home of my own",
+        "text": "A home of my own"
+      },
+      {
+        "source": "A good home starts with a good plan.",
+        "text": "A good home starts with a good plan."
+      },
+      {
+        "source": "Financing, pensions and taxes are connected. In a consultation, we clarify the questions relevant to your plans.",
+        "text": "Financing, pensions and taxes are connected. In a consultation, we clarify the questions relevant to your plans."
+      },
+      {
+        "source": "Review equity and budget",
+        "text": "Review equity and budget"
+      },
+      {
+        "source": "Consider existing pensions",
+        "text": "Consider existing pensions"
+      },
+      {
+        "source": "Discuss financing options",
+        "text": "Discuss financing options"
+      },
+      {
+        "source": "My family",
+        "text": "My family"
+      },
+      {
+        "source": "Care for today. Think about tomorrow.",
+        "text": "Care for today. Think about tomorrow."
+      },
+      {
+        "source": "When life changes, it helps to review protection, pensions and future care arrangements together.",
+        "text": "When life changes, it helps to review protection, pensions and future care arrangements together."
+      },
+      {
+        "source": "Review family protection",
+        "text": "Review family protection"
+      },
+      {
+        "source": "Revisit pension goals",
+        "text": "Revisit pension goals"
+      },
+      {
+        "source": "Discuss advance directives and estate planning",
+        "text": "Discuss advance directives and estate planning"
+      },
+      {
+        "source": "My business",
+        "text": "My business"
+      },
+      {
+        "source": "Think business. Plan comprehensively.",
+        "text": "Think business. Plan comprehensively."
+      },
+      {
+        "source": "We consider your business protection in the context of your personal situation.",
+        "text": "We consider your business protection in the context of your personal situation."
+      },
+      {
+        "source": "Discuss business risks",
+        "text": "Discuss business risks"
+      },
+      {
+        "source": "Review employee pensions",
+        "text": "Review employee pensions"
+      },
+      {
+        "source": "Connect business and personal planning",
+        "text": "Connect business and personal planning"
+      },
+      {
+        "source": "Complexity becomes",
+        "text": "Complexity becomes"
+      },
+      {
+        "source": "clarity.",
+        "text": "clarity."
+      },
+      {
+        "source": "Your financial world is connected. So is our advice. Explore how separate topics come together in one direction.",
+        "text": "Your financial world is connected. So is our advice. Explore how separate topics come together in one direction."
+      },
+      {
+        "source": "Explore the advisory process",
+        "text": "Explore the advisory process"
+      },
+      {
+        "source": "Interactive illustration of our advisory approach",
+        "text": "Interactive illustration of our advisory approach"
+      },
+      {
+        "source": "THE PATH TO CLARITY",
+        "text": "THE PATH TO CLARITY"
+      },
+      {
+        "source": "Connected thinking.",
+        "text": "Connected thinking."
+      },
+      {
+        "source": "Personal conversation.",
+        "text": "Personal conversation."
+      },
+      {
+        "source": "YOUR NEXT STEP",
+        "text": "YOUR NEXT STEP"
+      },
+      {
+        "source": "What’s on your mind?",
+        "text": "What’s on your mind?"
+      },
+      {
+        "source": "Choose your situation. Find a useful starting point for a conversation.",
+        "text": "Choose your situation. Find a useful starting point for a conversation."
+      },
+      {
+        "source": "Your situation",
+        "text": "Your situation"
+      },
+      {
+        "source": "WHAT WE CAN EXPLORE TOGETHER",
+        "text": "WHAT WE CAN EXPLORE TOGETHER"
+      },
+      {
+        "source": "Let’s talk",
+        "text": "Let’s talk"
+      },
+      {
+        "source": "An initial orientation. Your personal recommendation starts with a conversation.",
+        "text": "An initial orientation. Your personal recommendation starts with a conversation."
+      }
+    ],
+    "insights": [
+      {
+        "source": "Knowledge that connects.",
+        "text": "Knowledge that connects."
+      },
+      {
+        "source": "Fresh perspectives on your finances. Explore the topics that move you forward.",
+        "text": "Fresh perspectives on your finances. Explore the topics that move you forward."
+      },
+      {
+        "source": "Explore the journal",
+        "text": "Explore the journal"
+      },
+      {
+        "source": "Article topics",
+        "text": "Article topics"
+      },
+      {
+        "source": "All topics",
+        "text": "All topics"
+      },
+      {
+        "source": "Search articles",
+        "text": "Search articles"
+      },
+      {
+        "source": "Explore insights …",
+        "text": "Explore insights …"
+      },
+      {
+        "source": "article to explore",
+        "text": "article to explore"
+      },
+      {
+        "source": "articles to explore",
+        "text": "articles to explore"
+      },
+      {
+        "source": "Choose a topic. Understand the connections.",
+        "text": "Choose a topic. Understand the connections."
+      },
+      {
+        "source": "IN FOCUS",
+        "text": "IN FOCUS"
+      },
+      {
+        "source": "Explore this perspective",
+        "text": "Explore this perspective"
+      },
+      {
+        "source": "Article selection",
+        "text": "Article selection"
+      },
+      {
+        "source": "YOUR KNOWLEDGE COMPASS",
+        "text": "YOUR KNOWLEDGE COMPASS"
+      },
+      {
+        "source": "Good questions are the beginning.",
+        "text": "Good questions are the beginning."
+      },
+      {
+        "source": "Our articles help you understand financial topics and prepare for your next conversation.",
+        "text": "Our articles help you understand financial topics and prepare for your next conversation."
+      },
+      {
+        "source": "Discuss your questions with us",
+        "text": "Discuss your questions with us"
+      },
+      {
+        "source": "No matching articles yet.",
+        "text": "No matching articles yet."
+      },
+      {
+        "source": "Try a different search term or show all topics.",
+        "text": "Try a different search term or show all topics."
+      },
+      {
+        "source": "Show all articles",
+        "text": "Show all articles"
+      }
+    ],
+    "hero": [
+      {
+        "source": "Holistic analysis",
+        "text": "Holistic analysis"
+      },
+      {
+        "source": "Independent perspective",
+        "text": "Independent perspective"
+      },
+      {
+        "source": "Personal guidance",
+        "text": "Personal guidance"
+      },
+      {
+        "source": "Clear recommendations",
+        "text": "Clear recommendations"
+      },
+      {
+        "source": "Premium advisory setting at Veonis",
+        "text": "Premium advisory setting at Veonis"
+      },
+      {
+        "source": "Veonis principle",
+        "text": "Veonis principle"
+      }
+    ],
+    "overview": [
+      {
+        "source": "Overall picture",
+        "text": "Overall picture"
+      },
+      {
+        "source": "Financial clarity does not start with a product, but with the full picture.",
+        "text": "Financial clarity does not start with a product, but with the full picture."
+      },
+      {
+        "source": "Many people have individual solutions in different places: one insurance policy here, pension planning there, a mortgage at one bank and investments somewhere else.",
+        "text": "Many people have individual solutions in different places: one insurance policy here, pension planning there, a mortgage at one bank and investments somewhere else."
+      },
+      {
+        "source": "Financial decisions rarely work in isolation. Pension planning affects taxes. A mortgage affects liquidity. Insurance affects security and planning room.",
+        "text": "Financial decisions rarely work in isolation. Pension planning affects taxes. A mortgage affects liquidity. Insurance affects security and planning room."
+      },
+      {
+        "source": "The Veonis 360° analysis shows what fits, what is missing and what should be addressed first.",
+        "text": "The Veonis 360° analysis shows what fits, what is missing and what should be addressed first."
+      },
+      {
+        "source": "Overall picture before isolated decisions",
+        "text": "Overall picture before isolated decisions"
+      },
+      {
+        "source": "Insurance, pension planning, taxes, mortgages and investments are reviewed together.",
+        "text": "Insurance, pension planning, taxes, mortgages and investments are reviewed together."
+      },
+      {
+        "source": "Priorities before products",
+        "text": "Priorities before products"
+      },
+      {
+        "source": "First we clarify what truly matters - then we look at possible solutions.",
+        "text": "First we clarify what truly matters - then we look at possible solutions."
+      },
+      {
+        "source": "Advice with an action plan",
+        "text": "Advice with an action plan"
+      },
+      {
+        "source": "You receive understandable recommendations and clear next steps.",
+        "text": "You receive understandable recommendations and clear next steps."
+      },
+      {
+        "source": "Digital financial overview in an advisory meeting",
+        "text": "Digital financial overview in an advisory meeting"
+      }
+    ],
+    "highlights": [
+      {
+        "source": "Insurance & pension planning",
+        "text": "Insurance & pension planning"
+      },
+      {
+        "source": "Veonis reviews whether protection, pension planning and life stage fit together - clearly, independently and with your priorities in view.",
+        "text": "Veonis reviews whether protection, pension planning and life stage fit together - clearly, independently and with your priorities in view."
+      },
+      {
+        "source": "Am I properly protected?",
+        "text": "Am I properly protected?"
+      },
+      {
+        "source": "How does pension planning affect taxes?",
+        "text": "How does pension planning affect taxes?"
+      },
+      {
+        "source": "Mortgages & real estate",
+        "text": "Mortgages & real estate"
+      },
+      {
+        "source": "We put financing, affordability, interest-rate risk and liquidity into context so home ownership fits the full plan.",
+        "text": "We put financing, affordability, interest-rate risk and liquidity into context so home ownership fits the full plan."
+      },
+      {
+        "source": "Which mortgage fits?",
+        "text": "Which mortgage fits?"
+      },
+      {
+        "source": "What remains sustainable long term?",
+        "text": "What remains sustainable long term?"
+      },
+      {
+        "source": "Taxes, investments & planning",
+        "text": "Taxes, investments & planning"
+      },
+      {
+        "source": "Tax questions, investments and liquidity are not reviewed in isolation, but as part of a clear financial structure.",
+        "text": "Tax questions, investments and liquidity are not reviewed in isolation, but as part of a clear financial structure."
+      },
+      {
+        "source": "Where can taxes be optimized?",
+        "text": "Where can taxes be optimized?"
+      },
+      {
+        "source": "How should free capital be used?",
+        "text": "How should free capital be used?"
+      },
+      {
+        "source": "Depending on your situation, we start where the greatest need for action exists. The connection between all financial topics remains decisive.",
+        "text": "Depending on your situation, we start where the greatest need for action exists. The connection between all financial topics remains decisive."
+      },
+      {
+        "source": "Three entry points. One overall picture.",
+        "text": "Three entry points. One overall picture."
+      }
+    ],
+    "collaboration": [
+      {
+        "source": "First conversation",
+        "text": "First conversation"
+      },
+      {
+        "source": "We talk about your situation, your questions and the documents needed for a clear overview.",
+        "text": "We talk about your situation, your questions and the documents needed for a clear overview."
+      },
+      {
+        "source": "360° check",
+        "text": "360° check"
+      },
+      {
+        "source": "We review connections, priorities, potential gaps and existing contracts.",
+        "text": "We review connections, priorities, potential gaps and existing contracts."
+      },
+      {
+        "source": "Recommendation & guidance",
+        "text": "Recommendation & guidance"
+      },
+      {
+        "source": "You receive clear recommendations and guidance through the next sensible steps.",
+        "text": "You receive clear recommendations and guidance through the next sensible steps."
+      },
+      {
+        "source": "Collaboration",
+        "text": "Collaboration"
+      },
+      {
+        "source": "Clear process. Personal guidance.",
+        "text": "Clear process. Personal guidance."
+      },
+      {
+        "source": "With Veonis, you know from the beginning what is being reviewed, why it matters and which decision makes sense next.",
+        "text": "With Veonis, you know from the beginning what is being reviewed, why it matters and which decision makes sense next."
+      }
+    ],
+    "cta": [
+      {
+        "source": "Ready for more overview?",
+        "text": "Ready for more overview?"
+      },
+      {
+        "source": "An initial conversation is often enough to make the most important topics visible. We take time for your questions, put your situation into context and show which next steps make sense. Non-binding. Personal. With a clear view of your overall financial situation.",
+        "text": "An initial conversation is often enough to make the most important topics visible. We take time for your questions, put your situation into context and show which next steps make sense. Non-binding. Personal. With a clear view of your overall financial situation."
+      },
+      {
+        "source": "Book a free initial conversation",
+        "text": "Book a free initial conversation"
+      }
+    ]
+  }
+}
