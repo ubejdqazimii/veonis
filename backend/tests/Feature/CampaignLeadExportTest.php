@@ -96,6 +96,29 @@ class CampaignLeadExportTest extends TestCase
         Livewire::test(ListCampaignLeads::class)->callAction('exportExcel')->assertFileDownloaded();
     }
 
+    public function test_campaign_groups_show_complete_status_counts_even_when_filtered(): void
+    {
+        $this->actingAs(User::factory()->create());
+        Filament::setCurrentPanel(Filament::getPanel('admin'));
+        $lead = $this->lead();
+        foreach (['contacted', 'closed'] as $status) {
+            $copy = $lead->replicate();
+            $copy->email = $status.'@example.com';
+            $copy->status = $status;
+            $copy->save();
+        }
+        $component = Livewire::test(ListCampaignLeads::class)->filterTable('status', 'new');
+        $query = $component->instance()->getFilteredSortedTableQuery();
+        $this->assertSame(1, $query->count());
+        $campaign = $query->first()->campaign;
+        $this->assertSame(3, $campaign->leads_count);
+        $this->assertSame(1, $campaign->new_leads_count);
+        $this->assertSame(1, $campaign->contacted_leads_count);
+        $this->assertSame(1, $campaign->closed_leads_count);
+        $this->assertSame('campaign_id', $component->instance()->getTable()->getDefaultGroup()->getId());
+        $component->assertSee('Campaign totals: 3 leads');
+    }
+
     public function test_non_admin_cannot_export(): void
     {
         $this->actingAs(User::factory()->create(['role' => UserRole::BlogEditor]));
