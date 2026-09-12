@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Enums\UserRole;
 use App\Filament\Resources\CampaignLeads\Pages\ListCampaignLeads;
+use App\Filament\Resources\CampaignLeads\Pages\ListLeadCampaigns;
 use App\Models\Campaign;
 use App\Models\CampaignLead;
 use App\Models\User;
@@ -11,6 +12,7 @@ use App\Support\CampaignLeadDownload;
 use Filament\Facades\Filament;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Validation\ValidationException;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -90,33 +92,37 @@ class CampaignLeadExportTest extends TestCase
         $this->actingAs(User::factory()->create());
         Filament::setCurrentPanel(Filament::getPanel('admin'));
         $this->lead();
-        $component = Livewire::test(ListCampaignLeads::class)->searchTable('no-match');
+        $component = Livewire::test(ListCampaignLeads::class, ['campaign' => Campaign::firstOrFail()->id])->searchTable('no-match');
         $this->assertSame(0, $component->instance()->getFilteredSortedTableQuery()->count());
         $component->callAction('exportCsv')->assertFileDownloaded();
-        Livewire::test(ListCampaignLeads::class)->callAction('exportExcel')->assertFileDownloaded();
+        Livewire::test(ListCampaignLeads::class, ['campaign' => Campaign::firstOrFail()->id])->callAction('exportExcel')->assertFileDownloaded();
     }
 
-    public function test_campaign_groups_show_complete_status_counts_even_when_filtered(): void
+    public function test_campaign_overview_and_detail_keep_campaigns_separate(): void
     {
         $this->actingAs(User::factory()->create());
         Filament::setCurrentPanel(Filament::getPanel('admin'));
         $lead = $this->lead();
-        foreach (['contacted', 'closed'] as $status) {
-            $copy = $lead->replicate();
-            $copy->email = $status.'@example.com';
-            $copy->status = $status;
-            $copy->save();
-        }
-        $component = Livewire::test(ListCampaignLeads::class)->filterTable('status', 'new');
-        $query = $component->instance()->getFilteredSortedTableQuery();
-        $this->assertSame(1, $query->count());
-        $campaign = $query->first()->campaign;
-        $this->assertSame(3, $campaign->leads_count);
-        $this->assertSame(1, $campaign->new_leads_count);
-        $this->assertSame(1, $campaign->contacted_leads_count);
-        $this->assertSame(1, $campaign->closed_leads_count);
-        $this->assertSame('campaign_id', $component->instance()->getTable()->getDefaultGroup()->getId());
-        $component->assertSee('Campaign totals: 3 leads');
+        $other = $lead->campaign->replicate();
+        $other->slug = 'second';
+        $other->save();
+        $foreign = $lead->replicate();
+        $foreign->campaign_id = $other->id;
+        $foreign->email = 'second@example.com';
+        $foreign->save();
+        $overview = Livewire::test(ListLeadCampaigns::class);
+        $rows = $overview->instance()->getFilteredSortedTableQuery()->get();
+        $this->assertCount(2, $rows);
+        $this->assertSame(1, $rows->first()->leads_count);
+        $this->assertSame(1, $rows->first()->new_leads_count);
+        $detail = Livewire::test(ListCampaignLeads::class, ['campaign' => $lead->campaign_id]);
+        $this->assertSame([$lead->id], $detail->instance()->getFilteredSortedTableQuery()->pluck('id')->all());
+        $detail->callAction('exportCsv', data: ['columns' => ['email']])->assertFileDownloaded();
+        $detail->searchTable('second@example.com');
+        $this->assertSame(0, $detail->instance()->getFilteredSortedTableQuery()->count());
+        $this->get('/admin/campaign-leads')->assertOk();
+        $this->get('/admin/campaign-leads/campaign/'.$lead->campaign_id)->assertOk();
+        $this->get('/admin/campaign-leads/campaign/999999')->assertNotFound();
     }
 
     public function test_selected_columns_are_the_only_fields_in_both_download_formats(): void
@@ -143,14 +149,14 @@ class CampaignLeadExportTest extends TestCase
             $this->assertStringNotContainsString('Contact consent text', $content);
             $this->assertStringNotContainsString('Full terms', $content);
         }
-        Livewire::test(ListCampaignLeads::class)->callAction('exportCsv', data: ['columns' => ['email']])->assertFileDownloaded();
-        Livewire::test(ListCampaignLeads::class)->callAction('exportExcel', data: ['columns' => []])->assertHasActionErrors(['columns']);
+        Livewire::test(ListCampaignLeads::class, ['campaign' => Campaign::firstOrFail()->id])->callAction('exportCsv', data: ['columns' => ['email']])->assertFileDownloaded();
+        Livewire::test(ListCampaignLeads::class, ['campaign' => Campaign::firstOrFail()->id])->callAction('exportExcel', data: ['columns' => []])->assertHasActionErrors(['columns']);
     }
 
     public function test_unknown_export_columns_are_rejected(): void
     {
         $this->actingAs(User::factory()->create());
-        $this->expectException(\Illuminate\Validation\ValidationException::class);
+        $this->expectException(ValidationException::class);
         CampaignLeadDownload::response(CampaignLead::query(), 'csv', ['campaign.private_field']);
     }
 
