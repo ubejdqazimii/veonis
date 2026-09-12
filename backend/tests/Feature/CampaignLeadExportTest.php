@@ -119,6 +119,41 @@ class CampaignLeadExportTest extends TestCase
         $component->assertSee('Campaign totals: 3 leads');
     }
 
+    public function test_selected_columns_are_the_only_fields_in_both_download_formats(): void
+    {
+        $this->actingAs(User::factory()->create());
+        Filament::setCurrentPanel(Filament::getPanel('admin'));
+        $this->lead();
+        foreach (['csv', 'xlsx'] as $format) {
+            $response = CampaignLeadDownload::response(CampaignLead::query(), $format, ['email', 'zip_code']);
+            ob_start();
+            $response->sendContent();
+            $content = ob_get_clean();
+            if ($format === 'xlsx') {
+                $path = tempnam(sys_get_temp_dir(), 'selected-export-');
+                file_put_contents($path, $content);
+                $zip = new \ZipArchive;
+                $zip->open($path);
+                $content = $zip->getFromName('xl/worksheets/sheet1.xml');
+                $zip->close();
+                unlink($path);
+            }
+            $this->assertStringContainsString('test@example.com', $content);
+            $this->assertStringContainsString('0123', $content);
+            $this->assertStringNotContainsString('Contact consent text', $content);
+            $this->assertStringNotContainsString('Full terms', $content);
+        }
+        Livewire::test(ListCampaignLeads::class)->callAction('exportCsv', data: ['columns' => ['email']])->assertFileDownloaded();
+        Livewire::test(ListCampaignLeads::class)->callAction('exportExcel', data: ['columns' => []])->assertHasActionErrors(['columns']);
+    }
+
+    public function test_unknown_export_columns_are_rejected(): void
+    {
+        $this->actingAs(User::factory()->create());
+        $this->expectException(\Illuminate\Validation\ValidationException::class);
+        CampaignLeadDownload::response(CampaignLead::query(), 'csv', ['campaign.private_field']);
+    }
+
     public function test_non_admin_cannot_export(): void
     {
         $this->actingAs(User::factory()->create(['role' => UserRole::BlogEditor]));
